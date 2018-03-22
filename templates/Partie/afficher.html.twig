@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+   Partie en cours
+{% endblock %}
+
+{% block body %}
+    <span>N° partie : </span>
+    <span>{{ partie.Id }}, {{ partie.PartieNom }}, Commencée le : {{ partie.PartieDate|date("d/m/Y") }}</span><br>
+
+    <span>Manche n°</span>
+    <span>{{ partie.PartieManche }} </span><br>
+
+    <span>Tour n°</span>
+    <span>{{ partie.PartieTour }} </span><br>
+
+    <span>Joueurs :</span>
+    <span>{{ partie.Joueur1.Username }} VS {{ partie.Joueur2.Username }} </span><br>
+
+    <span>Score joueur 1:</span>
+    <span>{{ partie.ScoreJ1 }} </span><br>
+
+    <span>Score joueur 2:</span>
+    <span>{{ partie.ScoreJ2 }} </span><br>
+
+    <span>Carte jetée</span>
+    <img style="width: 50px" src="{{ asset('assets/img/' ~ Objets[partie.CarteJetee].CarteImg) }}">
+    <br>
+
+    <span>Cartes objectifs : </span>
+       {% for objectif in objectifs %}
+          <img style="width: 50px" src="{{ asset('assets/img/' ~ objectif.ObjectifImg) }}">
+       {% endfor %}
+    <br>
+
+    <span>Marqueurs objets : </span>
+    {% for marqueur in partie.TerrainJ1 %}
+        {% set counter = ( counter | default(0) ) + 1 %}
+        {% if marqueur==0 %}
+            <span>Objectif {{ counter }} : Milieu.</span>
+        {% elseif marqueur==1 %}
+            <span>Objectif {{ counter }} : Joueur 1.</span>
+        {% elseif marqueur==2 %}
+            <span>Objectif {{ counter }} : Joeur 2.</span>
+        {% endif %}
+    {% endfor %}
+    <br>
+
+
+    <span>Cartes joueur 1 : </span>
+    {% for carte in partie.MainJ1 |sort %}
+        <img style="width: 50px" src="{{ asset('assets/img/carte_dos.jpg') }}">
+    {% endfor %}
+    <br>
+
+    <span>Cartes joueur 2 : </span>
+    {% for carte in partie.MainJ2 |sort %}
+        <img style="width: 50px" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+    {% endfor %}
+    <br>
+
+    <span>Actions Joueur 1 : </span>
+    {% for action in partie.ActionJ1 %}
+        {% set counter = ( counter | default(0) ) + 1 %}
+        {% if action==0 %}
+            <span>Non jouée {{ counter}}.</span>
+        {% elseif action==1 %}
+            <span>Jouée {{ counter}}.</span>
+        {% endif %}
+    {% endfor %}
+    <br>
+
+    <span>Actions Joueur 2 : </span>
+    {% for action in partie.ActionJ2 %}
+        {% set counter = ( counter | default(0) ) + 1 %}
+        {% if action==0 %}
+            <span>Non jouée {{ counter}}.</span>
+        {% elseif action==1 %}
+            <span>Jouée {{ counter}}.</span>
+        {% endif %}
+    {% endfor %}
+    <br>
+
+
+
+    <span>Pioche : </span>
+        <img style="width: 50px" src="{{ asset('assets/img/carte_dos.jpg')}}">
+
+{% endblock %}

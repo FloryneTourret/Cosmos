@@ -1,0 +1,11 @@
+{{ form_start(form) }}
+    {{ form_row(form.username) }}
+    {{ form_row(form.email) }}
+    {{ form_row(form.password.first) }}
+    {{ form_row(form.password.second) }}
+
+<button type="submit">S'inscrire !</button>
+{{ form_end(form) }}
+
+<a href="{{ path('index') }}">Retour à l'accueil</a><br>
+<a href="{{ path('security_login') }}">Connexion</a>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    {# Bloc du title du site #}
+    <title>{% block title %}Hanamikoji{% endblock %}</title>
+
+    <!-- Fichiers CSS communs-->
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+
+    {# Bloc des fichiers css du site #}
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+
+{# Bloc du menu du site #}
+{% block menu %}
+<nav class="navbar navbar-default">
+    <ul class="nav navbar-nav">
+        <li><a href="{{ path('nouvelle_partie') }}">Jouer !</a></li>
+        <li><a href="{{ path('nouvelle_partie') }}">Classement</a></li>
+        <li><a href="{{ path('user') }}">{{ app.user.username }}</a></li>
+    </ul>
+</nav>
+{% endblock %}
+
+{# Bloc de la nav du site jeu #}
+{% block nav_admin %}{% endblock %}
+
+{# Bloc de la nav user du site jeu #}
+{% block nav_user %}{% endblock %}
+
+
+{# Bloc du contenu principal du site #}
+{% block body %}{% endblock %}
+
+
+{# Bloc du contenu chat du site #}
+{% block chat %}{% endblock %}
+
+{# Bloc du footer du site #}
+{% block footer %}{% endblock %}
+
+<!-- Fichiers JS communs-->
+<script src="{{ asset('assets/js/jquery.js') }}"></script>
+<script src="{{ asset('assets/js/boostrap.js') }}"></script>
+<script src="{{ asset('assets/js/nmp.js') }}"></script>
+
+{# Bloc des fichiers javascript du site #}
+{% block javascripts %}{% endblock %}
+
+</body>
+</html>
