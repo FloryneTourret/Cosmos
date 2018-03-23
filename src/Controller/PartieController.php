@@ -21,10 +21,10 @@ class PartieController extends Controller
     public function nouvellePartie()
     {
         //Récupère tous les joueurs
-        $joueurs = $this->getDoctrine()->getRepository(User::class)->findAll();
+        //$joueurs = $this->getDoctrine()->getRepository(User::class)->findAll();
 
         //Récupère les joueurs actifs
-        //$joueurs=  $this->getDoctrine()->getRepository(User::class)->findBy(['actif' => 1]);
+        $joueurs=  $this->getDoctrine()->getRepository(User::class)->findBy(['actif' => 1]);
 
         return $this->render('Partie/nouvelle.html.twig', ['joueurs' => $joueurs]);
     }
@@ -34,8 +34,16 @@ class PartieController extends Controller
      */
     public function creerPartie(Request $request)
     {
+        $user = $this->getUser();
+        if($user) {
+            $id = $user->getId();
+        } else {
+            $id = "Pas d'Id";
+        }
+
+
         $idAdversaire = $request->request->get('adversaire');
-        $joueur = $this->getDoctrine()->getRepository(User::class)->find(1);
+        $joueur = $this->getDoctrine()->getRepository(User::class)->find($id);
         $adversaire = $this->getDoctrine()->getRepository(User::class)->find($idAdversaire);
 
         //récupérer les objectifs depuis la base de données

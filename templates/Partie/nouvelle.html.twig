@@ -10,7 +10,7 @@
             Choisissez l'adversaire :
             <select name="adversaire">
                 <option value=""> Choisir</option>
-                {% for joueur in joueurs %}
+                {% for joueur in joueurs if joueur.Username!= app.user.username %}
                     <option value="{{ joueur.id }}">{{ joueur.Username }}</option>
                 {% endfor %}
             </select>

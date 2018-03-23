@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     {# Bloc du title du site #}
-    <title>{% block title %}Hanamikoji{% endblock %}</title>
+    <title>{% block title %}Cosmos{% endblock %}</title>
 
     <!-- Fichiers CSS communs-->
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
@@ -21,6 +21,7 @@
         <li><a href="{{ path('nouvelle_partie') }}">Jouer !</a></li>
         <li><a href="{{ path('nouvelle_partie') }}">Classement</a></li>
         <li><a href="{{ path('user') }}">{{ app.user.username }}</a></li>
+        <li><a href="{{ path('inactif') }}">Déconnexion</a></li>
     </ul>
 </nav>
 {% endblock %}

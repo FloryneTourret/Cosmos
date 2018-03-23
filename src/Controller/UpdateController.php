@@ -139,6 +139,34 @@ class UpdateController extends Controller
     }
 
     /**
+     * @Route("/actif_admin", name="actif_admin")
+     */
+    public function actif_admin(){
+        $user = $this->getUser();
+        if($user) {
+            $id = $user->getId();
+        } else {
+            $id = "Pas d'Id";
+        }
+
+        $passage_actif=1;
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $actif = $entityManager->getRepository(User::class)->find($id);
+
+        if (!$actif) {
+            throw $this->createNotFoundException(
+                'No username found for id '.$id
+            );
+        }
+
+        $actif->setActif($passage_actif);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('admin');
+    }
+
+    /**
      * @Route("/inactif", name="inactif")
      */
     public function inactif(){
@@ -163,7 +191,7 @@ class UpdateController extends Controller
         $inactif->setActif($passage_inactif);
         $entityManager->flush();
 
-        return $this->redirectToRoute('user');
+        return $this->redirectToRoute('security_logout');
     }
 
 }

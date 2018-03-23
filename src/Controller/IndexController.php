@@ -47,5 +47,13 @@ class IndexController extends Controller
         return $this->redirectToRoute('actif');
     }
 
+    /**
+     * @Route("/connecte_admin", name="connecte_admin")
+     */
+    public function connecte_admin()
+    {
+        return $this->redirectToRoute('actif_admin');
+    }
+
 
 }
