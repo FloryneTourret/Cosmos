@@ -40,6 +40,14 @@ class IndexController extends Controller
     }
 
     /**
+     * @Route("/user_fail", name="user_fail")
+     */
+    public function user_fail()
+    {
+        return $this->render('User/fail.html.twig');
+    }
+
+    /**
      * @Route("/connecte", name="connecte")
      */
     public function connecte()

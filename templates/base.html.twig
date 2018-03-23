@@ -18,8 +18,9 @@
 {% block menu %}
 <nav class="navbar navbar-default">
     <ul class="nav navbar-nav">
-        <li><a href="{{ path('nouvelle_partie') }}">Jouer !</a></li>
-        <li><a href="{{ path('nouvelle_partie') }}">Classement</a></li>
+        <li><a href="{{ path('nouvelle_partie') }}">Créer une partie !</a></li>
+        <li><a href="{{ path('rejoindre_partie') }}">Rejoindre une partie !</a></li>
+        <li><a href="{{ path('classement') }}">Classement</a></li>
         <li><a href="{{ path('user') }}">{{ app.user.username }}</a></li>
         <li><a href="{{ path('inactif') }}">Déconnexion</a></li>
     </ul>

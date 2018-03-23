@@ -47,4 +47,15 @@ class PartiesRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findPartiesJoueur($joueur)
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.joueur1 = :val')
+            ->orWhere('p.joueur2 = :val')
+            ->setParameter('val', $joueur)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

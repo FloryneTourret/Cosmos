@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+    <div>
+        Score :
+        {% set counter=0 %}
+        {% for score in parties |sort %}
+            {% set counter = ( counter | default(0) ) + score.scoreJ1 %}
+        {% endfor %}
+        <span>{{ counter | last }}</span>
+    </div>
+
+
+{% endblock %}

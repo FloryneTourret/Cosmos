@@ -29,6 +29,7 @@ class PartieController extends Controller
         return $this->render('Partie/nouvelle.html.twig', ['joueurs' => $joueurs]);
     }
 
+
     /**
      * @Route("/creer", name="creer_partie")
      */
@@ -136,5 +137,38 @@ class PartieController extends Controller
         }
 
         return $this->render('Partie/afficher.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
+    }
+
+
+    /**
+     * @Route("/rejoindre", name="rejoindre_partie")
+     */
+    public function rejoindrePartie()
+    {
+
+        $user = $this->getUser();
+        if($user) {
+            $id = $user->getId();
+        } else {
+            $id = "Pas d'Id";
+        }
+
+        //Récupère les parties avec le joueur dedans
+        $parties=  $this->getDoctrine()->getRepository(Parties::class)->findBy(['joueur2' => $id]);
+
+        return $this->render('Partie/rejoindre.html.twig', ['parties' => $parties]);
+
+    }
+
+    /**
+     * @Route("/lancer", name="lancer_partie")
+     */
+    public function lancerPartie(Request $request)
+    {
+
+        $partie_recup = $request->request->get('id');
+        $partie = $this->getDoctrine()->getRepository(Parties::class)->find($partie_recup);
+        return $this->redirectToRoute('afficher_partie', ['id' => $partie->getId()]);
+
     }
 }

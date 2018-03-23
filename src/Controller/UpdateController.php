@@ -11,6 +11,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 /**
@@ -23,15 +24,14 @@ class UpdateController extends Controller
     /**
      * @Route("/update_username", name="update_username")
      */
-    public function new_username(){
-        //$new_username = $request->request->get('username');
+    public function new_username(Request $request){
+        $new_username = $request->request->get('username');
         $user = $this->getUser();
         if($user) {
             $id = $user->getId();
         } else {
             $id = "Pas d'Id";
         }
-        $new_username='Floryne';
 
         $entityManager = $this->getDoctrine()->getManager();
         $username = $entityManager->getRepository(User::class)->find($id);
@@ -52,8 +52,9 @@ class UpdateController extends Controller
     /**
      * @Route("/update_email", name="update_email")
      */
-    public function new_email(){
-        //$new_email = $request->request->get('email');
+    public function new_email(Request $request){
+        $new_email = $request->request->get('email');
+
         $user = $this->getUser();
         if($user) {
             $id = $user->getId();
@@ -61,12 +62,11 @@ class UpdateController extends Controller
             $id = "Pas d'Id";
         }
 
-        $new_email='floryne.tourret@etudiant.univ-reims.fr';
 
         $entityManager = $this->getDoctrine()->getManager();
         $email = $entityManager->getRepository(User::class)->find($id);
 
-        if (!email) {
+        if (!$email) {
             throw $this->createNotFoundException(
                 'No username found for id '.$id
             );
@@ -82,32 +82,41 @@ class UpdateController extends Controller
     /**
      * @Route("/update_password", name="update_password")
      */
-    public function new_mdp(UserPasswordEncoderInterface $passwordEncoder){
-        //$new_password = $request->request->get('password');
-        $user = $this->getUser();
-        if($user) {
-            $id = $user->getId();
-        } else {
-            $id = "Pas d'Id";
+    public function new_mdp(Request $request, UserPasswordEncoderInterface $passwordEncoder){
+        $password_send = $request->request->get('premier');
+        $password_send1 = $request->request->get('deuxieme');
+
+        if ($password_send != $password_send1) {
+
+            return $this->redirectToRoute('user_fail');
+
         }
+        else{
 
-        $password_send='PASSWORD';
-        $new_password=$passwordEncoder->encodePassword($id ,$password_send);
+            $user = $this->getUser();
+            if ($user) {
+                $id = $user->getId();
+            } else {
+                $id = "Pas d'Id";
+            }
 
-        $entityManager = $this->getDoctrine()->getManager();
-        $password = $entityManager->getRepository(User::class)->find($id);
+            $new_password = $passwordEncoder->encodePassword($user, $password_send);
 
-        if (!$password) {
-            throw $this->createNotFoundException(
-                'No username found for id '.$id
-            );
+            $entityManager = $this->getDoctrine()->getManager();
+            $password = $entityManager->getRepository(User::class)->find($id);
+
+            if (!$password) {
+                throw $this->createNotFoundException(
+                    'No username found for id ' . $id
+                );
+            }
+
+            $password->setPassword($new_password);
+            $entityManager->persist($password);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('user');
         }
-
-        $password->setPassword($new_password);
-        $entityManager->persist($password);
-        $entityManager->flush();
-
-        return $this->redirectToRoute('user');
     }
 
     /**

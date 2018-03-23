@@ -15,16 +15,17 @@
     <form method="post" action="{{ path('update_email') }}">
         <div>
             <h2>Changer d'email :</h2>
-            <input type="email" value="{{ app.user.email }}" name="email" placeholder="Nouvel email">
+            <input type="text" value="{{ app.user.email }}" name="email" placeholder="Nouvel email">
             <input type="submit" value="Changer">
         </div>
     </form>
 
     <form method="post" action="{{ path('update_password') }}">
         <div>
+            <h3 style="color: #F00;">Attention les mots de passe  ne correspondent pas</h3>
             <h2>Changer de mot de passe :</h2>
-            <input type="password" name="premier" placeholder="Entrer nouveau mot de passe"><br>
-            <input type="password" name="deuxieme" placeholder="Répéter mot de passe">
+            <input type="password" name="premier" placeholder="Entrer nouveau mot de passe" required><br>
+            <input type="password" name="deuxieme" placeholder="Répéter mot de passe" required>
             <input type="submit" value="Changer">
         </div>
     </form>
