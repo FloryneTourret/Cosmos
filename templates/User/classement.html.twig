@@ -4,12 +4,14 @@
 
 
     <div>
-        Score :
-        {% set counter=0 %}
+        Mon score :
+        {% set monscore = 0 %}
+
         {% for score in parties |sort %}
-            {% set counter = ( counter | default(0) ) + score.scoreJ1 %}
+            {% set monscore = monscore + score.scoreJ1 +score.scoreJ2 %}
         {% endfor %}
-        <span>{{ counter | last }}</span>
+
+        {{ monscore }}
     </div>
 
 
