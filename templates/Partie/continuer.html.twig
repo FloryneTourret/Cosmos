@@ -18,7 +18,7 @@
                         {% if partie.Joueur2.Id!= app.user.Id  %}
                             <option value="{{ partie.id }}">{{ partie.PartieNom }}, {{ partie.PartieDate |date("d/m/Y à H:i:s")}} avec {{ partie.Joueur2.Username }}, Tour N°{{ partie.PartieTour }} </option>
                         {% endif %}
-                    {% endif %} 
+                    {% endif %}
                 {% endfor %}
             </select>
         </div>

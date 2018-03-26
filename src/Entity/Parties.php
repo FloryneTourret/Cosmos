@@ -92,6 +92,17 @@ class Parties
      */
     private $carte_jetee;
 
+    /**
+     * @var
+     * @ORM\Column(type="text")
+     */
+    private $carte_secrete;
+
+    /**
+     * @var
+     * @ORM\Column(type="text")
+     */
+    private $carte_dissimulee;
 
     /**
      * @var
@@ -331,22 +342,6 @@ class Parties
         $this->action_j2 = $action_j2;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getJetons()
-    {
-        return json_decode($this->jetons);
-    }
-
-    /**
-     * @param mixed $jetons
-     */
-    public function setJetons($jetons)
-    {
-        $this->jetons = $jetons;
-    }
-
 
     /**
      * @return mixed
@@ -363,6 +358,41 @@ class Parties
     {
         $this->carte_jetee = $carte_jetee;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCarteSecrete()
+    {
+        return json_decode($this->carte_secrete);
+    }
+
+    /**
+     * @param mixed $carte_secrete
+     */
+    public function setCarteSecrete($carte_secrete)
+    {
+        $this->carte_secrete = $carte_secrete;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCarteDissimulee()
+    {
+        return json_decode($this->carte_dissimulee);
+    }
+
+    /**
+     * @param mixed $carte_dissimulee
+     */
+    public function setCarteDissimulee($carte_dissimulee)
+    {
+        $this->carte_dissimulee = $carte_dissimulee;
+    }
+
+
+
 
     /**
      * @return mixed
@@ -394,6 +424,22 @@ class Parties
     public function setTerrainJ2($terrain_j2)
     {
         $this->terrain_j2 = $terrain_j2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getJetons()
+    {
+        return json_decode($this->jetons);
+    }
+
+    /**
+     * @param mixed $jetons
+     */
+    public function setJetons($jetons)
+    {
+        $this->jetons = $jetons;
     }
 
     /**
