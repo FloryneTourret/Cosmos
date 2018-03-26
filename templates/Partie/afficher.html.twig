@@ -27,27 +27,27 @@
     <span>Cartes joueur adverse : </span>
     {% if app.user.id == partie.Joueur1.Id %}
         {% for carte in partie.MainJ1 |sort %}
-            <img style="width: 50px" src="{{ asset('assets/img/carte_dos.jpg') }}">
+            <img style="width: 50px" src="{{ asset('assets/img/carte_dos.png') }}">
         {% endfor %}
     {% elseif app.user.id == partie.Joueur2.Id %}
         {% for carte in partie.MainJ2 |sort %}
-            <img style="width: 50px" src="{{ asset('assets/img/carte_dos.jpg') }}">
+            <img style="width: 50px" src="{{ asset('assets/img/carte_dos.png') }}">
         {% endfor %}
     {% endif %}
     <br>
 
 
     <span>Carte jetée</span>
-    <img style="width: 50px" src="{{ asset('assets/img/carte_dos.jpg') }}">
+    <img style="width: 50px" src="{{ asset('assets/img/carte_dos.png') }}">
     <br>
 
     <span>Pioche : </span>
-    {% set counter=0 %}
+    {% set piocheCounter=0 %}
     {% for cartes in partie.PartiePioche %}
-        {% set counter = ( counter | default(0) ) + 1 %}
+        {% set piocheCounter = ( counter | default(0) ) + 1 %}
     {% endfor %}
-    <span>{{ counter | last }}</span>
-    <img style="width: 50px" src="{{ asset('assets/img/carte_dos.jpg')}}">
+    <span>{{ piocheCounter | last }}</span>
+    <img style="width: 50px" src="{{ asset('assets/img/carte_dos.png')}}">
     <br>
 
     <span>Cartes objectifs : </span>
@@ -60,7 +60,8 @@
     {% for marqueur in partie.TerrainJ1 %}
         {% set counter = ( counter | default(0) ) + 1 %}
         {% if marqueur==0 %}
-            <span>Objectif {{ counter }} : Milieu.</span>
+            <img style="width: 20px" src="{{ asset('assets/img/pion.png') }}">
+            <span>{{ counter }} : Milieu.</span>
         {% elseif marqueur==1 %}
             <span>Objectif {{ counter }} : Joueur 1.</span>
         {% elseif marqueur==2 %}
@@ -74,32 +75,28 @@
     {% for action in partie.ActionJ1 %}
         {% set counter = ( counter | default(0) ) + 1 %}
         {% if counter == 1 %}
-            Action 1 :
             {% if action==0 %}
-                <span>Non jouée.</span>
+                <img style="width: 50px" src="{{ asset('assets/img/action1.png') }}">
             {% elseif action==1 %}
-                <span>Jouée.</span>
+                <img style="width: 50px" src="{{ asset('assets/img/action1_fini.png') }}">
             {% endif %}
         {% elseif counter == 2 %}
-            Action 2 :
             {% if action==0 %}
-                <span>Non jouée.</span>
+                <img style="width: 50px" src="{{ asset('assets/img/action2.png') }}">
             {% elseif action==1 %}
-                <span>Jouée.</span>
+                <img style="width: 50px" src="{{ asset('assets/img/action2_fini.png') }}">
             {% endif %}
         {% elseif counter == 3 %}
-            Action 3 :
             {% if action==0 %}
-                <span>Non jouée.</span>
+                <img style="width: 50px" src="{{ asset('assets/img/action3.png') }}">
             {% elseif action==1 %}
-                <span>Jouée.</span>
+                <img style="width: 50px" src="{{ asset('assets/img/action3_fini.png') }}">
             {% endif %}
         {% elseif counter == 4 %}
-            Action 4 :
             {% if action==0%}
-                <span>Non jouée.</span>
+                <img style="width: 50px" src="{{ asset('assets/img/action1.png') }}">
             {% elseif action==1 %}
-                <span>Jouée.</span>
+                <img style="width: 50px" src="{{ asset('assets/img/action1_fini.png') }}">
             {% endif %}
         {% endif %}
     {% endfor %}
@@ -109,32 +106,28 @@
     {% for action in partie.ActionJ2 %}
         {% set counter = ( counter | default(0) ) + 1 %}
         {% if counter == 1 %}
-            Action 1 :
             {% if action==0 %}
-                <span>Non jouée.</span>
+                <img style="width: 50px" src="{{ asset('assets/img/action1.png') }}">
             {% elseif action==1 %}
-                <span>Jouée.</span>
+                <img style="width: 50px" src="{{ asset('assets/img/action1_fini.png') }}">
             {% endif %}
         {% elseif counter == 2 %}
-            Action 2 :
             {% if action==0 %}
-                <span>Non jouée.</span>
+                <img style="width: 50px" src="{{ asset('assets/img/action2.png') }}">
             {% elseif action==1 %}
-                <span>Jouée.</span>
+                <img style="width: 50px" src="{{ asset('assets/img/action2_fini.png') }}">
             {% endif %}
         {% elseif counter == 3 %}
-            Action 3 :
             {% if action==0 %}
-                <span>Non jouée.</span>
+                <img style="width: 50px" src="{{ asset('assets/img/action3.png') }}">
             {% elseif action==1 %}
-                <span>Jouée.</span>
+                <img style="width: 50px" src="{{ asset('assets/img/action3_fini.png') }}">
             {% endif %}
         {% elseif counter == 4 %}
-            Action 4 :
-            {% if action==0 %}
-                <span>Non jouée.</span>
+            {% if action==0%}
+                <img style="width: 50px" src="{{ asset('assets/img/action1.png') }}">
             {% elseif action==1 %}
-                <span>Jouée.</span>
+                <img style="width: 50px" src="{{ asset('assets/img/action1_fini.png') }}">
             {% endif %}
         {% endif %}
     {% endfor %}

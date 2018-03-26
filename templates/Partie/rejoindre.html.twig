@@ -9,7 +9,6 @@
         <div>
             Rejoindre une partie :
             <select name="id">
-                <option value=""> Choisir</option>
                 {% for partie in parties |reverse %}
                     {% if partie.PartieTour < 9 %}
                         {% if partie.Joueur1.Id!= app.user.Id  %}

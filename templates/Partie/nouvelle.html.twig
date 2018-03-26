@@ -7,15 +7,16 @@
 {% block body %}
     <form method="post" action="{{ path('creer_partie') }}">
         <div>
-            Choisissez l'adversaire :
+            Choisissez l'adversaire connecté contre qui vous voulez jouer:
             <select name="adversaire">
-                <option value=""> Choisir</option>
                 {% for joueur in joueurs if joueur.Username!= app.user.username %}
+
                     <option value="{{ joueur.id }}">{{ joueur.Username }}</option>
                 {% endfor %}
             </select>
         </div>
         <div>
+
             <input type="submit" value="Créer la partie">
         </div>
     </form>
