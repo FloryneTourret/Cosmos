@@ -73,9 +73,12 @@ class PartieController extends Controller
         $actions=array(0,0,0,0);
         //Initialiser objectifs à 0
         $objectifs=array(0,0,0,0,0,0,0);
+
+        $nom_partie= $request->request->get('nom_partie');
+
         //créer un objet de type Partie
         $partie = new Parties();
-        $partie->setPartieNom('Cosmos');
+        $partie->setPartieNom($nom_partie);
         $partie->setPartieDate(new \DateTime("now"));
         $partie->setPartieTour(1);
         $partie->setPartieManche(1);
@@ -88,6 +91,7 @@ class PartieController extends Controller
         $partie->setActionJ2(json_encode($actions));
         $partie->setTerrainJ1(json_encode($objectifs));
         $partie->setTerrainJ2(json_encode($objectifs));
+        $partie->setJetons(json_encode($objectifs));
         $partie->setScoreJ1(0);
         $partie->setScoreJ2(0);
         $partie->setPartiePioche(json_encode(($partie_pioche)));
@@ -131,6 +135,23 @@ class PartieController extends Controller
         $parties=  $this->getDoctrine()->getRepository(Parties::class)->findBy(['joueur2' => $id]);
         return $this->render('Partie/rejoindre.html.twig', ['parties' => $parties]);
     }
+
+    /**
+     * @Route("/continuer", name="continuer_partie")
+     */
+    public function continuerPartie()
+    {
+        $user = $this->getUser();
+        if($user) {
+            $id = $user->getId();
+        } else {
+            $id = "Pas d'Id";
+        }
+        //Récupère les parties avec le joueur dedans
+        $parties=  $this->getDoctrine()->getRepository(Parties::class)->findPartiesJoueur( $id);
+        return $this->render('Partie/continuer.html.twig', ['parties' => $parties]);
+    }
+
     /**
      * @Route("/lancer", name="lancer_partie")
      */

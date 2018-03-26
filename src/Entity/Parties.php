@@ -106,6 +106,12 @@ class Parties
     private $terrain_j2;
 
     /**
+     * @var
+     * @ORM\Column(type="text")
+     */
+    private $jetons;
+
+    /**
      * @ORM\Column(type="integer")
      */
     private $score_j1;
@@ -319,10 +325,28 @@ class Parties
     /**
      * @param mixed $action_j2
      */
+
     public function setActionJ2($action_j2)
     {
         $this->action_j2 = $action_j2;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getJetons()
+    {
+        return json_decode($this->jetons);
+    }
+
+    /**
+     * @param mixed $jetons
+     */
+    public function setJetons($jetons)
+    {
+        $this->jetons = $jetons;
+    }
+
 
     /**
      * @return mixed

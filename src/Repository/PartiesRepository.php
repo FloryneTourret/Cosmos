@@ -55,7 +55,6 @@ class PartiesRepository extends ServiceEntityRepository
             ->orWhere('p.joueur2 = :val')
             ->setParameter('val', $joueur)
             ->getQuery()
-            ->getResult()
-            ;
+            ->getResult();
     }
 }

@@ -6,7 +6,7 @@
 
 {% block body %}
     <span>N° partie : </span>
-    <span>{{ partie.Id }}, {{ partie.PartieNom }}, Commencée le : {{ partie.PartieDate|date("d/m/Y") }}</span><br>
+    <span>{{ partie.Id }}, {{ partie.PartieNom }}, Commencée le : {{ partie.PartieDate|date("d/m/Y à H:i") }}</span><br>
 
     <span>Manche n°</span>
     <span>{{ partie.PartieManche }} </span><br>
@@ -24,6 +24,68 @@
     <span>{{ partie.ScoreJ2 }} </span><br>
 
 
+
+    <span>Actions adversaire </span>
+    {% if app.user.id == partie.Joueur2.Id %}
+        {% for action in partie.ActionJ1 %}
+            {% set counter = ( counter | default(0) ) + 1 %}
+            {% if counter == 1 %}
+                {% if action==0 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action1.png') }}">
+                {% elseif action==1 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action1_fini.png') }}">
+                {% endif %}
+            {% elseif counter == 2 %}
+                {% if action==0 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action2.png') }}">
+                {% elseif action==1 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action2_fini.png') }}">
+                {% endif %}
+            {% elseif counter == 3 %}
+                {% if action==0 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action3.png') }}">
+                {% elseif action==1 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action3_fini.png') }}">
+                {% endif %}
+            {% elseif counter == 4 %}
+                {% if action==0%}
+                    <img style="width: 50px" src="{{ asset('assets/img/action4.png') }}">
+                {% elseif action==1 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action4_fini.png') }}">
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    {% elseif app.user.id == partie.Joueur1.Id %}
+        {% for action in partie.ActionJ2 %}
+            {% set counter = ( counter | default(0) ) + 1 %}
+            {% if counter == 1 %}
+                {% if action==0 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action1.png') }}">
+                {% elseif action==1 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action1_fini.png') }}">
+                {% endif %}
+            {% elseif counter == 2 %}
+                {% if action==0 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action2.png') }}">
+                {% elseif action==1 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action2_fini.png') }}">
+                {% endif %}
+            {% elseif counter == 3 %}
+                {% if action==0 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action3.png') }}">
+                {% elseif action==1 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action3_fini.png') }}">
+                {% endif %}
+            {% elseif counter == 4 %}
+                {% if action==0%}
+                    <img style="width: 50px" src="{{ asset('assets/img/action4.png') }}">
+                {% elseif action==1 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action4_fini.png') }}">
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    <br>
     <span>Cartes joueur adverse : </span>
     {% if app.user.id == partie.Joueur1.Id %}
         {% for carte in partie.MainJ1 |sort %}
@@ -44,11 +106,244 @@
     <span>Pioche : </span>
     {% set piocheCounter=0 %}
     {% for cartes in partie.PartiePioche %}
-        {% set piocheCounter = ( counter | default(0) ) + 1 %}
+        {% set piocheCounter = ( piocheCounter | default(0) ) + 1 %}
     {% endfor %}
     <span>{{ piocheCounter | last }}</span>
     <img style="width: 50px" src="{{ asset('assets/img/carte_dos.png')}}">
     <br>
+
+    <span>Terrain adversaire : </span>
+    {% if app.user.id == partie.Joueur1.Id %}
+        {% for cadeaux in partie.TerrainJ2 %}
+            {% set counter = ( counter | default(0) ) + 1 %}
+
+            {% if counter == 1 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/rhum.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/rhum.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/rhum.png') }}">
+                {% endif %}
+            {% endif %}
+
+            {% if counter == 2 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/bijoux.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/bijoux.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/bijoux.png') }}">
+                {% endif %}
+            {% endif %}
+
+            {% if counter == 3 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/revolver.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/revolver.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/revolver.png') }}">
+                {% endif %}
+            {% endif %}
+
+            {% if counter == 4 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hache.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hache.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hache.png') }}">
+                {% elseif cadeaux==3 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hache.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hache.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hache.png') }}">
+                {% endif %}
+            {% endif %}
+
+            {% if counter == 5 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/processeur.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/processeur.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/processeur.png') }}">
+                {% elseif cadeaux==3 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/processeur.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/processeur.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/processeur.png') }}">
+                {% endif %}
+            {% endif %}
+
+            {% if counter == 6 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                {% elseif cadeaux==3 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                {% elseif cadeaux==4 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                {% endif %}
+            {% endif %}
+
+            {% if counter == 7 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                {% elseif cadeaux==3 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                {% elseif cadeaux==4 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                {% elseif cadeaux==5 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                {% endif %}
+            {% endif %}
+
+        {% endfor %}
+    {% elseif app.user.id == partie.Joueur2.Id %}
+        {% for cadeaux in partie.TerrainJ1 %}
+            {% set counter = ( counter | default(0) ) + 1 %}
+
+            {% if counter == 1 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/rhum.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/rhum.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/rhum.png') }}">
+                {% endif %}
+            {% endif %}
+
+            {% if counter == 2 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/bijoux.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/bijoux.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/bijoux.png') }}">
+                {% endif %}
+            {% endif %}
+
+            {% if counter == 3 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/revolver.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/revolver.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/revolver.png') }}">
+                {% endif %}
+            {% endif %}
+
+            {% if counter == 4 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hache.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hache.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hache.png') }}">
+                {% elseif cadeaux==3 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hache.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hache.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hache.png') }}">
+                {% endif %}
+            {% endif %}
+
+            {% if counter == 5 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/processeur.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/processeur.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/processeur.png') }}">
+                {% elseif cadeaux==3 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/processeur.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/processeur.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/processeur.png') }}">
+                {% endif %}
+            {% endif %}
+
+            {% if counter == 6 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                {% elseif cadeaux==3 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                {% elseif cadeaux==4 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                {% endif %}
+            {% endif %}
+
+            {% if counter == 7 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                {% elseif cadeaux==3 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                {% elseif cadeaux==4 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                {% elseif cadeaux==5 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                {% endif %}
+            {% endif %}
+
+        {% endfor %}
+    {% endif %}
+    <br>
+
 
     <span>Cartes objectifs : </span>
     {% for objectif in objectifs %}
@@ -56,81 +351,337 @@
     {% endfor %}
     <br>
 
+    <span>Mon terrain</span>
+    {% if app.user.id == partie.Joueur1.Id %}
+        {% for cadeaux in partie.TerrainJ1 %}
+            {% set counter = ( counter | default(0) ) + 1 %}
+
+            {% if counter == 1 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/rhum.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/rhum.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/rhum.png') }}">
+                {% endif %}
+            {% endif %}
+
+            {% if counter == 2 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/bijoux.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/bijoux.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/bijoux.png') }}">
+                {% endif %}
+            {% endif %}
+
+            {% if counter == 3 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/revolver.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/revolver.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/revolver.png') }}">
+                {% endif %}
+            {% endif %}
+
+            {% if counter == 4 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hache.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hache.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hache.png') }}">
+                {% elseif cadeaux==3 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hache.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hache.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hache.png') }}">
+                {% endif %}
+            {% endif %}
+
+            {% if counter == 5 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/processeur.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/processeur.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/processeur.png') }}">
+                {% elseif cadeaux==3 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/processeur.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/processeur.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/processeur.png') }}">
+                {% endif %}
+            {% endif %}
+
+            {% if counter == 6 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                {% elseif cadeaux==3 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                {% elseif cadeaux==4 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                {% endif %}
+            {% endif %}
+
+            {% if counter == 7 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                {% elseif cadeaux==3 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                {% elseif cadeaux==4 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                {% elseif cadeaux==5 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                {% endif %}
+            {% endif %}
+
+        {% endfor %}
+    {% elseif app.user.id == partie.Joueur2.Id %}
+        {% for cadeaux in partie.TerrainJ2 %}
+            {% set counter = ( counter | default(0) ) + 1 %}
+
+            {% if counter == 1 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/rhum.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/rhum.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/rhum.png') }}">
+                {% endif %}
+            {% endif %}
+
+            {% if counter == 2 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/bijoux.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/bijoux.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/bijoux.png') }}">
+                {% endif %}
+            {% endif %}
+
+            {% if counter == 3 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/revolver.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/revolver.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/revolver.png') }}">
+                {% endif %}
+            {% endif %}
+
+            {% if counter == 4 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hache.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hache.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hache.png') }}">
+                {% elseif cadeaux==3 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hache.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hache.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hache.png') }}">
+                {% endif %}
+            {% endif %}
+
+            {% if counter == 5 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/processeur.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/processeur.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/processeur.png') }}">
+                {% elseif cadeaux==3 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/processeur.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/processeur.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/processeur.png') }}">
+                {% endif %}
+            {% endif %}
+
+            {% if counter == 6 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                {% elseif cadeaux==3 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                {% elseif cadeaux==4 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/hallebarde.png') }}">
+                {% endif %}
+            {% endif %}
+
+            {% if counter == 7 %}
+                {% if cadeaux==0 %}
+
+                {% elseif cadeaux==1 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                {% elseif cadeaux==2 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                {% elseif cadeaux==3 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                {% elseif cadeaux==4 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                {% elseif cadeaux==5 %}
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                    <img style="width: 20px" src="{{ asset('assets/img/pouvoir.png') }}">
+                {% endif %}
+            {% endif %}
+
+        {% endfor %}
+    {% endif %}
+    <br>
+
     <span>Marqueurs objets : </span>
-    {% for marqueur in partie.TerrainJ1 %}
-        {% set counter = ( counter | default(0) ) + 1 %}
+    {% for marqueur in partie.Jetons %}
+        {% set marqueurCounter = ( marqueurCounter | default(0) ) + 1 %}
         {% if marqueur==0 %}
             <img style="width: 20px" src="{{ asset('assets/img/pion.png') }}">
-            <span>{{ counter }} : Milieu.</span>
+            <span>{{ marqueurCounter }} : Milieu.</span>
         {% elseif marqueur==1 %}
-            <span>Objectif {{ counter }} : Joueur 1.</span>
+            <span>Objectif {{ marqueurCounter }} : Joueur 1.</span>
         {% elseif marqueur==2 %}
-            <span>Objectif {{ counter }} : Joeur 2.</span>
+            <span>Objectif {{ maqueurCounter }} : Joueur 2.</span>
         {% endif %}
     {% endfor %}
     <br>
 
 
-    <span>Actions Joueur 1 : </span>
-    {% for action in partie.ActionJ1 %}
-        {% set counter = ( counter | default(0) ) + 1 %}
-        {% if counter == 1 %}
-            {% if action==0 %}
-                <img style="width: 50px" src="{{ asset('assets/img/action1.png') }}">
-            {% elseif action==1 %}
-                <img style="width: 50px" src="{{ asset('assets/img/action1_fini.png') }}">
+    <span>Mes actions</span>
+    {% if app.user.id == partie.Joueur1.Id %}
+        {% for action in partie.ActionJ1 %}
+            {% set counter = ( counter | default(0) ) + 1 %}
+            {% if counter == 1 %}
+                {% if action==0 %}
+                    <form method="post" action="{{ path('action1') }}">
+                        <input type="radio" checked name="id" value="{{ partie.Id }}" style="display: none">
+                        <button type="submit"><img style="width: 50px" src="{{ asset('assets/img/action1.png') }}"></button>
+                    </form>
+                {% elseif action==1 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action1_fini.png') }}">
+                {% endif %}
+            {% elseif counter == 2 %}
+                {% if action==0 %}
+                    <form method="post" action="{{ path('action2') }}">
+                        <input type="radio" checked name="id" value="{{ partie.Id }}" style="display: none">
+                        <button type="submit"><img style="width: 50px" src="{{ asset('assets/img/action2.png') }}"></button>
+                    </form>
+                {% elseif action==1 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action2_fini.png') }}">
+                {% endif %}
+            {% elseif counter == 3 %}
+                {% if action==0 %}
+                    <form method="post" action="{{ path('action3') }}">
+                        <input type="radio" checked name="id" value="{{ partie.Id }}" style="display: none">
+                        <button type="submit"><img style="width: 50px" src="{{ asset('assets/img/action3.png') }}"></button>
+                    </form>
+                {% elseif action==1 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action3_fini.png') }}">
+                {% endif %}
+            {% elseif counter == 4 %}
+                {% if action==0%}
+                    <form method="post" action="{{ path('action4') }}">
+                        <input type="radio" checked name="id" value="{{ partie.Id }}" style="display: none">
+                        <button type="submit"><img style="width: 50px" src="{{ asset('assets/img/action4.png') }}"></button>
+                    </form>
+                {% elseif action==1 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action4_fini.png') }}">
+                {% endif %}
             {% endif %}
-        {% elseif counter == 2 %}
-            {% if action==0 %}
-                <img style="width: 50px" src="{{ asset('assets/img/action2.png') }}">
-            {% elseif action==1 %}
-                <img style="width: 50px" src="{{ asset('assets/img/action2_fini.png') }}">
+        {% endfor %}
+    {% elseif app.user.id == partie.Joueur2.Id %}
+        {% for action in partie.ActionJ2 %}
+            {% set counter = ( counter | default(0) ) + 1 %}
+            {% if counter == 1 %}
+                {% if action==0 %}
+                    <form method="post" action="{{ path('action1') }}">
+                        <input type="radio" checked name="id" value="{{ partie.Id }}" style="display: none">
+                        <button type="submit"><img style="width: 50px" src="{{ asset('assets/img/action1.png') }}"></button>
+                    </form>
+                {% elseif action==1 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action1_fini.png') }}">
+                {% endif %}
+            {% elseif counter == 2 %}
+                {% if action==0 %}
+                    <form method="post" action="{{ path('action2') }}">
+                        <input type="radio" checked name="id" value="{{ partie.Id }}" style="display: none">
+                        <button type="submit"><img style="width: 50px" src="{{ asset('assets/img/action2.png') }}"></button>
+                    </form>
+                {% elseif action==1 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action2_fini.png') }}">
+                {% endif %}
+            {% elseif counter == 3 %}
+                {% if action==0 %}
+                    <form method="post" action="{{ path('action3') }}">
+                        <input type="radio" checked name="id" value="{{ partie.Id }}" style="display: none">
+                        <button type="submit"><img style="width: 50px" src="{{ asset('assets/img/action3.png') }}"></button>
+                    </form>
+                {% elseif action==1 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action3_fini.png') }}">
+                {% endif %}
+            {% elseif counter == 4 %}
+                {% if action==0%}
+                    <form method="post" action="{{ path('action4') }}">
+                        <input type="radio" checked name="id" value="{{ partie.Id }}" style="display: none">
+                        <button type="submit"><img style="width: 50px" src="{{ asset('assets/img/action4.png') }}"></button>
+                    </form>
+                {% elseif action==1 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action4_fini.png') }}">
+                {% endif %}
             {% endif %}
-        {% elseif counter == 3 %}
-            {% if action==0 %}
-                <img style="width: 50px" src="{{ asset('assets/img/action3.png') }}">
-            {% elseif action==1 %}
-                <img style="width: 50px" src="{{ asset('assets/img/action3_fini.png') }}">
-            {% endif %}
-        {% elseif counter == 4 %}
-            {% if action==0%}
-                <img style="width: 50px" src="{{ asset('assets/img/action1.png') }}">
-            {% elseif action==1 %}
-                <img style="width: 50px" src="{{ asset('assets/img/action1_fini.png') }}">
-            {% endif %}
-        {% endif %}
-    {% endfor %}
-    <br>
-
-    <span>Actions Joueur 2 : </span>
-    {% for action in partie.ActionJ2 %}
-        {% set counter = ( counter | default(0) ) + 1 %}
-        {% if counter == 1 %}
-            {% if action==0 %}
-                <img style="width: 50px" src="{{ asset('assets/img/action1.png') }}">
-            {% elseif action==1 %}
-                <img style="width: 50px" src="{{ asset('assets/img/action1_fini.png') }}">
-            {% endif %}
-        {% elseif counter == 2 %}
-            {% if action==0 %}
-                <img style="width: 50px" src="{{ asset('assets/img/action2.png') }}">
-            {% elseif action==1 %}
-                <img style="width: 50px" src="{{ asset('assets/img/action2_fini.png') }}">
-            {% endif %}
-        {% elseif counter == 3 %}
-            {% if action==0 %}
-                <img style="width: 50px" src="{{ asset('assets/img/action3.png') }}">
-            {% elseif action==1 %}
-                <img style="width: 50px" src="{{ asset('assets/img/action3_fini.png') }}">
-            {% endif %}
-        {% elseif counter == 4 %}
-            {% if action==0%}
-                <img style="width: 50px" src="{{ asset('assets/img/action1.png') }}">
-            {% elseif action==1 %}
-                <img style="width: 50px" src="{{ asset('assets/img/action1_fini.png') }}">
-            {% endif %}
-        {% endif %}
-    {% endfor %}
+        {% endfor %}
+    {% endif %}
     <br>
 
 

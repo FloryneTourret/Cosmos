@@ -26,6 +26,7 @@ class UpdateController extends Controller
      */
     public function new_username(Request $request){
         $new_username = $request->request->get('username');
+
         $user = $this->getUser();
         if($user) {
             $id = $user->getId();

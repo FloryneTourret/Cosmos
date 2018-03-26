@@ -13,11 +13,15 @@
 
                     <option value="{{ joueur.id }}">{{ joueur.Username }}</option>
                 {% endfor %}
-            </select>
+            </select> <br>
+            Nom de la partie :
+            <input type="text" name="nom_partie">
         </div>
         <div>
 
             <input type="submit" value="Créer la partie">
         </div>
     </form>
+
+
 {% endblock %}
