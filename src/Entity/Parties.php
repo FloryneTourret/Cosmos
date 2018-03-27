@@ -96,13 +96,26 @@ class Parties
      * @var
      * @ORM\Column(type="text")
      */
-    private $carte_secrete;
+    private $carte_secrete_j1;
 
     /**
      * @var
      * @ORM\Column(type="text")
      */
-    private $carte_dissimulee;
+    private $carte_secrete_j2;
+
+    /**
+     * @var
+     * @ORM\Column(type="text")
+     */
+    private $carte_dissimulee_j1;
+
+    /**
+     * @var
+     * @ORM\Column(type="text")
+     */
+    private $carte_dissimulee_j2;
+
 
     /**
      * @var
@@ -225,7 +238,7 @@ class Parties
      */
     public function setPartiePioche($partie_pioche)
     {
-        $this->partie_pioche = $partie_pioche;
+        $this->partie_pioche = json_encode($partie_pioche);
     }
 
     /**
@@ -362,36 +375,66 @@ class Parties
     /**
      * @return mixed
      */
-    public function getCarteSecrete()
+    public function getCarteSecreteJ1()
     {
-        return json_decode($this->carte_secrete);
+        return json_decode($this->carte_secrete_j1);
     }
 
     /**
-     * @param mixed $carte_secrete
+     * @param mixed $carte_secrete_j1
      */
-    public function setCarteSecrete($carte_secrete)
+    public function setCarteSecreteJ1($carte_secrete_j1)
     {
-        $this->carte_secrete = $carte_secrete;
+        $this->carte_secrete_j1 = $carte_secrete_j1;
     }
 
     /**
      * @return mixed
      */
-    public function getCarteDissimulee()
+    public function getCarteSecreteJ2()
     {
-        return json_decode($this->carte_dissimulee);
+        return json_decode($this->carte_secrete_j2);
     }
 
     /**
-     * @param mixed $carte_dissimulee
+     * @param mixed $carte_secrete_j2
      */
-    public function setCarteDissimulee($carte_dissimulee)
+    public function setCarteSecreteJ2($carte_secrete_j2)
     {
-        $this->carte_dissimulee = $carte_dissimulee;
+        $this->carte_secrete_j2 = $carte_secrete_j2;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getCarteDissimuleeJ1()
+    {
+        return json_decode($this->carte_dissimulee_j1);
+    }
 
+    /**
+     * @param mixed $carte_dissimulee_j1
+     */
+    public function setCarteDissimuleeJ1($carte_dissimulee_j1)
+    {
+        $this->carte_dissimulee_j1 = $carte_dissimulee_j1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCarteDissimuleeJ2()
+    {
+        return json_decode($this->carte_dissimulee_j2);
+    }
+
+    /**
+     * @param mixed $carte_dissimulee_j2
+     */
+    public function setCarteDissimuleeJ2($carte_dissimulee_j2)
+    {
+        $this->carte_dissimulee_j2= $carte_dissimulee_j2;
+    }
 
 
     /**

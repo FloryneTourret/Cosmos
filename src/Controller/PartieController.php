@@ -60,7 +60,7 @@ class PartieController extends Controller
         $carte_jetee = array_pop($tObjets);
         //Distribution des Objets aux joueurs,
         $main_j1 = array();
-        for ($i = 0; $i < 6; $i++) {
+        for ($i = 0; $i < 7; $i++) {
             $tMainJ1[] = array_pop($tObjets);
         }
         $main_j2 = array();
@@ -85,8 +85,10 @@ class PartieController extends Controller
         $partie->setJoueur1($joueur);
         $partie->setJoueur2($adversaire);
         $partie->setCarteJetee($carte_jetee);
-        $partie->setCarteSecrete(json_encode([0]));
-        $partie->setCarteDissimulee(json_encode([0,0]));
+        $partie->setCarteSecreteJ1(json_encode([0]));
+        $partie->setCarteSecreteJ2(json_encode([0]));
+        $partie->setCarteDissimuleeJ1(json_encode([0,0]));
+        $partie->setCarteDissimuleeJ2(json_encode([0,0]));
         $partie->setMainJ1(json_encode($tMainJ1));
         $partie->setMainJ2(json_encode($tMainJ2));
         $partie->setActionJ1(json_encode($actions));
@@ -96,8 +98,8 @@ class PartieController extends Controller
         $partie->setJetons(json_encode($objectifs));
         $partie->setScoreJ1(0);
         $partie->setScoreJ2(0);
-        $partie->setPartiePioche(json_encode(($partie_pioche)));
-        $partie->setPartieObjectifs(json_encode(($tObjectifs)));
+        $partie->setPartiePioche($partie_pioche);
+        $partie->setPartieObjectifs(json_encode($tObjectifs));
         //Récupérer le manager de doctrine
         $em = $this->getDoctrine()->getManager();
         //Sauvegarde mon objet Partie dans la base de données

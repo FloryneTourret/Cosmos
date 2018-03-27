@@ -22,6 +22,31 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class ActionsController extends Controller
 {
+
+
+    /**
+     * @Route("/selectionAction1", name="selection_action1")
+     */
+    public function selectionAction1(Request $request)
+    {
+        $partieId = $request->request->get('id');
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $partie = $entityManager->getRepository(Parties::class)->find($partieId);
+
+        $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+        $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+        $tObjets = array();
+        foreach ($Objets as $carte) {
+            $tObjets[$carte->getId()] = $carte;
+        }
+        $tObjectifs = array();
+        foreach ($objectifs as $objectifs) {
+            $tObjectifs[$objectifs->getId()] = $objectifs;
+        }
+        return $this->render('Partie/action1.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
+    }
+
     /**
      * @Route("/action1", name="action1")
      */
@@ -29,6 +54,9 @@ class ActionsController extends Controller
     {
         //partie en cours
         $partieId = $request->request->get('id');
+
+        //carte séléctionnée
+        $carteId = $request->request->get('id_carte');
 
         // utilisateur connecté
         $user=$this->getUser();
@@ -73,8 +101,49 @@ class ActionsController extends Controller
         $tour = $partie->getPartieTour();
         $tour ++;
 
+        $pioche = $partie->getPartiePioche();
+        $carte_pioche = array_pop($pioche);
+
+
         $actionsj1=json_encode($actionsj1);
         $actionsj2=json_encode($actionsj2);
+        $cartesecrete=json_encode($carteId);
+
+        $main_joueur1=$partie->getMainJ1();
+        $tmain_joueur1=array();
+
+        $main_joueur2=$partie->getMainJ2();
+        $tmain_joueur2=array();
+
+
+        if ($id == $joueur1){
+            if ($carte_pioche != null){
+                $tmain_joueur2[]=$carte_pioche;
+            }
+        }
+
+        if ($id == $joueur2){
+            if ($carte_pioche != null) {
+                $tmain_joueur1[] = $carte_pioche;
+            }
+        }
+
+        foreach ($main_joueur1 as $carte){
+            if ($carte != $carteId){
+                $tmain_joueur1[]=$carte;
+            }
+        }
+
+        foreach ($main_joueur2 as $carte){
+            if ($carte != $carteId){
+                $tmain_joueur2[]=$carte;
+            }
+        }
+
+
+        $mainj1=json_encode($tmain_joueur1);
+        $mainj2=json_encode($tmain_joueur2);
+
 
         if (!$partie) {
             throw $this->createNotFoundException(
@@ -84,11 +153,19 @@ class ActionsController extends Controller
 
         if ($id == $joueur1){
             $partie->setActionJ1($actionsj1);
+            $partie->setMainJ1($mainj1);
+            $partie->setMainJ2($mainj2);
+            $partie->setCarteSecreteJ1($cartesecrete);
             $partie->setPartieTour($tour);
+            $partie->setPartiePioche($pioche);
         }
         elseif ($id==$joueur2){
             $partie->setActionJ2($actionsj2);
+            $partie->setMainJ1($mainj1);
+            $partie->setMainJ2($mainj2);
+            $partie->setCarteSecreteJ2($cartesecrete);
             $partie->setPartieTour($tour);
+            $partie->setPartiePioche($pioche);
         }
 
         $entityManager->flush();
@@ -96,13 +173,56 @@ class ActionsController extends Controller
         return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
     }
 
+
+    /**
+     * @Route("/selectionAction2", name="selection_action2")
+     */
+    public function selectionAction2(Request $request)
+    {
+        $partieId = $request->request->get('id');
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $partie = $entityManager->getRepository(Parties::class)->find($partieId);
+
+        $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+        $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+        $tObjets = array();
+        foreach ($Objets as $carte) {
+            $tObjets[$carte->getId()] = $carte;
+        }
+        $tObjectifs = array();
+        foreach ($objectifs as $objectifs) {
+            $tObjectifs[$objectifs->getId()] = $objectifs;
+        }
+        return $this->render('Partie/action2.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
+    }
+
+
+
     /**
      * @Route("/action2", name="action2")
      */
     public function action2(Request $request)
     {
+
         //partie en cours
         $partieId = $request->request->get('id');
+
+        //carte séléctionnée
+        $carteId= $request->request->get('id_carte');
+
+        $id=0;
+        foreach ($carteId as $carte){
+            if ($id==0){
+                $carte1=$carte;
+            }
+            elseif ($id==1){
+                $carte2=$carte;
+            }
+            $id++;
+
+        }
+
 
         // utilisateur connecté
         $user=$this->getUser();
@@ -147,8 +267,50 @@ class ActionsController extends Controller
         $tour = $partie->getPartieTour();
         $tour ++;
 
+        $pioche = $partie->getPartiePioche();
+        $carte_pioche = array_pop($pioche);
+
+
+
         $actionsj1=json_encode($actionsj1);
         $actionsj2=json_encode($actionsj2);
+
+        $main_joueur1=$partie->getMainJ1();
+        $tmain_joueur1=array();
+
+        $main_joueur2=$partie->getMainJ2();
+        $tmain_joueur2=array();
+
+
+        if ($id == $joueur1){
+            if ($carte_pioche != null){
+                $tmain_joueur2[]=$carte_pioche;
+            }
+        }
+
+        if ($id == $joueur2){
+            if ($carte_pioche != null) {
+                $tmain_joueur1[] = $carte_pioche;
+            }
+        }
+
+        foreach ($main_joueur1 as $carte){
+            if ($carte != $carte1 && $carte!=$carte2){
+                $tmain_joueur1[]=$carte;
+            }
+        }
+
+        foreach ($main_joueur2 as $carte){
+            if ($carte != $carte1 && $carte!=$carte2){
+                $tmain_joueur2[]=$carte;
+            }
+        }
+
+
+
+        $mainj1=json_encode($tmain_joueur1);
+        $mainj2=json_encode($tmain_joueur2);
+
 
         if (!$partie) {
             throw $this->createNotFoundException(
@@ -158,11 +320,19 @@ class ActionsController extends Controller
 
         if ($id == $joueur1){
             $partie->setActionJ1($actionsj1);
+            $partie->setMainJ1($mainj1);
+            $partie->setMainJ2($mainj2);
+            $partie->setCarteDissimuleeJ1(json_encode($carteId));
             $partie->setPartieTour($tour);
+            $partie->setPartiePioche($pioche);
         }
         elseif ($id==$joueur2){
             $partie->setActionJ2($actionsj2);
+            $partie->setMainJ1($mainj1);
+            $partie->setMainJ2($mainj2);
+            $partie->setCarteDissimuleeJ2(json_encode($carteId));
             $partie->setPartieTour($tour);
+            $partie->setPartiePioche($pioche);
         }
 
         $entityManager->flush();
@@ -177,6 +347,11 @@ class ActionsController extends Controller
     {
         //partie en cours
         $partieId = $request->request->get('id');
+
+
+        //carte séléctionnée
+        $carteId = $request->request->get('id_carte[]');
+
 
         // utilisateur connecté
         $user=$this->getUser();
@@ -221,8 +396,49 @@ class ActionsController extends Controller
         $tour = $partie->getPartieTour();
         $tour ++;
 
+        $pioche = $partie->getPartiePioche();
+        $carte_pioche = array_pop($pioche);
+
         $actionsj1=json_encode($actionsj1);
         $actionsj2=json_encode($actionsj2);
+
+
+        $main_joueur1=$partie->getMainJ1();
+        $tmain_joueur1=array();
+
+        $main_joueur2=$partie->getMainJ2();
+        $tmain_joueur2=array();
+
+
+        if ($id == $joueur1){
+            if ($carte_pioche != null){
+                $tmain_joueur2[]=$carte_pioche;
+            }
+        }
+
+        if ($id == $joueur2){
+            if ($carte_pioche != null) {
+                $tmain_joueur1[] = $carte_pioche;
+            }
+        }
+
+        foreach ($main_joueur1 as $carte){
+            if ($carte != $carteId){
+                $tmain_joueur1[]=$carte;
+            }
+        }
+
+        foreach ($main_joueur2 as $carte){
+            if ($carte != $carteId){
+                $tmain_joueur2[]=$carte;
+            }
+        }
+
+
+        $mainj1=json_encode($tmain_joueur1);
+        $mainj2=json_encode($tmain_joueur2);
+
+
 
         if (!$partie) {
             throw $this->createNotFoundException(
@@ -230,13 +446,22 @@ class ActionsController extends Controller
             );
         }
 
+
         if ($id == $joueur1){
             $partie->setActionJ1($actionsj1);
+            $partie->setMainJ1($mainj1);
+            $partie->setMainJ2($mainj2);
+            //$partie->setTerrainJ1();
             $partie->setPartieTour($tour);
+            $partie->setPartiePioche($pioche);
         }
         elseif ($id==$joueur2){
             $partie->setActionJ2($actionsj2);
+            $partie->setMainJ1($mainj1);
+            $partie->setMainJ2($mainj2);
+            //$partie->setTerrainJ2();
             $partie->setPartieTour($tour);
+            $partie->setPartiePioche($pioche);
         }
 
         $entityManager->flush();
@@ -251,6 +476,11 @@ class ActionsController extends Controller
     {
         //partie en cours
         $partieId = $request->request->get('id');
+
+
+        //carte séléctionnée
+        $carteId = $request->request->get('id_carte[]');
+
 
         // utilisateur connecté
         $user=$this->getUser();
@@ -295,8 +525,50 @@ class ActionsController extends Controller
         $tour = $partie->getPartieTour();
         $tour ++;
 
+        $pioche = $partie->getPartiePioche();
+        $carte_pioche = array_pop($pioche);
+
+
+
         $actionsj1=json_encode($actionsj1);
         $actionsj2=json_encode($actionsj2);
+
+
+        $main_joueur1=$partie->getMainJ1();
+        $tmain_joueur1=array();
+
+        $main_joueur2=$partie->getMainJ2();
+        $tmain_joueur2=array();
+
+        if ($id == $joueur1){
+            if ($carte_pioche != null){
+                $tmain_joueur2[]=$carte_pioche;
+            }
+        }
+
+        if ($id == $joueur2){
+            if ($carte_pioche != null) {
+                $tmain_joueur1[] = $carte_pioche;
+            }
+        }
+
+        foreach ($main_joueur1 as $carte){
+            if ($carte != $carteId){
+                $tmain_joueur1[]=$carte;
+            }
+        }
+
+        foreach ($main_joueur2 as $carte){
+            if ($carte != $carteId){
+                $tmain_joueur2[]=$carte;
+            }
+        }
+
+
+        $mainj1=json_encode($tmain_joueur1);
+        $mainj2=json_encode($tmain_joueur2);
+
+
 
         if (!$partie) {
             throw $this->createNotFoundException(
@@ -304,13 +576,22 @@ class ActionsController extends Controller
             );
         }
 
+
         if ($id == $joueur1){
             $partie->setActionJ1($actionsj1);
+            $partie->setMainJ1($mainj1);
+            $partie->setMainJ2($mainj2);
+            //$partie->setTerrainJ1();
             $partie->setPartieTour($tour);
+            $partie->setPartiePioche($pioche);
         }
         elseif ($id==$joueur2){
             $partie->setActionJ2($actionsj2);
+            $partie->setMainJ1($mainj1);
+            $partie->setMainJ2($mainj2);
+            //$partie->setTerrainJ2();
             $partie->setPartieTour($tour);
+            $partie->setPartiePioche($pioche);
         }
 
         $entityManager->flush();
