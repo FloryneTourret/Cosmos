@@ -600,159 +600,82 @@
 
     <span>Mes actions</span>
     {% if app.user.id == partie.Joueur1.Id %}
-        {% if partie.PartieTour == 1 or partie.PartieTour == 3 or partie.PartieTour == 5 or partie.PartieTour == 7  %}
-            {% for action in partie.ActionJ1 %}
-                {% set counter = ( counter | default(0) ) + 1 %}
-                {% if counter == 1 %}
-                    {% if action==0 %}
-                        <form method="post" action="{{ path('selection_action1') }}">
-                            <button type="submit" name="id" value="{{ partie.Id }}"><img style="width: 50px" src="{{ asset('assets/img/action1.png') }}"></button>
-                        </form>
-                    {% elseif action==1 %}
-                        <img style="width: 50px" src="{{ asset('assets/img/action1_fini.png') }}">
-                    {% endif %}
-                {% elseif counter == 2 %}
-                    {% if action==0 %}
-                        <form method="post" action="{{ path('selection_action2') }}">
-                            <button type="submit" name="id" value="{{ partie.Id }}"><img style="width: 50px" src="{{ asset('assets/img/action2.png') }}"></button>
-                        </form>
-                    {% elseif action==1 %}
-                        <img style="width: 50px" src="{{ asset('assets/img/action2_fini.png') }}">
-                    {% endif %}
-                {% elseif counter == 3 %}
-                    {% if action==0 %}
-                        <form method="post" action="{{ path('selection_action3') }}">
-                            <button type="submit" name="id" value="{{ partie.Id }}"><img style="width: 50px" src="{{ asset('assets/img/action3.png') }}"></button>
-                        </form>
-                    {% elseif action==1 %}
-                        <img style="width: 50px" src="{{ asset('assets/img/action3_fini.png') }}">
-                    {% endif %}
-                {% elseif counter == 4 %}
-                    {% if action==0%}
-                        <form method="post" action="{{ path('selection_action4') }}">
-                            <button type="submit" name="id" value="{{ partie.Id }}"><img style="width: 50px" src="{{ asset('assets/img/action4.png') }}"></button>
-                        </form>
-                    {% elseif action==1 %}
-                        <img style="width: 50px" src="{{ asset('assets/img/action4_fini.png') }}">
-                    {% endif %}
+        {% for action in partie.ActionJ1 %}
+            {% set counter = ( counter | default(0) ) + 1 %}
+            {% if counter == 1 %}
+                {% if action==0 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action1.png') }}">
+                {% elseif action==1 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action1_fini.png') }}">
                 {% endif %}
-            {% endfor %}
-        {% else %}
-            {% for action in partie.ActionJ1 %}
-                {% set counter = ( counter | default(0) ) + 1 %}
-                {% if counter == 1 %}
-                    {% if action==0 %}
-                        <img style="width: 50px" src="{{ asset('assets/img/action1.png') }}">
-                    {% elseif action==1 %}
-                        <img style="width: 50px" src="{{ asset('assets/img/action1_fini.png') }}">
-                    {% endif %}
-                {% elseif counter == 2 %}
-                    {% if action==0 %}
-                        <img style="width: 50px" src="{{ asset('assets/img/action2.png') }}">
-                    {% elseif action==1 %}
-                        <img style="width: 50px" src="{{ asset('assets/img/action2_fini.png') }}">
-                    {% endif %}
-                {% elseif counter == 3 %}
-                    {% if action==0 %}
-                        <img style="width: 50px" src="{{ asset('assets/img/action3.png') }}">
-                    {% elseif action==1 %}
-                        <img style="width: 50px" src="{{ asset('assets/img/action3_fini.png') }}">
-                    {% endif %}
-                {% elseif counter == 4 %}
-                    {% if action==0%}
-                        <img style="width: 50px" src="{{ asset('assets/img/action4.png') }}">
-                    {% elseif action==1 %}
-                        <img style="width: 50px" src="{{ asset('assets/img/action4_fini.png') }}">
-                    {% endif %}
+            {% elseif counter == 2 %}
+                {% if action==0 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action2.png') }}">
+                {% elseif action==1 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action2_fini.png') }}">
                 {% endif %}
-            {% endfor %}
-        {% endif %}
-
+            {% elseif counter == 3 %}
+                {% if action==0 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action3.png') }}">
+                {% elseif action==1 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action3_fini.png') }}">
+                {% endif %}
+            {% elseif counter == 4 %}
+                {% if action==0%}
+                    <img style="width: 50px" src="{{ asset('assets/img/action4.png') }}">
+                {% elseif action==1 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action4_fini.png') }}">
+                {% endif %}
+            {% endif %}
+        {% endfor %}
     {% elseif app.user.id == partie.Joueur2.Id %}
-        {% if partie.PartieTour == 2 or partie.PartieTour == 4 or partie.PartieTour == 6 or partie.PartieTour == 8  %}
-
-            {% for action in partie.ActionJ2 %}
-                {% set counter = ( counter | default(0) ) + 1 %}
-                {% if counter == 1 %}
-                    {% if action==0 %}
-                        <form method="post" action="{{ path('selection_action1') }}">
-                            <button type="submit" name="id" value="{{ partie.Id }}"><img style="width: 50px" src="{{ asset('assets/img/action1.png') }}"></button>
-                        </form>
-                    {% elseif action==1 %}
-                        <img style="width: 50px" src="{{ asset('assets/img/action1_fini.png') }}">
-                    {% endif %}
-                {% elseif counter == 2 %}
-                    {% if action==0 %}
-                        <form method="post" action="{{ path('selection_action2') }}">
-                            <button type="submit" name="id" value="{{ partie.Id }}"><img style="width: 50px" src="{{ asset('assets/img/action2.png') }}"></button>
-                        </form>
-                    {% elseif action==1 %}
-                        <img style="width: 50px" src="{{ asset('assets/img/action2_fini.png') }}">
-                    {% endif %}
-                {% elseif counter == 3 %}
-                    {% if action==0 %}
-                        <form method="post" action="{{ path('selection_action3') }}">
-                            <button type="submit" name="id" value="{{ partie.Id }}"><img style="width: 50px" src="{{ asset('assets/img/action3.png') }}"></button>
-                        </form>
-                    {% elseif action==1 %}
-                        <img style="width: 50px" src="{{ asset('assets/img/action3_fini.png') }}">
-                    {% endif %}
-                {% elseif counter == 4 %}
-                    {% if action==0%}
-                        <form method="post" action="{{ path('selection_action4') }}">
-                            <button type="submit" name="id" value="{{ partie.Id }}"><img style="width: 50px" src="{{ asset('assets/img/action4.png') }}"></button>
-                        </form>
-                    {% elseif action==1 %}
-                        <img style="width: 50px" src="{{ asset('assets/img/action4_fini.png') }}">
-                    {% endif %}
+        {% for action in partie.ActionJ2 %}
+            {% set counter = ( counter | default(0) ) + 1 %}
+            {% if counter == 1 %}
+                {% if action==0 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action1.png') }}">
+                {% elseif action==1 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action1_fini.png') }}">
                 {% endif %}
-            {% endfor %}
-        {% else %}
-            {% for action in partie.ActionJ2 %}
-                {% set counter = ( counter | default(0) ) + 1 %}
-                {% if counter == 1 %}
-                    {% if action==0 %}
-                        <img style="width: 50px" src="{{ asset('assets/img/action1.png') }}">
-                    {% elseif action==1 %}
-                        <img style="width: 50px" src="{{ asset('assets/img/action1_fini.png') }}">
-                    {% endif %}
-                {% elseif counter == 2 %}
-                    {% if action==0 %}
-                        <img style="width: 50px" src="{{ asset('assets/img/action2.png') }}">
-                    {% elseif action==1 %}
-                        <img style="width: 50px" src="{{ asset('assets/img/action2_fini.png') }}">
-                    {% endif %}
-                {% elseif counter == 3 %}
-                    {% if action==0 %}
-                        <img style="width: 50px" src="{{ asset('assets/img/action3.png') }}">
-                    {% elseif action==1 %}
-                        <img style="width: 50px" src="{{ asset('assets/img/action3_fini.png') }}">
-                    {% endif %}
-                {% elseif counter == 4 %}
-                    {% if action==0%}
-                        <img style="width: 50px" src="{{ asset('assets/img/action4.png') }}">
-                    {% elseif action==1 %}
-                        <img style="width: 50px" src="{{ asset('assets/img/action4_fini.png') }}">
-                    {% endif %}
+            {% elseif counter == 2 %}
+                {% if action==0 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action2.png') }}">
+                {% elseif action==1 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action2_fini.png') }}">
                 {% endif %}
-            {% endfor %}
-
-        {% endif %}
+            {% elseif counter == 3 %}
+                {% if action==0 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action3.png') }}">
+                {% elseif action==1 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action3_fini.png') }}">
+                {% endif %}
+            {% elseif counter == 4 %}
+                {% if action==0%}
+                    <img style="width: 50px" src="{{ asset('assets/img/action4.png') }}">
+                {% elseif action==1 %}
+                    <img style="width: 50px" src="{{ asset('assets/img/action4_fini.png') }}">
+                {% endif %}
+            {% endif %}
+        {% endfor %}
     {% endif %}
     <br>
 
 
-
+    <span>Choisir deux paquets de deux cartes concurrence : </span> <br>
+    <span style="color: red">Attention, choisis bien quatre cartes</span><br>
     <span>Cartes en main </span>
-    {% if app.user.id == partie.Joueur1.Id %}
-        {% for carte in partie.MainJ1 |sort %}
-            <img style="width: 50px" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
-        {% endfor %}
-    {% elseif app.user.id == partie.Joueur2.Id %}
-        {% for carte in partie.MainJ2 |sort %}
-            <img style="width: 50px" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
-        {% endfor %}
-    {% endif %}
+    <form method="post" action="{{ path('action4') }}">
+        {% if app.user.id == partie.Joueur1.Id %}
+            {% for carte in partie.MainJ1 |sort %}
+                <input type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}"><img style="width: 50px" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+            {% endfor %}
+        {% elseif app.user.id == partie.Joueur2.Id %}
+            {% for carte in partie.MainJ2 |sort %}
+                <input type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}"><img style="width: 50px" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+            {% endfor %}
+        {% endif %}
+        <button type="submit" name="id" value="{{ partie.Id }}">Soumettre</button>
+    </form>
 
     <br>
 
