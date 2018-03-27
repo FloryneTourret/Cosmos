@@ -604,7 +604,7 @@
             {% set counter = ( counter | default(0) ) + 1 %}
             {% if counter == 1 %}
                 {% if action==0 %}
-                   <img style="width: 50px" src="{{ asset('assets/img/action1.png') }}">
+                    <img style="width: 50px" src="{{ asset('assets/img/action1.png') }}">
 
                 {% elseif action==1 %}
                     <img style="width: 50px" src="{{ asset('assets/img/action1_fini.png') }}">
@@ -652,7 +652,7 @@
                 {% endif %}
             {% elseif counter == 4 %}
                 {% if action==0%}
-                   <img style="width: 50px" src="{{ asset('assets/img/action4.png') }}">
+                    <img style="width: 50px" src="{{ asset('assets/img/action4.png') }}">
                 {% elseif action==1 %}
                     <img style="width: 50px" src="{{ asset('assets/img/action4_fini.png') }}">
                 {% endif %}
@@ -665,20 +665,18 @@
     <span>Choisir une carte secrete : </span> <br>
     <span>Cartes en main </span>
     <form method="post" action="{{ path('action1') }}">
-    {% if app.user.id == partie.Joueur1.Id %}
-        {% for carte in partie.MainJ1 |sort %}
-            <input type="radio" name="id_carte" value="{{ Objets[carte].Id }}"><img style="width: 50px" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
-        {% endfor %}
-    {% elseif app.user.id == partie.Joueur2.Id %}
-        {% for carte in partie.MainJ2 |sort %}
-            <input type="radio" name="id_carte" value="{{ Objets[carte].Id }}"><img style="width: 50px" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
-        {% endfor %}
-    {% endif %}
+        {% if app.user.id == partie.Joueur1.Id %}
+            {% for carte in partie.MainJ1 |sort %}
+                <input type="radio" name="id_carte" value="{{ Objets[carte].Id }}"><img style="width: 50px" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+            {% endfor %}
+        {% elseif app.user.id == partie.Joueur2.Id %}
+            {% for carte in partie.MainJ2 |sort %}
+                <input type="radio" name="id_carte" value="{{ Objets[carte].Id }}"><img style="width: 50px" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+            {% endfor %}
+        {% endif %}
         <button type="submit" name="id" value="{{ partie.Id }}">Soumettre</button>
     </form>
 
     <br>
-
-
 
 {% endblock %}

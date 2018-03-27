@@ -85,10 +85,14 @@ class PartieController extends Controller
         $partie->setJoueur1($joueur);
         $partie->setJoueur2($adversaire);
         $partie->setCarteJetee($carte_jetee);
-        $partie->setCarteSecreteJ1(json_encode([0]));
-        $partie->setCarteSecreteJ2(json_encode([0]));
-        $partie->setCarteDissimuleeJ1(json_encode([0,0]));
-        $partie->setCarteDissimuleeJ2(json_encode([0,0]));
+        $partie->setCarteSecreteJ1(json_encode(null));
+        $partie->setCarteSecreteJ2(json_encode(null));
+        $partie->setCarteDissimuleeJ1(json_encode(null));
+        $partie->setCarteDissimuleeJ2(json_encode(null));
+        $partie->setCarteCadeauJ1(json_encode(null));
+        $partie->setCarteCadeauJ2(json_encode(null));
+        $partie->setCarteConcurrenceJ1(json_encode(null));
+        $partie->setCarteConcurrenceJ2(json_encode(null));
         $partie->setMainJ1(json_encode($tMainJ1));
         $partie->setMainJ2(json_encode($tMainJ2));
         $partie->setActionJ1(json_encode($actions));

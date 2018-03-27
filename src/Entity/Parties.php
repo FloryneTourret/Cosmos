@@ -116,6 +116,30 @@ class Parties
      */
     private $carte_dissimulee_j2;
 
+    /**
+     * @var
+     * @ORM\Column(type="text")
+     */
+    private $carte_cadeau_j1;
+
+    /**
+     * @var
+     * @ORM\Column(type="text")
+     */
+    private $carte_cadeau_j2;
+
+    /**
+     * @var
+     * @ORM\Column(type="text")
+     */
+    private $carte_concurrence_j1;
+
+    /**
+     * @var
+     * @ORM\Column(type="text")
+     */
+    private $carte_concurrence_j2;
+
 
     /**
      * @var
@@ -436,6 +460,69 @@ class Parties
         $this->carte_dissimulee_j2= $carte_dissimulee_j2;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getCarteCadeauJ1()
+    {
+        return json_decode($this->carte_cadeau_j1);
+    }
+
+    /**
+     * @param mixed $carte_cadeau_j1
+     */
+    public function setCarteCadeauJ1($carte_cadeau_j1)
+    {
+        $this->carte_cadeau_j1 = $carte_cadeau_j1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCarteCadeauJ2()
+    {
+        return json_decode($this->carte_cadeau_j2);
+    }
+
+    /**
+     * @param mixed $carte_cadeau_j2
+     */
+    public function setCarteCadeauJ2($carte_cadeau_j2)
+    {
+        $this->carte_cadeau_j2 = $carte_cadeau_j2;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCarteConcurrenceJ1()
+    {
+        return json_decode($this->carte_concurrence_j1);
+    }
+
+    /**
+     * @param mixed $carte_concurrence_j1
+     */
+    public function setCarteConcurrenceJ1($carte_concurrence_j1)
+    {
+        $this->carte_concurrence_j1 = $carte_concurrence_j1;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCarteConcurrenceJ2()
+    {
+        return json_decode($this->carte_concurrence_j2);
+    }
+
+    /**
+     * @param mixed $carte_concurrence_j2
+     */
+    public function setCarteConcurrenceJ2($carte_concurrence_j2)
+    {
+        $this->carte_concurrence_j2 = $carte_concurrence_j2;
+    }
 
     /**
      * @return mixed
