@@ -171,7 +171,24 @@ class ActionsController extends Controller
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
+            if($tour!=9){
+                return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
+            }
+            else{
+
+                $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+                $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+                $tObjets = array();
+                foreach ($Objets as $carte) {
+                    $tObjets[$carte->getId()] = $carte;
+                }
+                $tObjectifs = array();
+                foreach ($objectifs as $objectifs) {
+                    $tObjectifs[$objectifs->getId()] = $objectifs;
+                }
+
+                return $this->redirectToRoute('calcul', ['id' => $partieId]);
+            }
         }else{
 
             $partieId = $request->request->get('id');
@@ -353,8 +370,24 @@ class ActionsController extends Controller
             }
 
             $entityManager->flush();
+            if($tour!=9){
+                return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
+            }
+            else{
 
-            return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
+                $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+                $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+                $tObjets = array();
+                foreach ($Objets as $carte) {
+                    $tObjets[$carte->getId()] = $carte;
+                }
+                $tObjectifs = array();
+                foreach ($objectifs as $objectifs) {
+                    $tObjectifs[$objectifs->getId()] = $objectifs;
+                }
+
+                return $this->redirectToRoute('calcul', ['id' => $partieId]);
+            }
         }
 
         else{
@@ -778,34 +811,32 @@ class ActionsController extends Controller
             }
 
             $entityManager = $this->getDoctrine()->getManager();
-                $partie = $entityManager->getRepository(Parties::class)->find($partieId);
+            $partie = $entityManager->getRepository(Parties::class)->find($partieId);
 
-                $joueur1 = $partie->getJoueur1()->getId();
-                $joueur2 = $partie->getJoueur2()->getId();
+            $joueur1 = $partie->getJoueur1()->getId();
+            $joueur2 = $partie->getJoueur2()->getId();
+
+            $tour=$partie->getPartieTour();
 
 
-                if (!$partie) {
-                    throw $this->createNotFoundException(
-                        'No parties found for id ' . $id
-                    );
-                }
+            if (!$partie) {
+                throw $this->createNotFoundException(
+                    'No parties found for id ' . $id
+                );
+            }
 
-                if ($id == $joueur1) {
-                    $partie->setCarteCadeauJ2(json_encode(null));
-                } elseif ($id == $joueur2) {
-                    $partie->setCarteCadeauJ1(json_encode(null));
-                }
+            if ($id == $joueur1) {
+                $partie->setCarteCadeauJ2(json_encode(null));
+            } elseif ($id == $joueur2) {
+                $partie->setCarteCadeauJ1(json_encode(null));
+            }
 
-                $entityManager->flush();
+            $entityManager->flush();
 
+            if($tour!=9){
                 return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
             }
-        else{
-
-                $partieId = $request->request->get('id');
-
-                $entityManager = $this->getDoctrine()->getManager();
-                $partie = $entityManager->getRepository(Parties::class)->find($partieId);
+            else{
 
                 $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
                 $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
@@ -817,9 +848,30 @@ class ActionsController extends Controller
                 foreach ($objectifs as $objectifs) {
                     $tObjectifs[$objectifs->getId()] = $objectifs;
                 }
-                return $this->render('Partie/afficher_partie.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
+
+                return $this->redirectToRoute('calcul', ['id' => $partieId]);
             }
         }
+        else{
+
+            $partieId = $request->request->get('id');
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $partie = $entityManager->getRepository(Parties::class)->find($partieId);
+
+            $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+            $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+            $tObjets = array();
+            foreach ($Objets as $carte) {
+                $tObjets[$carte->getId()] = $carte;
+            }
+            $tObjectifs = array();
+            foreach ($objectifs as $objectifs) {
+                $tObjectifs[$objectifs->getId()] = $objectifs;
+            }
+            return $this->render('Partie/afficher_partie.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
+        }
+    }
 
     /**
      * @Route("/choix_concurrence", name="choix_concurrence")
@@ -849,7 +901,7 @@ class ActionsController extends Controller
 
             $joueur1 = $partie->getJoueur1()->getId();
             $joueur2 = $partie->getJoueur2()->getId();
-
+            $tour=$partie->getPartieTour();
 
             if (!$partie) {
                 throw $this->createNotFoundException(
@@ -865,7 +917,24 @@ class ActionsController extends Controller
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
+            if($tour!=9){
+                return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
+            }
+            else{
+
+                $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+                $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+                $tObjets = array();
+                foreach ($Objets as $carte) {
+                    $tObjets[$carte->getId()] = $carte;
+                }
+                $tObjectifs = array();
+                foreach ($objectifs as $objectifs) {
+                    $tObjectifs[$objectifs->getId()] = $objectifs;
+                }
+
+                return $this->redirectToRoute('calcul', ['id' => $partieId]);
+            }
         }
         else{
 
@@ -888,4 +957,27 @@ class ActionsController extends Controller
         }
     }
 
+
+    /**
+     * @Route("/calcul/{id", name="calcul")
+     */
+    public function calcul(Request $request)
+    {
+        $partieId = $request->query->get('id');
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $partie = $entityManager->getRepository(Parties::class)->find($partieId);
+
+        $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+        $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+        $tObjets = array();
+        foreach ($Objets as $carte) {
+            $tObjets[$carte->getId()] = $carte;
+        }
+        $tObjectifs = array();
+        foreach ($objectifs as $objectifs) {
+            $tObjectifs[$objectifs->getId()] = $objectifs;
+        }
+        return $this->render('Partie/afficher_score.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
+    }
 }
