@@ -2331,8 +2331,73 @@ class ActionsController extends Controller
 
         $scorej1=0;
         $scorej2=0;
+
+
         $objectifsj1=0;
         $objectifsj2=0;
+
+        if($jetons[0]==0){
+
+        }elseif($jetons[0]==1){
+            $objectifsj1++;
+        }
+        elseif($jetons[0]==2){
+            $objectifsj2++;
+        }
+
+        if($jetons[1]==0){
+
+        }elseif($jetons[1]==1){
+            $objectifsj1++;
+        }
+        elseif($jetons[1]==2){
+            $objectifsj2++;
+        }
+
+        if($jetons[2]==0){
+
+        }elseif($jetons[2]==1){
+            $objectifsj1++;
+        }
+        elseif($jetons[2]==2){
+            $objectifsj2++;
+        }
+
+        if($jetons[3]==0){
+
+        }elseif($jetons[3]==1){
+            $objectifsj1++;
+        }
+        elseif($jetons[3]==2){
+            $objectifsj2++;
+        }
+
+        if($jetons[4]==0){
+
+        }elseif($jetons[4]==1){
+            $objectifsj1++;
+        }
+        elseif($jetons[4]==2){
+            $objectifsj2++;
+        }
+
+        if($jetons[5]==0){
+
+        }elseif($jetons[5]==1){
+            $objectifsj1++;
+        }
+        elseif($jetons[5]==2){
+            $objectifsj2++;
+        }
+
+        if($jetons[6]==0){
+
+        }elseif($jetons[6]==1){
+            $objectifsj1++;
+        }
+        elseif($jetons[6]==2){
+            $objectifsj2++;
+        }
 
 
         //objectif1
@@ -2453,7 +2518,7 @@ class ActionsController extends Controller
 
             $victoiresj2=$joueur2->getPartiesVictoires();
             $victoiresj2++;
-            $joueur1->setPartiesVictoires($victoiresj2);
+            $joueur2->setPartiesVictoires($victoiresj2);
 
             $defaitesj1=$joueur1->getPartiesDefaites();
             $defaitesj1++;
@@ -2478,7 +2543,7 @@ class ActionsController extends Controller
 
             $victoiresj2=$joueur2->getPartiesVictoires();
             $victoiresj2++;
-            $joueur1->setPartiesVictoires($victoiresj2);
+            $joueur2->setPartiesVictoires($victoiresj2);
 
             $defaitesj1=$joueur1->getPartiesDefaites();
             $defaitesj1++;
