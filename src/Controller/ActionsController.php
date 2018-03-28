@@ -635,136 +635,140 @@ class ActionsController extends Controller
         $partieId = $request->request->get('id');
 
         //carte séléctionnée
-        $carteId = $request->request->get('id_carte');
-
-        $longeur=count($carteId);
-        if($longeur==4){
-
-            $id = 0;
-            foreach ($carteId as $carte) {
-                if ($id == 0) {
-                    $carte1 = $carte;
-                } elseif ($id == 1) {
-                    $carte2 = $carte;
-                } elseif ($id == 2) {
-                    $carte3 = $carte;
-                }elseif ($id == 3) {
-                    $carte4 = $carte;
-                }
-                $id++;
-
-            }
+        $paire1 = $request->request->get('id_paire1');
+        $paire2 = $request->request->get('id_paire2');
 
 
-            // utilisateur connecté
-            $user = $this->getUser();
-            if ($user) {
-                $id = $user->getId();
-            } else {
-                $id = "Pas d'Id";
-            }
+        $longeur1=count($paire1);
+        $longeur2=count($paire2);
+
+        if($longeur1==2 && $longeur2 ==2){
 
 
-            $entityManager = $this->getDoctrine()->getManager();
-            $partie = $entityManager->getRepository(Parties::class)->find($partieId);
+            $carte1=$paire1[0];
+            $carte2=$paire1[1];
+            $carte3=$paire2[0];
+            $carte4=$paire2[1];
 
-            $joueur1 = $partie->getJoueur1()->getId();
-            $joueur2 = $partie->getJoueur2()->getId();
 
-            $actionsj1 = $partie->getActionJ1();
-            $actionsj2 = $partie->getActionJ2();
+            if( $carte1!=$carte2 && $carte1!=$carte3 && $carte1!=$carte4 && $carte2!=$carte3 && $carte2!=$carte4 && $carte3!=$carte4){
 
-            $rang1 = 0;
-            foreach ($actionsj1 as $actions) {
-                if ($rang1 == 3) {
-                    $actionsj1[$rang1] = 1;
+                $carteId=array();
+                $carteId[0]=$carte1;
+                $carteId[1]=$carte2;
+                $carteId[2]=$carte3;
+                $carteId[3]=$carte4;
+
+                // utilisateur connecté
+                $user = $this->getUser();
+                if ($user) {
+                    $id = $user->getId();
                 } else {
-                    $actionsj1[$rang1] = $actions;
+                    $id = "Pas d'Id";
                 }
-                $rang1++;
-            }
 
-            $rang2 = 0;
-            foreach ($actionsj2 as $actions) {
-                if ($rang2 == 3) {
-                    $actionsj2[$rang2] = 1;
-                } else {
-                    $actionsj2[$rang2] = $actions;
+
+                $entityManager = $this->getDoctrine()->getManager();
+                $partie = $entityManager->getRepository(Parties::class)->find($partieId);
+
+                $joueur1 = $partie->getJoueur1()->getId();
+                $joueur2 = $partie->getJoueur2()->getId();
+
+                $actionsj1 = $partie->getActionJ1();
+                $actionsj2 = $partie->getActionJ2();
+
+                $rang1 = 0;
+                foreach ($actionsj1 as $actions) {
+                    if ($rang1 == 3) {
+                        $actionsj1[$rang1] = 1;
+                    } else {
+                        $actionsj1[$rang1] = $actions;
+                    }
+                    $rang1++;
                 }
-                $rang2++;
-            }
 
-            $tour = $partie->getPartieTour();
-            $tour++;
-
-            $pioche = $partie->getPartiePioche();
-            $carte_pioche = array_pop($pioche);
-
-
-            $actionsj1 = json_encode($actionsj1);
-            $actionsj2 = json_encode($actionsj2);
-
-            $main_joueur1 = $partie->getMainJ1();
-            $tmain_joueur1 = array();
-
-            $main_joueur2 = $partie->getMainJ2();
-            $tmain_joueur2 = array();
-
-
-            if ($id == $joueur1) {
-                if ($carte_pioche != null) {
-                    $tmain_joueur2[] = $carte_pioche;
+                $rang2 = 0;
+                foreach ($actionsj2 as $actions) {
+                    if ($rang2 == 3) {
+                        $actionsj2[$rang2] = 1;
+                    } else {
+                        $actionsj2[$rang2] = $actions;
+                    }
+                    $rang2++;
                 }
-            }
 
-            if ($id == $joueur2) {
-                if ($carte_pioche != null) {
-                    $tmain_joueur1[] = $carte_pioche;
+                $tour = $partie->getPartieTour();
+                $tour++;
+
+                $pioche = $partie->getPartiePioche();
+                $carte_pioche = array_pop($pioche);
+
+
+                $actionsj1 = json_encode($actionsj1);
+                $actionsj2 = json_encode($actionsj2);
+
+                $main_joueur1 = $partie->getMainJ1();
+                $tmain_joueur1 = array();
+
+                $main_joueur2 = $partie->getMainJ2();
+                $tmain_joueur2 = array();
+
+
+                if ($id == $joueur1) {
+                    if ($carte_pioche != null) {
+                        $tmain_joueur2[] = $carte_pioche;
+                    }
                 }
-            }
 
-            foreach ($main_joueur1 as $carte) {
-                if ($carte != $carte1 && $carte != $carte2 && $carte != $carte3 && $carte != $carte4) {
-                    $tmain_joueur1[] = $carte;
+                if ($id == $joueur2) {
+                    if ($carte_pioche != null) {
+                        $tmain_joueur1[] = $carte_pioche;
+                    }
                 }
-            }
 
-            foreach ($main_joueur2 as $carte) {
-                if ($carte != $carte1 && $carte != $carte2 && $carte != $carte3 && $carte != $carte4) {
-                    $tmain_joueur2[] = $carte;
+                foreach ($main_joueur1 as $carte) {
+                    if ($carte != $carte1 && $carte != $carte2 && $carte != $carte3 && $carte != $carte4) {
+                        $tmain_joueur1[] = $carte;
+                    }
                 }
+
+                foreach ($main_joueur2 as $carte) {
+                    if ($carte != $carte1 && $carte != $carte2 && $carte != $carte3 && $carte != $carte4) {
+                        $tmain_joueur2[] = $carte;
+                    }
+                }
+
+
+                $mainj1 = json_encode($tmain_joueur1);
+                $mainj2 = json_encode($tmain_joueur2);
+
+
+                if (!$partie) {
+                    throw $this->createNotFoundException(
+                        'No parties found for id ' . $id
+                    );
+                }
+
+                if ($id == $joueur1) {
+                    $partie->setActionJ1($actionsj1);
+                    $partie->setMainJ1($mainj1);
+                    $partie->setMainJ2($mainj2);
+                    $partie->setCarteConcurrenceJ1(json_encode($carteId));
+                    $partie->setPartieTour($tour);
+                    $partie->setPartiePioche($pioche);
+                } elseif ($id == $joueur2) {
+                    $partie->setActionJ2($actionsj2);
+                    $partie->setMainJ1($mainj1);
+                    $partie->setMainJ2($mainj2);
+                    $partie->setCarteConcurrenceJ2(json_encode($carteId));
+                    $partie->setPartieTour($tour);
+                    $partie->setPartiePioche($pioche);
+                }
+
+                $entityManager->flush();
+
+                return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
             }
-
-
-            $mainj1 = json_encode($tmain_joueur1);
-            $mainj2 = json_encode($tmain_joueur2);
-
-
-            if (!$partie) {
-                throw $this->createNotFoundException(
-                    'No parties found for id ' . $id
-                );
-            }
-
-            if ($id == $joueur1) {
-                $partie->setActionJ1($actionsj1);
-                $partie->setMainJ1($mainj1);
-                $partie->setMainJ2($mainj2);
-                $partie->setCarteConcurrenceJ1(json_encode($carteId));
-                $partie->setPartieTour($tour);
-                $partie->setPartiePioche($pioche);
-            } elseif ($id == $joueur2) {
-                $partie->setActionJ2($actionsj2);
-                $partie->setMainJ1($mainj1);
-                $partie->setMainJ2($mainj2);
-                $partie->setCarteConcurrenceJ2(json_encode($carteId));
-                $partie->setPartieTour($tour);
-                $partie->setPartiePioche($pioche);
-            }
-
-            $entityManager->flush();
-
-            return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
         }
         else{
 
@@ -801,7 +805,6 @@ class ActionsController extends Controller
         $longeur = count($carteId);
         if ($longeur == 1) {
 
-
             // utilisateur connecté
             $user = $this->getUser();
             if ($user) {
@@ -817,7 +820,514 @@ class ActionsController extends Controller
             $joueur2 = $partie->getJoueur2()->getId();
 
             $tour=$partie->getPartieTour();
+            $terrainj1=$partie->getTerrainJ1();
+            $terrainj2=$partie->getTerrainJ2();
 
+            if ($id == $joueur2) {
+
+                $cadeaux=$partie->getCarteCadeauJ1();
+
+                if($cadeaux[0]!=$carteId){
+                    $cadeau1=$cadeaux[0];
+                    if($cadeaux[1]!=$carteId){
+                        $cadeau2=$cadeaux[1];
+                    }
+                    else{
+                        $cadeau2=$cadeaux[2];
+                    }
+                }else{
+                    $cadeau1=$cadeaux[1];
+                    $cadeau2=$cadeaux[1];
+                }
+
+
+                //objectif 1
+                if ($cadeau1 == 1) {
+                    $resultat=$terrainj1[0];
+                    $terrainj1[0] = $resultat+1;
+                }elseif ($cadeau1 == 2) {
+                    $resultat=$terrainj1[0];
+                    $terrainj1[0] = $resultat+1;
+                }
+                //objectif2
+                elseif ($cadeau1 == 3) {
+                    $resultat=$terrainj1[1];
+                    $terrainj1[1] = $resultat+1;
+                }elseif ($cadeau1 == 4) {
+                    $resultat=$terrainj1[1];
+                    $terrainj1[1] = $resultat+1;
+                }
+                //objectif3
+                elseif ($cadeau1 == 5) {
+                    $resultat=$terrainj1[2];
+                    $terrainj1[2] = $resultat+1;
+                }elseif ($cadeau1 == 6) {
+                    $resultat=$terrainj1[2];
+                    $terrainj1[2] = $resultat+1;
+                }
+                //objectif4
+                elseif ($cadeau1 == 7) {
+                    $resultat=$terrainj1[3];
+                    $terrainj1[3] = $resultat+1;
+                }elseif ($cadeau1 == 8) {
+                    $resultat=$terrainj1[3];
+                    $terrainj1[3] = $resultat+1;
+                }elseif ($cadeau1 == 9) {
+                    $resultat=$terrainj1[3];
+                    $terrainj1[3] = $resultat+1;
+                }
+                //objectif5
+                elseif ($cadeau1 == 10) {
+                    $resultat=$terrainj1[4];
+                    $terrainj1[4] = $resultat+1;
+                }elseif ($cadeau1 == 11) {
+                    $resultat=$terrainj1[4];
+                    $terrainj1[4] = $resultat+1;
+                }elseif ($cadeau1 == 12) {
+                    $resultat=$terrainj1[4];
+                    $terrainj1[4] = $resultat+1;
+                }
+                //objectif6
+                elseif ($cadeau1 == 13) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }elseif ($cadeau1 == 14 ) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }elseif ($cadeau1 == 15 ) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }elseif ($cadeau1 == 16 ) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }
+                //objectif7
+                elseif ($cadeau1 == 17) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($cadeau1 == 18) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($cadeau1 == 19) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($cadeau1 == 20  ) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($cadeau1 == 21 ) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }
+
+
+                //objectif 1
+                if ($cadeau2 == 1) {
+                    $resultat=$terrainj1[0];
+                    $terrainj1[0] = $resultat+1;
+                }elseif ($cadeau2 == 2) {
+                    $resultat=$terrainj1[0];
+                    $terrainj2[0] = $resultat+1;
+                }
+                //objectif2
+                elseif ($cadeau2 == 3) {
+                    $resultat=$terrainj1[1];
+                    $terrainj1[1] = $resultat+1;
+                }elseif ($cadeau2 == 4) {
+                    $resultat=$terrainj1[1];
+                    $terrainj1[1] = $resultat+1;
+                }
+                //objectif3
+                elseif ($cadeau2 == 5) {
+                    $resultat=$terrainj1[2];
+                    $terrainj1[2] = $resultat+1;
+                }elseif ($cadeau2 == 6) {
+                    $resultat=$terrainj1[2];
+                    $terrainj1[2] = $resultat+1;
+                }
+                //objectif4
+                elseif ($cadeau2 == 7) {
+                    $resultat=$terrainj1[3];
+                    $terrainj1[3] = $resultat+1;
+                }elseif ($cadeau2 == 8) {
+                    $resultat=$terrainj1[3];
+                    $terrainj1[3] = $resultat+1;
+                }elseif ($cadeau2 == 9) {
+                    $resultat=$terrainj1[3];
+                    $terrainj1[3] = $resultat+1;
+                }
+                //objectif5
+                elseif ($cadeau2 == 10) {
+                    $resultat=$terrainj1[4];
+                    $terrainj1[4] = $resultat+1;
+                }elseif ($cadeau2 == 11) {
+                    $resultat=$terrainj1[4];
+                    $terrainj1[4] = $resultat+1;
+                }elseif ($cadeau2 == 12) {
+                    $resultat=$terrainj1[4];
+                    $terrainj1[4] = $resultat+1;
+                }
+                //objectif6
+                elseif ($cadeau2 == 13) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }elseif ($cadeau2 == 14 ) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }elseif ($cadeau2 == 15 ) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }elseif ($cadeau2 == 16 ) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }
+                //objectif7
+                elseif ($cadeau2 == 17) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($cadeau2 == 18) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($cadeau2 == 19) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($cadeau2 == 20  ) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($cadeau2 == 21 ) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }
+
+                //objectif 1
+                if ($carteId == 1) {
+                    $resultat=$terrainj2[0];
+                    $terrainj2[0] = $resultat+1;
+                }elseif ($carteId == 2) {
+                    $resultat=$terrainj2[0];
+                    $terrainj2[0] = $resultat+1;
+                }
+                //objectif2
+                elseif ($carteId == 3) {
+                    $resultat=$terrainj2[1];
+                    $terrainj2[1] = $resultat+1;
+                }elseif ($carteId == 4) {
+                    $resultat=$terrainj2[1];
+                    $terrainj2[1] = $resultat+1;
+                }
+                //objectif3
+                elseif ($carteId == 5) {
+                    $resultat=$terrainj2[2];
+                    $terrainj2[2] = $resultat+1;
+                }elseif ($carteId == 6) {
+                    $resultat=$terrainj2[2];
+                    $terrainj2[2] = $resultat+1;
+                }
+                //objectif4
+                elseif ($carteId == 7) {
+                    $resultat=$terrainj2[3];
+                    $terrainj2[3] = $resultat+1;
+                }elseif ($carteId == 8) {
+                    $resultat=$terrainj2[3];
+                    $terrainj2[3] = $resultat+1;
+                }elseif ($carteId == 9) {
+                    $resultat=$terrainj2[3];
+                    $terrainj2[3] = $resultat+1;
+                }
+                //objectif5
+                elseif ($carteId == 10) {
+                    $resultat=$terrainj2[4];
+                    $terrainj2[4] = $resultat+1;
+                }elseif ($carteId == 11) {
+                    $resultat=$terrainj2[4];
+                    $terrainj2[4] = $resultat+1;
+                }elseif ($carteId == 12) {
+                    $resultat=$terrainj2[4];
+                    $terrainj2[4] = $resultat+1;
+                }
+                //objectif6
+                elseif ($carteId == 13) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }elseif ($carteId == 14 ) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }elseif ($carteId == 15 ) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }elseif ($carteId == 16 ) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }
+                //objectif7
+                elseif ($carteId == 17) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($carteId == 18) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($carteId == 19) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($carteId == 20  ) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($carteId == 21 ) {
+                    $resultat=$terrainj2[6];
+                    $terrainj1[6] = $resultat+1;
+                }
+
+            } elseif ($id == $joueur1) {
+                $cadeaux=$partie->getCarteCadeauJ2();
+
+                if($cadeaux[0]!=$carteId){
+                    $cadeau1=$cadeaux[0];
+                    if($cadeaux[1]!=$carteId){
+                        $cadeau2=$cadeaux[1];
+                    }
+                    else{
+                        $cadeau2=$cadeaux[2];
+                    }
+                }else{
+                    $cadeau1=$cadeaux[1];
+                    $cadeau2=$cadeaux[1];
+                }
+
+
+                //objectif 1
+                if ($cadeau1 == 1) {
+                    $resultat=$terrainj1[0];
+                    $terrainj2[0] = $resultat+1;
+                }elseif ($cadeau1 == 2) {
+                    $resultat=$terrainj2[0];
+                    $terrainj2[0] = $resultat+1;
+                }
+                //objectif2
+                elseif ($cadeau1 == 3) {
+                    $resultat=$terrainj2[1];
+                    $terrainj2[1] = $resultat+1;
+                }elseif ($cadeau1 == 4) {
+                    $resultat=$terrainj2[1];
+                    $terrainj2[1] = $resultat+1;
+                }
+                //objectif3
+                elseif ($cadeau1 == 5) {
+                    $resultat=$terrainj2[2];
+                    $terrainj2[2] = $resultat+1;
+                }elseif ($cadeau1 == 6) {
+                    $resultat=$terrainj2[2];
+                    $terrainj2[2] = $resultat+1;
+                }
+                //objectif4
+                elseif ($cadeau1 == 7) {
+                    $resultat=$terrainj2[3];
+                    $terrainj2[3] = $resultat+1;
+                }elseif ($cadeau1 == 8) {
+                    $resultat=$terrainj2[3];
+                    $terrainj2[3] = $resultat+1;
+                }elseif ($cadeau1 == 9) {
+                    $resultat=$terrainj2[3];
+                    $terrainj2[3] = $resultat+1;
+                }
+                //objectif5
+                elseif ($cadeau1 == 10) {
+                    $resultat=$terrainj2[4];
+                    $terrainj2[4] = $resultat+1;
+                }elseif ($cadeau1 == 11) {
+                    $resultat=$terrainj2[4];
+                    $terrainj2[4] = $resultat+1;
+                }elseif ($cadeau1 == 12) {
+                    $resultat=$terrainj2[4];
+                    $terrainj2[4] = $resultat+1;
+                }
+                //objectif6
+                elseif ($cadeau1 == 13) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }elseif ($cadeau1 == 14 ) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }elseif ($cadeau1 == 15 ) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }elseif ($cadeau1 == 16 ) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }
+                //objectif7
+                elseif ($cadeau1 == 17) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($cadeau1 == 18) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($cadeau1 == 19) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($cadeau1 == 20  ) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($cadeau1 == 21 ) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }
+
+
+                //objectif 1
+                if ($cadeau2 == 1) {
+                    $resultat=$terrainj2[0];
+                    $terrainj2[0] = $resultat+1;
+                }elseif ($cadeau2 == 2) {
+                    $resultat=$terrainj2[0];
+                    $terrainj2[0] = $resultat+1;
+                }
+                //objectif2
+                elseif ($cadeau2 == 3) {
+                    $resultat=$terrainj2[1];
+                    $terrainj2[1] = $resultat+1;
+                }elseif ($cadeau2 == 4) {
+                    $resultat=$terrainj2[1];
+                    $terrainj2[1] = $resultat+1;
+                }
+                //objectif3
+                elseif ($cadeau2 == 5) {
+                    $resultat=$terrainj2[2];
+                    $terrainj2[2] = $resultat+1;
+                }elseif ($cadeau2 == 6) {
+                    $resultat=$terrainj2[2];
+                    $terrainj2[2] = $resultat+1;
+                }
+                //objectif4
+                elseif ($cadeau2 == 7) {
+                    $resultat=$terrainj2[3];
+                    $terrainj2[3] = $resultat+1;
+                }elseif ($cadeau2 == 8) {
+                    $resultat=$terrainj2[3];
+                    $terrainj2[3] = $resultat+1;
+                }elseif ($cadeau2 == 9) {
+                    $resultat=$terrainj2[3];
+                    $terrainj2[3] = $resultat+1;
+                }
+                //objectif5
+                elseif ($cadeau2 == 10) {
+                    $resultat=$terrainj2[4];
+                    $terrainj2[4] = $resultat+1;
+                }elseif ($cadeau2 == 11) {
+                    $resultat=$terrainj2[4];
+                    $terrainj2[4] = $resultat+1;
+                }elseif ($cadeau2 == 12) {
+                    $resultat=$terrainj2[4];
+                    $terrainj2[4] = $resultat+1;
+                }
+                //objectif6
+                elseif ($cadeau2 == 13) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }elseif ($cadeau2 == 14 ) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }elseif ($cadeau2 == 15 ) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }elseif ($cadeau2 == 16 ) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }
+                //objectif7
+                elseif ($cadeau2 == 17) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($cadeau2 == 18) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($cadeau2 == 19) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($cadeau2 == 20  ) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($cadeau2 == 21 ) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }
+
+                //objectif 1
+                if ($carteId == 1) {
+                    $resultat=$terrainj1[0];
+                    $terrainj1[0] = $resultat+1;
+                }elseif ($carteId == 2) {
+                    $resultat=$terrainj1[0];
+                    $terrainj1[0] = $resultat+1;
+                }
+                //objectif2
+                elseif ($carteId == 3) {
+                    $resultat=$terrainj1[1];
+                    $terrainj1[1] = $resultat+1;
+                }elseif ($carteId == 4) {
+                    $resultat=$terrainj1[1];
+                    $terrainj1[1] = $resultat+1;
+                }
+                //objectif3
+                elseif ($carteId == 5) {
+                    $resultat=$terrainj1[2];
+                    $terrainj1[2] = $resultat+1;
+                }elseif ($carteId == 6) {
+                    $resultat=$terrainj1[2];
+                    $terrainj1[2] = $resultat+1;
+                }
+                //objectif4
+                elseif ($carteId == 7) {
+                    $resultat=$terrainj1[3];
+                    $terrainj1[3] = $resultat+1;
+                }elseif ($carteId == 8) {
+                    $resultat=$terrainj1[3];
+                    $terrainj1[3] = $resultat+1;
+                }elseif ($carteId == 9) {
+                    $resultat=$terrainj1[3];
+                    $terrainj1[3] = $resultat+1;
+                }
+                //objectif5
+                elseif ($carteId == 10) {
+                    $resultat=$terrainj1[4];
+                    $terrainj1[4] = $resultat+1;
+                }elseif ($carteId == 11) {
+                    $resultat=$terrainj1[4];
+                    $terrainj1[4] = $resultat+1;
+                }elseif ($carteId == 12) {
+                    $resultat=$terrainj1[4];
+                    $terrainj1[4] = $resultat+1;
+                }
+                //objectif6
+                elseif ($carteId == 13) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }elseif ($carteId == 14 ) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }elseif ($carteId == 15 ) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }elseif ($carteId == 16 ) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }
+                //objectif7
+                elseif ($carteId == 17) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($carteId == 18) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($carteId == 19) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($carteId == 20  ) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($carteId == 21 ) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }
+            }
 
             if (!$partie) {
                 throw $this->createNotFoundException(
@@ -827,8 +1337,12 @@ class ActionsController extends Controller
 
             if ($id == $joueur1) {
                 $partie->setCarteCadeauJ2(json_encode(null));
+                $partie->setTerrainJ1(json_encode($terrainj1));
+                $partie->setTerrainJ2(json_encode($terrainj2));
             } elseif ($id == $joueur2) {
                 $partie->setCarteCadeauJ1(json_encode(null));
+                $partie->setTerrainJ1(json_encode($terrainj1));
+                $partie->setTerrainJ2(json_encode($terrainj2));
             }
 
             $entityManager->flush();
@@ -869,7 +1383,7 @@ class ActionsController extends Controller
             foreach ($objectifs as $objectifs) {
                 $tObjectifs[$objectifs->getId()] = $objectifs;
             }
-            return $this->render('Partie/afficher_partie.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
+            return $this->render('Partie/afficher.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
         }
     }
 
@@ -882,11 +1396,11 @@ class ActionsController extends Controller
         $partieId = $request->request->get('id');
 
         //carte séléctionnée
-        $carteId = $request->request->get('id_carte');
+        $carteId = $request->request->get('paire');
+
 
         $longeur = count($carteId);
         if ($longeur == 1) {
-
 
             // utilisateur connecté
             $user = $this->getUser();
@@ -901,7 +1415,680 @@ class ActionsController extends Controller
 
             $joueur1 = $partie->getJoueur1()->getId();
             $joueur2 = $partie->getJoueur2()->getId();
+
             $tour=$partie->getPartieTour();
+
+            $terrainj1=$partie->getTerrainJ1();
+            $terrainj2=$partie->getTerrainJ2();
+
+            if ($id == $joueur2) {
+
+                $cadeaux=$partie->getCarteConcurrenceJ1();
+
+                if($carteId==1){
+
+                    $cadeau1=$cadeaux[2];
+                    $cadeau2=$cadeaux[3];
+                    $cadeau3=$cadeaux[0];
+                    $cadeau4=$cadeaux[1];
+
+                }else{
+
+                    $cadeau1=$cadeaux[0];
+                    $cadeau2=$cadeaux[1];
+                    $cadeau3=$cadeaux[2];
+                    $cadeau4=$cadeaux[3];
+
+                }
+
+                //objectif 1
+                if ($cadeau1 == 1) {
+                    $resultat=$terrainj1[0];
+                    $terrainj1[0] = $resultat+1;
+                }elseif ($cadeau1 == 2) {
+                    $resultat=$terrainj1[0];
+                    $terrainj1[0] = $resultat+1;
+                }
+                //objectif2
+                elseif ($cadeau1 == 3) {
+                    $resultat=$terrainj1[1];
+                    $terrainj1[1] = $resultat+1;
+                }elseif ($cadeau1 == 4) {
+                    $resultat=$terrainj1[1];
+                    $terrainj1[1] = $resultat+1;
+                }
+                //objectif3
+                elseif ($cadeau1 == 5) {
+                    $resultat=$terrainj1[2];
+                    $terrainj1[2] = $resultat+1;
+                }elseif ($cadeau1 == 6) {
+                    $resultat=$terrainj1[2];
+                    $terrainj1[2] = $resultat+1;
+                }
+                //objectif4
+                elseif ($cadeau1 == 7) {
+                    $resultat=$terrainj1[3];
+                    $terrainj1[3] = $resultat+1;
+                }elseif ($cadeau1 == 8) {
+                    $resultat=$terrainj1[3];
+                    $terrainj1[3] = $resultat+1;
+                }elseif ($cadeau1 == 9) {
+                    $resultat=$terrainj1[3];
+                    $terrainj1[3] = $resultat+1;
+                }
+                //objectif5
+                elseif ($cadeau1 == 10) {
+                    $resultat=$terrainj1[4];
+                    $terrainj1[4] = $resultat+1;
+                }elseif ($cadeau1 == 11) {
+                    $resultat=$terrainj1[4];
+                    $terrainj1[4] = $resultat+1;
+                }elseif ($cadeau1 == 12) {
+                    $resultat=$terrainj1[4];
+                    $terrainj1[4] = $resultat+1;
+                }
+                //objectif6
+                elseif ($cadeau1 == 13) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }elseif ($cadeau1 == 14 ) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }elseif ($cadeau1 == 15 ) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }elseif ($cadeau1 == 16 ) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }
+                //objectif7
+                elseif ($cadeau1 == 17) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($cadeau1 == 18) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($cadeau1 == 19) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($cadeau1 == 20  ) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($cadeau1 == 21 ) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }
+
+
+                //objectif 1
+                if ($cadeau2 == 1) {
+                    $resultat=$terrainj1[0];
+                    $terrainj1[0] = $resultat+1;
+                }elseif ($cadeau2 == 2) {
+                    $resultat=$terrainj1[0];
+                    $terrainj2[0] = $resultat+1;
+                }
+                //objectif2
+                elseif ($cadeau2 == 3) {
+                    $resultat=$terrainj1[1];
+                    $terrainj1[1] = $resultat+1;
+                }elseif ($cadeau2 == 4) {
+                    $resultat=$terrainj1[1];
+                    $terrainj1[1] = $resultat+1;
+                }
+                //objectif3
+                elseif ($cadeau2 == 5) {
+                    $resultat=$terrainj1[2];
+                    $terrainj1[2] = $resultat+1;
+                }elseif ($cadeau2 == 6) {
+                    $resultat=$terrainj1[2];
+                    $terrainj1[2] = $resultat+1;
+                }
+                //objectif4
+                elseif ($cadeau2 == 7) {
+                    $resultat=$terrainj1[3];
+                    $terrainj1[3] = $resultat+1;
+                }elseif ($cadeau2 == 8) {
+                    $resultat=$terrainj1[3];
+                    $terrainj1[3] = $resultat+1;
+                }elseif ($cadeau2 == 9) {
+                    $resultat=$terrainj1[3];
+                    $terrainj1[3] = $resultat+1;
+                }
+                //objectif5
+                elseif ($cadeau2 == 10) {
+                    $resultat=$terrainj1[4];
+                    $terrainj1[4] = $resultat+1;
+                }elseif ($cadeau2 == 11) {
+                    $resultat=$terrainj1[4];
+                    $terrainj1[4] = $resultat+1;
+                }elseif ($cadeau2 == 12) {
+                    $resultat=$terrainj1[4];
+                    $terrainj1[4] = $resultat+1;
+                }
+                //objectif6
+                elseif ($cadeau2 == 13) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }elseif ($cadeau2 == 14 ) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }elseif ($cadeau2 == 15 ) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }elseif ($cadeau2 == 16 ) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }
+                //objectif7
+                elseif ($cadeau2 == 17) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($cadeau2 == 18) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($cadeau2 == 19) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($cadeau2 == 20  ) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($cadeau2 == 21 ) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }
+
+                //objectif 1
+                if ($cadeau3 == 1) {
+                    $resultat=$terrainj2[0];
+                    $terrainj2[0] = $resultat+1;
+                }elseif ($cadeau3 == 2) {
+                    $resultat=$terrainj2[0];
+                    $terrainj2[0] = $resultat+1;
+                }
+                //objectif2
+                elseif ($cadeau3 == 3) {
+                    $resultat=$terrainj2[1];
+                    $terrainj2[1] = $resultat+1;
+                }elseif ($cadeau3 == 4) {
+                    $resultat=$terrainj2[1];
+                    $terrainj2[1] = $resultat+1;
+                }
+                //objectif3
+                elseif ($cadeau3 == 5) {
+                    $resultat=$terrainj2[2];
+                    $terrainj2[2] = $resultat+1;
+                }elseif ($cadeau3 == 6) {
+                    $resultat=$terrainj2[2];
+                    $terrainj2[2] = $resultat+1;
+                }
+                //objectif4
+                elseif ($cadeau3 == 7) {
+                    $resultat=$terrainj2[3];
+                    $terrainj2[3] = $resultat+1;
+                }elseif ($cadeau3 == 8) {
+                    $resultat=$terrainj2[3];
+                    $terrainj2[3] = $resultat+1;
+                }elseif ($cadeau3 == 9) {
+                    $resultat=$terrainj2[3];
+                    $terrainj2[3] = $resultat+1;
+                }
+                //objectif5
+                elseif ($cadeau3 == 10) {
+                    $resultat=$terrainj2[4];
+                    $terrainj2[4] = $resultat+1;
+                }elseif ($cadeau3 == 11) {
+                    $resultat=$terrainj2[4];
+                    $terrainj2[4] = $resultat+1;
+                }elseif ($cadeau3 == 12) {
+                    $resultat=$terrainj2[4];
+                    $terrainj2[4] = $resultat+1;
+                }
+                //objectif6
+                elseif ($cadeau3 == 13) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }elseif ($cadeau3 == 14 ) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }elseif ($cadeau3 == 15 ) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }elseif ($cadeau3 == 16 ) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }
+                //objectif7
+                elseif ($cadeau3 == 17) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($cadeau3 == 18) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($cadeau3 == 19) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($cadeau3 == 20  ) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($carteId == 21 ) {
+                    $resultat=$terrainj2[6];
+                    $terrainj1[6] = $resultat+1;
+                }
+
+
+                //objectif 1
+                if ($cadeau4 == 1) {
+                    $resultat=$terrainj2[0];
+                    $terrainj2[0] = $resultat+1;
+                }elseif ($cadeau4 == 2) {
+                    $resultat=$terrainj2[0];
+                    $terrainj2[0] = $resultat+1;
+                }
+                //objectif2
+                elseif ($cadeau4 == 3) {
+                    $resultat=$terrainj2[1];
+                    $terrainj2[1] = $resultat+1;
+                }elseif ($cadeau4 == 4) {
+                    $resultat=$terrainj2[1];
+                    $terrainj2[1] = $resultat+1;
+                }
+                //objectif3
+                elseif ($cadeau4 == 5) {
+                    $resultat=$terrainj2[2];
+                    $terrainj2[2] = $resultat+1;
+                }elseif ($cadeau4 == 6) {
+                    $resultat=$terrainj2[2];
+                    $terrainj2[2] = $resultat+1;
+                }
+                //objectif4
+                elseif ($cadeau4 == 7) {
+                    $resultat=$terrainj2[3];
+                    $terrainj2[3] = $resultat+1;
+                }elseif ($cadeau4 == 8) {
+                    $resultat=$terrainj2[3];
+                    $terrainj2[3] = $resultat+1;
+                }elseif ($cadeau4 == 9) {
+                    $resultat=$terrainj2[3];
+                    $terrainj2[3] = $resultat+1;
+                }
+                //objectif5
+                elseif ($cadeau4 == 10) {
+                    $resultat=$terrainj2[4];
+                    $terrainj2[4] = $resultat+1;
+                }elseif ($cadeau4 == 11) {
+                    $resultat=$terrainj2[4];
+                    $terrainj2[4] = $resultat+1;
+                }elseif ($cadeau4 == 12) {
+                    $resultat=$terrainj2[4];
+                    $terrainj2[4] = $resultat+1;
+                }
+                //objectif6
+                elseif ($cadeau4 == 13) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }elseif ($cadeau4 == 14 ) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }elseif ($cadeau4 == 15 ) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }elseif ($cadeau4 == 16 ) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }
+                //objectif7
+                elseif ($cadeau4 == 17) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($cadeau4 == 18) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($cadeau4 == 19) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($cadeau3 == 20  ) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($carteId == 21 ) {
+                    $resultat=$terrainj2[6];
+                    $terrainj1[6] = $resultat+1;
+                }
+
+
+            } elseif ($id == $joueur1) {
+                $cadeaux=$partie->getCarteConcurrenceJ2();
+
+                if($carteId==2){
+
+                    $cadeau1=$cadeaux[2];
+                    $cadeau2=$cadeaux[3];
+                    $cadeau3=$cadeaux[0];
+                    $cadeau4=$cadeaux[1];
+
+                }else{
+
+                    $cadeau1=$cadeaux[0];
+                    $cadeau2=$cadeaux[1];
+                    $cadeau3=$cadeaux[2];
+                    $cadeau4=$cadeaux[3];
+
+                }
+
+                //objectif 1
+                if ($cadeau1 == 1) {
+                    $resultat=$terrainj1[0];
+                    $terrainj1[0] = $resultat+1;
+                }elseif ($cadeau1 == 2) {
+                    $resultat=$terrainj1[0];
+                    $terrainj1[0] = $resultat+1;
+                }
+                //objectif2
+                elseif ($cadeau1 == 3) {
+                    $resultat=$terrainj1[1];
+                    $terrainj1[1] = $resultat+1;
+                }elseif ($cadeau1 == 4) {
+                    $resultat=$terrainj1[1];
+                    $terrainj1[1] = $resultat+1;
+                }
+                //objectif3
+                elseif ($cadeau1 == 5) {
+                    $resultat=$terrainj1[2];
+                    $terrainj1[2] = $resultat+1;
+                }elseif ($cadeau1 == 6) {
+                    $resultat=$terrainj1[2];
+                    $terrainj1[2] = $resultat+1;
+                }
+                //objectif4
+                elseif ($cadeau1 == 7) {
+                    $resultat=$terrainj1[3];
+                    $terrainj1[3] = $resultat+1;
+                }elseif ($cadeau1 == 8) {
+                    $resultat=$terrainj1[3];
+                    $terrainj1[3] = $resultat+1;
+                }elseif ($cadeau1 == 9) {
+                    $resultat=$terrainj1[3];
+                    $terrainj1[3] = $resultat+1;
+                }
+                //objectif5
+                elseif ($cadeau1 == 10) {
+                    $resultat=$terrainj1[4];
+                    $terrainj1[4] = $resultat+1;
+                }elseif ($cadeau1 == 11) {
+                    $resultat=$terrainj1[4];
+                    $terrainj1[4] = $resultat+1;
+                }elseif ($cadeau1 == 12) {
+                    $resultat=$terrainj1[4];
+                    $terrainj1[4] = $resultat+1;
+                }
+                //objectif6
+                elseif ($cadeau1 == 13) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }elseif ($cadeau1 == 14 ) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }elseif ($cadeau1 == 15 ) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }elseif ($cadeau1 == 16 ) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }
+                //objectif7
+                elseif ($cadeau1 == 17) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($cadeau1 == 18) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($cadeau1 == 19) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($cadeau1 == 20  ) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($cadeau1 == 21 ) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }
+
+
+                //objectif 1
+                if ($cadeau2 == 1) {
+                    $resultat=$terrainj1[0];
+                    $terrainj1[0] = $resultat+1;
+                }elseif ($cadeau2 == 2) {
+                    $resultat=$terrainj1[0];
+                    $terrainj2[0] = $resultat+1;
+                }
+                //objectif2
+                elseif ($cadeau2 == 3) {
+                    $resultat=$terrainj1[1];
+                    $terrainj1[1] = $resultat+1;
+                }elseif ($cadeau2 == 4) {
+                    $resultat=$terrainj1[1];
+                    $terrainj1[1] = $resultat+1;
+                }
+                //objectif3
+                elseif ($cadeau2 == 5) {
+                    $resultat=$terrainj1[2];
+                    $terrainj1[2] = $resultat+1;
+                }elseif ($cadeau2 == 6) {
+                    $resultat=$terrainj1[2];
+                    $terrainj1[2] = $resultat+1;
+                }
+                //objectif4
+                elseif ($cadeau2 == 7) {
+                    $resultat=$terrainj1[3];
+                    $terrainj1[3] = $resultat+1;
+                }elseif ($cadeau2 == 8) {
+                    $resultat=$terrainj1[3];
+                    $terrainj1[3] = $resultat+1;
+                }elseif ($cadeau2 == 9) {
+                    $resultat=$terrainj1[3];
+                    $terrainj1[3] = $resultat+1;
+                }
+                //objectif5
+                elseif ($cadeau2 == 10) {
+                    $resultat=$terrainj1[4];
+                    $terrainj1[4] = $resultat+1;
+                }elseif ($cadeau2 == 11) {
+                    $resultat=$terrainj1[4];
+                    $terrainj1[4] = $resultat+1;
+                }elseif ($cadeau2 == 12) {
+                    $resultat=$terrainj1[4];
+                    $terrainj1[4] = $resultat+1;
+                }
+                //objectif6
+                elseif ($cadeau2 == 13) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }elseif ($cadeau2 == 14 ) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }elseif ($cadeau2 == 15 ) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }elseif ($cadeau2 == 16 ) {
+                    $resultat=$terrainj1[5];
+                    $terrainj1[5] = $resultat+1;
+                }
+                //objectif7
+                elseif ($cadeau2 == 17) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($cadeau2 == 18) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($cadeau2 == 19) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($cadeau2 == 20  ) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }elseif ($cadeau2 == 21 ) {
+                    $resultat=$terrainj1[6];
+                    $terrainj1[6] = $resultat+1;
+                }
+
+                //objectif 1
+                if ($cadeau3 == 1) {
+                    $resultat=$terrainj2[0];
+                    $terrainj2[0] = $resultat+1;
+                }elseif ($cadeau3 == 2) {
+                    $resultat=$terrainj2[0];
+                    $terrainj2[0] = $resultat+1;
+                }
+                //objectif2
+                elseif ($cadeau3 == 3) {
+                    $resultat=$terrainj2[1];
+                    $terrainj2[1] = $resultat+1;
+                }elseif ($cadeau3 == 4) {
+                    $resultat=$terrainj2[1];
+                    $terrainj2[1] = $resultat+1;
+                }
+                //objectif3
+                elseif ($cadeau3 == 5) {
+                    $resultat=$terrainj2[2];
+                    $terrainj2[2] = $resultat+1;
+                }elseif ($cadeau3 == 6) {
+                    $resultat=$terrainj2[2];
+                    $terrainj2[2] = $resultat+1;
+                }
+                //objectif4
+                elseif ($cadeau3 == 7) {
+                    $resultat=$terrainj2[3];
+                    $terrainj2[3] = $resultat+1;
+                }elseif ($cadeau3 == 8) {
+                    $resultat=$terrainj2[3];
+                    $terrainj2[3] = $resultat+1;
+                }elseif ($cadeau3 == 9) {
+                    $resultat=$terrainj2[3];
+                    $terrainj2[3] = $resultat+1;
+                }
+                //objectif5
+                elseif ($cadeau3 == 10) {
+                    $resultat=$terrainj2[4];
+                    $terrainj2[4] = $resultat+1;
+                }elseif ($cadeau3 == 11) {
+                    $resultat=$terrainj2[4];
+                    $terrainj2[4] = $resultat+1;
+                }elseif ($cadeau3 == 12) {
+                    $resultat=$terrainj2[4];
+                    $terrainj2[4] = $resultat+1;
+                }
+                //objectif6
+                elseif ($cadeau3 == 13) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }elseif ($cadeau3 == 14 ) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }elseif ($cadeau3 == 15 ) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }elseif ($cadeau3 == 16 ) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }
+                //objectif7
+                elseif ($cadeau3 == 17) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($cadeau3 == 18) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($cadeau3 == 19) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($cadeau3 == 20  ) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($carteId == 21 ) {
+                    $resultat=$terrainj2[6];
+                    $terrainj1[6] = $resultat+1;
+                }
+
+
+                //objectif 1
+                if ($cadeau4 == 1) {
+                    $resultat=$terrainj2[0];
+                    $terrainj2[0] = $resultat+1;
+                }elseif ($cadeau4 == 2) {
+                    $resultat=$terrainj2[0];
+                    $terrainj2[0] = $resultat+1;
+                }
+                //objectif2
+                elseif ($cadeau4 == 3) {
+                    $resultat=$terrainj2[1];
+                    $terrainj2[1] = $resultat+1;
+                }elseif ($cadeau4 == 4) {
+                    $resultat=$terrainj2[1];
+                    $terrainj2[1] = $resultat+1;
+                }
+                //objectif3
+                elseif ($cadeau4 == 5) {
+                    $resultat=$terrainj2[2];
+                    $terrainj2[2] = $resultat+1;
+                }elseif ($cadeau4 == 6) {
+                    $resultat=$terrainj2[2];
+                    $terrainj2[2] = $resultat+1;
+                }
+                //objectif4
+                elseif ($cadeau4 == 7) {
+                    $resultat=$terrainj2[3];
+                    $terrainj2[3] = $resultat+1;
+                }elseif ($cadeau4 == 8) {
+                    $resultat=$terrainj2[3];
+                    $terrainj2[3] = $resultat+1;
+                }elseif ($cadeau4 == 9) {
+                    $resultat=$terrainj2[3];
+                    $terrainj2[3] = $resultat+1;
+                }
+                //objectif5
+                elseif ($cadeau4 == 10) {
+                    $resultat=$terrainj2[4];
+                    $terrainj2[4] = $resultat+1;
+                }elseif ($cadeau4 == 11) {
+                    $resultat=$terrainj2[4];
+                    $terrainj2[4] = $resultat+1;
+                }elseif ($cadeau4 == 12) {
+                    $resultat=$terrainj2[4];
+                    $terrainj2[4] = $resultat+1;
+                }
+                //objectif6
+                elseif ($cadeau4 == 13) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }elseif ($cadeau4 == 14 ) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }elseif ($cadeau4 == 15 ) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }elseif ($cadeau4 == 16 ) {
+                    $resultat=$terrainj2[5];
+                    $terrainj2[5] = $resultat+1;
+                }
+                //objectif7
+                elseif ($cadeau4 == 17) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($cadeau4 == 18) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($cadeau4 == 19) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($cadeau3 == 20  ) {
+                    $resultat=$terrainj2[6];
+                    $terrainj2[6] = $resultat+1;
+                }elseif ($carteId == 21 ) {
+                    $resultat=$terrainj2[6];
+                    $terrainj1[6] = $resultat+1;
+                }
+            }
 
             if (!$partie) {
                 throw $this->createNotFoundException(
@@ -911,12 +2098,15 @@ class ActionsController extends Controller
 
             if ($id == $joueur1) {
                 $partie->setCarteConcurrenceJ2(json_encode(null));
+                $partie->setTerrainJ1(json_encode($terrainj1));
+                $partie->setTerrainJ2(json_encode($terrainj2));
             } elseif ($id == $joueur2) {
                 $partie->setCarteConcurrenceJ1(json_encode(null));
+                $partie->setTerrainJ1(json_encode($terrainj1));
+                $partie->setTerrainJ2(json_encode($terrainj2));
             }
 
             $entityManager->flush();
-
             if($tour!=9){
                 return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
             }
@@ -953,7 +2143,7 @@ class ActionsController extends Controller
             foreach ($objectifs as $objectifs) {
                 $tObjectifs[$objectifs->getId()] = $objectifs;
             }
-            return $this->render('Partie/afficher_partie.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
+            return $this->render('Partie/afficher.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
         }
     }
 

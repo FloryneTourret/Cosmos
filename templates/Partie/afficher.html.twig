@@ -623,21 +623,25 @@
     <span>Carte concurrence?</span><br>
     {% if app.user.id == partie.Joueur1.Id  %}
         {% if partie.CarteConcurrenceJ2!=null %}
-            <form method="post" action="{{ path('choix_concurrence') }}">
             <span>Choisir paquet carte concurrence!</span>
             {% for carte in partie.carteConcurrenceJ2 %}
-                <input type="radio" name="id_carte" value="{{ Objets[carte].Id }}"><img style="width: 50px" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                <img style="width: 50px" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
             {% endfor %}
+            <form method="post" action="{{ path('choix_concurrence') }}">
+                <input type="radio" name="paire" value="1">Première paire
+                <input type="radio" name="paire" value="2"> Deuxième paire
                 <button type="submit" name="id" value="{{ partie.Id }}">Choisir</button>
             </form>
         {% endif %}
     {% elseif  app.user.id == partie.Joueur2.Id %}
         {% if partie.CarteConcurrenceJ1!=null %}
-            <form method="post" action="{{ path('choix_concurrence') }}">
             <span>Choisir paquet carte concurrence !</span>
             {% for carte in partie.carteConcurrenceJ1 %}
-                <input type="radio" name="id_carte" value="{{ Objets[carte].Id }}"><img style="width: 50px" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                <img style="width: 50px" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
             {% endfor %}
+            <form method="post" action="{{ path('choix_concurrence') }}">
+                <input type="radio" name="paire" value="1">Première paire
+                <input type="radio" name="paire" value="2"> Deuxième paire
                 <button type="submit" name="id" value="{{ partie.Id }}">Choisir</button>
             </form>
         {% endif %}

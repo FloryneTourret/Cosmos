@@ -667,11 +667,15 @@
     <form method="post" action="{{ path('action4') }}">
         {% if app.user.id == partie.Joueur1.Id %}
             {% for carte in partie.MainJ1 |sort %}
-                <input type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}"><img style="width: 50px" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                <img style="width: 50px" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                <input type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}">1
+                <input type="checkbox" name="id_paire2[]" value="{{ Objets[carte].Id }}">2
             {% endfor %}
         {% elseif app.user.id == partie.Joueur2.Id %}
             {% for carte in partie.MainJ2 |sort %}
-                <input type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}"><img style="width: 50px" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                <img style="width: 50px" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                <input type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}">1
+                <input type="checkbox" name="id_paire2[]" value="{{ Objets[carte].Id }}">2
             {% endfor %}
         {% endif %}
         <button type="submit" name="id" value="{{ partie.Id }}">Soumettre</button>
