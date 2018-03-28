@@ -9,7 +9,7 @@
 namespace App\Controller;
 
 
-use App\Entity\Parties;
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -32,9 +32,11 @@ class ClassementController extends Controller
             $id = "Pas d'Id";
         }
 
-        //Récupère les parties avec le joueur dedans
-        $parties=  $this->getDoctrine()->getRepository(Parties::class)->findPartiesJoueur( $id);
+        //Récupère le joueur
+        $joueur= $this->getDoctrine()->getRepository(User::class)->find( $id);
 
-        return $this->render('user/classement.html.twig', ['parties' => $parties]);
+        $joueurs= $this->getDoctrine()->getRepository(User::class)->findAll();
+
+        return $this->render('user/classement.html.twig', ['moi' => $joueur, 'autres'=>$joueurs]);
     }
 }

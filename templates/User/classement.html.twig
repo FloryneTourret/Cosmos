@@ -2,16 +2,18 @@
 
 {% block body %}
 
+    Classement selon le nombre de victoires
 
     <div>
         Mon score :
-        {% set monscore = 0 %}
+        {{ moi.PartiesVictoires}} victoires et {{ moi.PartiesDefaites}} défaites
+    </div>
 
-        {% for score in parties |sort %}
-            {% set monscore = monscore + score.scoreJ1 +score.scoreJ2 %}
+    <div>
+        Classement :<br>
+        {% for joueur in autres %}
+            {{ joueur.username }} : {{ joueur.PartiesVictoires }}<br>
         {% endfor %}
-
-        {{ monscore }}
     </div>
 
 
