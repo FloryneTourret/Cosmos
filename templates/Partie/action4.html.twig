@@ -592,7 +592,7 @@
         {% elseif marqueur==1 %}
             <span>Objectif {{ marqueurCounter }} : Joueur 1.</span>
         {% elseif marqueur==2 %}
-            <span>Objectif {{ maqueurCounter }} : Joueur 2.</span>
+            <span>Objectif {{ marqueurCounter }} : Joueur 2.</span>
         {% endif %}
     {% endfor %}
     <br>
@@ -666,15 +666,15 @@
     <form method="post" action="{{ path('action4') }}">
         {% if app.user.id == partie.Joueur1.Id %}
             {% for carte in partie.MainJ1 |sort %}
-                <img style="width: 50px" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
                 <input type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}">1
                 <input type="checkbox" name="id_paire2[]" value="{{ Objets[carte].Id }}">2
+                <img style="width: 50px" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
             {% endfor %}
         {% elseif app.user.id == partie.Joueur2.Id %}
             {% for carte in partie.MainJ2 |sort %}
-                <img style="width: 50px" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
-                <input type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}">1
+               <input type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}">1
                 <input type="checkbox" name="id_paire2[]" value="{{ Objets[carte].Id }}">2
+                <img style="width: 50px" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
             {% endfor %}
         {% endif %}
         <button type="submit" name="id" value="{{ partie.Id }}">Soumettre</button>

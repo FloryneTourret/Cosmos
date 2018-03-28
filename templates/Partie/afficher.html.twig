@@ -19,9 +19,33 @@
 
     <span>Score joueur 1:</span>
     <span>{{ partie.ScoreJ1 }} </span><br>
+    <span>Objectifs joueur 1 : </span>
+    {% set marqueurCounterJ1=0 %}
+    {% for marqueur in partie.Jetons %}
+        {% if marqueur==0 %}
+        {% elseif marqueur==1 %}
+            {% set marqueurCounterJ1 = ( marqueurCounterJ1 | default(0) ) + 1 %}
+        {% elseif marqueur==2 %}
+        {% endif %}
+    {% endfor %}
+        {{ marqueurCounterJ1 |last }}
+    {% set ObjectifJ1 = marqueurCounterJ1|last %}
+    <br>
 
     <span>Score joueur 2:</span>
     <span>{{ partie.ScoreJ2 }} </span><br>
+    <span>Objectifs joueur 2 : </span>
+    {% set marqueurCounterJ2=0 %}
+    {% for marqueur in partie.Jetons %}
+        {% if marqueur==0 %}
+        {% elseif marqueur==1 %}
+        {% elseif marqueur==2 %}
+            {% set marqueurCounterJ2 = ( marqueurCounterJ2 | default(0) ) + 1 %}
+        {% endif %}
+    {% endfor %}
+    {{ marqueurCounterJ2 |last }}
+    {% set ObjectifJ2 = marqueurCounterJ2|last %}
+    <br>
 
 
 
@@ -590,12 +614,36 @@
             <img style="width: 20px" src="{{ asset('assets/img/pion.png') }}">
             <span>{{ marqueurCounter }} : Milieu.</span>
         {% elseif marqueur==1 %}
-            <span>Objectif {{ marqueurCounter }} : Joueur 1.</span>
+            <img style="width: 20px" src="{{ asset('assets/img/pion.png') }}">
+            <span>{{ marqueurCounter }} : Joueur 1.</span>
         {% elseif marqueur==2 %}
-            <span>Objectif {{ maqueurCounter }} : Joueur 2.</span>
+            <img style="width: 20px" src="{{ asset('assets/img/pion.png') }}">
+            <span>{{ marqueurCounter }} : Joueur 2.</span>
         {% endif %}
     {% endfor %}
     <br>
+
+
+    <span>Victoire?</span>
+    {% if partie.PartieTour == 9 %}
+        {% if partie.ScoreJ1 >= 11 %}
+            <span>Victoire par points de {{ partie.Joueur1.username }}</span>
+        {% elseif partie.ScoreJ2 >= 11 %}
+            <span>Victoire par points {{ partie.Joueur2.username }}</span>
+        {% elseif ObjectifJ1 >= 4 %}
+            <span>Victoire par objectifs {{ partie.Joueur1.username }}</span>
+        {% elseif ObjectifJ2 >= 4 %}
+            <span>Victoire par objectifs {{ partie.Joueur2.username }}</span>
+        {% else %}
+            <form method="post" action="{{ path('nouvelle_manche') }}">
+                <button type="submit" name="id" value="{{ partie.Id }}">Manche suivante !</button>
+            </form>
+        {% endif %}
+    {% endif %}
+    <br>
+
+
+
     <span>Carte cadeau?</span><br>
     {% if app.user.id == partie.Joueur1.Id  %}
         {% if partie.CarteCadeauJ2!=null %}

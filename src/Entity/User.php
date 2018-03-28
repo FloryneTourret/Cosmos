@@ -50,6 +50,16 @@ class User implements UserInterface, \Serializable
     private $actif;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $PartiesVictoires;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $PartiesDefaites;
+
+    /**
      * @var array
      *
      * @ORM\Column(type="json")
@@ -107,6 +117,38 @@ class User implements UserInterface, \Serializable
     public function setActif($actif)
     {
         $this->actif = $actif;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPartiesVictoires()
+    {
+        return $this->PartiesVictoires;
+    }
+
+    /**
+     * @param mixed $PartiesVictoires
+     */
+    public function setPartiesVictoires($PartiesVictoires)
+    {
+        $this->PartiesVictoires = $PartiesVictoires;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPartiesDefaites()
+    {
+        return $this->PartiesDefaites;
+    }
+
+    /**
+     * @param mixed $PartiesDefaites
+     */
+    public function setPartiesDefaites($PartiesDefaites)
+    {
+        $this->PartiesDefaites = $PartiesDefaites;
     }
 
 

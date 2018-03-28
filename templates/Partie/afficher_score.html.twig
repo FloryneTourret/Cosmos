@@ -590,12 +590,13 @@
             <img style="width: 20px" src="{{ asset('assets/img/pion.png') }}">
             <span>{{ marqueurCounter }} : Milieu.</span>
         {% elseif marqueur==1 %}
-            <span>Objectif {{ marqueurCounter }} : Joueur 1.</span>
+            <span>{{ marqueurCounter }} : Joueur 1.</span>
         {% elseif marqueur==2 %}
-            <span>Objectif {{ maqueurCounter }} : Joueur 2.</span>
+            <span>{{ marqueurCounter }} : Joueur 2.</span>
         {% endif %}
     {% endfor %}
     <br>
+
     <span>Carte cadeau?</span><br>
     {% if app.user.id == partie.Joueur1.Id  %}
         {% if partie.CarteCadeauJ2!=null %}
@@ -789,6 +790,9 @@
     <br>
 
     <h1>Calcul des scores !</h1>
+    <form method="post" action="{{ path('jetons') }}">
+        <button type="submit" name="id" value="{{ partie.Id }}">Calculer</button>
+    </form>
 
     <span>Cartes en main </span>
     {% if app.user.id == partie.Joueur1.Id %}

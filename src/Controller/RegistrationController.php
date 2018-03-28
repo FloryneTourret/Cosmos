@@ -28,6 +28,10 @@ class RegistrationController extends Controller
             $user->setRoles(['ROLE_USER']);
             // Par defaut actif est à 0
             $user->setActif(0);
+            // Par defaut victoires est à 0
+            $user->setPartiesVictoires(0);
+            // Par defaut défaites est à 0
+            $user->setPartiesDefaites(0);
             // On enregistre l'utilisateur dans la base
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);

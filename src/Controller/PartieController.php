@@ -169,4 +169,77 @@ class PartieController extends Controller
         $partie = $this->getDoctrine()->getRepository(Parties::class)->find($partie_recup);
         return $this->redirectToRoute('afficher_partie', ['id' => $partie->getId()]);
     }
+
+    /**
+     * @Route("/nouvelle_manche", name="nouvelle_manche")
+     */
+    public function nouvelle_manche(Request $request)
+    {
+        $partie_recup = $request->request->get('id');
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $partie = $entityManager->getRepository(Parties::class)->find($partie_recup);
+
+        //manche suivante
+        $manche_ancienne=$partie->getPartieManche();
+        $manche = $manche_ancienne +1;
+
+       //actions à 0
+        $actions=[0,0,0,0];
+
+
+        //récupérer les Objets depuis la base de données
+        $Objets = $this->getDoctrine()->getRepository(Objets::class)->findAll();
+        $tObjets = array();
+
+        //Affecter des valeurs pour les différentes propriétés de partie
+        //mélanger les Objets
+        foreach ($Objets as $carte) {
+            $tObjets[] = $carte->getId();
+        }
+
+        shuffle($tObjets); //mélange le tableau contenant les id
+        //retrait de la première carte
+        $carte_jetee = array_pop($tObjets);
+        //Distribution des Objets aux joueurs,
+        $main_j1 = array();
+        for ($i = 0; $i < 7; $i++) {
+            $tMainJ1[] = array_pop($tObjets);
+        }
+        $main_j2 = array();
+        for ($i = 0; $i < 6; $i++) {
+            $tMainJ2[] = array_pop($tObjets);
+        }
+
+        //La création de la pioche
+        $partie_pioche = $tObjets; //sauvegarde des dernières Objets dans la pioche
+
+        //terrain remis à 0
+        $objectifs=array(0,0,0,0,0,0,0);
+
+        $partie->setPartieTour(1);
+        $partie->setPartieManche($manche);
+        $partie->setCarteJetee($carte_jetee);
+        $partie->setMainJ1(json_encode($tMainJ1));
+        $partie->setMainJ2(json_encode($tMainJ2));
+        $partie->setActionJ1(json_encode($actions));
+        $partie->setActionJ2(json_encode($actions));
+        $partie->setScoreJ1(0);
+        $partie->setScoreJ2(0);
+        $partie->setPartiePioche($partie_pioche);
+        $partie->setCarteSecreteJ1(json_encode(null));
+        $partie->setCarteSecreteJ2(json_encode(null));
+        $partie->setCarteDissimuleeJ1(json_encode(null));
+        $partie->setCarteDissimuleeJ2(json_encode(null));
+        $partie->setTerrainJ1(json_encode($objectifs));
+        $partie->setTerrainJ2(json_encode($objectifs));
+
+
+        //Sauvegarde mon objet Partie dans la base de données
+        $entityManager->persist($partie);
+
+        $entityManager->flush();
+
+        return $this->redirectToRoute('afficher_partie', ['id' => $partie->getId()]);
+    }
 }
