@@ -123,6 +123,44 @@ margin-top:291px !important;
   }
 }
 
+.objets {
+  margin-left: 25vw;
+  img {
+    position: absolute;
+    width: 6vw;
+    bottom: 2vh;
+  }
+  input {
+    z-index: 16;
+    position: absolute;
+    width: 6vw;
+    bottom: 14vh;
+  }
+
+  .carte1{
+    margin-left: 0;
+  }
+  .carte2{
+    margin-left: 7vw;
+  }
+  .carte3{
+    margin-left: 14vw;
+  }
+  .carte4{
+    margin-left: 21vw;
+  }
+  .carte5{
+    margin-left: 28vw;
+  }
+  .carte6{
+    margin-left: 35vw;
+  }
+  .carte7{
+    margin-left: 42vw;
+  }
+}
+
+
 .n0 {
   z-index: 9;
   transform: rotate(-20deg);

@@ -29,46 +29,5 @@ $(document).ready(function() {
   $("#action4").mouseleave(function() {
     $(".action4").hide();
   });
-
-  $(".b1").hide();
-  $(".b2").hide();
-  $(".b3").hide();
-  $(".b4").hide();
-  
-  $("#action1").click(function() {
-    $(".b1").show();
-  });
-  $(".b1 #annuler").click(function() {
-    $(".b1").hide();
-
-  });
-
-  $("#action2").click(function() {
-    $(".b2").show();
-  });
-  $(".b2 #annuler2").click(function() {
-    $(".b2").hide();
-
-  });
-
-  $("#action3").click(function() {
-    $(".b3").show();
-  });
-  $(".b3 #annuler3").click(function() {
-    $(".b3").hide();
-
-
-  });
-
-
-  $("#action4").click(function() {
-    $(".b4").show();
-  });
-  $(".b4 #annuler3").click(function() {
-    $(".b4").hide();
-
-
-  });
-
   
 });
