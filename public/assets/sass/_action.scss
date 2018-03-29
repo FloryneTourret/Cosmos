@@ -168,117 +168,125 @@ h1 {
 
 
 .b3 {
-    z-index: 15;
-    position: absolute;
-    width: 600px;
-    height: 200px;
-    background: #011529;
-    opacity: 0.9;
-    margin-left: 53vh;
-    margin-top: 27vw;
-    border-radius: 6px;
+  z-index: 15;
+  position: absolute;
+  width: 40vw;
+  height: 28vh;
+  background: #011529;
+  opacity: 0.9;
+  left: 30vw;
+  top: 48vh;
+  border-radius: 6px;
     .b3carte1{
-        width: 100px;
-        height: 120px;
-        background: #3e4750;
-        position: absolute;
-        margin-left: 12vh;
-        margin-top: 5vh;
+      width: 6vw;
+      height: 8vw;
+      background: #3e4750;
+      position: absolute;
+      margin-left: 10vw;
+      margin-top: 5vh;
     }
     .b3carte2 {
-        width: 100px;
-        height: 120px;
-        background: #3e4750;
-        position: absolute;
-        margin-left: 34vh;
-        margin-top: 5vh;
+      width: 6vw;
+      height: 8vw;
+      background: #3e4750;
+      position: absolute;
+      margin-left: 17vw;
+      margin-top: 5vh;
     }
 
     .b3carte3 {
-        width: 100px;
-        height: 120px;
-        background: #3e4750;
-        position: absolute;
-        margin-left: 56vh;
-        margin-top: 5vh;
+      width: 6vw;
+      height: 8vw;
+      background: #3e4750;
+      position: absolute;
+      margin-left: 24vw;
+      margin-top: 5vh;
     }
-    h1 {
-        text-align: center;
-        margin-top: 12px;
-    }
-    #annuler3{
-        margin-top: 19vh;
-        margin-left: 2vh;
-        padding-top: 4px;
-    }
+  h1 {
+    text-align: center;
+    margin-top: 12px;
+  }
+  #annuler {
+    margin-top: 19vh;
+    margin-left: 1vw;
+    padding-top: 4px;
+    font-family: Robotaur;
+    color: white;
+  }
 
-    #valider{
-        margin-top: 19vh;
-        margin-left: 48vh;
-        padding-top: 4px;
-    }
+  #valider {
+    margin-top: 19vh;
+    margin-left: 23vw;
+    padding-top: 4px;
+    font-family: Robotaur;
+    color: white;
+  }
 }
 
 
 
 .b4 {
-    z-index: 15;
-    position: absolute;
-    width: 600px;
-    height: 200px;
-    background: #011529;
-    opacity: 0.9;
-    margin-left: 53vh;
-    margin-top: 27vw;
-    border-radius: 6px;
+  z-index: 15;
+  position: absolute;
+  width: 50vw;
+  height: 28vh;
+  background: #011529;
+  opacity: 0.9;
+  left: 25vw;
+  top: 48vh;
+  border-radius: 6px;
     .b4carte1{
-        width: 100px;
-        height: 120px;
-        background: #3e4750;
-        position: absolute;
-        margin-left: 8vh;
-        margin-top: 5vh;
+      width: 6vw;
+      height: 8vw;
+      background: #3e4750;
+      position: absolute;
+      margin-left: 11.5vw;
+      margin-top: 5vh;
     }
     .b4carte2 {
-        width: 100px;
-        height: 120px;
-        background: #3e4750;
-        position: absolute;
-        margin-left: 24vh;
-        margin-top: 5vh;
+      width: 6vw;
+      height: 8vw;
+      background: #3e4750;
+      position: absolute;
+      margin-left: 18.5vw;
+      margin-top: 5vh;
     }
 
     .b4carte3 {
-        width: 100px;
-        height: 120px;
-        background: #3e4750;
-        position: absolute;
-        margin-left: 48vh;
-        margin-top: 5vh;
+      width: 6vw;
+      height: 8vw;
+      background: #3e4750;
+      position: absolute;
+      margin-left: 25.5vw;
+      margin-top: 5vh;
     }
     .b4carte4 {
-        width: 100px;
-        height: 120px;
-        background: #3e4750;
-        position: absolute;
-        margin-left: 64vh;
-        margin-top: 5vh;
+      width: 6vw;
+      height: 8vw;
+      background: #3e4750;
+      position: absolute;
+      margin-left: 32.5vw;
+      margin-top: 5vh;
     }
-    h1 {
-        text-align: center;
-        margin-top: 12px;
-    }
-    #annuler3 {
-        margin-top: 19vh;
-        margin-left: 2vh;
-        padding-top: 4px;
-    }
+  h1 {
+    text-align: center;
+    margin-top: 12px;
+  }
+  #annuler {
+    margin-top: 19vh;
+    margin-left: 1vw;
+    padding-top: 4px;
+    font-family: Robotaur;
+    color: white;
+  }
 
-    #valider{
-        margin-top: 19vh;
-        margin-left: 48vh;
-        padding-top: 4px;
-    }
+  #valider {
+    margin-top: 19vh;
+    margin-left: 33vw;
+    padding-top: 4px;
+    font-family: Robotaur;
+    color: white;
+  }
 }
 
 
@@ -286,11 +294,11 @@ h1 {
   z-index: 15;
   position: absolute;
   width: 45vw;
-  height: 28vh;
+  height: 34vh;
   background: #011529;
   opacity: 0.9;
   left: 27.4vw;
-  top: 48vh;
+  top: 47vh;
   border-radius: 6px;
   h1 {
     text-align: center;
@@ -321,10 +329,10 @@ h1 {
   }
 
   .cartes{
-    width: 4vw;
+    width: 6vw;
     background: #3e4750;
     position: relative;
-    margin-left: 6vw;
+    margin-left: 4vw;
     margin-top: 2vh;
   }
 
@@ -334,7 +342,7 @@ h1 {
   z-index: 15;
   position: absolute;
   width: 45vw;
-  height: 23vh;
+  height: 30vh;
   background: #011529;
   opacity: 0.9;
   left: 27.4vw;
@@ -357,14 +365,14 @@ h1 {
   }
 
   .cartes{
-    width: 4vw;
+    width: 6vw;
     background: #3e4750;
     position: relative;
     margin-top: 2vh;
   }
 
   .selection{
-    margin-left: 8vw;
+    margin-left: 6vw;
   }
 
 }

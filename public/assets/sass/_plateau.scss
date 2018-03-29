@@ -136,6 +136,25 @@ margin-top:291px !important;
     width: 6vw;
     bottom: 14vh;
   }
+  span.span1{
+    text-align: center;
+    z-index: 16;
+    position: absolute;
+    width: 6vw;
+    bottom: 12vh;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+  }
+  span.span2{
+    text-align: center;
+    z-index: 16;
+    position: absolute;
+    width: 6vw;
+    bottom: 8vh;
+
+    color: white;
+    text-shadow: 1px 1px 2px black;
+  }
 
   .carte1{
     margin-left: 0;
@@ -157,6 +176,35 @@ margin-top:291px !important;
   }
   .carte7{
     margin-left: 42vw;
+  }
+
+  .carte1b{
+    margin-left: 0;
+    bottom: 10vh;
+  }
+  .carte2b{
+    margin-left: 7vw;
+    bottom: 10vh;
+  }
+  .carte3b{
+    margin-left: 14vw;
+    bottom: 10vh;
+  }
+  .carte4b{
+    margin-left: 21vw;
+    bottom: 10vh;
+  }
+  .carte5b{
+    margin-left: 28vw;
+    bottom: 10vh;
+  }
+  .carte6b{
+    margin-left: 35vw;
+    bottom: 10vh;
+  }
+  .carte7b{
+    margin-left: 42vw;
+    bottom: 10vh;
   }
 }
 

@@ -854,13 +854,13 @@
                 {% if partie.PartieTour == 9 %}
                     <div class="victoire">
                         {% if partie.ScoreJ1 >= 11 %}
-                            <h1 class="victoire">Victoire par points de {{ partie.Joueur1.username }}!</h1>
+                            <h1>Victoire par points de {{ partie.Joueur1.username }}!</h1>
                         {% elseif partie.ScoreJ2 >= 11 %}
-                            <h1 class="victoire">Victoire par points de {{ partie.Joueur2.username }}!</h1>
+                            <h1>Victoire par points de {{ partie.Joueur2.username }}!</h1>
                         {% elseif ObjectifJ1 >= 4 %}
-                            <h1 class="victoire">Victoire par objectifs de {{ partie.Joueur1.username }}!</h1>
+                            <h1 >Victoire par objectifs de {{ partie.Joueur1.username }}!</h1>
                         {% elseif ObjectifJ2 >= 4 %}
-                            <h1 class="victoire">Victoire par objectifs de {{ partie.Joueur2.username }}!</h1>
+                            <h1>Victoire par objectifs de {{ partie.Joueur2.username }}!</h1>
                         {% else %}
                             <h1>Il n'y a aucun vainqueur pour cette manche</h1><br>
                             <form method="post" action="{{ path('nouvelle_manche') }}">
