@@ -79,21 +79,21 @@ h1 {
 }
 
 .b1 {
-    z-index: 15;
-    position: absolute;
-    width: 350px;
-    height: 200px;
-    background: #011529;
-    opacity: 0.9;
-    margin-left: 72vh;
-    margin-top: 27vw;
-    border-radius: 6px;
+  z-index: 15;
+  position: absolute;
+  width: 35vw;
+  height: 28vh;
+  background: #011529;
+  opacity: 0.9;
+  left: 32.5vw;
+  top: 48vh;
+  border-radius: 6px;
     .b1carte {
-        width: 100px;
-        height: 120px;
+        width: 6vw;
+        height: 8vw;
         background: #3e4750;
         position: absolute;
-        margin-left: 16vh;
+        margin-left: 14.5vw;
         margin-top: 5vh;
     }
 
@@ -103,14 +103,18 @@ h1 {
     }
     #annuler {
         margin-top: 19vh;
-        margin-left: 2vh;
+        margin-left: 1vw;
         padding-top: 4px;
+        font-family: Robotaur;
+        color: white;
     }
 
     #valider {
         margin-top: 19vh;
-        margin-left: 14vh;
+        margin-left: 18vw;
         padding-top: 4px;
+        font-family: Robotaur;
+        color: white;
     }
 }
 
