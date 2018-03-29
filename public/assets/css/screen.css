@@ -1,0 +1,997 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+@font-face {
+  font-family: 'Robotaur';
+  src: url("../fonts/robotaur/robotaur.ttf");
+}
+/* line 5, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../Ruby23-x64/lib/ruby/gems/2.3.0/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+/* line 1, ../sass/_plateau.scss */
+body p {
+  font-family: "Robotaur";
+  color: white;
+}
+
+/* line 6, ../sass/_plateau.scss */
+button {
+  background-color: transparent;
+  border: none;
+}
+
+/* line 11, ../sass/_plateau.scss */
+.plateau {
+  background: #0c5584;
+  min-height: 100vh;
+}
+
+/* line 16, ../sass/_plateau.scss */
+.carte {
+  background: #266b96;
+  min-height: 100vh;
+}
+
+/* line 21, ../sass/_plateau.scss */
+.haut {
+  margin-top: 202px !important;
+}
+
+/* line 25, ../sass/_plateau.scss */
+.bas {
+  margin-top: 291px !important;
+}
+
+/* line 29, ../sass/_plateau.scss */
+.scorej2 {
+  position: absolute;
+  font-size: 16px;
+  left: 10vw;
+  margin-top: 80px;
+  line-height: 30px;
+}
+
+/* line 37, ../sass/_plateau.scss */
+.scorej1 {
+  position: absolute;
+  font-size: 16px;
+  right: 10vw;
+  bottom: 80px;
+  line-height: 30px;
+  text-align: right;
+}
+
+/* line 46, ../sass/_plateau.scss */
+.cartes_adversaire {
+  text-align: center;
+}
+/* line 48, ../sass/_plateau.scss */
+.cartes_adversaire img {
+  position: absolute;
+  width: 5vw;
+}
+
+/* line 54, ../sass/_plateau.scss */
+.nb1 {
+  z-index: 10;
+  transform: rotate(20deg);
+}
+
+/* line 58, ../sass/_plateau.scss */
+.nb2 {
+  z-index: 11;
+  margin-left: 50px;
+  transform: rotate(15deg) translateY(12px);
+}
+
+/* line 64, ../sass/_plateau.scss */
+.nb3 {
+  z-index: 12;
+  margin-left: 100px;
+  transform: rotate(10deg) translateY(20px);
+}
+
+/* line 69, ../sass/_plateau.scss */
+.nb4 {
+  z-index: 13;
+  margin-left: 150px;
+  transform: rotate(5deg) translateY(27px);
+}
+
+/* line 74, ../sass/_plateau.scss */
+.nb5 {
+  z-index: 14;
+  margin-left: 200px;
+  transform: rotate(-7deg) translateY(25px);
+}
+
+/* line 79, ../sass/_plateau.scss */
+.nb6 {
+  z-index: 15;
+  margin-left: 250px;
+  transform: rotate(-10deg) translateY(16px);
+}
+
+/* line 84, ../sass/_plateau.scss */
+.nb7 {
+  z-index: 16;
+  margin-left: 300px;
+  transform: rotate(-20deg);
+}
+
+/* line 91, ../sass/_plateau.scss */
+.joueur1 {
+  position: absolute;
+  right: 10vw;
+  bottom: 50px;
+}
+/* line 95, ../sass/_plateau.scss */
+.joueur1 p {
+  color: #53D0FF;
+  font-size: 22px;
+}
+
+/* line 100, ../sass/_plateau.scss */
+.joueur2 {
+  position: absolute;
+  left: 10vw;
+  margin-top: 50px;
+}
+/* line 104, ../sass/_plateau.scss */
+.joueur2 p {
+  color: #53D0FF;
+  font-size: 22px;
+}
+
+/* line 110, ../sass/_plateau.scss */
+.manche {
+  float: right;
+  font-size: 30px;
+  margin-right: 10vw;
+  margin-top: 30px;
+}
+
+/* line 117, ../sass/_plateau.scss */
+.objet {
+  margin-left: 36vw;
+}
+/* line 119, ../sass/_plateau.scss */
+.objet img {
+  position: absolute;
+  width: 6vw;
+  bottom: 2vh;
+}
+
+/* line 126, ../sass/_plateau.scss */
+.n0 {
+  z-index: 9;
+  transform: rotate(-20deg);
+  transition: all 1s;
+}
+/* line 130, ../sass/_plateau.scss */
+.n0:hover {
+  transform: rotate(-20deg) translateY(-35px);
+  box-shadow: 0px 0px 10px 5px #00fcff;
+}
+
+/* line 135, ../sass/_plateau.scss */
+.n1 {
+  z-index: 10;
+  transform: rotate(-15deg) translateY(-12px);
+  margin-left: 50px;
+  transition: all 1s;
+}
+/* line 140, ../sass/_plateau.scss */
+.n1:hover {
+  transform: rotate(-15deg) translateY(-50px);
+  box-shadow: 0px 0px 10px 5px #00fcff;
+}
+
+/* line 146, ../sass/_plateau.scss */
+.n2 {
+  z-index: 11;
+  transform: rotate(-10deg) translateY(-19px);
+  margin-left: 100px;
+  transition: all 1s;
+}
+/* line 151, ../sass/_plateau.scss */
+.n2:hover {
+  transform: rotate(-10deg) translateY(-60px);
+  box-shadow: 0px 0px 10px 5px #00fcff;
+}
+
+/* line 156, ../sass/_plateau.scss */
+.n3 {
+  z-index: 12;
+  margin-left: 150px;
+  transform: rotate(-3deg) translateY(-20px);
+  transition: all 1s;
+}
+/* line 161, ../sass/_plateau.scss */
+.n3:hover {
+  transform: rotate(-3deg) translateY(-60px);
+  box-shadow: 0px 0px 10px 5px #00fcff;
+}
+
+/* line 166, ../sass/_plateau.scss */
+.n4 {
+  z-index: 13;
+  margin-left: 200px;
+  transform: rotate(5deg) translateY(-17px);
+  transition: all 1s;
+}
+/* line 171, ../sass/_plateau.scss */
+.n4:hover {
+  transform: rotate(5deg) translateY(-60px);
+  box-shadow: 0px 0px 10px 5px #00fcff;
+}
+
+/* line 176, ../sass/_plateau.scss */
+.n5 {
+  z-index: 14;
+  margin-left: 250px;
+  transform: rotate(15deg) translateY(-7px);
+  transition: all 1s;
+}
+/* line 181, ../sass/_plateau.scss */
+.n5:hover {
+  transform: rotate(15deg) translateY(-60px);
+  box-shadow: 0px 0px 10px 5px #00fcff;
+}
+
+/* line 186, ../sass/_plateau.scss */
+.n6 {
+  z-index: 15;
+  margin-left: 300px;
+  transform: rotate(25deg) translateY(8px);
+  transition: all 1s;
+}
+/* line 191, ../sass/_plateau.scss */
+.n6:hover {
+  transform: rotate(25deg) translateY(-20px);
+  box-shadow: 0px 0px 10px 5px #00fcff;
+}
+
+/* line 197, ../sass/_plateau.scss */
+.backgroud_plateau {
+  min-height: 50vh;
+}
+/* line 200, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond {
+  background: url("../img/plateau/fond.png") no-repeat center;
+  background-size: cover;
+  height: 100vh;
+}
+/* line 205, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .victoire {
+  color: #FDFFA9;
+  font-family: Robotaur;
+  font-size: 40px;
+  position: absolute;
+  bottom: 40vh;
+  margin-left: 22vw;
+}
+/* line 214, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .img2 {
+  width: 20vw;
+  position: absolute;
+}
+/* line 218, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .img3 {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  margin-left: 2vw;
+  margin-top: 40px;
+}
+/* line 226, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .img4 {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  margin-left: 2vw;
+  margin-top: 95px;
+}
+/* line 233, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .img5 {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  margin-left: 2vw;
+  margin-top: 150px;
+}
+/* line 240, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .img6 {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  margin-left: 2vw;
+  margin-top: 205px;
+}
+/* line 248, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .img10 {
+  position: absolute;
+  width: 8vw;
+  margin-top: 22vh;
+  margin-left: 18vw;
+}
+/* line 254, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .pion1 {
+  z-index: 10;
+  width: 2vw;
+  position: absolute;
+  margin-left: 21vw;
+  margin-top: 31vh;
+}
+/* line 261, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .pion1_haut {
+  z-index: 10;
+  width: 2vw;
+  position: absolute;
+  margin-left: 21vw;
+  margin-top: 26vh;
+}
+/* line 268, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .pion1_bas {
+  z-index: 10;
+  width: 2vw;
+  position: absolute;
+  margin-left: 21vw;
+  margin-top: 37vh;
+}
+/* line 275, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .img11 {
+  position: absolute;
+  width: 8vw;
+  margin-top: 22vh;
+  margin-left: 27vw;
+}
+/* line 281, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .pion2 {
+  z-index: 10;
+  width: 2vw;
+  position: absolute;
+  margin-left: 30vw;
+  margin-top: 31vh;
+}
+/* line 288, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .pion2_haut {
+  z-index: 10;
+  width: 2vw;
+  position: absolute;
+  margin-left: 30vw;
+  margin-top: 26vh;
+}
+/* line 295, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .pion2_bas {
+  z-index: 10;
+  width: 2vw;
+  position: absolute;
+  margin-left: 30vw;
+  margin-top: 37vh;
+}
+/* line 302, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .img12 {
+  position: absolute;
+  width: 8vw;
+  margin-top: 22vh;
+  margin-left: 36vw;
+}
+/* line 308, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .pion3 {
+  z-index: 10;
+  width: 2vw;
+  position: absolute;
+  margin-left: 39vw;
+  margin-top: 31vh;
+}
+/* line 315, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .pion3_haut {
+  z-index: 10;
+  width: 2vw;
+  position: absolute;
+  margin-left: 39vw;
+  margin-top: 26vh;
+}
+/* line 322, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .pion3_bas {
+  z-index: 10;
+  width: 2vw;
+  position: absolute;
+  margin-left: 39vw;
+  margin-top: 37vh;
+}
+/* line 329, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .img13 {
+  position: absolute;
+  width: 8vw;
+  margin-top: 22vh;
+  margin-left: 45vw;
+}
+/* line 335, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .pion4 {
+  z-index: 10;
+  width: 2vw;
+  position: absolute;
+  margin-left: 48vw;
+  margin-top: 31vh;
+}
+/* line 342, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .pion4_haut {
+  z-index: 10;
+  width: 2vw;
+  position: absolute;
+  margin-left: 48vw;
+  margin-top: 26vh;
+}
+/* line 349, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .pion4_bas {
+  z-index: 10;
+  width: 2vw;
+  position: absolute;
+  margin-left: 48vw;
+  margin-top: 37vh;
+}
+/* line 356, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .img14 {
+  position: absolute;
+  width: 8vw;
+  margin-top: 22vh;
+  margin-left: 54vw;
+}
+/* line 362, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .pion5 {
+  z-index: 10;
+  width: 2vw;
+  position: absolute;
+  margin-left: 57vw;
+  margin-top: 31vh;
+}
+/* line 369, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .pion5_haut {
+  z-index: 10;
+  width: 2vw;
+  position: absolute;
+  margin-left: 57vw;
+  margin-top: 26vh;
+}
+/* line 376, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .pion5_bas {
+  z-index: 10;
+  width: 2vw;
+  position: absolute;
+  margin-left: 57vw;
+  margin-top: 37vh;
+}
+/* line 383, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .img15 {
+  position: absolute;
+  width: 8vw;
+  margin-top: 22vh;
+  margin-left: 63vw;
+}
+/* line 389, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .pion6 {
+  z-index: 10;
+  width: 2vw;
+  position: absolute;
+  margin-left: 66vw;
+  margin-top: 31vh;
+}
+/* line 396, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .pion6_haut {
+  z-index: 10;
+  width: 2vw;
+  position: absolute;
+  margin-left: 66vw;
+  margin-top: 26vh;
+}
+/* line 403, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .pion6_bas {
+  z-index: 10;
+  width: 2vw;
+  position: absolute;
+  margin-left: 66vw;
+  margin-top: 37vh;
+}
+/* line 410, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .img16 {
+  position: absolute;
+  width: 8vw;
+  margin-top: 22vh;
+  margin-left: 72vw;
+}
+/* line 416, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .pion7 {
+  z-index: 10;
+  width: 2vw;
+  position: absolute;
+  margin-left: 75vw;
+  margin-top: 31vh;
+}
+/* line 423, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .pion7_haut {
+  z-index: 10;
+  width: 2vw;
+  position: absolute;
+  margin-left: 75vw;
+  margin-top: 26vh;
+}
+/* line 430, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .pion7_ba {
+  z-index: 10;
+  width: 2vw;
+  position: absolute;
+  margin-left: 75vw;
+  margin-top: 37vh;
+}
+/* line 438, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .img19 {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  right: 2vw;
+  bottom: 40px;
+  z-index: 2;
+}
+/* line 447, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .img20 {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  right: 2vw;
+  bottom: 95px;
+  z-index: 1;
+}
+/* line 455, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .img21 {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  right: 2vw;
+  bottom: 150px;
+  z-index: 1;
+}
+/* line 464, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .img22 {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  right: 2vw;
+  bottom: 205px;
+  z-index: 1;
+}
+/* line 473, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .bouton_action1 {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  right: 2.3vw;
+  bottom: 205px;
+  z-index: 1;
+}
+/* line 480, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .bouton_action1 img {
+  width: 45px;
+  height: 45px;
+}
+/* line 486, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .bouton_action2 {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  right: 2.3vw;
+  bottom: 150px;
+  z-index: 1;
+}
+/* line 493, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .bouton_action2 img {
+  width: 45px;
+  height: 45px;
+}
+/* line 499, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .bouton_action3 {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  right: 2.3vw;
+  bottom: 95px;
+  z-index: 1;
+}
+/* line 506, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .bouton_action3 img {
+  width: 45px;
+  height: 45px;
+}
+/* line 512, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .bouton_action4 {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  right: 2.3vw;
+  bottom: 40px;
+  z-index: 1;
+}
+/* line 519, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .bouton_action4 img {
+  width: 45px;
+  height: 45px;
+}
+/* line 526, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond button img {
+  box-shadow: 0px 0px 10px 5px #00fcff;
+}
+/* line 532, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .img24 {
+  position: absolute;
+  right: 0;
+  height: 18vh;
+  margin-top: 305px;
+  transition: 1s all;
+}
+/* line 538, ../sass/_plateau.scss */
+.backgroud_plateau .backgroud_plateau_fond .img24 :hover {
+  transform: scale(1.1);
+}
+
+/* line 1, ../sass/_action.scss */
+h1 {
+  font-family: "Robotaur";
+  color: white;
+}
+
+/* line 6, ../sass/_action.scss */
+.bouton {
+  background: #3e4750;
+  width: 110px;
+  height: 25px;
+  text-align: center;
+  float: left;
+}
+/* line 13, ../sass/_action.scss */
+.bouton:hover {
+  opacity: 0.8;
+}
+
+/* line 18, ../sass/_action.scss */
+.action1 {
+  position: absolute;
+  width: 160px;
+  height: 30px;
+  background-color: #374450;
+  right: 4vw;
+  bottom: 213px;
+}
+/* line 25, ../sass/_action.scss */
+.action1 p {
+  text-align: center;
+  padding-top: 8px;
+  font-size: 14px;
+}
+
+/* line 32, ../sass/_action.scss */
+.action2 {
+  position: absolute;
+  width: 160px;
+  height: 30px;
+  background-color: #374450;
+  right: 4vw;
+  bottom: 158px;
+}
+/* line 39, ../sass/_action.scss */
+.action2 p {
+  text-align: center;
+  padding-top: 8px;
+  font-size: 14px;
+}
+
+/* line 46, ../sass/_action.scss */
+.action3 {
+  position: absolute;
+  width: 160px;
+  height: 30px;
+  background-color: #374450;
+  right: 4vw;
+  bottom: 103px;
+}
+/* line 53, ../sass/_action.scss */
+.action3 p {
+  text-align: center;
+  padding-top: 8px;
+  font-size: 14px;
+}
+
+/* line 60, ../sass/_action.scss */
+.action4 {
+  z-index: 1;
+  position: absolute;
+  width: 160px;
+  height: 30px;
+  background-color: #374450;
+  right: 4vw;
+  bottom: 48px;
+}
+/* line 68, ../sass/_action.scss */
+.action4 p {
+  text-align: center;
+  padding-top: 8px;
+  font-size: 14px;
+}
+
+/* line 76, ../sass/_action.scss */
+.used {
+  opacity: 0.3;
+}
+
+/* line 80, ../sass/_action.scss */
+.b1 {
+  z-index: 15;
+  position: absolute;
+  width: 350px;
+  height: 200px;
+  background: #011529;
+  opacity: 0.9;
+  margin-left: 72vh;
+  margin-top: 27vw;
+  border-radius: 6px;
+}
+/* line 90, ../sass/_action.scss */
+.b1 .b1carte {
+  width: 100px;
+  height: 120px;
+  background: #3e4750;
+  position: absolute;
+  margin-left: 16vh;
+  margin-top: 5vh;
+}
+/* line 99, ../sass/_action.scss */
+.b1 h1 {
+  text-align: center;
+  margin-top: 12px;
+}
+/* line 103, ../sass/_action.scss */
+.b1 #annuler {
+  margin-top: 19vh;
+  margin-left: 2vh;
+  padding-top: 4px;
+}
+/* line 109, ../sass/_action.scss */
+.b1 #valider {
+  margin-top: 19vh;
+  margin-left: 14vh;
+  padding-top: 4px;
+}
+
+/* line 116, ../sass/_action.scss */
+.b2 {
+  z-index: 15;
+  position: absolute;
+  width: 450px;
+  height: 200px;
+  background: #011529;
+  opacity: 0.9;
+  margin-left: 70vh;
+  margin-top: 27vw;
+  border-radius: 6px;
+}
+/* line 126, ../sass/_action.scss */
+.b2 .b2carte1 {
+  width: 100px;
+  height: 120px;
+  background: #3e4750;
+  position: absolute;
+  margin-left: 15vh;
+  margin-top: 5vh;
+}
+/* line 134, ../sass/_action.scss */
+.b2 .b2carte2 {
+  width: 100px;
+  height: 120px;
+  background: #3e4750;
+  position: absolute;
+  margin-left: 32vh;
+  margin-top: 5vh;
+}
+/* line 142, ../sass/_action.scss */
+.b2 h1 {
+  text-align: center;
+  margin-top: 12px;
+}
+/* line 146, ../sass/_action.scss */
+.b2 #annuler2 {
+  margin-top: 19vh;
+  margin-left: 2vh;
+  padding-top: 4px;
+}
+/* line 152, ../sass/_action.scss */
+.b2 #valider {
+  margin-top: 19vh;
+  margin-left: 28vh;
+  padding-top: 4px;
+}
+
+/* line 161, ../sass/_action.scss */
+.b3 {
+  z-index: 15;
+  position: absolute;
+  width: 600px;
+  height: 200px;
+  background: #011529;
+  opacity: 0.9;
+  margin-left: 53vh;
+  margin-top: 27vw;
+  border-radius: 6px;
+}
+/* line 171, ../sass/_action.scss */
+.b3 .b3carte1 {
+  width: 100px;
+  height: 120px;
+  background: #3e4750;
+  position: absolute;
+  margin-left: 12vh;
+  margin-top: 5vh;
+}
+/* line 179, ../sass/_action.scss */
+.b3 .b3carte2 {
+  width: 100px;
+  height: 120px;
+  background: #3e4750;
+  position: absolute;
+  margin-left: 34vh;
+  margin-top: 5vh;
+}
+/* line 188, ../sass/_action.scss */
+.b3 .b3carte3 {
+  width: 100px;
+  height: 120px;
+  background: #3e4750;
+  position: absolute;
+  margin-left: 56vh;
+  margin-top: 5vh;
+}
+/* line 196, ../sass/_action.scss */
+.b3 h1 {
+  text-align: center;
+  margin-top: 12px;
+}
+/* line 200, ../sass/_action.scss */
+.b3 #annuler3 {
+  margin-top: 19vh;
+  margin-left: 2vh;
+  padding-top: 4px;
+}
+/* line 206, ../sass/_action.scss */
+.b3 #valider {
+  margin-top: 19vh;
+  margin-left: 48vh;
+  padding-top: 4px;
+}
+
+/* line 215, ../sass/_action.scss */
+.b4 {
+  z-index: 15;
+  position: absolute;
+  width: 600px;
+  height: 200px;
+  background: #011529;
+  opacity: 0.9;
+  margin-left: 53vh;
+  margin-top: 27vw;
+  border-radius: 6px;
+}
+/* line 225, ../sass/_action.scss */
+.b4 .b4carte1 {
+  width: 100px;
+  height: 120px;
+  background: #3e4750;
+  position: absolute;
+  margin-left: 8vh;
+  margin-top: 5vh;
+}
+/* line 233, ../sass/_action.scss */
+.b4 .b4carte2 {
+  width: 100px;
+  height: 120px;
+  background: #3e4750;
+  position: absolute;
+  margin-left: 24vh;
+  margin-top: 5vh;
+}
+/* line 242, ../sass/_action.scss */
+.b4 .b4carte3 {
+  width: 100px;
+  height: 120px;
+  background: #3e4750;
+  position: absolute;
+  margin-left: 48vh;
+  margin-top: 5vh;
+}
+/* line 250, ../sass/_action.scss */
+.b4 .b4carte4 {
+  width: 100px;
+  height: 120px;
+  background: #3e4750;
+  position: absolute;
+  margin-left: 64vh;
+  margin-top: 5vh;
+}
+/* line 258, ../sass/_action.scss */
+.b4 h1 {
+  text-align: center;
+  margin-top: 12px;
+}
+/* line 262, ../sass/_action.scss */
+.b4 #annuler3 {
+  margin-top: 19vh;
+  margin-left: 2vh;
+  padding-top: 4px;
+}
+/* line 268, ../sass/_action.scss */
+.b4 #valider {
+  margin-top: 19vh;
+  margin-left: 48vh;
+  padding-top: 4px;
+}

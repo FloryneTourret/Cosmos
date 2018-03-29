@@ -1,0 +1,277 @@
+h1 {
+    font-family: "Robotaur";
+    color: white;
+}
+
+.bouton {
+    background: #3e4750;
+    width: 110px;
+    height: 25px;
+    text-align: center;
+    float: left;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.action1{
+    position: absolute;
+    width: 160px;
+    height: 30px;
+    background-color: #374450;
+    right: 4vw;
+    bottom: 213px;
+     p{
+         text-align: center;
+         padding-top: 8px;
+         font-size: 14px;
+     }
+
+}
+.action2{
+    position: absolute;
+    width: 160px;
+    height: 30px;
+    background-color: #374450;
+    right: 4vw;
+    bottom: 158px;
+     p{
+         text-align: center;
+         padding-top: 8px;
+         font-size: 14px;
+     }
+
+}
+.action3{
+    position: absolute;
+    width: 160px;
+    height: 30px;
+    background-color: #374450;
+    right: 4vw;
+    bottom: 103px;
+     p{
+         text-align: center;
+         padding-top: 8px;
+         font-size: 14px;
+     }
+
+}
+.action4{
+    z-index: 1;
+    position: absolute;
+    width: 160px;
+    height: 30px;
+    background-color: #374450;
+    right: 4vw;
+    bottom: 48px;
+     p{
+         text-align: center;
+         padding-top: 8px;
+         font-size: 14px;
+     }
+
+}
+
+.used {
+    opacity: 0.3;
+}
+
+.b1 {
+    z-index: 15;
+    position: absolute;
+    width: 350px;
+    height: 200px;
+    background: #011529;
+    opacity: 0.9;
+    margin-left: 72vh;
+    margin-top: 27vw;
+    border-radius: 6px;
+    .b1carte {
+        width: 100px;
+        height: 120px;
+        background: #3e4750;
+        position: absolute;
+        margin-left: 16vh;
+        margin-top: 5vh;
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 12px;
+    }
+    #annuler {
+        margin-top: 19vh;
+        margin-left: 2vh;
+        padding-top: 4px;
+    }
+
+    #valider {
+        margin-top: 19vh;
+        margin-left: 14vh;
+        padding-top: 4px;
+    }
+}
+
+.b2 {
+    z-index: 15;
+    position: absolute;
+    width: 450px;
+    height: 200px;
+    background: #011529;
+    opacity: 0.9;
+    margin-left: 70vh;
+    margin-top: 27vw;
+    border-radius: 6px;
+    .b2carte1{
+        width: 100px;
+        height: 120px;
+        background: #3e4750;
+        position: absolute;
+        margin-left: 15vh;
+        margin-top: 5vh;
+    }
+    .b2carte2 {
+        width: 100px;
+        height: 120px;
+        background: #3e4750;
+        position: absolute;
+        margin-left: 32vh;
+        margin-top: 5vh;
+    }
+    h1 {
+        text-align: center;
+        margin-top: 12px;
+    }
+    #annuler2 {
+        margin-top: 19vh;
+        margin-left: 2vh;
+        padding-top: 4px;
+    }
+
+    #valider{
+        margin-top: 19vh;
+        margin-left: 28vh;
+        padding-top: 4px;
+    }
+}
+
+
+
+.b3 {
+    z-index: 15;
+    position: absolute;
+    width: 600px;
+    height: 200px;
+    background: #011529;
+    opacity: 0.9;
+    margin-left: 53vh;
+    margin-top: 27vw;
+    border-radius: 6px;
+    .b3carte1{
+        width: 100px;
+        height: 120px;
+        background: #3e4750;
+        position: absolute;
+        margin-left: 12vh;
+        margin-top: 5vh;
+    }
+    .b3carte2 {
+        width: 100px;
+        height: 120px;
+        background: #3e4750;
+        position: absolute;
+        margin-left: 34vh;
+        margin-top: 5vh;
+    }
+
+    .b3carte3 {
+        width: 100px;
+        height: 120px;
+        background: #3e4750;
+        position: absolute;
+        margin-left: 56vh;
+        margin-top: 5vh;
+    }
+    h1 {
+        text-align: center;
+        margin-top: 12px;
+    }
+    #annuler3{
+        margin-top: 19vh;
+        margin-left: 2vh;
+        padding-top: 4px;
+    }
+
+    #valider{
+        margin-top: 19vh;
+        margin-left: 48vh;
+        padding-top: 4px;
+    }
+}
+
+
+
+.b4 {
+    z-index: 15;
+    position: absolute;
+    width: 600px;
+    height: 200px;
+    background: #011529;
+    opacity: 0.9;
+    margin-left: 53vh;
+    margin-top: 27vw;
+    border-radius: 6px;
+    .b4carte1{
+        width: 100px;
+        height: 120px;
+        background: #3e4750;
+        position: absolute;
+        margin-left: 8vh;
+        margin-top: 5vh;
+    }
+    .b4carte2 {
+        width: 100px;
+        height: 120px;
+        background: #3e4750;
+        position: absolute;
+        margin-left: 24vh;
+        margin-top: 5vh;
+    }
+
+    .b4carte3 {
+        width: 100px;
+        height: 120px;
+        background: #3e4750;
+        position: absolute;
+        margin-left: 48vh;
+        margin-top: 5vh;
+    }
+    .b4carte4 {
+        width: 100px;
+        height: 120px;
+        background: #3e4750;
+        position: absolute;
+        margin-left: 64vh;
+        margin-top: 5vh;
+    }
+    h1 {
+        text-align: center;
+        margin-top: 12px;
+    }
+    #annuler3 {
+        margin-top: 19vh;
+        margin-left: 2vh;
+        padding-top: 4px;
+    }
+
+    #valider{
+        margin-top: 19vh;
+        margin-left: 48vh;
+        padding-top: 4px;
+    }
+}
+
+
+
+

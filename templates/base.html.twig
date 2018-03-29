@@ -2,6 +2,9 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     {# Bloc du title du site #}
     <title>{% block title %}Cosmos{% endblock %}</title>
 
@@ -46,7 +49,7 @@
 {% block footer %}{% endblock %}
 
 <!-- Fichiers JS communs-->
-<script src="{{ asset('assets/js/jquery.js') }}"></script>
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <script src="{{ asset('assets/js/boostrap.js') }}"></script>
 <script src="{{ asset('assets/js/nmp.js') }}"></script>
 

@@ -1,0 +1,544 @@
+body p {
+  font-family: "Robotaur";
+  color: white;
+}
+
+button{
+  background-color: transparent;
+  border: none;
+}
+
+.plateau {
+  background: #0c5584;
+  min-height: 100vh;
+}
+
+.carte {
+  background: #266b96;
+  min-height: 100vh;
+}
+
+.haut {
+margin-top:202px !important;
+}
+
+.bas{
+margin-top:291px !important;
+}
+
+.scorej2 {
+  position: absolute;
+  font-size: 16px;
+  left: 10vw ;
+  margin-top: 80px;
+  line-height: 30px;
+}
+
+.scorej1 {
+  position: absolute;
+  font-size: 16px;
+  right: 10vw ;
+  bottom: 80px;
+  line-height: 30px;
+  text-align: right;
+}
+
+.cartes_adversaire{
+  text-align: center;
+  img {
+    position: absolute;
+    width: 5vw;
+  }
+}
+
+.nb1 {
+  z-index: 10;
+  transform: rotate(20deg);
+}
+.nb2 {
+  z-index: 11;
+  margin-left: 50px;
+  transform: rotate(15deg) translateY(12px);
+
+}
+.nb3 {
+  z-index: 12;
+  margin-left: 100px;
+  transform: rotate(10deg) translateY(20px);
+}
+.nb4 {
+  z-index: 13;
+  margin-left: 150px;
+  transform: rotate(5deg) translateY(27px);
+}
+.nb5 {
+  z-index: 14;
+  margin-left: 200px;
+  transform: rotate(-7deg) translateY(25px);
+}
+.nb6 {
+  z-index: 15;
+  margin-left: 250px;
+  transform: rotate(-10deg) translateY(16px);
+}
+.nb7 {
+  z-index: 16;
+  margin-left: 300px;
+  transform: rotate(-20deg);
+
+}
+
+.joueur1{
+  position: absolute;
+  right: 10vw;
+  bottom: 50px;
+  p{
+    color: #53D0FF;
+    font-size: 22px;
+  }
+}
+.joueur2{
+  position: absolute;
+  left: 10vw;
+  margin-top: 50px;
+  p{
+    color: #53D0FF;
+    font-size: 22px;
+  }
+}
+
+.manche {
+  float: right;
+  font-size: 30px;
+  margin-right: 10vw;
+  margin-top: 30px;
+}
+
+.objet {
+  margin-left: 36vw;
+  img {
+    position: absolute;
+    width: 6vw;
+    bottom: 2vh;
+  }
+}
+
+.n0 {
+  z-index: 9;
+  transform: rotate(-20deg);
+  transition: all 1s;
+  &:hover {
+    transform: rotate(-20deg) translateY(-35px);
+    box-shadow: 0px 0px 10px 5px #00fcff;
+  }
+}
+.n1 {
+  z-index: 10;
+  transform: rotate(-15deg) translateY(-12px);
+  margin-left: 50px;
+  transition: all 1s;
+  &:hover {
+    transform: rotate(-15deg) translateY(-50px);
+    box-shadow: 0px 0px 10px 5px #00fcff;
+
+  }
+}
+.n2 {
+  z-index: 11;
+  transform: rotate(-10deg) translateY(-19px);
+  margin-left: 100px;
+  transition: all 1s;
+  &:hover {
+    transform: rotate(-10deg) translateY(-60px);
+    box-shadow: 0px 0px 10px 5px #00fcff;
+  }
+}
+.n3 {
+  z-index: 12;
+  margin-left: 150px;
+  transform: rotate(-3deg) translateY(-20px);
+  transition: all 1s;
+  &:hover {
+    transform: rotate(-3deg) translateY(-60px);
+    box-shadow: 0px 0px 10px 5px #00fcff;
+  }
+}
+.n4 {
+  z-index: 13;
+  margin-left: 200px;
+  transform: rotate(5deg) translateY(-17px);
+  transition: all 1s;
+  &:hover {
+    transform: rotate(5deg) translateY(-60px);
+    box-shadow: 0px 0px 10px 5px #00fcff;
+  }
+}
+.n5 {
+  z-index: 14;
+  margin-left: 250px;
+  transform: rotate(15deg) translateY(-7px);
+  transition: all 1s;
+  &:hover {
+    transform: rotate(15deg) translateY(-60px);
+    box-shadow: 0px 0px 10px 5px #00fcff;
+  }
+}
+.n6 {
+  z-index: 15;
+  margin-left: 300px;
+  transform: rotate(25deg) translateY(8px);
+  transition: all 1s;
+  &:hover {
+    transform: rotate(25deg) translateY(-20px);
+    box-shadow: 0px 0px 10px 5px #00fcff;
+  }
+}
+
+.backgroud_plateau {
+  min-height: 50vh;
+
+  .backgroud_plateau_fond {
+    background: url("../img/plateau/fond.png") no-repeat center;
+    background-size: cover;
+    height: 100vh;
+
+    .victoire{
+      color: #FDFFA9;
+      font-family: Robotaur;
+      font-size: 40px;
+      position: absolute;
+      bottom: 40vh;
+      margin-left: 22vw;
+    }
+
+    .img2 {
+      width: 20vw;
+      position: absolute;
+    }
+    .img3 {
+      position: absolute;
+      width: 45px;
+      height: 45px;
+      margin-left: 2vw;
+      margin-top: 40px;
+    }
+
+    .img4 {
+      position: absolute;
+      width: 45px;
+      height: 45px;
+      margin-left: 2vw;
+      margin-top: 95px;
+    }
+    .img5 {
+      position: absolute;
+      width: 45px;
+      height: 45px;
+      margin-left: 2vw;
+      margin-top: 150px;
+    }
+    .img6 {
+      position: absolute;
+      width: 45px;
+      height: 45px;
+      margin-left: 2vw;
+      margin-top: 205px;
+    }
+
+    .img10 {
+      position: absolute;
+      width: 8vw;
+      margin-top: 22vh;
+      margin-left: 18vw;
+    }
+    .pion1 {
+      z-index: 10;
+      width: 2vw;
+      position: absolute;
+      margin-left: 21vw;
+      margin-top: 31vh;
+    }
+    .pion1_haut {
+      z-index: 10;
+      width: 2vw;
+      position: absolute;
+      margin-left: 21vw;
+      margin-top: 26vh;
+    }
+    .pion1_bas {
+      z-index: 10;
+      width: 2vw;
+      position: absolute;
+      margin-left: 21vw;
+      margin-top: 37vh;
+    }
+    .img11 {
+      position: absolute;
+      width: 8vw;
+      margin-top: 22vh;
+      margin-left: 27vw;
+    }
+    .pion2 {
+      z-index: 10;
+      width: 2vw;
+      position: absolute;
+      margin-left: 30vw;
+      margin-top: 31vh;
+    }
+    .pion2_haut {
+      z-index: 10;
+      width: 2vw;
+      position: absolute;
+      margin-left: 30vw;
+      margin-top: 26vh;
+    }
+    .pion2_bas {
+      z-index: 10;
+      width: 2vw;
+      position: absolute;
+      margin-left: 30vw;
+      margin-top: 37vh;
+    }
+    .img12 {
+      position: absolute;
+      width: 8vw;
+      margin-top: 22vh;
+      margin-left: 36vw;
+    }
+    .pion3 {
+      z-index: 10;
+      width: 2vw;
+      position: absolute;
+      margin-left: 39vw;
+      margin-top: 31vh;
+    }
+    .pion3_haut{
+      z-index: 10;
+      width: 2vw;
+      position: absolute;
+      margin-left: 39vw;
+      margin-top: 26vh;
+    }
+    .pion3_bas {
+      z-index: 10;
+      width: 2vw;
+      position: absolute;
+      margin-left: 39vw;
+      margin-top: 37vh;
+    }
+    .img13 {
+      position: absolute;
+      width: 8vw;
+      margin-top: 22vh;
+      margin-left: 45vw;
+    }
+    .pion4 {
+      z-index: 10;
+      width: 2vw;
+      position: absolute;
+      margin-left: 48vw;
+      margin-top: 31vh;
+    }
+    .pion4_haut {
+      z-index: 10;
+      width: 2vw;
+      position: absolute;
+      margin-left: 48vw;
+      margin-top: 26vh;
+    }
+    .pion4_bas {
+      z-index: 10;
+      width: 2vw;
+      position: absolute;
+      margin-left: 48vw;
+      margin-top: 37vh;
+    }
+    .img14 {
+      position: absolute;
+      width: 8vw;
+      margin-top: 22vh;
+      margin-left: 54vw;
+    }
+    .pion5{
+      z-index: 10;
+      width: 2vw;
+      position: absolute;
+      margin-left: 57vw;
+      margin-top: 31vh;
+    }
+    .pion5_haut{
+      z-index: 10;
+      width: 2vw;
+      position: absolute;
+      margin-left: 57vw;
+      margin-top: 26vh;
+    }
+    .pion5_bas{
+       z-index: 10;
+       width: 2vw;
+       position: absolute;
+       margin-left: 57vw;
+       margin-top: 37vh;
+     }
+    .img15 {
+      position: absolute;
+      width: 8vw;
+      margin-top: 22vh;
+      margin-left: 63vw;
+    }
+    .pion6 {
+      z-index: 10;
+      width: 2vw;
+      position: absolute;
+      margin-left: 66vw;
+      margin-top: 31vh;
+    }
+    .pion6_haut{
+      z-index: 10;
+      width: 2vw;
+      position: absolute;
+      margin-left: 66vw;
+      margin-top: 26vh;
+    }
+    .pion6_bas {
+      z-index: 10;
+      width: 2vw;
+      position: absolute;
+      margin-left: 66vw;
+      margin-top: 37vh;
+    }
+    .img16 {
+      position: absolute;
+      width: 8vw;
+      margin-top: 22vh;
+      margin-left: 72vw;
+    }
+    .pion7 {
+      z-index: 10;
+      width: 2vw;
+      position: absolute;
+      margin-left: 75vw;
+      margin-top: 31vh;
+    }
+    .pion7_haut {
+      z-index: 10;
+      width: 2vw;
+      position: absolute;
+      margin-left: 75vw;
+      margin-top: 26vh;
+    }
+    .pion7_ba {
+      z-index: 10;
+      width: 2vw;
+      position: absolute;
+      margin-left: 75vw;
+      margin-top: 37vh;
+    }
+
+    .img19 {
+      position: absolute;
+      width: 45px;
+      height: 45px;
+      right: 2vw;
+      bottom: 40px;
+      z-index: 2;
+    }
+
+    .img20 {
+      position: absolute;
+      width: 45px;
+      height: 45px;
+      right: 2vw;
+      bottom: 95px;
+      z-index: 1;
+    }
+    .img21 {
+      position: absolute;
+      width: 45px;
+      height: 45px;
+      right: 2vw;
+      bottom: 150px;
+      z-index: 1;
+    }
+
+    .img22 {
+      position: absolute;
+      width: 45px;
+      height: 45px;
+      right: 2vw;
+      bottom: 205px;
+      z-index: 1;
+    }
+
+    .bouton_action1{
+      position: absolute;
+      width: 45px;
+      height: 45px;
+      right: 2.3vw;
+      bottom: 205px;
+      z-index: 1;
+      img{
+        width: 45px;
+        height: 45px;
+      }
+    }
+
+    .bouton_action2{
+      position: absolute;
+      width: 45px;
+      height: 45px;
+      right: 2.3vw;
+      bottom: 150px;
+      z-index: 1;
+      img{
+        width: 45px;
+        height: 45px;
+      }
+    }
+
+    .bouton_action3{
+      position: absolute;
+      width: 45px;
+      height: 45px;
+      right: 2.3vw;
+      bottom: 95px;
+      z-index: 1;
+      img{
+        width: 45px;
+        height: 45px;
+      }
+    }
+
+    .bouton_action4{
+      position: absolute;
+      width: 45px;
+      height: 45px;
+      right: 2.3vw;
+      bottom: 40px;
+      z-index: 1;
+      img{
+        width: 45px;
+        height: 45px;
+      }
+    }
+
+    button{
+      img{
+        box-shadow: 0px 0px 10px 5px #00fcff;
+      }
+    }
+
+
+    .img24 {
+      position: absolute;
+      right:0;
+      height: 18vh;
+      margin-top: 305px;
+      transition: 1s all;
+      :hover {
+        transform: scale(1.1);
+      }
+    }
+
+  }
+}
