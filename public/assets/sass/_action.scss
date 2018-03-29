@@ -5,8 +5,9 @@ h1 {
 
 .bouton {
     background: #3e4750;
-    width: 110px;
-    height: 25px;
+    width: auto;
+    padding: 10px;
+  padding-top: 0;
     text-align: center;
     float: left;
 
@@ -271,6 +272,280 @@ h1 {
         padding-top: 4px;
     }
 }
+
+
+.concurrence {
+  z-index: 15;
+  position: absolute;
+  width: 45vw;
+  height: 28vh;
+  background: #011529;
+  opacity: 0.9;
+  left: 27.4vw;
+  top: 48vh;
+  border-radius: 6px;
+  h1 {
+    text-align: center;
+    margin-top: 12px;
+  }
+  #paire1 {
+    margin-top: 3vh;
+    margin-left: 5vw;
+    padding-top: 4px;
+  }
+
+  #paire2{
+    margin-top: 3vh;
+    margin-left: 8vw;
+    padding-top: 4px;
+  }
+
+  #valider{
+    margin-top: 2vh;
+    margin-left: 35vw;
+    padding-top: 4px;
+    color: white;
+    font-family: Robotaur;
+  }
+  span{
+    font-family: Robotaur;
+    color: white;
+  }
+
+  .cartes{
+    width: 4vw;
+    background: #3e4750;
+    position: relative;
+    margin-left: 6vw;
+    margin-top: 2vh;
+  }
+
+}
+
+.cadeau {
+  z-index: 15;
+  position: absolute;
+  width: 45vw;
+  height: 23vh;
+  background: #011529;
+  opacity: 0.9;
+  left: 27.4vw;
+  top: 48vh;
+  border-radius: 6px;
+  h1 {
+    text-align: center;
+    margin-top: 12px;
+  }
+  #valider{
+    margin-top: 2vh;
+    margin-left: 35vw;
+    padding-top: 4px;
+    color: white;
+    font-family: Robotaur;
+  }
+  span{
+    font-family: Robotaur;
+    color: white;
+  }
+
+  .cartes{
+    width: 4vw;
+    background: #3e4750;
+    position: relative;
+    margin-top: 2vh;
+  }
+
+  .selection{
+    margin-left: 8vw;
+  }
+
+}
+
+.victoire {
+  z-index: 15;
+  position: absolute;
+  width: 45vw;
+  height: 15vh;
+  background: #011529;
+  opacity: 0.9;
+  left: 27.4vw;
+  top: 48vh;
+  border-radius: 6px;
+  h1 {
+    text-align: center;
+    margin-top: 4vh;
+  }
+  h2{
+    text-align: right;
+    color: white;
+    font-family: Robotaur;
+    background-color:#3e4750;
+    padding: 10px;
+    margin-top: 1vh;
+    margin-left: 28vw;
+  }
+
+}
+
+.tour {
+  z-index: 15;
+  position: absolute;
+  width: 45vw;
+  height: 15vh;
+  background: #011529;
+  opacity: 0.9;
+  left: 27.4vw;
+  top: 48vh;
+  border-radius: 6px;
+  h1 {
+    text-align: center;
+    margin-top: 4vh;
+  }
+  h2{
+    text-align: right;
+    color: white;
+    font-family: Robotaur;
+    background-color:#3e4750;
+    padding: 10px;
+    margin-top: 1vh;
+    margin-left: 28vw;
+  }
+
+}
+
+.terrain1{
+  position: absolute;
+  margin-top: 18.5vh;
+  margin-left: 18vw;
+  img{
+    width: 1.5vw;
+  }
+}
+
+.terrain2{
+  position: absolute;
+  margin-top: 18.5vh;
+  margin-left: 27vw;
+  img{
+    width: 1.5vw;
+  }
+}
+
+.terrain3{
+  position: absolute;
+  margin-top: 18.5vh;
+  margin-left: 36vw;
+  img{
+    width: 1.5vw;
+  }
+}
+
+.terrain4{
+  position: absolute;
+  margin-top: 18.5vh;
+  margin-left: 45vw;
+  img{
+    width: 1.5vw;
+  }
+}
+
+.terrain5{
+  position: absolute;
+  margin-top: 18.5vh;
+  margin-left: 54vw;
+  img{
+    width: 1.5vw;
+  }
+}
+
+.terrain6{
+  position: absolute;
+  margin-top: 18.5vh;
+  margin-left: 63vw;
+  img{
+    width: 1.5vw;
+  }
+}
+
+
+.terrain7{
+  position: absolute;
+  margin-top: 18.5vh;
+  margin-left: 72vw;
+  img{
+    width: 1.5vw;
+  }
+}
+
+
+.terrainb1{
+  position: absolute;
+  margin-top: 43vh;
+  margin-left: 18vw;
+  img{
+    width: 1.5vw;
+  }
+}
+
+.terrainb2{
+  position: absolute;
+  margin-top: 43vh;
+  margin-left: 27vw;
+  img{
+    width: 1.5vw;
+  }
+}
+
+.terrainb3{
+  position: absolute;
+  margin-top: 43vh;
+  margin-left: 36vw;
+  img{
+    width: 1.5vw;
+  }
+}
+
+.terrainb4{
+  position: absolute;
+  margin-top: 43vh;
+  margin-left: 45vw;
+  img{
+    width: 1.5vw;
+  }
+}
+
+.terrainb5{
+  position: absolute;
+  margin-top: 43vh;
+  margin-left: 54vw;
+  img{
+    width: 1.5vw;
+  }
+}
+
+.terrainb6{
+  position: absolute;
+  margin-top: 43vh;
+  margin-left: 63vw;
+  img{
+    width: 1.5vw;
+  }
+}
+
+
+.terrainb7{
+  position: absolute;
+  margin-top: 43vh;
+  margin-left: 72vw;
+  img{
+    width: 1.5vw;
+    z-index: 0;
+  }
+}
+
+
+
+
 
 
 

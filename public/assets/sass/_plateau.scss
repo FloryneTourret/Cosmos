@@ -202,15 +202,6 @@ margin-top:291px !important;
     background-size: cover;
     height: 100vh;
 
-    .victoire{
-      color: #FDFFA9;
-      font-family: Robotaur;
-      font-size: 40px;
-      position: absolute;
-      bottom: 40vh;
-      margin-left: 22vw;
-    }
-
     .img2 {
       width: 20vw;
       position: absolute;
@@ -250,6 +241,7 @@ margin-top:291px !important;
       width: 8vw;
       margin-top: 22vh;
       margin-left: 18vw;
+      z-index: 1;
     }
     .pion1 {
       z-index: 10;
@@ -277,6 +269,7 @@ margin-top:291px !important;
       width: 8vw;
       margin-top: 22vh;
       margin-left: 27vw;
+      z-index: 1;
     }
     .pion2 {
       z-index: 10;
@@ -304,6 +297,7 @@ margin-top:291px !important;
       width: 8vw;
       margin-top: 22vh;
       margin-left: 36vw;
+      z-index: 1;
     }
     .pion3 {
       z-index: 10;
@@ -331,6 +325,7 @@ margin-top:291px !important;
       width: 8vw;
       margin-top: 22vh;
       margin-left: 45vw;
+      z-index: 1;
     }
     .pion4 {
       z-index: 10;
@@ -358,6 +353,7 @@ margin-top:291px !important;
       width: 8vw;
       margin-top: 22vh;
       margin-left: 54vw;
+      z-index: 1;
     }
     .pion5{
       z-index: 10;
@@ -385,6 +381,7 @@ margin-top:291px !important;
       width: 8vw;
       margin-top: 22vh;
       margin-left: 63vw;
+      z-index: 1;
     }
     .pion6 {
       z-index: 10;
@@ -412,6 +409,7 @@ margin-top:291px !important;
       width: 8vw;
       margin-top: 22vh;
       margin-left: 72vw;
+      z-index: 1;
     }
     .pion7 {
       z-index: 10;
