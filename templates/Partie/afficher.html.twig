@@ -851,7 +851,7 @@
 
 
                 {#VICTOIRE#}
-                {% if partie.PartieTour == 9 %}
+                {% if partie.PartieTour == 9 and partie.CarteConcurrenceJ2==null and partie.CarteConcurrenceJ1==null and partie.CarteCadeauJ2==null and partie.CarteCadeauJ1==null %}
                     <div class="victoire">
                         {% if partie.ScoreJ1 >= 11 %}
                             <h1>Victoire par points de {{ partie.Joueur1.username }}!<br><br><a href="{{ path('nouvelle_partie') }}">Refaire une partie !</a></h1>
@@ -942,7 +942,7 @@
                             </div>
                         {% endif %}
                     {% else %}
-                        {% if partie.PartieTour!=9 %}
+                        {% if partie.PartieTour!=9 or partie.CarteConcurrenceJ1!=null or partie.CarteCadeauJ1!=null %}
                             <div class="tour">
                                 <h1>Tour de l'adversaire !</h1>
                             </div>
@@ -958,7 +958,7 @@
                         {% endif %}
 
                     {% else %}
-                        {% if partie.PartieTour!=9 %}
+                        {% if partie.PartieTour!=9 or partie.CarteConcurrenceJ2!=null or partie.CarteCadeauJ2!=null %}
                             <div class="tour">
                                 <h1>Tour de l'adversaire !</h1>
                             </div>
