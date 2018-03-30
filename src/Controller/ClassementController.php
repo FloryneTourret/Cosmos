@@ -37,6 +37,6 @@ class ClassementController extends Controller
 
         $joueurs= $this->getDoctrine()->getRepository(User::class)->findAll();
 
-        return $this->render('user/classement.html.twig', ['moi' => $joueur, 'autres'=>$joueurs]);
+        return $this->render('User/classement.html.twig', ['moi' => $joueur, 'autres'=>$joueurs]);
     }
 }

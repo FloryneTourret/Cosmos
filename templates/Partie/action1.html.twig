@@ -929,7 +929,7 @@
 
         </div>
         <h1>Selectionnez une carte</h1>
-        <button class="bouton" id="annuler" name="id" value="{{ partie.Id }}" formaction="">Annuler</button>
+        <button class="bouton" id="annuler" name="id" value="{{ partie.Id }}" formaction="{{ path('retour') }}">Annuler</button>
         <button class="bouton" id="valider" type="submit" name="id" value="{{ partie.Id }}">Valider</button>
 
      </div>

@@ -242,4 +242,15 @@ class PartieController extends Controller
 
         return $this->redirectToRoute('afficher_partie', ['id' => $partie->getId()]);
     }
+
+    /**
+     * @Route("/retour", name="retour")
+     */
+    public function retour(Request $request)
+    {
+        $partie_recup = $request->request->get('id');
+        $partie = $this->getDoctrine()->getRepository(Parties::class)->find($partie_recup);
+        return $this->redirectToRoute('afficher_partie', ['id' => $partie->getId()]);
+    }
+
 }
