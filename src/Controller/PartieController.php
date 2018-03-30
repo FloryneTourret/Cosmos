@@ -128,21 +128,6 @@ class PartieController extends Controller
         }
         return $this->render('Partie/afficher.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
     }
-    /**
-     * @Route("/rejoindre", name="rejoindre_partie")
-     */
-    public function rejoindrePartie()
-    {
-        $user = $this->getUser();
-        if($user) {
-            $id = $user->getId();
-        } else {
-            $id = "Pas d'Id";
-        }
-        //Récupère les parties avec le joueur dedans
-        $parties=  $this->getDoctrine()->getRepository(Parties::class)->findBy(['joueur2' => $id]);
-        return $this->render('Partie/rejoindre.html.twig', ['parties' => $parties]);
-    }
 
     /**
      * @Route("/continuer", name="continuer_partie")

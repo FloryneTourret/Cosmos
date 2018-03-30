@@ -11,12 +11,20 @@
             Rejoindre une partie :
             <select name="id">
                 {% for partie in parties |reverse %}
-                    {% if partie.PartieTour > 1 and partie.PartieTour < 9  %}
+                    {% if partie.PartieTour <= 9  %}
                         {% if partie.Joueur1.Id!= app.user.Id  %}
-                            <option value="{{ partie.id }}">{{ partie.PartieNom }}, {{ partie.PartieDate |date("d/m/Y à H:i:s")}} avec {{ partie.Joueur1.Username }}, Tour N°{{ partie.PartieTour }} </option>
+                            {% if partie.PartieTour == 9 %}
+                                <option value="{{ partie.id }}">{{ partie.PartieNom }}, {{ partie.PartieDate |date("d/m/Y à H:i:s")}} avec {{ partie.Joueur1.Username }}, Partie Finie </option>
+                            {% else %}
+                                <option value="{{ partie.id }}">{{ partie.PartieNom }}, {{ partie.PartieDate |date("d/m/Y à H:i:s")}} avec {{ partie.Joueur1.Username }}, Tour N°{{ partie.PartieTour }} </option>
+                            {% endif %}
                         {% endif %}
                         {% if partie.Joueur2.Id!= app.user.Id  %}
-                            <option value="{{ partie.id }}">{{ partie.PartieNom }}, {{ partie.PartieDate |date("d/m/Y à H:i:s")}} avec {{ partie.Joueur2.Username }}, Tour N°{{ partie.PartieTour }} </option>
+                            {% if partie.PartieTour == 9 %}
+                                <option value="{{ partie.id }}">{{ partie.PartieNom }}, {{ partie.PartieDate |date("d/m/Y à H:i:s")}} avec {{ partie.Joueur2.Username }}, Partie Finie </option>
+                            {% else %}
+                                <option value="{{ partie.id }}">{{ partie.PartieNom }}, {{ partie.PartieDate |date("d/m/Y à H:i:s")}} avec {{ partie.Joueur2.Username }}, Tour N°{{ partie.PartieTour }} </option>
+                            {% endif %}
                         {% endif %}
                     {% endif %}
                 {% endfor %}
