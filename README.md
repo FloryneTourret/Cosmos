@@ -3,6 +3,9 @@
 Tous droits réservés comprenant le code entier, les réalisations graphiques et le contenu vidéo.
 
 
+Toute reprise de ce contenu sans autorisation écrite sera passable de poursuites.
+
+
 Réalisé par l'agence Heptagame.
 
 
@@ -14,5 +17,3 @@ Graphistes : Tiffany HEMMEN et Antony LORGEOUX.
 
 Scénaristes : Antoine BIGNAN et Frédéric BOTEL.
 
-
-Toute reprise de ce contenu sans autorisation écrite sera passable de poursuites.
