@@ -1,4 +1,4 @@
-#Jeu semestre 4 MMI
+#Jeu pour le projet du semestre 4 MMI : COSMOS
 
 Tous droits réservés comprenant le code entier, les réalisations graphiques et le contenu vidéo.
 
