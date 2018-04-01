@@ -2,32 +2,97 @@
 
 {% block body %}
 
+    <section class="accueil">
+        <div class="corps">
+            <div class="container-fluid justify-content-center">
+                <div class="col-6">
+                    <div class="contenu-histoire" >
+                        <div class="haut">
+                            <button class="tablinks active" onclick="openContenu(event, 'histoire')" id="defaultOpen"><h2>Histoire</h2></button>
+                            <button class="tablinks" onclick="openContenu(event, 'regle')"><h2>Régle</h2></button>
+                        </div>
+                        <div class="bas">
+                            <div id="histoire" class="tabcontent">
+                                <p>Vous convoitez le contrôle du cosmos
+                                    avec un autre prétendant, le but est
+                                    d'acquérir le contrôle du système solaire
+                                    en récupérant la force de chaque
+                                    communauté. Afin d’acquérir le soutien
+                                    de chaque planètes il faudra soudoyer les
+                                    dirigeants. Pour cela il faudra offrir un
+                                    des objets typique convoités en fonction
+                                    de chacun pour accroître votre soutien et
+                                    donc remporter la victoire sur les élections.
+                                </p>
 
-    <h1>Administrateur : {{ app.user.username }}</h1> <br><br>
+                            </div>
+                            <div id="regle" class="tabcontent">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci delectus deserunt ducimus eaque error ex incidunt, magni nesciunt officiis pariatur perferendis provident quis sequi suscipit ut vel, veniam voluptatibus.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="jouer">
+                        <a href="{{  path('nouvelle_partie') }}" class="box-jouer">Jouer</a>
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/IWa9F0pddW0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        </div>
 
-    <form method="post" action="{{ path('update_username') }}">
-        <div>
-            <h2>Changer de pseudo :</h2>
-            <input type="text" value="{{ app.user.username }}" name="username" placeholder="Nouveau Pseudo">
-            <input type="submit" value="Changer">
+                    </div>
+
+
+                </div>
+            </div>
         </div>
-    </form>
 
-    <form method="post" action="{{ path('update_email') }}">
-        <div>
-            <h2>Changer d'email :</h2>
-            <input type="email" value="{{ app.user.email }}" name="email" placeholder="Nouvel email">
-            <input type="submit" value="Changer">
-        </div>
-    </form>
+    </section>
 
-    <form method="post" action="{{ path('update_password') }}">
-        <div>
-            <h2>Changer de mot de passe :</h2>
-            <input type="password" name="premier" placeholder="Entrer nouveau mot de passe"><br>
-            <input type="password" name="deuxieme" placeholder="Répéter mot de passe">
-            <input type="submit" value="Changer">
-        </div>
-    </form>
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script type="text/javascript">
+        function openContenu(evt, contenuName) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
+
+
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(contenuName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+
+        $(document).ready(function () {
+            $(".button-nav-open").click(function () {
+                $("#navigation").addClass("ul-down");
+                $("body").css("overflow", "hidden");
+            });
+            $(".button-nav-close").click(function () {
+                $("#navigation").removeClass("ul-down");
+                $("body").css("overflow", "initial");
+            });
+        });
+    </script>
 
 {% endblock %}
