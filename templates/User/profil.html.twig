@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Utilisateur : {{ app.user.username }}</h1> <br><br>
+
+    <form method="post" action="{{ path('update_username') }}">
+        <div>
+            <h2>Changer de pseudo :</h2>
+            <input type="text" value="{{ app.user.username }}" name="username" placeholder="Nouveau Pseudo">
+            <input type="submit" value="Changer">
+        </div>
+    </form>
+
+    <form method="post" action="{{ path('update_email') }}">
+        <div>
+            <h2>Changer d'email :</h2>
+            <input type="email" value="{{ app.user.email }}" name="email" placeholder="Nouvel email">
+            <input type="submit" value="Changer">
+        </div>
+    </form>
+
+    <form method="post" action="{{ path('update_password') }}">
+        <div>
+            <h2>Changer de mot de passe :</h2>
+            <input type="password" name="premier" placeholder="Entrer nouveau mot de passe"><br>
+            <input type="password" name="deuxieme" placeholder="Répéter mot de passe">
+            <input type="submit" value="Changer">
+        </div>
+    </form>
+
+
+{% endblock %}

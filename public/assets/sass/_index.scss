@@ -1,0 +1,207 @@
+body {
+  position: absolute;
+  width: 100%;
+  max-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  color: white;
+  font-size: 100%;
+  background-color: #000000;
+
+
+}
+.body{
+  position: absolute;
+  background: #020011 url("../img/1x/fond.png") no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  @media (max-width: 800px) {
+    height: 100vh;
+  }
+}
+
+/* ---- stats.js ---- */
+
+.count-particles{
+  background: #000022;
+  position: absolute;
+  left: 0;
+  width: 80px;
+  color: #13E8E9;
+  font-size: .8em;
+  text-align: left;
+  text-indent: 4px;
+  line-height: 14px;
+  padding-bottom: 2px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+.js-count-particles{
+  font-size: 1.1em;
+}
+
+.count-particles{
+  border-radius: 0 0 3px 3px;
+}
+
+.particles-js-canvas-el{
+  top: 0;
+  position: absolute;
+  min-height: 100vh;
+  z-index: 1;
+  @media (max-width: 800px) {
+    background-color: rgba(0,0,0,0.5);
+  }
+}
+
+@font-face {
+  font-family: 'Robotaur';
+  font-style: normal;
+  font-weight: normal;
+  font-stretch : normal;
+  src: url('../fonts/robotaure.woff') format('woff');
+}
+@font-face {
+  font-family: 'Robotaur2';
+  font-style: normal;
+  font-weight: normal;
+  font-stretch : normal;
+  src: url('../fonts/robotaurc.woff') format('woff');
+}
+
+.nav{
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  z-index:6;
+  @media (max-width: 800px) {
+    margin-top: 50px;
+  }
+  & ul{
+    float: right;
+    margin-right: 50px;
+    display: flex;
+    flex-wrap: wrap;
+
+    @media (max-width: 800px) {
+      float: none;
+      margin: 0 auto;
+      justify-content: center;
+    }
+    & li{
+      display: inline-block;
+      padding: 40px;
+      @media (max-width: 800px) {
+       padding: 10px;
+      }
+
+
+      & a{
+        font-size: 3rem;
+        text-decoration: none;
+        font-family: 'Robotaur2';
+        display: inline-block;
+        position: relative;
+        color: #ffffff;
+
+        @media (max-width: 800px) {
+          font-size: 1.5rem;
+        }
+
+
+      }
+      & a::after {
+        content: '';
+        position: absolute;
+        width: 110%;
+        transform: scaleX(0) ;
+        height: 5px;
+        bottom: -5px;
+        left: -10px;
+        margin-top: 5px;
+        background-color: #ffffff;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+      }
+
+
+      & a:hover::after {
+        transform: scaleX(1) ;
+        transform-origin: bottom left;
+      }
+
+    }
+  }
+}
+
+.logo{
+  position: relative;
+  display: inline-flex;
+  justify-content: left;
+  width: 20rem;
+  height: auto;
+  margin-top: 20px;
+  z-index: 8;
+@media (max-width: 800px) {
+  justify-content: center;
+  margin: 0 auto;
+  padding-top: 10px;
+  width: 15rem;
+}
+
+}
+
+.regle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+  @media (max-width: 800px){
+    margin-top: 10px;
+
+  }
+
+  & a{
+    font-size: 15rem;
+    text-decoration: none;
+    font-family: 'Robotaur2';
+    display: inline-block;
+    position: relative;
+    color: #ffffff;
+    text-shadow: 0 0 0 #fff, 0 0 0 #fff, 0 0 0px black, 0 0 0 #00fcff, 0 0 10px #00fcff;
+    z-index: 50;
+    @media (max-width: 800px){
+      font-size: 4.5rem;
+
+    }
+
+  }
+
+
+
+  & a:hover{
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff;
+
+  }
+}
+
+
+#moncercle{
+  z-index: 1;
+
+  margin-top: 120px;
+  background:#FFDE55;
+  border-radius:50%;
+  width:13rem;
+  height:13rem;
+  border:2px solid rgba(255,222,85,1);
+  -webkit-box-shadow: 0px 0px 78px 10px rgba(255,222,85,0.73);
+  -moz-box-shadow: 0px 0px 78px 10px rgba(255,222,85,0.73);
+  box-shadow:0px 0px 78px 10px rgba(255,222,85,0.73);
+@media (max-width: 800px) {
+  width:8rem;
+  height:8rem;
+}
+}
+

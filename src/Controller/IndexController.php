@@ -63,5 +63,21 @@ class IndexController extends Controller
         return $this->redirectToRoute('actif_admin');
     }
 
+    /**
+     * @Route("/user/profil", name="profil")
+     */
+    public function profil()
+    {
+        return $this->render('User/profil.html.twig');
+    }
+
+    /**
+     * @Route("/admin/profil_admin", name="profil_admin")
+     */
+    public function profil_admin()
+    {
+        return $this->render('Admin/profil.html.twig');
+    }
+
 
 }

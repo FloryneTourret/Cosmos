@@ -3,7 +3,40 @@
 {% block menu %}
 {% endblock %}
 
+{% block title %} Cosmos - Le jeu{% endblock %}
+{% block stylesheets %}
+    <link href="{{ asset('assets/css/screen.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+{% endblock %}
+
 {% block body %}
-    <a href="{{ path('security_login')}}"> Connexion</a><br>
-    <a href="{{ path('user_registration')}}"> Inscription</a>
+
+    <div id="particles-js">
+
+    <section class="body">
+        <div class="nav">
+            <ul>
+                <li>
+                    <a href="{{ path('user_registration')}}" class="hover-underline-animation">inscription</a>
+                </li>
+                <li>
+                    <a href="{{ path('security_login')}}" class="hover-underline-animation">connexion</a>
+                </li>
+            </ul>
+        </div>
+        <img class="logo" src="{{ asset('assets/img/accueil-1/logo.png') }}" alt="">
+        <div class="regle cercle-mobile">
+            <div id="moncercle"></div>
+        </div>
+
+        <div class="regle">
+            <a href="{{ path('security_login')}}">Jouer</a>
+        </div>
+    </section>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/particles.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
 {% endblock %}

@@ -12,7 +12,8 @@
     <div>
         Classement :<br>
         {% for joueur in autres %}
-            {{ joueur.username }} : {{ joueur.PartiesVictoires }}<br>
+            {% set counter = ( counter | default(0) ) + 1 %}
+            {{ counter }}. {{ joueur.username }} : {{ joueur.PartiesVictoires }} victoires et {{ joueur.PartiesDefaites }} défaites <br>
         {% endfor %}
     </div>
 

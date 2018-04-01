@@ -35,7 +35,7 @@ class ClassementController extends Controller
         //Récupère le joueur
         $joueur= $this->getDoctrine()->getRepository(User::class)->find( $id);
 
-        $joueurs= $this->getDoctrine()->getRepository(User::class)->findAll();
+        $joueurs= $this->getDoctrine()->getRepository(User::class)->findBy(array(), array('PartiesVictoires' => 'DESC', 'PartiesDefaites'=>'ASC'));
 
         return $this->render('User/classement.html.twig', ['moi' => $joueur, 'autres'=>$joueurs]);
     }

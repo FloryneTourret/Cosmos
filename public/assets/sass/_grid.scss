@@ -1,0 +1,67 @@
+/*****************************
+  colone
+ */
+$columns:12;
+$gutters:40px;
+$mobile: '(max-width: 800px)';
+
+.container-fluid {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.justify-content-center{
+  display: flex;
+  justify-content: center;
+
+
+  @media (max-width: 1200px) {
+    flex-wrap: wrap;
+    justify-content: center;
+
+  }
+
+}
+
+%col {
+  float: left;
+  width: 100%;
+  position: relative;
+  padding-left: $gutters;
+  padding-right: $gutters;
+
+  @media (max-width: 1200px) {
+    padding-top: $gutters;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+}
+
+@for $i from 1 through $columns {
+
+  .col-#{$i} {
+    @extend %col;
+    width: $i / $columns*100%;
+  }
+}
+
+
+@media (max-width: 1200px) {
+
+  @for $i from 1 through $columns {
+
+    .col-#{$i} {
+      width:100%;
+    }
+  }
+
+}
+
+
+
+
+
+
+

@@ -2557,4 +2557,22 @@ class ActionsController extends Controller
         return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
     }
 
+    /**
+     * @Route("/plateau/{partie}", name="plateau")
+     */
+    public function plateau(Parties $partie){
+
+        $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+        $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+        $tObjets = array();
+        foreach ($Objets as $carte) {
+            $tObjets[$carte->getId()] = $carte;
+        }
+        $tObjectifs = array();
+        foreach ($objectifs as $objectifs) {
+            $tObjectifs[$objectifs->getId()] = $objectifs;
+        }
+        return $this->render('Partie/plateau.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
+    }
+
 }
