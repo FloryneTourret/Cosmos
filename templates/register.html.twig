@@ -1,11 +1,78 @@
-{{ form_start(form) }}
-    {{ form_row(form.username) }}
-    {{ form_row(form.email) }}
-    {{ form_row(form.password.first) }}
-    {{ form_row(form.password.second) }}
+{% extends 'base.html.twig' %}
 
-<button type="submit">S'inscrire !</button>
-{{ form_end(form) }}
+{% block menu%}{% endblock %}
 
-<a href="{{ path('index') }}">Retour à l'accueil</a><br>
-<a href="{{ path('security_login') }}">Connexion</a>
+{% block body %}
+
+<div class="body">
+    <div class="nav">"
+        <img class="logo" src="{{ asset('assets/img/accueil-1/logo.png') }}" alt="">
+        <ul>
+
+            <li>
+                <a href="{{ path('index') }}" class="hover-underline-animation">Accueil</a>
+            </li>
+            <li>
+                <a href="{{ path('security_login') }}" class="hover-underline-animation">connexion</a>
+            </li>
+        </ul>
+    </div>
+    <div class="formulaire">
+        <div class="container-fluid justify-content-center">
+            <div class="col-8">
+                <div class="contenu-form" >
+                    <div class="haut">
+                        <h1>Inscription</h1>
+                    </div>
+                    <div class="bas">
+                        {{ form_start(form) }}
+
+                            <div class="element-form">
+                                <div class="col-4"> <label for="pseudo">Pseudo :</label></div>
+                                <div class="col-6"> {{ form_row(form.username) }}</div>
+
+                            </div>
+                            <div class="element-form">
+                                <div class="col-4">  <label for="mail">Email :</label></div>
+                                <div class="col-6">{{ form_row(form.email) }}</div>
+
+
+                            </div>
+                            <div class="element-form">
+                                <div class="col-4"> <label for="mdp">Mot de passe :</label></div>
+                                <div class="col-6">
+                                    {{ form_row(form.password.first) }}</div>
+
+                            </div>
+                            <div class="element-form">
+                                <div class="col-4"><label for="confmdp">Confirmer mot de passe :</label></div>
+                                <div class="col-6">
+
+                                    {{ form_row(form.password.second) }}
+
+                                    <div class="envoyer">
+                                        <input type="submit" value="S'incrire" />
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="element-form">
+                                <div class="col-6">
+
+                                </div>
+                            </div>
+
+                        {{ form_end(form) }}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+{% endblock %}

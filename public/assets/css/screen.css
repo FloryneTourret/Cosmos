@@ -2234,3 +2234,101 @@ body {
 .accueil .corps .jouer .embed-responsive-16by9::before {
   padding-top: 56.25%;
 }
+
+/*
+formaulaire
+ */
+/* line 5, ../sass/_form.scss */
+.formulaire {
+  width: 100%;
+  min-height: 75vh;
+  margin-top: 200px;
+}
+@media (max-width: 1300px) {
+  /* line 5, ../sass/_form.scss */
+  .formulaire {
+    width: 100%;
+  }
+}
+/* line 16, ../sass/_form.scss */
+.formulaire .contenu-form {
+  padding-bottom: 10px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 0px 40px #00fcff;
+  border-radius: 5px;
+}
+/* line 24, ../sass/_form.scss */
+.formulaire .contenu-form .haut {
+  padding-top: 20px;
+  width: 100%;
+  border: none;
+  overflow: hidden;
+}
+/* line 29, ../sass/_form.scss */
+.formulaire .contenu-form .haut::after {
+  clear: both;
+  content: '';
+  display: block;
+}
+/* line 35, ../sass/_form.scss */
+.formulaire .contenu-form .haut h1 {
+  font-size: 5rem;
+  font-family: 'Robotaur2';
+  text-align: center;
+}
+@media (max-width: 800px) {
+  /* line 35, ../sass/_form.scss */
+  .formulaire .contenu-form .haut h1 {
+    font-size: 2.5rem;
+  }
+}
+/* line 43, ../sass/_form.scss */
+.formulaire .contenu-form .haut p {
+  font-size: 2rem;
+  color: #7CE3FC;
+  font-family: 'Roboto';
+  text-align: center;
+}
+/* line 53, ../sass/_form.scss */
+.formulaire .contenu-form .bas {
+  margin-top: 20px;
+}
+/* line 55, ../sass/_form.scss */
+.formulaire .contenu-form .bas form {
+  padding: 20px;
+}
+/* line 58, ../sass/_form.scss */
+.formulaire .contenu-form .bas .element-form {
+  height: 50px;
+  font-size: 1.5rem;
+}
+/* line 61, ../sass/_form.scss */
+.formulaire .contenu-form .bas .element-form input {
+  width: 100%;
+  height: 30px;
+  font-size: 1.5rem;
+}
+/* line 67, ../sass/_form.scss */
+.formulaire .contenu-form .bas label.required {
+  display: none;
+}
+/* line 72, ../sass/_form.scss */
+.formulaire .contenu-form .bas .envoyer input {
+  width: 100%;
+  font-size: 1.5rem;
+  margin-top: 20px;
+  text-align: right;
+  margin-right: 10px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: 'Robotaur2';
+}
+/* line 86, ../sass/_form.scss */
+.formulaire .contenu-form .bas .envoyer input:hover {
+  text-shadow: 0 0 0 #fff, 0 0 0 #fff, 0 0 0px black, 0 0 0 #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff;
+}
