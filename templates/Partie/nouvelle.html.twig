@@ -21,7 +21,7 @@
                                     <div class="col-6">
 
                                         <select name="adversaire" size="200px">
-                                            <optgroup label="Choisissez un adversaire:">
+                                            <optgroup label="Choisissez un adversaire :">
                                                 {% for joueur in joueurs if joueur.Username!= app.user.username %}
 
                                                     <option value="{{ joueur.id }}">{{ joueur.Username }}</option>

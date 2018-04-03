@@ -6,15 +6,24 @@
 
 {% block body %}
 
-    <section class="body_new">
+
+    <section class="bloc_choix_partie">
         <div class="new">
             <div class="container-fluid justify-content-center">
-                <div class="col-8">
+                <div class="col-lh-5 ">
+                    <div class="left_choix">
+                        <a href="{{  path('nouvelle_partie') }}">Créer une partie</a>
 
-                    <a href="{{  path('nouvelle_partie') }}">Créer</a>
-                    <a href="{{  path('continuer_partie') }}">Rejoindre</a>
+                    </div>
+                </div>
+                <div class="col-lh-5">
+                    <div class="right_choix">
+                        <a href="{{  path('continuer_partie') }}">Rejoindre une partie</a>
+
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+    
 {% endblock %}

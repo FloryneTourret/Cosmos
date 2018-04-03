@@ -73,8 +73,7 @@ nouvelle partie
           font-family: 'Robotaur2';
           font-size: 1.1rem;
           text-align: center;
-          padding: 20px;
-          padding-top: 5px;
+          padding: 10px;
           & option::selection{
             background-color: #ff0080;
           }
@@ -83,15 +82,16 @@ nouvelle partie
             background-color: #ff0080;
           }
 
+          option{
+            font-size: 1.4rem;
+            font-family: 'Roboto';
+            padding-top: 5px;
+            padding-bottom: 5px;
+          }
           optgroup{
             font-weight: normal;
           }
-          option{
-            font-size: 1.5rem;
-            font-family: 'Roboto';
-            padding-bottom: 5px;
-            padding-top: 5px;
-          }
+
 
 
 
@@ -125,10 +125,10 @@ nouvelle partie
 
           }
         }
-
-        .nom{
+        label{
           font-family: 'Robotaur2';
           font-size: 1.1rem;
+          margin-bottom: 10px;
         }
 
       }
