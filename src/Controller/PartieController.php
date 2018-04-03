@@ -238,4 +238,12 @@ class PartieController extends Controller
         return $this->redirectToRoute('afficher_partie', ['id' => $partie->getId()]);
     }
 
+    /**
+     * @Route("/choix_partie", name="choix_partie")
+     */
+    public function choix_partie()
+    {
+        return $this->render('Partie/choix.html.twig');
+    }
+
 }

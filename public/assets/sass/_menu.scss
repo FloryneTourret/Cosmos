@@ -1,0 +1,65 @@
+.menu {
+  font-family: "Robotaur";
+  height: 200px;
+  width: 230px;
+  position: absolute;
+  z-index: 100;
+  right:0;
+  margin-top: 10vh;
+  img {
+    height: 200px;
+    float: right;
+    transition: all 0.3s; 
+  }
+  .deroule {
+      float: right;
+      background: black;
+      width: 180px;
+      height: 160px;
+      margin-right: 0;
+      margin-top:20px;
+    li {
+      margin-top: 2.7vh;
+      a {
+        text-decoration: none;
+        color:white;
+        text-align: center;
+        &:hover{
+          border-bottom: 2px solid white;
+          transition: all 0.3s;
+        }
+      }
+    }
+      
+  }
+
+}
+
+.actif{
+  transform: translateX(-11.15em);
+
+  transition: all 0.5s; 
+}
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: #0087ca;
+}
+.hover-underline-animation::after {
+  
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #0087ca;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}

@@ -1,37 +1,62 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Rejoindre une partie
+    Cosmos - Rejoindre une partie
 {% endblock %}
 
 {% block body %}
 
-    <form method="post" action="{{ path('lancer_partie') }}">
-        <div>
-            Rejoindre une partie :
-            <select name="id">
-                {% for partie in parties |reverse %}
-                    {% if partie.PartieTour <= 9  %}
-                        {% if partie.Joueur1.Id!= app.user.Id  %}
-                            {% if partie.PartieTour == 9 %}
-                                <option value="{{ partie.id }}">{{ partie.PartieNom }}, {{ partie.PartieDate |date("d/m/Y à H:i:s")}} avec {{ partie.Joueur1.Username }}, Partie Finie </option>
-                            {% else %}
-                                <option value="{{ partie.id }}">{{ partie.PartieNom }}, {{ partie.PartieDate |date("d/m/Y à H:i:s")}} avec {{ partie.Joueur1.Username }}, Tour N°{{ partie.PartieTour }} </option>
-                            {% endif %}
-                        {% endif %}
-                        {% if partie.Joueur2.Id!= app.user.Id  %}
-                            {% if partie.PartieTour == 9 %}
-                                <option value="{{ partie.id }}">{{ partie.PartieNom }}, {{ partie.PartieDate |date("d/m/Y à H:i:s")}} avec {{ partie.Joueur2.Username }}, Partie Finie </option>
-                            {% else %}
-                                <option value="{{ partie.id }}">{{ partie.PartieNom }}, {{ partie.PartieDate |date("d/m/Y à H:i:s")}} avec {{ partie.Joueur2.Username }}, Tour N°{{ partie.PartieTour }} </option>
-                            {% endif %}
-                        {% endif %}
-                    {% endif %}
-                {% endfor %}
-            </select>
+    <section class="body_new">
+        <div class="new">
+            <div class="container-fluid justify-content-center">
+                <div class="col-8">
+                    <div class="contenu-form" >
+                        <div class="haut">
+                            <h1>Rejoindre une partie</h1>
+                        </div>
+                        <div class="bas">
+                            <form method="post" action="{{ path('lancer_partie') }}">
+                                <div class="element-form">
+                                    <div class="col-12">
+
+                                        <select name="id" size="200px">
+                                            <optgroup label="">
+                                                {% for partie in parties |reverse %}
+                                                    {% if partie.PartieTour <= 9  %}
+                                                        {% if partie.Joueur1.Id!= app.user.Id  %}
+                                                            {% if partie.PartieTour == 9 %}
+
+                                                            {% else %}
+                                                                <option value="{{ partie.id }}">Avec : {{ partie.Joueur1.Username }}, commencée le : {{ partie.PartieDate |date("d/m/Y à H:i:s")}}</option>
+                                                            {% endif %}
+                                                        {% endif %}
+                                                        {% if partie.Joueur2.Id!= app.user.Id  %}
+                                                            {% if partie.PartieTour == 9 %}
+
+                                                            {% else %}
+                                                                <option value="{{ partie.id }}">Avec : {{ partie.Joueur2.Username }}, commencée le : {{ partie.PartieDate |date("d/m/Y à H:i:s")}}</option>
+                                                            {% endif %}
+                                                        {% endif %}
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="envoyer">
+                                    <div class="col-12">
+                                        <input type="submit" value="Continuer la partie">
+                                    </div>
+                                </div>
+                            </form>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-            <input type="submit" value="Continuer la partie">
-        </div>
-    </form>
+    </section>
 {% endblock %}

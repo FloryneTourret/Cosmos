@@ -1427,28 +1427,33 @@ h1 {
 }
 
 /* line 14, ../sass/_grid.scss */
+.container {
+  width: 1000px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* line 20, ../sass/_grid.scss */
 .justify-content-center {
   display: flex;
   justify-content: center;
 }
 @media (max-width: 1200px) {
-  /* line 14, ../sass/_grid.scss */
+  /* line 20, ../sass/_grid.scss */
   .justify-content-center {
     flex-wrap: wrap;
     justify-content: center;
   }
 }
 
-/* line 27, ../sass/_grid.scss */
+/* line 33, ../sass/_grid.scss */
 .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
   float: left;
   width: 100%;
   position: relative;
-  padding-left: 40px;
-  padding-right: 40px;
 }
 @media (max-width: 1200px) {
-  /* line 27, ../sass/_grid.scss */
+  /* line 33, ../sass/_grid.scss */
   .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
     padding-top: 40px;
     padding-left: 0;
@@ -1456,123 +1461,123 @@ h1 {
   }
 }
 
-/* line 44, ../sass/_grid.scss */
+/* line 50, ../sass/_grid.scss */
 .col-1 {
   width: 8.33333%;
 }
 
-/* line 44, ../sass/_grid.scss */
+/* line 50, ../sass/_grid.scss */
 .col-2 {
   width: 16.66667%;
 }
 
-/* line 44, ../sass/_grid.scss */
+/* line 50, ../sass/_grid.scss */
 .col-3 {
   width: 25%;
 }
 
-/* line 44, ../sass/_grid.scss */
+/* line 50, ../sass/_grid.scss */
 .col-4 {
   width: 33.33333%;
 }
 
-/* line 44, ../sass/_grid.scss */
+/* line 50, ../sass/_grid.scss */
 .col-5 {
   width: 41.66667%;
 }
 
-/* line 44, ../sass/_grid.scss */
+/* line 50, ../sass/_grid.scss */
 .col-6 {
   width: 50%;
 }
 
-/* line 44, ../sass/_grid.scss */
+/* line 50, ../sass/_grid.scss */
 .col-7 {
   width: 58.33333%;
 }
 
-/* line 44, ../sass/_grid.scss */
+/* line 50, ../sass/_grid.scss */
 .col-8 {
   width: 66.66667%;
 }
 
-/* line 44, ../sass/_grid.scss */
+/* line 50, ../sass/_grid.scss */
 .col-9 {
   width: 75%;
 }
 
-/* line 44, ../sass/_grid.scss */
+/* line 50, ../sass/_grid.scss */
 .col-10 {
   width: 83.33333%;
 }
 
-/* line 44, ../sass/_grid.scss */
+/* line 50, ../sass/_grid.scss */
 .col-11 {
   width: 91.66667%;
 }
 
-/* line 44, ../sass/_grid.scss */
+/* line 50, ../sass/_grid.scss */
 .col-12 {
   width: 100%;
 }
 
 @media (max-width: 1200px) {
-  /* line 55, ../sass/_grid.scss */
+  /* line 61, ../sass/_grid.scss */
   .col-1 {
     width: 100%;
   }
 
-  /* line 55, ../sass/_grid.scss */
+  /* line 61, ../sass/_grid.scss */
   .col-2 {
     width: 100%;
   }
 
-  /* line 55, ../sass/_grid.scss */
+  /* line 61, ../sass/_grid.scss */
   .col-3 {
     width: 100%;
   }
 
-  /* line 55, ../sass/_grid.scss */
+  /* line 61, ../sass/_grid.scss */
   .col-4 {
     width: 100%;
   }
 
-  /* line 55, ../sass/_grid.scss */
+  /* line 61, ../sass/_grid.scss */
   .col-5 {
     width: 100%;
   }
 
-  /* line 55, ../sass/_grid.scss */
+  /* line 61, ../sass/_grid.scss */
   .col-6 {
     width: 100%;
   }
 
-  /* line 55, ../sass/_grid.scss */
+  /* line 61, ../sass/_grid.scss */
   .col-7 {
     width: 100%;
   }
 
-  /* line 55, ../sass/_grid.scss */
+  /* line 61, ../sass/_grid.scss */
   .col-8 {
     width: 100%;
   }
 
-  /* line 55, ../sass/_grid.scss */
+  /* line 61, ../sass/_grid.scss */
   .col-9 {
     width: 100%;
   }
 
-  /* line 55, ../sass/_grid.scss */
+  /* line 61, ../sass/_grid.scss */
   .col-10 {
     width: 100%;
   }
 
-  /* line 55, ../sass/_grid.scss */
+  /* line 61, ../sass/_grid.scss */
   .col-11 {
     width: 100%;
   }
 
-  /* line 55, ../sass/_grid.scss */
+  /* line 61, ../sass/_grid.scss */
   .col-12 {
     width: 100%;
   }
@@ -2331,4 +2336,223 @@ formaulaire
 /* line 86, ../sass/_form.scss */
 .formulaire .contenu-form .bas .envoyer input:hover {
   text-shadow: 0 0 0 #fff, 0 0 0 #fff, 0 0 0px black, 0 0 0 #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff;
+}
+
+/*
+nouvelle partie
+ */
+/* line 4, ../sass/_new.scss */
+.body_new {
+  position: absolute;
+  background: #020011 url("../img/accueil-1/fondaccueil.png") no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+}
+@media (max-width: 1300px) {
+  /* line 4, ../sass/_new.scss */
+  .body_new {
+    height: 100vh;
+    background-attachment: fixed;
+  }
+}
+@media (max-width: 1300px) {
+  /* line 16, ../sass/_new.scss */
+  .body_new .logo {
+    visibility: hidden;
+  }
+}
+/* line 22, ../sass/_new.scss */
+.body_new .new {
+  width: 100%;
+  min-height: 80vh;
+  margin-top: 200px;
+}
+@media (max-width: 1300px) {
+  /* line 22, ../sass/_new.scss */
+  .body_new .new {
+    width: 100%;
+  }
+}
+/* line 32, ../sass/_new.scss */
+.body_new .new .contenu-form {
+  padding-bottom: 10px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 0px 40px #00fcff;
+  border-radius: 5px;
+}
+/* line 40, ../sass/_new.scss */
+.body_new .new .contenu-form .haut {
+  padding-top: 20px;
+  width: 100%;
+  border: none;
+  overflow: hidden;
+}
+/* line 45, ../sass/_new.scss */
+.body_new .new .contenu-form .haut::after {
+  clear: both;
+  content: '';
+  display: block;
+}
+/* line 51, ../sass/_new.scss */
+.body_new .new .contenu-form .haut h1 {
+  font-size: 5rem;
+  font-family: 'Robotaur2';
+  text-align: center;
+}
+@media (max-width: 800px) {
+  /* line 51, ../sass/_new.scss */
+  .body_new .new .contenu-form .haut h1 {
+    font-size: 2.5rem;
+  }
+}
+/* line 61, ../sass/_new.scss */
+.body_new .new .contenu-form .bas {
+  margin-top: 20px;
+}
+/* line 63, ../sass/_new.scss */
+.body_new .new .contenu-form .bas form {
+  padding: 20px;
+}
+/* line 67, ../sass/_new.scss */
+.body_new .new .contenu-form .bas select {
+  width: 85%;
+  height: 200px;
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  font-family: 'Robotaur2';
+  font-size: 1.1rem;
+  text-align: center;
+  padding: 20px;
+  padding-top: 5px;
+}
+/* line 78, ../sass/_new.scss */
+.body_new .new .contenu-form .bas select option::selection {
+  background-color: #ff0080;
+}
+/* line 82, ../sass/_new.scss */
+.body_new .new .contenu-form .bas select option::-moz-selection {
+  background-color: #ff0080;
+}
+/* line 86, ../sass/_new.scss */
+.body_new .new .contenu-form .bas select optgroup {
+  font-weight: normal;
+}
+/* line 89, ../sass/_new.scss */
+.body_new .new .contenu-form .bas select option {
+  font-size: 1.5rem;
+  font-family: 'Roboto';
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+/* line 99, ../sass/_new.scss */
+.body_new .new .contenu-form .bas .element-form {
+  height: 50px;
+  font-size: 1.5rem;
+}
+/* line 102, ../sass/_new.scss */
+.body_new .new .contenu-form .bas .element-form input {
+  width: 100%;
+  height: 30px;
+  font-size: 1.5rem;
+}
+/* line 109, ../sass/_new.scss */
+.body_new .new .contenu-form .bas .envoyer input {
+  width: 100%;
+  font-size: 1.5rem;
+  margin-top: 20px;
+  text-align: right;
+  margin-right: 10px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: 'Robotaur2';
+}
+/* line 123, ../sass/_new.scss */
+.body_new .new .contenu-form .bas .envoyer input:hover {
+  text-shadow: 0 0 0 #fff, 0 0 0 #fff, 0 0 0px black, 0 0 0 #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff;
+}
+/* line 129, ../sass/_new.scss */
+.body_new .new .contenu-form .bas .nom {
+  font-family: 'Robotaur2';
+  font-size: 1.1rem;
+}
+
+/* line 1, ../sass/_menu.scss */
+.menu {
+  font-family: "Robotaur";
+  height: 200px;
+  width: 230px;
+  position: absolute;
+  z-index: 100;
+  right: 0;
+  margin-top: 10vh;
+}
+/* line 10, ../sass/_menu.scss */
+.menu img {
+  height: 200px;
+  float: right;
+  transition: all 0.3s;
+}
+/* line 15, ../sass/_menu.scss */
+.menu .deroule {
+  float: right;
+  background: black;
+  width: 180px;
+  height: 160px;
+  margin-right: -40px;
+  margin-top: 20px;
+}
+/* line 22, ../sass/_menu.scss */
+.menu .deroule li {
+  margin-top: 2.7vh;
+}
+/* line 24, ../sass/_menu.scss */
+.menu .deroule li a {
+  text-decoration: none;
+  color: white;
+  text-align: center;
+}
+/* line 28, ../sass/_menu.scss */
+.menu .deroule li a:hover {
+  border-bottom: 2px solid white;
+  transition: all 0.3s;
+}
+
+/* line 39, ../sass/_menu.scss */
+.actif {
+  transform: translateX(-11.15em);
+  transition: all 0.5s;
+}
+
+/* line 45, ../sass/_menu.scss */
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: #0087ca;
+}
+
+/* line 50, ../sass/_menu.scss */
+.hover-underline-animation::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #0087ca;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+/* line 63, ../sass/_menu.scss */
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }

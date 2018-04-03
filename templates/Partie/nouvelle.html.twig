@@ -1,27 +1,56 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    Choisir un adversaire
+   Cosmos - Nouvelle partie
 {% endblock %}
 
 {% block body %}
-    <form method="post" action="{{ path('creer_partie') }}">
-        <div>
-            Choisissez l'adversaire connecté contre qui vous voulez jouer:
-            <select name="adversaire">
-                {% for joueur in joueurs if joueur.Username!= app.user.username %}
 
-                    <option value="{{ joueur.id }}">{{ joueur.Username }}</option>
-                {% endfor %}
-            </select> <br>
-            Nom de la partie :
-            <input type="text" name="nom_partie">
-        </div>
-        <div>
 
-            <input type="submit" value="Créer la partie">
+    <section class="body_new">
+        <div class="new">
+            <div class="container-fluid justify-content-center">
+                <div class="col-8">
+                    <div class="contenu-form" >
+                        <div class="haut">
+                            <h1>Créer une partie</h1>
+                        </div>
+                        <div class="bas">
+                            <form method="post" action="{{ path('creer_partie') }}">
+                                <div class="element-form">
+                                    <div class="col-6">
+
+                                        <select name="adversaire" size="200px">
+                                            <optgroup label="Choisissez un adversaire:">
+                                                {% for joueur in joueurs if joueur.Username!= app.user.username %}
+
+                                                    <option value="{{ joueur.id }}">{{ joueur.Username }}</option>
+
+                                                {% endfor %}
+                                            </optgroup>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <label class="nom">Nom de la partie :</label>
+                                        <input type="text" name="nom_partie">
+                                    </div>
+                                </div>
+
+                                <div class="envoyer">
+                                    <div class="col-12">
+
+                                        <input type="submit" value="Créer la partie">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
-    </form>
+    </section>
 
 
 {% endblock %}

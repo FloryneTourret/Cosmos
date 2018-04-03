@@ -17,6 +17,24 @@
             <div class="backgroud_plateau_fond">
 
 
+                <div class="menu">
+                    <img src="{{  asset('assets/img/plateau/menu.png') }}">
+
+                    <ul class="deroule">
+                        <li>
+                            <a href="{{  path('user') }}" class="hover-underline-animation">Accueil</a>
+                        </li>
+                        <li>
+                            <a href="{{  path('profil') }}" class="hover-underline-animation">Mon profil</a>
+                        </li>
+                        <li>
+                            <a href="{{  path('classement') }}" class="hover-underline-animation">Classement</a>
+                        </li>
+                        <li>
+                            <a href="{{  path('choix_partie') }}" class="hover-underline-animation">Jouer</a>
+                        </li>
+                    </ul>
+                </div>
 
                 {#INFORMATIONS ADVERSAIRE#}
                 <div class="joueur2">
@@ -97,6 +115,8 @@
 {% block javascripts %}
 
     <script src="{{ asset('assets/js/action.js') }}"></script>
+    <script src="{{ asset('assets/js/menu.js') }}"></script>
+
     <script>
     console.log(" moi: " +{{app.user.Id  }} +" joueur 1: " + {{ partie.Joueur1.Id  }} + " tour: " + {{ partie.PartieTour }} + " joueur 2 :" + {{ partie.Joueur2.Id  }});
     </script>

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Cosmos - Rejoindre une partie
+{% endblock %}
+
+{% block body %}
+
+    <section class="body_new">
+        <div class="new">
+            <div class="container-fluid justify-content-center">
+                <div class="col-8">
+
+                    <a href="{{  path('nouvelle_partie') }}">Créer</a>
+                    <a href="{{  path('continuer_partie') }}">Rejoindre</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
