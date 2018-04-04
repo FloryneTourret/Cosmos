@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ asset('assets/img/favicon.png') }}" />
+
 
     {# Bloc du title du site #}
     <title>{% block title %}Cosmos{% endblock %}</title>
@@ -23,7 +25,6 @@
     {% if app.user.roles == ["ROLE_USER"] %}
 
         <div class="classic">
-        <header>
             <nav>
 
                 <div class="hamburger">
@@ -37,24 +38,18 @@
                         <li class="button-nav-close"><p>fermer</p></li>
                         <li>
                             <div class="nav-presentation">
-                                <a class="js-scroll-trigger" href="{{  path('classement') }}">Classement</a>
-                            </div>            </li>
+                                <a class="js-scroll-trigger" href="{{ path('classement') }}">Classement</a>
+                            </div>
+                        </li>
                         <li class=" ">
                             <div class="nav-plateau">
                                 <a class="js-scroll-trigger" href="{{  path('profil') }}">Profil</a>
                             </div>
                         </li>
-                        <li class="">
-                            <div class="nav-flyer langue">
-                                <a href="#" class="nav-right select"><img src="{{ asset('assets/img/fr.png')}}" alt="Français"></a>
-                            </div>
-                            <div class="nav-contact langue">
-                                <a href="" class="nav-right"><img src="{{ asset('assets/img/en.png')}}" alt="anglais"></a>
-                            </div>
-                        </li>
+
                         <li >
                             <div class="nav-jouer">
-                                <a href="{{  path('inactif') }}" class="nav-right"><img src="{{ asset('assets/img/boutonoff.png')}}" alt="déconnexion"></a>
+                                <a href="{{  path('inactif') }}" class="nav-right"><img src="img/boutonoff.png" alt="déconnexion"></a>
                             </div>
                         </li>
 
@@ -64,10 +59,14 @@
             <nav>
 
                 <div class="navbar">
-                    <a href="{{  path('user') }}"><img class="logo" src="{{ asset('assets/img/accueil-1/logo.png') }}" alt=""></a>
+                    <a href="{{  path('user') }}"><img class="logo-grande-nav" src="{{ asset('assets/img/accueil-1/logo.png') }}" alt=""></a>
 
                     <ul>
-
+                        <li >
+                            <div class="nav-presentation a-text">
+                                <a class="js-scroll-trigger" href="{{   path('choix_partie') }}">Jouer</a>
+                            </div>
+                        </li>
                         <li >
                             <div class="nav-presentation a-text">
                                 <a class="js-scroll-trigger" href="{{  path('classement') }}">Classement</a>
@@ -75,19 +74,7 @@
                         </li>
                         <li >
                             <div class="nav-plateau a-text">
-                                <a class="js-scroll-trigger" href="{{  path('profil') }}">Profil</a>
-                            </div>
-                        </li>
-
-
-                        <li >
-                            <div class="nav-flyer">
-                                <a href="" class="nav-right select"><img src="{{ asset('assets/img/fr.png') }}" alt="Français"></a>
-                            </div>
-                        </li>
-                        <li >
-                            <div class="nav-contact ">
-                                <a href="" class="nav-right "><img src="{{ asset('assets/img/en.png') }}" alt="anglais"></a>
+                                <a class="js-scroll-trigger" href="{{  path('profil') }}">{{ app.user.username }}</a>
                             </div>
                         </li>
                         <li >
@@ -100,90 +87,74 @@
 
                 </div>
             </nav>
-        </header>
+
         </div>
     {% elseif  app.user.roles == ["ROLE_ADMIN"] %}
 
 
         <div class="classic">
-            <header>
-                <nav>
+            <nav>
 
-                    <div class="hamburger">
-                        <a href="{{  path('admin') }}"><img class="logo-nav" src="{{ asset('assets/img/accueil-1/logo.png') }}" alt=""></a>
+                <div class="hamburger">
+                    <a href="{{  path('admin') }}"><img class="logo-nav" src="{{ asset('assets/img/accueil-1/logo.png') }}" alt=""></a>
 
-                        <div class="button-nav-open">
-                            <hr>
-                        </div>
-
-                        <ul id="navigation">
-                            <li class="button-nav-close"><p>fermer</p></li>
-                            <li>
-                                <div class="nav-presentation">
-                                    <a class="js-scroll-trigger" href="{{  path('classement') }}">Classement</a>
-                                </div>            </li>
-                            <li class=" ">
-                                <div class="nav-plateau">
-                                    <a class="js-scroll-trigger" href="{{  path('profil_admin') }}">Profil</a>
-                                </div>
-                            </li>
-                            <li class="">
-                                <div class="nav-flyer langue">
-                                    <a href="#" class="nav-right select"><img src="{{ asset('assets/img/fr.png')}}" alt="Français"></a>
-                                </div>
-                                <div class="nav-contact langue">
-                                    <a href="" class="nav-right"><img src="{{ asset('assets/img/en.png')}}" alt="anglais"></a>
-                                </div>
-                            </li>
-                            <li >
-                                <div class="nav-jouer">
-                                    <a href="{{  path('inactif') }}" class="nav-right"><img src="{{ asset('assets/img/boutonoff.png')}}" alt="déconnexion"></a>
-                                </div>
-                            </li>
-
-                        </ul>
+                    <div class="button-nav-open">
+                        <hr>
                     </div>
-                </nav>
-                <nav>
 
-                    <div class="navbar">
-                        <a href="{{  path('admin') }}"><img class="logo" src="{{ asset('assets/img/accueil-1/logo.png') }}" alt=""></a>
+                    <ul id="navigation">
+                        <li class="button-nav-close"><p>fermer</p></li>
+                        <li>
+                            <div class="nav-presentation">
+                                <a class="js-scroll-trigger" href="{{ path('classement') }}">Classement</a>
+                            </div>
+                        </li>
+                        <li class=" ">
+                            <div class="nav-plateau">
+                                <a class="js-scroll-trigger" href="{{  path('profil_admin') }}">{{ app.user.username }}</a>
+                            </div>
+                        </li>
 
-                        <ul>
+                        <li >
+                            <div class="nav-jouer">
+                                <a href="{{  path('inactif') }}" class="nav-right"><img src="img/boutonoff.png" alt="déconnexion"></a>
+                            </div>
+                        </li>
 
-                            <li >
-                                <div class="nav-presentation a-text">
-                                    <a class="js-scroll-trigger" href="{{  path('classement') }}">Classement</a>
-                                </div>
-                            </li>
-                            <li >
-                                <div class="nav-plateau a-text">
-                                    <a class="js-scroll-trigger" href="{{  path('profil_admin') }}">Profil</a>
-                                </div>
-                            </li>
+                    </ul>
+                </div>
+            </nav>
+            <nav>
 
+                <div class="navbar">
+                    <a href="{{  path('admin') }}"><img class="logo-grande-nav" src="{{ asset('assets/img/accueil-1/logo.png') }}" alt=""></a>
 
-                            <li >
-                                <div class="nav-flyer">
-                                    <a href="" class="nav-right select"><img src="{{ asset('assets/img/fr.png') }}" alt="Français"></a>
-                                </div>
-                            </li>
-                            <li >
-                                <div class="nav-contact ">
-                                    <a href="" class="nav-right "><img src="{{ asset('assets/img/en.png') }}" alt="anglais"></a>
-                                </div>
-                            </li>
-                            <li >
-                                <div class="nav-contact">
-                                    <a href="{{  path('inactif') }}" class="nav-right"><img src="{{ asset('assets/img/boutonoff.png') }}" alt="déconnexion"></a>
-                                </div>
-                            </li>
+                    <ul>
+                        <li >
+                            <div class="nav-presentation a-text">
+                                <a class="js-scroll-trigger" href="{{   path('choix_partie') }}">Jouer</a>
+                            </div>
+                        </li>
+                        <li >
+                            <div class="nav-presentation a-text">
+                                <a class="js-scroll-trigger" href="{{  path('classement') }}">Classement</a>
+                            </div>
+                        </li>
+                        <li >
+                            <div class="nav-plateau a-text">
+                                <a class="js-scroll-trigger" href="{{  path('profil_admin') }}">{{ app.user.username }}</a>
+                            </div>
+                        </li>
+                        <li >
+                            <div class="nav-contact">
+                                <a href="{{  path('inactif') }}" class="nav-right"><img src="{{ asset('assets/img/boutonoff.png') }}" alt="déconnexion"></a>
+                            </div>
+                        </li>
 
-                        </ul>
+                    </ul>
 
-                    </div>
-                </nav>
-            </header>
+                </div>
+            </nav>
         </div>
 
     {% endif %}
