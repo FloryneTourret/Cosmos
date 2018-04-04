@@ -70,9 +70,13 @@ body{
     min-height: 100vh;
   }
 
+  a{
+    text-decoration: none;
+  }
   p{
     padding: 20px 0 20px 0;
     font-size: 1.8rem;
+
 
 
   }
@@ -116,6 +120,13 @@ body{
   margin-right: 50px;
   & h2{
     display: block;
+    color: black;
+    font-family: 'Robotaur2';
+  }
+  & p{
+    display: block;
+    color: black;
+    font-family: 'Roboto';
   }
   & table{
 
@@ -159,3 +170,4 @@ body{
     }
   }
 }
+

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Administrateur
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+{% endblock %}
+
+{% block menu %}{% endblock %}
+
+{% block body %}
+    <div class="corps">
+
+        <table>
+            <thead>
+            <tr>
+                <th>Joueur 1</th>
+                <th>Joueur 2</th>
+                <th>Date de début</th>
+                <th>Manche</th>
+                <th>Avancement</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Xxfloflodu10xX</td>
+                <td>teste@lol.fr</td>
+                <td>5</td>
+                <td>50</td>
+                <td>Finie</td>
+                <td><input type="submit" value="Supprimer"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

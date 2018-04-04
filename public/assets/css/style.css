@@ -446,39 +446,43 @@ body {
   }
 }
 /* line 73, ../sass/_back_office.scss */
+.navbar a {
+  text-decoration: none;
+}
+/* line 76, ../sass/_back_office.scss */
 .navbar p {
   padding: 20px 0 20px 0;
   font-size: 1.8rem;
 }
-/* line 79, ../sass/_back_office.scss */
+/* line 83, ../sass/_back_office.scss */
 .navbar ul {
   display: block;
   border-top: solid 3px #1883ba;
   border-bottom: solid 3px #1883ba;
 }
-/* line 83, ../sass/_back_office.scss */
+/* line 87, ../sass/_back_office.scss */
 .navbar ul li {
   border-top: solid 3px #1883ba;
   border-bottom: solid 3px #1883ba;
   padding: 10px;
 }
-/* line 88, ../sass/_back_office.scss */
+/* line 92, ../sass/_back_office.scss */
 .navbar ul li a {
   color: white;
   font-size: 1.8rem;
   text-decoration: none;
   padding: 5px 50px 5px 50px;
 }
-/* line 95, ../sass/_back_office.scss */
+/* line 99, ../sass/_back_office.scss */
 .navbar ul li:hover {
   background-color: #ff0080;
 }
-/* line 103, ../sass/_back_office.scss */
+/* line 107, ../sass/_back_office.scss */
 .navbar .bas_nav {
   margin-top: 100px;
 }
 
-/* line 111, ../sass/_back_office.scss */
+/* line 115, ../sass/_back_office.scss */
 .corps {
   display: inline-flex;
   width: 75vw;
@@ -486,11 +490,19 @@ body {
   margin-top: 50px;
   margin-right: 50px;
 }
-/* line 117, ../sass/_back_office.scss */
+/* line 121, ../sass/_back_office.scss */
 .corps h2 {
   display: block;
+  color: black;
+  font-family: 'Robotaur2';
 }
-/* line 120, ../sass/_back_office.scss */
+/* line 126, ../sass/_back_office.scss */
+.corps p {
+  display: block;
+  color: black;
+  font-family: 'Roboto';
+}
+/* line 131, ../sass/_back_office.scss */
 .corps table {
   border: none;
   background-color: #000022;
@@ -498,22 +510,22 @@ body {
   width: 75vw;
   max-height: 400px;
 }
-/* line 127, ../sass/_back_office.scss */
+/* line 138, ../sass/_back_office.scss */
 .corps table thead {
   height: 30px;
 }
-/* line 129, ../sass/_back_office.scss */
+/* line 140, ../sass/_back_office.scss */
 .corps table thead th {
   padding: 20px;
   text-align: center;
   font-size: 1.5rem;
 }
-/* line 135, ../sass/_back_office.scss */
+/* line 146, ../sass/_back_office.scss */
 .corps table tbody {
   background-color: #1883ba;
   overflow-y: scroll;
 }
-/* line 139, ../sass/_back_office.scss */
+/* line 150, ../sass/_back_office.scss */
 .corps table tbody td {
   height: 30px;
   border-top: solid 8px #000022;
@@ -521,7 +533,7 @@ body {
   text-align: center;
   font-size: 1.5rem;
 }
-/* line 145, ../sass/_back_office.scss */
+/* line 156, ../sass/_back_office.scss */
 .corps table tbody td input {
   padding: 10px 20px 10px 20px;
   background-color: gray;
@@ -529,7 +541,7 @@ body {
   border: none;
   cursor: pointer;
 }
-/* line 152, ../sass/_back_office.scss */
+/* line 163, ../sass/_back_office.scss */
 .corps table tbody td input:active {
   background-color: #666666;
 }

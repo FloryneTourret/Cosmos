@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Administrateur
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+{% endblock %}
+
+{% block menu %}{% endblock %}
+
+{% block body %}
+    <div class="corps">
+
+        <table>
+
+            <thead>
+            <tr>
+                <th>N°</th>
+                <th>Pseudo</th>
+                <th>Victoire</th>
+                <th>Défaites</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for joueur in autres %}
+                {% set counter = ( counter | default(0) ) + 1 %}
+                <tr>
+                    <td>{{ counter }}</td>
+                    <td>{{ joueur.username }}</td>
+                    <td>{{ joueur.PartiesVictoires }}</td>
+                    <td>{{ joueur.PartiesDefaites }}</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+
+
+
+
+    </div>
+{% endblock %}
