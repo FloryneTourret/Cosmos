@@ -122,7 +122,7 @@
     </script>
 
     {% if app.user.Id == partie.Joueur1.Id %}
-        {% if partie.PartieTour == 2 or partie.PartieTour == 4 or partie.PartieTour == 6 or partie.PartieTour == 8  %}
+        {% if partie.PartieTour == 2 or partie.PartieTour == 4 or partie.PartieTour == 6 or partie.PartieTour == 8 or partie.PartieTour == 9  %}
             <script>
                 $(document).ready(function(){
                 setInterval(rafraichir, 5000);
@@ -135,7 +135,7 @@
         {% endif %}
 
     {% elseif app.user.Id == partie.Joueur2.Id %}
-        {% if partie.PartieTour == 1 or partie.PartieTour == 3 or partie.PartieTour == 5 or partie.PartieTour == 7 %}
+        {% if partie.PartieTour == 1 or partie.PartieTour == 3 or partie.PartieTour == 5 or partie.PartieTour == 7 or partie.PartieTour == 9 %}
             <script>
                 setInterval(rafraichir, 5000);
                 function rafraichir() {
