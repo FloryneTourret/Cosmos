@@ -56,7 +56,7 @@
                 </div>
 
                 <div id="plateau_jeu">
-                {{ include('Partie/plateau.html.twig') }}
+                    {{ include('Partie/plateau.html.twig') }}
                 </div>
 
 
@@ -99,6 +99,16 @@
                     <p>Concurrence</p>
                 </div>
 
+                <form class="formchat" action="" id="submitchat">
+                    <section id="chat">
+                        <ul id="messages"></ul>
+
+                        <input style="display: none" type="text" id="monPseudo" value="{{ app.user.username }}">
+                    </section>
+                    <input id="monMessage" autocomplete="off"  placeholder="Entrez votre texte"/>
+                    <button style="display: none" onclick="envoyer()">Envoyer !</button>
+                </form>
+
 
 
 
@@ -116,20 +126,17 @@
 
     <script src="{{ asset('assets/js/action.js') }}"></script>
     <script src="{{ asset('assets/js/menu.js') }}"></script>
+    <script src="{{ asset('assets/js/chat.js') }}"></script>
 
-    <script>
-    console.log(" moi: " +{{app.user.Id  }} +" joueur 1: " + {{ partie.Joueur1.Id  }} + " tour: " + {{ partie.PartieTour }} + " joueur 2 :" + {{ partie.Joueur2.Id  }});
-    </script>
 
     {% if app.user.Id == partie.Joueur1.Id %}
         {% if partie.PartieTour == 2 or partie.PartieTour == 4 or partie.PartieTour == 6 or partie.PartieTour == 8 or partie.PartieTour == 9  %}
             <script>
                 $(document).ready(function(){
-                setInterval(rafraichir, 5000);
-                function rafraichir() {
-                    console.log('tick');
-                   $("#plateau_jeu").load("{{ path('plateau', {partie: partie.Id}) }}")
-                }
+                    setInterval(rafraichir, 5000);
+                    function rafraichir() {
+                        $("#plateau_jeu").load("{{ path('plateau', {partie: partie.Id}) }}")
+                    }
                 });
             </script>
         {% endif %}
@@ -139,12 +146,81 @@
             <script>
                 setInterval(rafraichir, 5000);
                 function rafraichir() {
-                    console.log('tick');
                     $("#plateau_jeu").load("{{ path('plateau', {partie: partie.Id}) }}")
                 }
             </script>
         {% endif %}
     {% endif %}
+
+
+    <script src="http://localhost/Cosmos/node_modules/socket.io-client/dist/socket.io.js"></script>
+    <script>
+        var socket = io.connect('http://localhost:8080');
+
+        var loggedUser;
+
+        /**
+         * Log de connexion d'un utilisateur (avant login)
+         */
+        console.log('a user connected');
+
+        /**
+         * Déconnexion d'un utilisateur : broadcast d'un 'service-message'
+         */
+        socket.on('disconnect', function () {
+            if (loggedUser !== undefined) {
+                console.log('user disconnected : ' + loggedUser.username);
+                var serviceMessage = {
+                    text: loggedUser.username + " s\'est déconnecté",
+                    type: 'logout'
+                };
+                socket.broadcast.emit("clientversserveur", serviceMessage);
+            }
+        });
+
+        /**
+         * Connexion d'un utilisateur via le formulaire :
+         *  - sauvegarde du user
+         *  - broadcast d'un 'service-message'
+         */
+        socket.on('user-login', function (user) {
+            loggedUser = user;
+            if (loggedUser !== undefined) {
+                var serviceMessage = {
+                    text: loggedUser.username + " s\'est connecté",
+                    type: 'login'
+                };
+                socket.broadcast.emit("clientversserveur", serviceMessage);
+            }
+        });
+
+
+        socket.on('serveurversclient', function (texte) {
+            document.getElementById("messages").innerHTML=texte;
+            element = document.getElementById('chat');
+            element.scrollTop = element.scrollHeight;
+        });
+
+
+
+        if (event.keyCode == 10 || event.keyCode == 13) {
+            var lePseudo=document.getElementById("monPseudo").value;
+            var leMessage=document.getElementById("monMessage").value;
+            var messageenvoye = '<i>'+lePseudo+'</i> : '+leMessage;
+
+            socket.emit("clientversserveur", messageenvoye);
+            document.getElementById("monMessage").value="";
+        }
+
+        function envoyer() {
+            var lePseudo=document.getElementById("monPseudo").value;
+            var leMessage=document.getElementById("monMessage").value;
+            var messageenvoye = '<li><span class="username">'+lePseudo+'</span> : '+leMessage+'</li>';
+
+            socket.emit("clientversserveur", messageenvoye);
+            document.getElementById("monMessage").value="";
+        }
+    </script>
 
 {% endblock %}
 

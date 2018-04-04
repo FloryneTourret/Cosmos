@@ -927,3 +927,13 @@
                 <p>Concurrence</p>
             </div>
 
+            <form class="formchat" action="" id="submitchat">
+                <section id="chat">
+                    <ul id="messages"></ul>
+
+                    <input style="display: none" type="text" id="monPseudo" value="{{ app.user.username }}">
+                </section>
+                <input id="monMessage" autocomplete="off"  placeholder="Entrez votre texte"/>
+                <button style="display: none" onclick="envoyer()">Envoyer !</button>
+            </form>
+
