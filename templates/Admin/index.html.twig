@@ -1,100 +1,38 @@
 {% extends 'base.html.twig' %}
 
-
-{% block body %}
-    <section class="accueil">
-
-        <div class="corps">
-            <div class="container-fluid justify-content-center">
-                <div class="col-lh-6">
-                    <div class="contenu-histoire" >
-                        <div class="haut">
-                            <button class="tablinks active" onclick="openContenu(event, 'histoire')" id="defaultOpen"><h2>Histoire</h2></button>
-                            <button class="tablinks" onclick="openContenu(event, 'regle')"><h2>Règles</h2></button>
-                        </div>
-                        <div class="bas">
-                            <div id="histoire" class="tabcontent">
-                                <p>Vous convoitez le contrôle du cosmos
-                                    avec un autre prétendant, le but est
-                                    d'acquérir le contrôle du système solaire
-                                    en récupérant la force de chaque
-                                    communauté. Afin d’acquérir le soutien
-                                    de chaque planètes il faudra soudoyer les
-                                    dirigeants. Pour cela il faudra offrir un
-                                    des objets typique convoités en fonction
-                                    de chacun pour accroître votre soutien et
-                                    donc remporter la victoire sur les élections.
-                                </p>
-
-                            </div>
-                            <div id="regle" class="tabcontent">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab adipisci delectus deserunt ducimus eaque error ex incidunt, magni nesciunt officiis pariatur perferendis provident quis sequi suscipit ut vel, veniam voluptatibus.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lh-6">
-                    <div class="jouer">
-                        <!--<a href="" class="box-jouer">Présentation</a>-->
-                        <h2>Présentation</h2>
-                        <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/IWa9F0pddW0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                        </div>
-
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-
-
+{% block title %}
+    Administrateur
 {% endblock %}
 
-{% block javascripts %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+{% endblock %}
 
-    <script type="text/javascript">
-        function openContenu(evt, contenuName) {
-            // Declare all variables
-            var i, tabcontent, tablinks;
+{% block menu %}{% endblock %}
 
+{% block body %}
+<div class="corps">
 
+        <table>
 
-            // Get all elements with class="tabcontent" and hide them
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-            }
-
-            // Get all elements with class="tablinks" and remove the class "active"
-            tablinks = document.getElementsByClassName("tablinks");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-
-
-
-            // Show the current tab, and add an "active" class to the button that opened the tab
-            document.getElementById(contenuName).style.display = "block";
-            evt.currentTarget.className += " active";
-        }
-
-        // Get the element with id="defaultOpen" and click on it
-        document.getElementById("defaultOpen").click();
-
-        $(document).ready(function () {
-            $(".button-nav-open").click(function () {
-                $("#navigation").addClass("ul-down");
-                $("body").css("overflow", "hidden");
-            });
-            $(".button-nav-close").click(function () {
-                $("#navigation").removeClass("ul-down");
-                $("body").css("overflow", "initial");
-            });
-        });
-    </script>
-
+            <thead>
+            <tr>
+                <th>Pseudo</th>
+                <th>Mail</th>
+                <th>Victoire</th>
+                <th>Défaites</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Xxfloflodu10xX</td>
+                <td>teste@lol.fr</td>
+                <td>5</td>
+                <td>50</td>
+                <td><input type="submit" value="Supprimer"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 {% endblock %}
