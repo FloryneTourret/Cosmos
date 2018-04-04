@@ -13,32 +13,30 @@ body {
     position: absolute;
     z-index: 101;
     top: 0;
+    margin-right: 10px;
     & ul {
       display: inline-flex;
       float: right;
-      width: 55vw;
-      @media (max-width: 1750px) {
-        width: 60vw;
-      }
-      @media (max-width: 1500px) {
-        width: 72vw;
-      }
+
 
 
 
       & li {
         display: inline-flex;
         padding-top: 20px;
-        margin-left: 50px;
+        margin-right: 50px;
         align-items: center;
 
         & a {
           font-size: 2rem;
           text-decoration: none;
-          font-family: 'Robotaur';
+          font-family: 'Robotaur2';
           display: inline-block;
           position: relative;
           color: #ffffff;
+          @media (max-width: 1599px) {
+            font-size: 1.5rem;
+          }
 
         }
         .a-text a::after {
@@ -111,7 +109,7 @@ body {
 
 
 
-  @media (min-width: 1300px) {
+  @media (min-width: 1214px) {
 
     .navbar{
       visibility: visible;
@@ -143,7 +141,7 @@ body {
     }
 
     .button-nav-open {
-      font-family: 'Robotaur';
+      font-family: 'Robotaur2';
       margin-top: -40px;
       float: right;
       font-size: 2em;
@@ -162,7 +160,7 @@ body {
     }
 
     .button-nav-close {
-      font-family: 'Robotaur';
+      font-family: 'Robotaur2';
       color: white;
       text-align: center;
       right: 250px;
@@ -184,7 +182,7 @@ body {
 
 
 
-  @media (max-width: 1300px) {
+  @media (max-width: 1214px) {
     .hamburger{
       visibility: visible;
     }
@@ -196,7 +194,7 @@ body {
   }
 
 
-  @media (max-width: 1300px) {
+  @media (max-width: 1214px) {
 
     ul {
       position: fixed;
@@ -209,7 +207,7 @@ body {
       font-size: 2vw;
       padding: 100px 16vw;
       box-sizing: border-box;
-      transform: translate(0, -150%);
+      transform: translate(0, -100%);
       transition: 0.5s;
 
       & li {
@@ -238,7 +236,7 @@ body {
           font-size: 14pt;
           display: inline-flex;
           align-items: center;
-          font-family: 'Robotaur';
+          font-family: 'Robotaur2';
 
 
 

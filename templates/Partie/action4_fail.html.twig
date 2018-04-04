@@ -15,7 +15,7 @@
     {{ include('Partie/plateau_action.html.twig') }}
 
 
-    <form method="post" action="{{ path('action4') }}">
+    <form method="post" action="{{ path('action4') }}" id="formulaire">
         <div class="b4">
             <div class="b4carte1">
 
@@ -29,9 +29,11 @@
             <div class="b4carte4">
 
             </div>
-            <h1>Attention selectionnez bien deux paires de cartes concurrence</h1>
+            <h1>Attention, Selectionnez bien deux paires de cartes concurrence</h1>
             <button class="bouton" id="annuler" name="id" value="{{ partie.Id }}" formaction="{{ path('retour') }}">Annuler</button>
+
             <button class="bouton" id="valider" type="submit" name="id" value="{{ partie.Id }}">Valider</button>
+            <input name="paires" type="hidden">
 
         </div>
 
@@ -43,66 +45,80 @@
                 {% for carte in partie.MainJ1 |sort %}
                     {% set counter = ( counter | default(0) ) + 1 %}
                     {% if counter == 1 %}
-                        <input class="carte1" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}"><span class="carte1 span1">Paire 1</span>
-                        <input class="carte1b" type="checkbox" name="id_paire2[]" value="{{ Objets[carte].Id }}"><span class="carte1b span2">Paire 2</span>
-                        <img class="carte1" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte1" class="checkbox n0" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte1"><img class="n0" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% elseif counter == 2 %}
-                        <input class="carte2" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}"><span class="carte2 span1">Paire 1</span>
-                        <input class="carte2b" type="checkbox" name="id_paire2[]" value="{{ Objets[carte].Id }}"><span class="carte2b span2">Paire 2</span>
-                        <img class="carte2" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte2" class="checkbox n1" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte2"><img class="n1" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% elseif counter == 3 %}
-                        <input class="carte3" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}"><span class="carte3 span1">Paire 1</span>
-                        <input class="carte3b" type="checkbox" name="id_paire2[]" value="{{ Objets[carte].Id }}"><span class="carte3b span2">Paire 2</span>
-                        <img class="carte3" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte3" class="checkbox n2" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte3"><img class="n2" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% elseif counter == 4 %}
-                        <input class="carte4" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}"><span class="carte4 span1">Paire 1</span>
-                        <input class="carte4b" type="checkbox" name="id_paire2[]" value="{{ Objets[carte].Id }}"><span class="carte4b span2">Paire 2</span>
-                        <img class="carte4" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte4" class="checkbox n3" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte4"><img class="n3" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% elseif counter == 5 %}
-                        <input class="carte5" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}"><span class="carte5 span1">Paire 1</span>
-                        <input class="carte5b" type="checkbox" name="id_paire2[]" value="{{ Objets[carte].Id }}"><span class="carte5b span2">Paire 2</span>
-                        <img class="carte5" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte5" class="checkbox n4" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte5"><img class="n4" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% elseif counter == 6 %}
-                        <input class="carte6" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}"><span class="carte6 span1">Paire 1</span>
-                        <input class="carte6b" type="checkbox" name="id_paire2[]" value="{{ Objets[carte].Id }}"><span class="carte6b span2">Paire 2</span>
-                        <img class="carte6" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte6" class="checkbox n5" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte6"><img class="n5" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% elseif counter == 7 %}
-                        <input class="carte7" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}"><span class="carte7 span1">Paire 1</span>
-                        <input class="carte7b" type="checkbox" name="id_paire2[]" value="{{ Objets[carte].Id }}"><span class="carte7b span2">Paire 2</span>
-                        <img class="carte7" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte7" class="checkbox n6" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte7"><img class="n6" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% endif %}
                 {% endfor %}
             {% elseif app.user.id == partie.Joueur2.Id %}
                 {% for carte in partie.MainJ2 |sort %}
                     {% set counter = ( counter | default(0) ) + 1 %}
                     {% if counter == 1 %}
-                        <input class="carte1" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}"><span class="carte1 span1">Paire 1</span>
-                        <input class="carte1b" type="checkbox" name="id_paire2[]" value="{{ Objets[carte].Id }}"><span class="carte1b span2">Paire 2</span>
-                        <img class="carte1" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte1" class="checkbox n0" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte1"><img class="n0" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% elseif counter == 2 %}
-                        <input class="carte2" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}"><span class="carte2 span1">Paire 1</span>
-                        <input class="carte2b" type="checkbox" name="id_paire2[]" value="{{ Objets[carte].Id }}"><span class="carte2b span2">Paire 2</span>
-                        <img class="carte2" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte2" class="checkbox n1" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte2"><img class="n1" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% elseif counter == 3 %}
-                        <input class="carte3" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}"><span class="carte3 span1">Paire 1</span>
-                        <input class="carte3b" type="checkbox" name="id_paire2[]" value="{{ Objets[carte].Id }}"><span class="carte3b span2">Paire 2</span>
-                        <img class="carte3" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte3" class="checkbox n2" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte3"><img class="n2" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% elseif counter == 4 %}
-                        <input class="carte4" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}"><span class="carte4 span1">Paire 1</span>
-                        <input class="carte4b" type="checkbox" name="id_paire2[]" value="{{ Objets[carte].Id }}"><span class="carte4b span2">Paire 2</span>
-                        <img class="carte4" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte4" class="checkbox n3" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte4"><img class="n3" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% elseif counter == 5 %}
-                        <input class="carte5" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}"><span class="carte5 span1">Paire 1</span>
-                        <input class="carte5b" type="checkbox" name="id_paire2[]" value="{{ Objets[carte].Id }}"><span class="carte5b span2">Paire 2</span>
-                        <img class="carte5" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte5" class="checkbox n4" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte5"><img class="n4" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% elseif counter == 6 %}
-                        <input class="carte6" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}"><span class="carte6 span1">Paire 1</span>
-                        <input class="carte6b" type="checkbox" name="id_paire2[]" value="{{ Objets[carte].Id }}"><span class="carte6b span2">Paire 2</span>
-                        <img class="carte6" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte6" class="checkbox n5" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte6"><img class="n5" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% elseif counter == 7 %}
-                        <input class="carte7" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}"><span class="carte7 span1">Paire 1</span>
-                        <input class="carte7b" type="checkbox" name="id_paire2[]" value="{{ Objets[carte].Id }}"><span class="carte7b span2">Paire 2</span>
-                        <img class="carte7" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte7" class="checkbox n6" type="checkbox" name="id_paire1[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte7"><img class="n6" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% endif %}
                 {% endfor %}
             {% endif %}
@@ -117,4 +133,21 @@
 
                 <script src="{{ asset('assets/js/action.js') }}"></script>
                 <script src="{{ asset('assets/js/menu.js') }}"></script>
+
+                <script>
+                    console.clear();
+                    var checkbox = document.getElementsByClassName('checkbox'),
+                        form = document.getElementById('formulaire'),
+                        ordre=[];
+
+                    for(var i=0, len=checkbox.length; i<len; i++){
+                        checkbox[i].onclick=function(){
+                            if(this.checked)
+                                ordre.push(this.value);
+                            else if((key = ordre.indexOf(this.value)) >-1 )
+                                ordre.splice(key,1);
+                            form.paires.value = '['+ordre.join(',')+']';
+                        };
+                    }
+                </script>
             {% endblock %}

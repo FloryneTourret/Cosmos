@@ -217,26 +217,26 @@ button {
 
 /* line 118, ../sass/_plateau.scss */
 .objets {
-  margin-left: 25vw;
+  margin-left: 36vw;
 }
 /* line 120, ../sass/_plateau.scss */
 .objets img {
   position: absolute;
   width: 6vw;
-  bottom: 2vh;
+  bottom: 3vh;
+  transition: .5s;
 }
-/* line 124, ../sass/_plateau.scss */
-.objets img:hover {
-  box-shadow: 0px 0px 10px 5px #00fcff;
-}
-/* line 128, ../sass/_plateau.scss */
+/* line 126, ../sass/_plateau.scss */
 .objets input {
-  z-index: 16;
+  z-index: -1;
   position: absolute;
-  width: 6vw;
-  bottom: 14vh;
 }
-/* line 134, ../sass/_plateau.scss */
+/* line 132, ../sass/_plateau.scss */
+.objets input:checked + label img {
+  filter: grayscale(1);
+  transition: .5s;
+}
+/* line 138, ../sass/_plateau.scss */
 .objets span.span1 {
   text-align: center;
   z-index: 16;
@@ -246,7 +246,7 @@ button {
   color: white;
   text-shadow: 1px 1px 2px black;
 }
-/* line 143, ../sass/_plateau.scss */
+/* line 147, ../sass/_plateau.scss */
 .objets span.span2 {
   text-align: center;
   z-index: 16;
@@ -256,176 +256,176 @@ button {
   color: white;
   text-shadow: 1px 1px 2px black;
 }
-/* line 154, ../sass/_plateau.scss */
+/* line 158, ../sass/_plateau.scss */
 .objets .carte1 {
   margin-left: 0;
 }
-/* line 157, ../sass/_plateau.scss */
+/* line 161, ../sass/_plateau.scss */
 .objets .carte2 {
   margin-left: 7vw;
 }
-/* line 160, ../sass/_plateau.scss */
+/* line 164, ../sass/_plateau.scss */
 .objets .carte3 {
   margin-left: 14vw;
 }
-/* line 163, ../sass/_plateau.scss */
+/* line 167, ../sass/_plateau.scss */
 .objets .carte4 {
   margin-left: 21vw;
 }
-/* line 166, ../sass/_plateau.scss */
+/* line 170, ../sass/_plateau.scss */
 .objets .carte5 {
   margin-left: 28vw;
 }
-/* line 169, ../sass/_plateau.scss */
+/* line 173, ../sass/_plateau.scss */
 .objets .carte6 {
   margin-left: 35vw;
 }
-/* line 172, ../sass/_plateau.scss */
+/* line 176, ../sass/_plateau.scss */
 .objets .carte7 {
   margin-left: 42vw;
 }
-/* line 176, ../sass/_plateau.scss */
+/* line 180, ../sass/_plateau.scss */
 .objets .carte1b {
   margin-left: 0;
   bottom: 10vh;
 }
-/* line 180, ../sass/_plateau.scss */
+/* line 184, ../sass/_plateau.scss */
 .objets .carte2b {
   margin-left: 7vw;
   bottom: 10vh;
 }
-/* line 184, ../sass/_plateau.scss */
+/* line 188, ../sass/_plateau.scss */
 .objets .carte3b {
   margin-left: 14vw;
   bottom: 10vh;
 }
-/* line 188, ../sass/_plateau.scss */
+/* line 192, ../sass/_plateau.scss */
 .objets .carte4b {
   margin-left: 21vw;
   bottom: 10vh;
 }
-/* line 192, ../sass/_plateau.scss */
+/* line 196, ../sass/_plateau.scss */
 .objets .carte5b {
   margin-left: 28vw;
   bottom: 10vh;
 }
-/* line 196, ../sass/_plateau.scss */
+/* line 200, ../sass/_plateau.scss */
 .objets .carte6b {
   margin-left: 35vw;
   bottom: 10vh;
 }
-/* line 200, ../sass/_plateau.scss */
+/* line 204, ../sass/_plateau.scss */
 .objets .carte7b {
   margin-left: 42vw;
   bottom: 10vh;
 }
 
-/* line 207, ../sass/_plateau.scss */
+/* line 211, ../sass/_plateau.scss */
 .n0 {
   z-index: 9;
   transform: rotate(-20deg);
   transition: all 1s;
 }
-/* line 211, ../sass/_plateau.scss */
+/* line 215, ../sass/_plateau.scss */
 .n0:hover {
   transform: rotate(-20deg) translateY(-35px);
   box-shadow: 0px 0px 10px 5px #00fcff;
 }
 
-/* line 216, ../sass/_plateau.scss */
+/* line 220, ../sass/_plateau.scss */
 .n1 {
   z-index: 10;
   transform: rotate(-15deg) translateY(-12px);
   margin-left: 50px;
   transition: all 1s;
 }
-/* line 221, ../sass/_plateau.scss */
+/* line 225, ../sass/_plateau.scss */
 .n1:hover {
   transform: rotate(-15deg) translateY(-50px);
   box-shadow: 0px 0px 10px 5px #00fcff;
 }
 
-/* line 227, ../sass/_plateau.scss */
+/* line 231, ../sass/_plateau.scss */
 .n2 {
   z-index: 11;
   transform: rotate(-10deg) translateY(-19px);
   margin-left: 100px;
   transition: all 1s;
 }
-/* line 232, ../sass/_plateau.scss */
+/* line 236, ../sass/_plateau.scss */
 .n2:hover {
   transform: rotate(-10deg) translateY(-60px);
   box-shadow: 0px 0px 10px 5px #00fcff;
 }
 
-/* line 237, ../sass/_plateau.scss */
+/* line 241, ../sass/_plateau.scss */
 .n3 {
   z-index: 12;
   margin-left: 150px;
   transform: rotate(-3deg) translateY(-20px);
   transition: all 1s;
 }
-/* line 242, ../sass/_plateau.scss */
+/* line 246, ../sass/_plateau.scss */
 .n3:hover {
   transform: rotate(-3deg) translateY(-60px);
   box-shadow: 0px 0px 10px 5px #00fcff;
 }
 
-/* line 247, ../sass/_plateau.scss */
+/* line 251, ../sass/_plateau.scss */
 .n4 {
   z-index: 13;
   margin-left: 200px;
   transform: rotate(5deg) translateY(-17px);
   transition: all 1s;
 }
-/* line 252, ../sass/_plateau.scss */
+/* line 256, ../sass/_plateau.scss */
 .n4:hover {
   transform: rotate(5deg) translateY(-60px);
   box-shadow: 0px 0px 10px 5px #00fcff;
 }
 
-/* line 257, ../sass/_plateau.scss */
+/* line 261, ../sass/_plateau.scss */
 .n5 {
   z-index: 14;
   margin-left: 250px;
   transform: rotate(15deg) translateY(-7px);
   transition: all 1s;
 }
-/* line 262, ../sass/_plateau.scss */
+/* line 266, ../sass/_plateau.scss */
 .n5:hover {
   transform: rotate(15deg) translateY(-60px);
   box-shadow: 0px 0px 10px 5px #00fcff;
 }
 
-/* line 267, ../sass/_plateau.scss */
+/* line 271, ../sass/_plateau.scss */
 .n6 {
   z-index: 15;
   margin-left: 300px;
   transform: rotate(25deg) translateY(8px);
   transition: all 1s;
 }
-/* line 272, ../sass/_plateau.scss */
+/* line 276, ../sass/_plateau.scss */
 .n6:hover {
   transform: rotate(25deg) translateY(-20px);
   box-shadow: 0px 0px 10px 5px #00fcff;
 }
 
-/* line 278, ../sass/_plateau.scss */
+/* line 282, ../sass/_plateau.scss */
 .backgroud_plateau {
   min-height: 50vh;
 }
-/* line 281, ../sass/_plateau.scss */
+/* line 285, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond {
   background: url("../img/plateau/fond.png") no-repeat center;
   background-size: cover;
   height: 100vh;
 }
-/* line 286, ../sass/_plateau.scss */
+/* line 290, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img2 {
   width: 20vw;
   position: absolute;
 }
-/* line 290, ../sass/_plateau.scss */
+/* line 294, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img3 {
   position: absolute;
   width: 45px;
@@ -433,7 +433,7 @@ button {
   margin-left: 2vw;
   margin-top: 40px;
 }
-/* line 298, ../sass/_plateau.scss */
+/* line 302, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img4 {
   position: absolute;
   width: 45px;
@@ -441,7 +441,7 @@ button {
   margin-left: 2vw;
   margin-top: 95px;
 }
-/* line 305, ../sass/_plateau.scss */
+/* line 309, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img5 {
   position: absolute;
   width: 45px;
@@ -449,7 +449,7 @@ button {
   margin-left: 2vw;
   margin-top: 150px;
 }
-/* line 312, ../sass/_plateau.scss */
+/* line 316, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img6 {
   position: absolute;
   width: 45px;
@@ -457,7 +457,7 @@ button {
   margin-left: 2vw;
   margin-top: 205px;
 }
-/* line 320, ../sass/_plateau.scss */
+/* line 324, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img10 {
   position: absolute;
   width: 8vw;
@@ -465,7 +465,7 @@ button {
   margin-left: 18vw;
   z-index: 1;
 }
-/* line 327, ../sass/_plateau.scss */
+/* line 331, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion1 {
   z-index: 10;
   width: 2vw;
@@ -473,7 +473,7 @@ button {
   margin-left: 21vw;
   margin-top: 31vh;
 }
-/* line 334, ../sass/_plateau.scss */
+/* line 338, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion1_haut {
   z-index: 10;
   width: 2vw;
@@ -481,7 +481,7 @@ button {
   margin-left: 21vw;
   margin-top: 26vh;
 }
-/* line 341, ../sass/_plateau.scss */
+/* line 345, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion1_bas {
   z-index: 10;
   width: 2vw;
@@ -489,7 +489,7 @@ button {
   margin-left: 21vw;
   margin-top: 37vh;
 }
-/* line 348, ../sass/_plateau.scss */
+/* line 352, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img11 {
   position: absolute;
   width: 8vw;
@@ -497,7 +497,7 @@ button {
   margin-left: 27vw;
   z-index: 1;
 }
-/* line 355, ../sass/_plateau.scss */
+/* line 359, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion2 {
   z-index: 10;
   width: 2vw;
@@ -505,7 +505,7 @@ button {
   margin-left: 30vw;
   margin-top: 31vh;
 }
-/* line 362, ../sass/_plateau.scss */
+/* line 366, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion2_haut {
   z-index: 10;
   width: 2vw;
@@ -513,7 +513,7 @@ button {
   margin-left: 30vw;
   margin-top: 26vh;
 }
-/* line 369, ../sass/_plateau.scss */
+/* line 373, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion2_bas {
   z-index: 10;
   width: 2vw;
@@ -521,7 +521,7 @@ button {
   margin-left: 30vw;
   margin-top: 37vh;
 }
-/* line 376, ../sass/_plateau.scss */
+/* line 380, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img12 {
   position: absolute;
   width: 8vw;
@@ -529,7 +529,7 @@ button {
   margin-left: 36vw;
   z-index: 1;
 }
-/* line 383, ../sass/_plateau.scss */
+/* line 387, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion3 {
   z-index: 10;
   width: 2vw;
@@ -537,7 +537,7 @@ button {
   margin-left: 39vw;
   margin-top: 31vh;
 }
-/* line 390, ../sass/_plateau.scss */
+/* line 394, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion3_haut {
   z-index: 10;
   width: 2vw;
@@ -545,7 +545,7 @@ button {
   margin-left: 39vw;
   margin-top: 26vh;
 }
-/* line 397, ../sass/_plateau.scss */
+/* line 401, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion3_bas {
   z-index: 10;
   width: 2vw;
@@ -553,7 +553,7 @@ button {
   margin-left: 39vw;
   margin-top: 37vh;
 }
-/* line 404, ../sass/_plateau.scss */
+/* line 408, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img13 {
   position: absolute;
   width: 8vw;
@@ -561,7 +561,7 @@ button {
   margin-left: 45vw;
   z-index: 1;
 }
-/* line 411, ../sass/_plateau.scss */
+/* line 415, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion4 {
   z-index: 10;
   width: 2vw;
@@ -569,7 +569,7 @@ button {
   margin-left: 48vw;
   margin-top: 31vh;
 }
-/* line 418, ../sass/_plateau.scss */
+/* line 422, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion4_haut {
   z-index: 10;
   width: 2vw;
@@ -577,7 +577,7 @@ button {
   margin-left: 48vw;
   margin-top: 26vh;
 }
-/* line 425, ../sass/_plateau.scss */
+/* line 429, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion4_bas {
   z-index: 10;
   width: 2vw;
@@ -585,7 +585,7 @@ button {
   margin-left: 48vw;
   margin-top: 37vh;
 }
-/* line 432, ../sass/_plateau.scss */
+/* line 436, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img14 {
   position: absolute;
   width: 8vw;
@@ -593,7 +593,7 @@ button {
   margin-left: 54vw;
   z-index: 1;
 }
-/* line 439, ../sass/_plateau.scss */
+/* line 443, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion5 {
   z-index: 10;
   width: 2vw;
@@ -601,7 +601,7 @@ button {
   margin-left: 57vw;
   margin-top: 31vh;
 }
-/* line 446, ../sass/_plateau.scss */
+/* line 450, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion5_haut {
   z-index: 10;
   width: 2vw;
@@ -609,7 +609,7 @@ button {
   margin-left: 57vw;
   margin-top: 26vh;
 }
-/* line 453, ../sass/_plateau.scss */
+/* line 457, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion5_bas {
   z-index: 10;
   width: 2vw;
@@ -617,7 +617,7 @@ button {
   margin-left: 57vw;
   margin-top: 37vh;
 }
-/* line 460, ../sass/_plateau.scss */
+/* line 464, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img15 {
   position: absolute;
   width: 8vw;
@@ -625,7 +625,7 @@ button {
   margin-left: 63vw;
   z-index: 1;
 }
-/* line 467, ../sass/_plateau.scss */
+/* line 471, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion6 {
   z-index: 10;
   width: 2vw;
@@ -633,7 +633,7 @@ button {
   margin-left: 66vw;
   margin-top: 31vh;
 }
-/* line 474, ../sass/_plateau.scss */
+/* line 478, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion6_haut {
   z-index: 10;
   width: 2vw;
@@ -641,7 +641,7 @@ button {
   margin-left: 66vw;
   margin-top: 26vh;
 }
-/* line 481, ../sass/_plateau.scss */
+/* line 485, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion6_bas {
   z-index: 10;
   width: 2vw;
@@ -649,7 +649,7 @@ button {
   margin-left: 66vw;
   margin-top: 37vh;
 }
-/* line 488, ../sass/_plateau.scss */
+/* line 492, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img16 {
   position: absolute;
   width: 8vw;
@@ -657,7 +657,7 @@ button {
   margin-left: 72vw;
   z-index: 1;
 }
-/* line 495, ../sass/_plateau.scss */
+/* line 499, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion7 {
   z-index: 10;
   width: 2vw;
@@ -665,7 +665,7 @@ button {
   margin-left: 75vw;
   margin-top: 31vh;
 }
-/* line 502, ../sass/_plateau.scss */
+/* line 506, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion7_haut {
   z-index: 10;
   width: 2vw;
@@ -673,7 +673,7 @@ button {
   margin-left: 75vw;
   margin-top: 26vh;
 }
-/* line 509, ../sass/_plateau.scss */
+/* line 513, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion7_bas {
   z-index: 10;
   width: 2vw;
@@ -681,7 +681,7 @@ button {
   margin-left: 75vw;
   margin-top: 37vh;
 }
-/* line 517, ../sass/_plateau.scss */
+/* line 521, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img19 {
   position: absolute;
   width: 45px;
@@ -690,7 +690,7 @@ button {
   bottom: 40px;
   z-index: 2;
 }
-/* line 526, ../sass/_plateau.scss */
+/* line 530, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img20 {
   position: absolute;
   width: 45px;
@@ -699,7 +699,7 @@ button {
   bottom: 95px;
   z-index: 1;
 }
-/* line 534, ../sass/_plateau.scss */
+/* line 538, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img21 {
   position: absolute;
   width: 45px;
@@ -708,7 +708,7 @@ button {
   bottom: 150px;
   z-index: 1;
 }
-/* line 543, ../sass/_plateau.scss */
+/* line 547, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img22 {
   position: absolute;
   width: 45px;
@@ -717,7 +717,7 @@ button {
   bottom: 205px;
   z-index: 1;
 }
-/* line 552, ../sass/_plateau.scss */
+/* line 556, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .bouton_action1 {
   position: absolute;
   width: 45px;
@@ -726,12 +726,12 @@ button {
   bottom: 205px;
   z-index: 1;
 }
-/* line 559, ../sass/_plateau.scss */
+/* line 563, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .bouton_action1 img {
   width: 45px;
   height: 45px;
 }
-/* line 565, ../sass/_plateau.scss */
+/* line 569, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .bouton_action2 {
   position: absolute;
   width: 45px;
@@ -740,12 +740,12 @@ button {
   bottom: 150px;
   z-index: 1;
 }
-/* line 572, ../sass/_plateau.scss */
+/* line 576, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .bouton_action2 img {
   width: 45px;
   height: 45px;
 }
-/* line 578, ../sass/_plateau.scss */
+/* line 582, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .bouton_action3 {
   position: absolute;
   width: 45px;
@@ -754,12 +754,12 @@ button {
   bottom: 95px;
   z-index: 1;
 }
-/* line 585, ../sass/_plateau.scss */
+/* line 589, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .bouton_action3 img {
   width: 45px;
   height: 45px;
 }
-/* line 591, ../sass/_plateau.scss */
+/* line 595, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .bouton_action4 {
   position: absolute;
   width: 45px;
@@ -768,16 +768,16 @@ button {
   bottom: 40px;
   z-index: 2;
 }
-/* line 598, ../sass/_plateau.scss */
+/* line 602, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .bouton_action4 img {
   width: 45px;
   height: 45px;
 }
-/* line 605, ../sass/_plateau.scss */
+/* line 609, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond button img {
   box-shadow: 0px 0px 10px 5px #00fcff;
 }
-/* line 611, ../sass/_plateau.scss */
+/* line 615, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img24 {
   position: absolute;
   right: 0;
@@ -785,7 +785,7 @@ button {
   margin-top: 305px;
   transition: 1s all;
 }
-/* line 617, ../sass/_plateau.scss */
+/* line 621, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img24 :hover {
   transform: scale(1.1);
 }
@@ -1723,23 +1723,23 @@ h1 {
 body {
   position: absolute;
   width: 100%;
-  max-height: 100vh;
-  font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
   color: white;
   font-size: 100%;
   background-color: #000000;
 }
 
-/* line 12, ../sass/_index.scss */
+/* line 11, ../sass/_index.scss */
 .body {
   position: absolute;
   background: #020011 url("../img/1x/fond.png") no-repeat;
   background-size: cover;
+  font-family: 'Work Sans', sans-serif;
   width: 100%;
   height: 100vh;
 }
 @media (max-width: 800px) {
-  /* line 12, ../sass/_index.scss */
+  /* line 11, ../sass/_index.scss */
   .body {
     height: 100vh;
   }
@@ -1820,7 +1820,7 @@ body {
   display: flex;
   flex-wrap: wrap;
 }
-@media (max-width: 800px) {
+@media (max-width: 1200px) {
   /* line 81, ../sass/_index.scss */
   .nav ul {
     float: none;
@@ -1874,8 +1874,18 @@ body {
   transform-origin: bottom left;
 }
 
-/* line 138, ../sass/_index.scss */
-.logo {
+/* line 137, ../sass/_index.scss */
+.img-logo {
+  display: inline-block;
+}
+@media (max-width: 1200px) {
+  /* line 137, ../sass/_index.scss */
+  .img-logo {
+    display: flex;
+  }
+}
+/* line 143, ../sass/_index.scss */
+.img-logo .logo {
   position: relative;
   display: inline-flex;
   justify-content: left;
@@ -1884,9 +1894,10 @@ body {
   margin-top: 20px;
   z-index: 8;
 }
-@media (max-width: 800px) {
-  /* line 138, ../sass/_index.scss */
-  .logo {
+@media (max-width: 1200px) {
+  /* line 143, ../sass/_index.scss */
+  .img-logo .logo {
+    display: flex;
     justify-content: center;
     margin: 0 auto;
     padding-top: 10px;
@@ -1894,7 +1905,24 @@ body {
   }
 }
 
-/* line 155, ../sass/_index.scss */
+/* line 162, ../sass/_index.scss */
+.logo-grande-nav {
+  position: relative;
+  display: inline-flex;
+  justify-content: left;
+  width: 20rem;
+  height: auto;
+  margin-top: 20px;
+  z-index: 8;
+}
+@media (max-width: 1214px) {
+  /* line 162, ../sass/_index.scss */
+  .logo-grande-nav {
+    display: none;
+  }
+}
+
+/* line 175, ../sass/_index.scss */
 .regle {
   display: flex;
   justify-content: center;
@@ -1902,14 +1930,14 @@ body {
   z-index: 50;
 }
 @media (max-width: 800px) {
-  /* line 155, ../sass/_index.scss */
+  /* line 175, ../sass/_index.scss */
   .regle {
     margin-top: 10px;
   }
 }
-/* line 165, ../sass/_index.scss */
+/* line 185, ../sass/_index.scss */
 .regle a {
-  font-size: 15rem;
+  font-size: 10rem;
   text-decoration: none;
   font-family: 'Robotaur2';
   display: inline-block;
@@ -1918,21 +1946,27 @@ body {
   text-shadow: 0 0 0 #fff, 0 0 0 #fff, 0 0 0px black, 0 0 0 #00fcff, 0 0 10px #00fcff;
   z-index: 50;
 }
+@media (max-width: 1560px) {
+  /* line 185, ../sass/_index.scss */
+  .regle a {
+    font-size: 8rem;
+  }
+}
 @media (max-width: 800px) {
-  /* line 165, ../sass/_index.scss */
+  /* line 185, ../sass/_index.scss */
   .regle a {
     font-size: 4.5rem;
   }
 }
-/* line 183, ../sass/_index.scss */
+/* line 207, ../sass/_index.scss */
 .regle a:hover {
   text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff;
 }
 
-/* line 190, ../sass/_index.scss */
+/* line 214, ../sass/_index.scss */
 #moncercle {
   z-index: 1;
-  margin-top: 120px;
+  margin-top: 250px;
   background: #FFDE55;
   border-radius: 50%;
   width: 13rem;
@@ -1943,7 +1977,7 @@ body {
   box-shadow: 0px 0px 78px 10px rgba(255, 222, 85, 0.73);
 }
 @media (max-width: 800px) {
-  /* line 190, ../sass/_index.scss */
+  /* line 214, ../sass/_index.scss */
   #moncercle {
     width: 8rem;
     height: 8rem;
@@ -1966,12 +2000,12 @@ body {
   position: absolute;
   z-index: 101;
   top: 0;
+  margin-right: 10px;
 }
-/* line 16, ../sass/_nav.scss */
+/* line 17, ../sass/_nav.scss */
 .classic .navbar ul {
   display: inline-flex;
   float: right;
-  width: 55vw;
       /*.nav-presentation a:hover {
 
         text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #e2bf30, 0 0 30px #e2bf30, 0 0 40px #e2bf30, 0 0 55px #e2bf30, 0 0 75px #e2bf30;
@@ -1992,35 +2026,29 @@ body {
       }
     */
 }
-@media (max-width: 1750px) {
-  /* line 16, ../sass/_nav.scss */
-  .classic .navbar ul {
-    width: 60vw;
-  }
-}
-@media (max-width: 1500px) {
-  /* line 16, ../sass/_nav.scss */
-  .classic .navbar ul {
-    width: 72vw;
-  }
-}
-/* line 29, ../sass/_nav.scss */
+/* line 24, ../sass/_nav.scss */
 .classic .navbar ul li {
   display: inline-flex;
   padding-top: 20px;
-  margin-left: 50px;
+  margin-right: 50px;
   align-items: center;
 }
-/* line 35, ../sass/_nav.scss */
+/* line 30, ../sass/_nav.scss */
 .classic .navbar ul li a {
   font-size: 2rem;
   text-decoration: none;
-  font-family: 'Robotaur';
+  font-family: 'Robotaur2';
   display: inline-block;
   position: relative;
   color: #ffffff;
 }
-/* line 44, ../sass/_nav.scss */
+@media (max-width: 1599px) {
+  /* line 30, ../sass/_nav.scss */
+  .classic .navbar ul li a {
+    font-size: 1.5rem;
+  }
+}
+/* line 42, ../sass/_nav.scss */
 .classic .navbar ul li .a-text a::after {
   content: '';
   position: absolute;
@@ -2034,12 +2062,12 @@ body {
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
-/* line 58, ../sass/_nav.scss */
+/* line 56, ../sass/_nav.scss */
 .classic .navbar ul li .a-text a:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
-/* line 65, ../sass/_nav.scss */
+/* line 63, ../sass/_nav.scss */
 .classic .navbar ul li .select img {
   transform: scale(1.3);
   -ms-transform: scale(1.3);
@@ -2048,21 +2076,21 @@ body {
   -moz-transform: scale(1.3);
   filter: drop-shadow(0px 0px 20px #00fcff);
 }
-/* line 75, ../sass/_nav.scss */
+/* line 73, ../sass/_nav.scss */
 .classic .navbar ul li img {
   transition: 0.4s;
 }
-/* line 77, ../sass/_nav.scss */
+/* line 75, ../sass/_nav.scss */
 .classic .navbar ul li img:hover {
   filter: drop-shadow(0px 0px 20px #00fcff);
 }
-@media (min-width: 1300px) {
-  /* line 116, ../sass/_nav.scss */
+@media (min-width: 1214px) {
+  /* line 114, ../sass/_nav.scss */
   .classic .navbar {
     visibility: visible;
   }
 }
-/* line 124, ../sass/_nav.scss */
+/* line 122, ../sass/_nav.scss */
 .classic .hamburger {
   visibility: hidden;
   width: 100%;
@@ -2072,7 +2100,7 @@ body {
   margin: 0 auto;
   background-color: rgba(0, 0, 0, 0.5);
 }
-/* line 133, ../sass/_nav.scss */
+/* line 131, ../sass/_nav.scss */
 .classic .hamburger .logo-nav {
   position: relative;
   display: flex;
@@ -2083,9 +2111,9 @@ body {
   height: auto;
   z-index: 5;
 }
-/* line 145, ../sass/_nav.scss */
+/* line 143, ../sass/_nav.scss */
 .classic .hamburger .button-nav-open {
-  font-family: 'Robotaur';
+  font-family: 'Robotaur2';
   margin-top: -40px;
   float: right;
   font-size: 2em;
@@ -2097,37 +2125,37 @@ body {
   cursor: pointer;
   margin-right: 10px;
 }
-/* line 157, ../sass/_nav.scss */
+/* line 155, ../sass/_nav.scss */
 .classic .hamburger .button-nav-open hr {
   max-width: 50px;
   height: 3px;
   background-color: #ffffff;
 }
-/* line 164, ../sass/_nav.scss */
+/* line 162, ../sass/_nav.scss */
 .classic .hamburger .button-nav-close {
-  font-family: 'Robotaur';
+  font-family: 'Robotaur2';
   color: white;
   text-align: center;
   right: 250px;
   cursor: pointer;
 }
-/* line 170, ../sass/_nav.scss */
+/* line 168, ../sass/_nav.scss */
 .classic .hamburger .button-nav-close p {
   text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff073a, 0 0 30px #ff073a, 0 0 40px #ff073a, 0 0 55px #ff073a, 0 0 75px #ff073a;
   font-size: 5em;
 }
-@media (max-width: 1300px) {
-  /* line 188, ../sass/_nav.scss */
+@media (max-width: 1214px) {
+  /* line 186, ../sass/_nav.scss */
   .classic .hamburger {
     visibility: visible;
   }
 }
-/* line 194, ../sass/_nav.scss */
+/* line 192, ../sass/_nav.scss */
 .classic .ul-down {
   transform: translate(0, 0);
 }
-@media (max-width: 1300px) {
-  /* line 201, ../sass/_nav.scss */
+@media (max-width: 1214px) {
+  /* line 199, ../sass/_nav.scss */
   .classic ul {
     position: fixed;
     top: 0;
@@ -2139,10 +2167,10 @@ body {
     font-size: 2vw;
     padding: 100px 16vw;
     box-sizing: border-box;
-    transform: translate(0, -150%);
+    transform: translate(0, -100%);
     transition: 0.5s;
   }
-  /* line 215, ../sass/_nav.scss */
+  /* line 213, ../sass/_nav.scss */
   .classic ul li {
     margin-bottom: 40px;
     /* .langue a{
@@ -2152,13 +2180,13 @@ body {
        z-index: 5;
      }*/
   }
-  /* line 219, ../sass/_nav.scss */
+  /* line 217, ../sass/_nav.scss */
   .classic ul li::after {
     clear: both;
     content: '';
     display: block;
   }
-  /* line 232, ../sass/_nav.scss */
+  /* line 230, ../sass/_nav.scss */
   .classic ul li a {
     margin-left: 50px;
     right: 250px;
@@ -2168,30 +2196,30 @@ body {
     font-size: 14pt;
     display: inline-flex;
     align-items: center;
-    font-family: 'Robotaur';
+    font-family: 'Robotaur2';
     text-shadow: 0 0 0 #fff, 0 0 0 #fff, 0 0 0px black, 0 0 0 #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff;
   }
-  /* line 247, ../sass/_nav.scss */
+  /* line 245, ../sass/_nav.scss */
   .classic ul li a:hover {
     color: #ffffff;
   }
-  /* line 252, ../sass/_nav.scss */
+  /* line 250, ../sass/_nav.scss */
   .classic ul li .nav-presentation a:hover {
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #e2bf30, 0 0 30px #e2bf30, 0 0 40px #e2bf30, 0 0 55px #e2bf30, 0 0 75px #e2bf30;
   }
-  /* line 256, ../sass/_nav.scss */
+  /* line 254, ../sass/_nav.scss */
   .classic ul li .nav-plateau a:hover {
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #cc5700, 0 0 30px #cc5700, 0 0 40px #cc5700, 0 0 55px #cc5700, 0 0 75px #cc5700;
   }
-  /* line 260, ../sass/_nav.scss */
+  /* line 258, ../sass/_nav.scss */
   .classic ul li .nav-flyer a:hover {
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #a2f060, 0 0 30px #a2f060, 0 0 40px #a2f060, 0 0 55px #a2f060, 0 0 75px #a2f060;
   }
-  /* line 265, ../sass/_nav.scss */
+  /* line 263, ../sass/_nav.scss */
   .classic ul li .nav-contact a:hover {
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #aa0000, 0 0 30px #aa0000, 0 0 40px #aa0000, 0 0 55px #aa0000, 0 0 75px #aa0000;
   }
-  /* line 270, ../sass/_nav.scss */
+  /* line 268, ../sass/_nav.scss */
   .classic ul li .nav-deco a:hover {
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #af6beb, 0 0 30px #af6beb, 0 0 40px #af6beb, 0 0 55px #af6beb, 0 0 75px #ff0080;
   }
@@ -2209,49 +2237,44 @@ body {
   /* line 1, ../sass/_accueil.scss */
   .accueil {
     height: 100vh;
-    background-attachment: fixed;
+    background-attachment: scroll;
   }
 }
-@media (max-width: 1300px) {
-  /* line 13, ../sass/_accueil.scss */
-  .accueil .logo {
-    visibility: hidden;
-  }
-}
-/* line 19, ../sass/_accueil.scss */
-.accueil .corps {
+
+/* line 14, ../sass/_accueil.scss */
+.corps {
   width: 95%;
   margin-top: 200px;
 }
 @media (max-width: 1300px) {
-  /* line 19, ../sass/_accueil.scss */
-  .accueil .corps {
+  /* line 14, ../sass/_accueil.scss */
+  .corps {
     width: 100%;
   }
 }
-/* line 25, ../sass/_accueil.scss */
-.accueil .corps .contenu-histoire {
+/* line 20, ../sass/_accueil.scss */
+.corps .contenu-histoire {
   width: 100%;
   max-height: 100%;
   box-shadow: 0px 0px 40px #00fcff;
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.6);
 }
-/* line 32, ../sass/_accueil.scss */
-.accueil .corps .contenu-histoire .haut {
+/* line 27, ../sass/_accueil.scss */
+.corps .contenu-histoire .haut {
   width: 100%;
   background-color: black;
   border: none;
   overflow: hidden;
 }
-/* line 37, ../sass/_accueil.scss */
-.accueil .corps .contenu-histoire .haut::after {
+/* line 32, ../sass/_accueil.scss */
+.corps .contenu-histoire .haut::after {
   clear: both;
   content: '';
   display: block;
 }
-/* line 43, ../sass/_accueil.scss */
-.accueil .corps .contenu-histoire .haut button {
+/* line 38, ../sass/_accueil.scss */
+.corps .contenu-histoire .haut button {
   position: relative;
   float: left;
   width: 50%;
@@ -2269,29 +2292,37 @@ body {
   background-color: transparent;
 }
 @media (max-width: 1300px) {
-  /* line 43, ../sass/_accueil.scss */
-  .accueil .corps .contenu-histoire .haut button {
+  /* line 38, ../sass/_accueil.scss */
+  .corps .contenu-histoire .haut button {
     font-size: 1.5rem;
   }
 }
-/* line 68, ../sass/_accueil.scss */
-.accueil .corps .contenu-histoire .haut button:hover {
+/* line 63, ../sass/_accueil.scss */
+.corps .contenu-histoire .haut button:hover {
   text-shadow: 0 0 0 #fff, 0 0 0 #fff, 0 0 0px black, 0 0 0 #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff;
 }
-/* line 72, ../sass/_accueil.scss */
-.accueil .corps .contenu-histoire .haut .active {
+/* line 67, ../sass/_accueil.scss */
+.corps .contenu-histoire .haut .active {
   text-shadow: 0 0 0 #fff, 0 0 0 #fff, 0 0 0px black, 0 0 0 #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff;
   background-color: #000000;
 }
-/* line 81, ../sass/_accueil.scss */
-.accueil .corps .contenu-histoire .bas {
+/* line 76, ../sass/_accueil.scss */
+.corps .contenu-histoire .bas {
   text-align: center;
   margin-top: 20px;
 }
-/* line 84, ../sass/_accueil.scss */
-.accueil .corps .contenu-histoire .bas .tabcontent {
+/* line 79, ../sass/_accueil.scss */
+.corps .contenu-histoire .bas .tabcontent {
   display: none;
   animation: fadeEffect 1s;
+  overflow-y: scroll;
+  height: 400px;
+}
+@media (max-width: 1599px) {
+  /* line 79, ../sass/_accueil.scss */
+  .corps .contenu-histoire .bas .tabcontent {
+    height: 300px;
+  }
 }
 @keyframes fadeEffect {
   from {
@@ -2302,31 +2333,43 @@ body {
   }
 }
 /* line 93, ../sass/_accueil.scss */
-.accueil .corps .contenu-histoire .bas p {
-  padding: 40px 60px 40px 60px;
+.corps .contenu-histoire .bas p {
+  padding: 20px 60px 20px 60px;
   font-size: 1.7rem;
   line-height: 140%;
   word-spacing: 140%;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto';
 }
 @media (max-width: 800px) {
   /* line 93, ../sass/_accueil.scss */
-  .accueil .corps .contenu-histoire .bas p {
+  .corps .contenu-histoire .bas p {
     font-size: 1.2rem;
     padding: 10px;
   }
 }
-/* line 108, ../sass/_accueil.scss */
-.accueil .corps .jouer {
+/* line 110, ../sass/_accueil.scss */
+.corps .jouer {
   width: 100%;
   height: 50vh;
   background-color: rgba(0, 0, 0, 0.6);
-  border: black solid 1px;
   border-radius: 5px;
   box-shadow: 0px 0px 40px  #00fcff;
 }
 /* line 116, ../sass/_accueil.scss */
-.accueil .corps .jouer a {
+.corps .jouer h2 {
+  position: relative;
+  text-shadow: 0 0 0 #fff, 0 0 0 #fff, 0 0 0px black, 0 0 0 #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff;
+  width: 100%;
+  font-family: 'Robotaur2';
+  font-size: 3rem;
+  color: white;
+  padding: 40px;
+  box-sizing: border-box;
+  display: inline-block;
+  text-align: center;
+}
+/* line 128, ../sass/_accueil.scss */
+.corps .jouer a {
   position: relative;
   width: 100%;
   box-sizing: border-box;
@@ -2340,30 +2383,31 @@ body {
   text-shadow: 0 0 0 #fff, 0 0 0 #fff, 0 0 0px black, 0 0 0 #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff;
 }
 @media (max-width: 1300px) {
-  /* line 116, ../sass/_accueil.scss */
-  .accueil .corps .jouer a {
+  /* line 128, ../sass/_accueil.scss */
+  .corps .jouer a {
     font-size: 1.5rem;
   }
 }
-/* line 138, ../sass/_accueil.scss */
-.accueil .corps .jouer .embed-responsive {
+/* line 150, ../sass/_accueil.scss */
+.corps .jouer .embed-responsive {
   position: relative;
   display: block;
   width: 100%;
   padding: 0;
   overflow: hidden;
+  box-shadow: 0px 0px 40px  #00fcff;
 }
-/* line 150, ../sass/_accueil.scss */
-.accueil .corps .jouer .embed-responsive::before {
+/* line 163, ../sass/_accueil.scss */
+.corps .jouer .embed-responsive::before {
   display: block;
   content: "";
 }
-/* line 157, ../sass/_accueil.scss */
-.accueil .corps .jouer .embed-responsive .embed-responsive-item,
-.accueil .corps .jouer .embed-responsive iframe,
-.accueil .corps .jouer .embed-responsive embed,
-.accueil .corps .jouer .embed-responsive object,
-.accueil .corps .jouer .embed-responsive video {
+/* line 170, ../sass/_accueil.scss */
+.corps .jouer .embed-responsive .embed-responsive-item,
+.corps .jouer .embed-responsive iframe,
+.corps .jouer .embed-responsive embed,
+.corps .jouer .embed-responsive object,
+.corps .jouer .embed-responsive video {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -2372,8 +2416,8 @@ body {
   height: 100%;
   border: 0;
 }
-/* line 173, ../sass/_accueil.scss */
-.accueil .corps .jouer .embed-responsive-16by9::before {
+/* line 186, ../sass/_accueil.scss */
+.corps .jouer .embed-responsive-16by9::before {
   padding-top: 56.25%;
 }
 

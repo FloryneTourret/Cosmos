@@ -1,15 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
 
+{% block body %}
     <section class="accueil">
+
         <div class="corps">
             <div class="container-fluid justify-content-center">
-                <div class="col-6">
+                <div class="col-lh-6">
                     <div class="contenu-histoire" >
                         <div class="haut">
                             <button class="tablinks active" onclick="openContenu(event, 'histoire')" id="defaultOpen"><h2>Histoire</h2></button>
-                            <button class="tablinks" onclick="openContenu(event, 'regle')"><h2>Régle</h2></button>
+                            <button class="tablinks" onclick="openContenu(event, 'regle')"><h2>Règles</h2></button>
                         </div>
                         <div class="bas">
                             <div id="histoire" class="tabcontent">
@@ -32,9 +33,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-lh-6">
                     <div class="jouer">
-                        <a href="{{  path('choix_partie') }}" class="box-jouer">Jouer</a>
+                        <!--<a href="" class="box-jouer">Présentation</a>-->
+                        <h2>Présentation</h2>
                         <div class="embed-responsive embed-responsive-16by9">
                             <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/IWa9F0pddW0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                         </div>

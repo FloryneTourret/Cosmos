@@ -636,15 +636,16 @@ class ActionsController extends Controller
         $partieId = $request->request->get('id');
 
         //carte séléctionnée
-        $paire1 = $request->request->get('id_paire1');
-        $paire2 = $request->request->get('id_paire2');
+        $paires = json_decode($request->request->get('paires'));
 
+        $longeur=count($paires);
 
-        $longeur1=count($paire1);
-        $longeur2=count($paire2);
+        if($longeur==4){
 
-        if($longeur1==2 && $longeur2 ==2){
-
+            $paire1[0] = $paires[0];
+            $paire1[1] = $paires[1];
+            $paire2[0] = $paires[2];
+            $paire2[1] = $paires[3];
 
             $carte1=$paire1[0];
             $carte2=$paire1[1];

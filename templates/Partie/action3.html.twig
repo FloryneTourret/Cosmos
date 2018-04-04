@@ -40,52 +40,80 @@
                 {% for carte in partie.MainJ1 |sort %}
                     {% set counter = ( counter | default(0) ) + 1 %}
                     {% if counter == 1 %}
-                        <input class="carte1" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
-                        <img class="carte1" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte1" class="n0" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte1"><img class="n0" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% elseif counter == 2 %}
-                        <input class="carte2" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
-                        <img class="carte2" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte2" class="n1" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte2"><img class="n1" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% elseif counter == 3 %}
-                        <input class="carte3" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
-                        <img class="carte3" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte3" class="n2" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte3"><img class="n2" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% elseif counter == 4 %}
-                        <input class="carte4" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
-                        <img class="carte4" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte4" class="n3" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte4"><img class="n3" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% elseif counter == 5 %}
-                        <input class="carte5" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
-                        <img class="carte5" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte5" class="n4" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte5"><img class="n4" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% elseif counter == 6 %}
-                        <input class="carte6" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
-                        <img class="carte6" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte6" class="n5" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte6"><img class="n5" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% elseif counter == 7 %}
-                        <input class="carte7" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
-                        <img class="carte7" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte7" class="n6" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte7"><img class="n6" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% endif %}
                 {% endfor %}
             {% elseif app.user.id == partie.Joueur2.Id %}
                 {% for carte in partie.MainJ2 |sort %}
                     {% set counter = ( counter | default(0) ) + 1 %}
                     {% if counter == 1 %}
-                        <input class="carte1" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
-                        <img class="carte1" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte1" class="n0" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte1"><img class="n0" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% elseif counter == 2 %}
-                        <input class="carte2" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
-                        <img class="carte2" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte2" class="n1" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte2"><img class="n1" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% elseif counter == 3 %}
-                        <input class="carte3" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
-                        <img class="carte3" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte3" class="n2" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte3"><img class="n2" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% elseif counter == 4 %}
-                        <input class="carte4" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
-                        <img class="carte4" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte4" class="n3" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte4"><img class="n3" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% elseif counter == 5 %}
-                        <input class="carte5" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
-                        <img class="carte5" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte5" class="n4" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte5"><img class="n4" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% elseif counter == 6 %}
-                        <input class="carte6" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
-                        <img class="carte6" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte6" class="n5" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte6"><img class="n5" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% elseif counter == 7 %}
-                        <input class="carte7" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
-                        <img class="carte7" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                        <div>
+                            <input id="carte7" class="n6" type="checkbox" name="id_carte[]" value="{{ Objets[carte].Id }}">
+                            <label for="carte7"><img class="n6" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                        </div>
                     {% endif %}
                 {% endfor %}
             {% endif %}
