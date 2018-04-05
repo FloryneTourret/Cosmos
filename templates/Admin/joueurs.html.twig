@@ -11,6 +11,23 @@
 {% block menu %}{% endblock %}
 
 {% block body %}
+    <div class="navbar">
+        <a href="{{  path('profil_admin') }}"><p>{{ app.user.username }}</p></a>
+        <ul>
+            <li><a href="{{  path('admin_classement') }}">Classement</a></li>
+            <li><a href="{{  path('admin_joueurs') }}">Liste des joueurs</a></li>
+            <li><a href="{{  path('admin_parties') }}">Liste des parties</a></li>
+            <li><a href="{{  path('inactif') }}">Déconnexion</a></li>
+        </ul>
+        <div class="bas_nav">
+            {% set nbjoueurs = 0 %}
+            {% for joueur in joueursco %}
+                {% set nbjoueurs = ( nbjoueurs | default(0) ) + 1 %}
+            {% endfor %}
+
+            <p>Nombre de joueurs connectés: {{ nbjoueurs |last }}</p>
+        </div>
+    </div>
     <div class="corps">
 
         <table>

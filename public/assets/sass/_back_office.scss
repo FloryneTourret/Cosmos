@@ -116,9 +116,15 @@ body{
 }
 
 .corps{
+  width: auto;
   margin-top: 100px;
-  margin-left: 22vw;
+  padding-left: 25vw;
   & h2{
+    display: block;
+    color: black;
+    font-family: 'Robotaur2';
+  }
+  & h3{
     display: block;
     color: black;
     font-family: 'Robotaur2';
@@ -129,15 +135,15 @@ body{
     font-family: 'Roboto';
   }
   & table{
-
+    width: 70vw;
     border: none;
     background-color: #000022;
     color: #ffffff;
-    width: 75vw;
     max-height: 400px;
     & thead{
       height: 30px;
       & th{
+        font-family: 'Roboto';
         padding: 20px;
         text-align: center;
         font-size: 1.5rem;
@@ -148,6 +154,7 @@ body{
       overflow-y: scroll;
 
       & td{
+        font-family: 'Roboto';
         height: 30px;
         border-top: solid 8px #000022;
         padding: 20px;

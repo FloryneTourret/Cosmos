@@ -11,13 +11,30 @@
 {% block menu %}{% endblock %}
 
 {% block body %}
+    <div class="navbar">
+        <a href="{{  path('profil_admin') }}"><p>{{ app.user.username }}</p></a>
+        <ul>
+            <li><a href="{{  path('admin_classement') }}">Classement</a></li>
+            <li><a href="{{  path('admin_joueurs') }}">Liste des joueurs</a></li>
+            <li><a href="{{  path('admin_parties') }}">Liste des parties</a></li>
+            <li><a href="{{  path('inactif') }}">Déconnexion</a></li>
+        </ul>
+        <div class="bas_nav">
+            {% set nbjoueurs = 0 %}
+            {% for joueur in joueursco %}
+                {% set nbjoueurs = ( nbjoueurs | default(0) ) + 1 %}
+            {% endfor %}
+
+            <p>Nombre de joueurs connectés: {{ nbjoueurs |last }}</p>
+        </div>
+    </div>
     <div class="corps">
 
         <table>
+
             <thead>
             <tr>
-                <th>Joueur 1</th>
-                <th>Joueur 2</th>
+                <th>Joueurs</th>
                 <th>Date de début</th>
                 <th>Manche</th>
                 <th>Avancement</th>
@@ -27,12 +44,11 @@
             <tbody>
             {% for partie in parties %}
                 <tr>
-                    <td>{{ partie.Joueur1.username }}</td>
-                    <td>{{ partie.Joueur2.username }}</td>
-                    <td>{{ partie.PartieDate |date("d/m/Y à H:i:s") }}</td>
+                    <td>{{ partie.Joueur1.username }} VS {{ partie.Joueur2.username }} </td>
+                    <td>{{ partie.PartieDate |date("d/m/Y") }}</td>
                     <td>{{ partie.PartieManche }}</td>
                     {%  if partie.PartieTour==9 %}
-                    <td>Finie</td>
+                        <td>Finie</td>
                     {% else %}
                         <td>Tour n° {{ partie.PartieTour }}</td>
                     {% endif %}
@@ -41,7 +57,14 @@
                     </form>
                 </tr>
             {% endfor %}
+
             </tbody>
         </table>
+
+
+
+
+
     </div>
 {% endblock %}
+

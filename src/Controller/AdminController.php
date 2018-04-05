@@ -39,7 +39,9 @@ class AdminController extends Controller
 
         $joueurs= $this->getDoctrine()->getRepository(User::class)->findBy(array(), array('PartiesVictoires' => 'DESC', 'PartiesDefaites'=>'ASC'));
 
-        return $this->render('Admin/classement.html.twig', ['moi' => $joueur, 'autres'=>$joueurs]);
+        $joueursco=$this->getDoctrine()->getRepository(User::class)->findBy(['actif' => 1]);
+
+        return $this->render('Admin/classement.html.twig', ['moi' => $joueur, 'autres'=>$joueurs, 'joueursco'=>$joueursco]);
     }
 
     /**
@@ -47,9 +49,10 @@ class AdminController extends Controller
      */
     public function admin_joueurs(){
 
+        $joueursco=$this->getDoctrine()->getRepository(User::class)->findBy(['actif' => 1]);
         $joueurs= $this->getDoctrine()->getRepository(User::class)->findAll();
 
-        return $this->render('Admin/joueurs.html.twig', ['joueurs'=>$joueurs]);
+        return $this->render('Admin/joueurs.html.twig', ['joueurs'=>$joueurs, 'joueursco'=>$joueursco]);
     }
 
     /**
@@ -57,11 +60,11 @@ class AdminController extends Controller
      */
     public function admin_parties(){
 
-
+        $joueursco=$this->getDoctrine()->getRepository(User::class)->findBy(['actif' => 1]);
         $parties= $this->getDoctrine()->getRepository(Parties::class)->findAll();
 
 
-        return $this->render('Admin/parties.html.twig', ['parties'=>$parties]);
+        return $this->render('Admin/parties.html.twig', ['parties'=>$parties, 'joueursco'=>$joueursco]);
     }
 
 

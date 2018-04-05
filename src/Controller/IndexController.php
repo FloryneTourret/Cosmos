@@ -12,6 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Response;
+use App\Entity\User;
 
 class IndexController extends Controller
 {
@@ -20,7 +21,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return $this->render('index.html.twig');
+        return $this->render('User/index.html.twig');
     }
 
     /**
@@ -28,7 +29,9 @@ class IndexController extends Controller
      */
     public function admin()
     {
-        return $this->render('Admin/index.html.twig');
+        $joueursco=$this->getDoctrine()->getRepository(User::class)->findBy(['actif' => 1]);
+        return $this->render('Admin/index.html.twig', ['joueursco'=>$joueursco]);
+
     }
 
     /**
@@ -76,7 +79,8 @@ class IndexController extends Controller
      */
     public function profil_admin()
     {
-        return $this->render('Admin/profil.html.twig');
+        $joueursco=$this->getDoctrine()->getRepository(User::class)->findBy(['actif' => 1]);
+        return $this->render('Admin/profil.html.twig', ['joueursco'=>$joueursco]);
     }
 
 

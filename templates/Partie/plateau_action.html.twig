@@ -11,8 +11,11 @@
                         <a href="{{  path('user') }}" class="hover-underline-animation">Accueil</a>
                     </li>
                     <li>
-                        <a href="{{  path('profil') }}" class="hover-underline-animation">Mon profil</a>
-                    </li>
+                        {% if app.user.roles == ["ROLE_ADMIN"] %}
+                            <a href="{{  path('profil_admin') }}" class="hover-underline-animation">Mon profil</a>
+                        {% else %}
+                            <a href="{{  path('profil') }}" class="hover-underline-animation">Mon profil</a>
+                        {% endif %}</li>
                     <li>
                         <a href="{{  path('classement') }}" class="hover-underline-animation">Classement</a>
                     </li>

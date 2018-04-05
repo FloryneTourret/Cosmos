@@ -487,53 +487,62 @@ body {
 
 /* line 118, ../sass/_back_office.scss */
 .corps {
+  width: auto;
   margin-top: 100px;
-  margin-left: 22vw;
+  padding-left: 25vw;
 }
-/* line 121, ../sass/_back_office.scss */
+/* line 122, ../sass/_back_office.scss */
 .corps h2 {
   display: block;
   color: black;
   font-family: 'Robotaur2';
 }
-/* line 126, ../sass/_back_office.scss */
+/* line 127, ../sass/_back_office.scss */
+.corps h3 {
+  display: block;
+  color: black;
+  font-family: 'Robotaur2';
+}
+/* line 132, ../sass/_back_office.scss */
 .corps p {
   display: block;
   color: black;
   font-family: 'Roboto';
 }
-/* line 131, ../sass/_back_office.scss */
+/* line 137, ../sass/_back_office.scss */
 .corps table {
+  width: 70vw;
   border: none;
   background-color: #000022;
   color: #ffffff;
-  width: 75vw;
   max-height: 400px;
 }
-/* line 138, ../sass/_back_office.scss */
+/* line 143, ../sass/_back_office.scss */
 .corps table thead {
   height: 30px;
 }
-/* line 140, ../sass/_back_office.scss */
+/* line 145, ../sass/_back_office.scss */
 .corps table thead th {
+  font-family: 'Roboto';
   padding: 20px;
   text-align: center;
   font-size: 1.5rem;
 }
-/* line 146, ../sass/_back_office.scss */
+/* line 152, ../sass/_back_office.scss */
 .corps table tbody {
   background-color: #1883ba;
   overflow-y: scroll;
 }
-/* line 150, ../sass/_back_office.scss */
+/* line 156, ../sass/_back_office.scss */
 .corps table tbody td {
+  font-family: 'Roboto';
   height: 30px;
   border-top: solid 8px #000022;
   padding: 20px;
   text-align: center;
   font-size: 1.5rem;
 }
-/* line 156, ../sass/_back_office.scss */
+/* line 163, ../sass/_back_office.scss */
 .corps table tbody td input {
   padding: 10px 20px 10px 20px;
   background-color: gray;
@@ -541,11 +550,11 @@ body {
   border: none;
   cursor: pointer;
 }
-/* line 163, ../sass/_back_office.scss */
+/* line 170, ../sass/_back_office.scss */
 .corps table tbody td input:active {
   background-color: #666666;
 }
-/* line 167, ../sass/_back_office.scss */
+/* line 174, ../sass/_back_office.scss */
 .corps table tbody td button {
   padding: 10px 20px 10px 20px;
   background-color: gray;
@@ -553,7 +562,7 @@ body {
   border: none;
   cursor: pointer;
 }
-/* line 174, ../sass/_back_office.scss */
+/* line 181, ../sass/_back_office.scss */
 .corps table tbody td button:active {
   background-color: #666666;
 }

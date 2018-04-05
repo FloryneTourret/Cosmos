@@ -7,13 +7,32 @@
 {% block menu %}{% endblock %}
 
 {% block body %}
+    <div class="navbar">
+        <a href="{{  path('profil_admin') }}"><p>{{ app.user.username }}</p></a>
+        <ul>
+            <li><a href="{{  path('admin_classement') }}">Classement</a></li>
+            <li><a href="{{  path('admin_joueurs') }}">Liste des joueurs</a></li>
+            <li><a href="{{  path('admin_parties') }}">Liste des parties</a></li>
+            <li><a href="{{  path('inactif') }}">Déconnexion</a></li>
+        </ul>
+        <div class="bas_nav">
+            {% set nbjoueurs = 0 %}
+            {% for joueur in joueursco %}
+                {% set nbjoueurs = ( nbjoueurs | default(0) ) + 1 %}
+            {% endfor %}
+
+            <p>Nombre de joueurs connectés: {{ nbjoueurs |last }}</p>
+        </div>
+    </div>
+
+    <div class="corps">
 
 
-    <h1>Administrateur : {{ app.user.username }}</h1> <br><br>
+    <h2>{{ app.user.username }}</h2>
 
     <form method="post" action="{{ path('update_username') }}">
         <div>
-            <h2>Changer de pseudo :</h2>
+            <h3>Changer de pseudo :</h3>
             <input type="text" value="{{ app.user.username }}" name="username" placeholder="Nouveau Pseudo">
             <input type="submit" value="Changer">
         </div>
@@ -21,7 +40,7 @@
 
     <form method="post" action="{{ path('update_email') }}">
         <div>
-            <h2>Changer d'email :</h2>
+            <h3>Changer d'email :</h3>
             <input type="email" value="{{ app.user.email }}" name="email" placeholder="Nouvel email">
             <input type="submit" value="Changer">
         </div>
@@ -29,11 +48,12 @@
 
     <form method="post" action="{{ path('update_password') }}">
         <div>
-            <h2>Changer de mot de passe :</h2>
+            <h3>Changer de mot de passe :</h3>
             <input type="password" name="premier" placeholder="Entrer nouveau mot de passe"><br>
             <input type="password" name="deuxieme" placeholder="Répéter mot de passe">
             <input type="submit" value="Changer">
         </div>
     </form>
 
+    </div>
 {% endblock %}
