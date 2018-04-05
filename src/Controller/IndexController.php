@@ -21,7 +21,7 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return $this->render('User/index.html.twig');
+        return $this->render('index.html.twig');
     }
 
     /**

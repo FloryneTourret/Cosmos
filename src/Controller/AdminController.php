@@ -13,6 +13,7 @@ use App\Entity\Parties;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class ClassementController
@@ -65,6 +66,41 @@ class AdminController extends Controller
 
 
         return $this->render('Admin/parties.html.twig', ['parties'=>$parties, 'joueursco'=>$joueursco]);
+
+    }
+
+    /**
+     * @Route("/supprimer_partie", name="supprimer_partie")
+     */
+    public function supprimer_partie(Request $request){
+
+        $id_partie= $request->request->get('partie');
+
+        $partie= $this->getDoctrine()->getRepository(Parties::class)->find($id_partie);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($partie);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('admin_parties');
+
+    }
+
+    /**
+     * @Route("/supprimer_joueur", name="supprimer_joueur")
+     */
+    public function supprimer_joueur(Request $request){
+
+        $id_partie= $request->request->get('joueur');
+
+        $joueur= $this->getDoctrine()->getRepository(User::class)->find($id_partie);
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($joueur);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('admin_joueurs');
+
     }
 
 

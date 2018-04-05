@@ -78,7 +78,7 @@ body{
   }
   p{
     padding: 20px 0 20px 0;
-    font-size: 1.8rem;
+    font-size: 1.2rem;
 
 
 
@@ -94,7 +94,8 @@ body{
 
       & a{
         color: white;
-        font-size: 1.8rem;
+        font-size: 1.45rem;
+        font-family: 'Work Sans';
         text-decoration: none;
         padding: 5px 50px 5px 50px;
       }
@@ -132,7 +133,7 @@ body{
   & p{
     display: block;
     color: black;
-    font-family: 'Roboto';
+    font-family: 'Work Sans';
   }
   & table{
     width: 70vw;
@@ -143,7 +144,7 @@ body{
     & thead{
       height: 30px;
       & th{
-        font-family: 'Roboto';
+        font-family: 'Work Sans';
         padding: 20px;
         text-align: center;
         font-size: 1.5rem;
@@ -154,7 +155,7 @@ body{
       overflow-y: scroll;
 
       & td{
-        font-family: 'Roboto';
+        font-family: 'Work Sans';
         height: 30px;
         border-top: solid 8px #000022;
         padding: 20px;

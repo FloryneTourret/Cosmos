@@ -48,7 +48,7 @@
                     <td>{{ joueur.email }}</td>
                     <td>{{ joueur.PartiesVictoires }}</td>
                     <td>{{ joueur.PartiesDefaites }}</td>
-                    <form action="">
+                    <form action="{{ path ('supprimer_joueur') }}" method="post">
                         <td><button type="submit" name="joueur" value="{{ joueur.Id }}">Supprimer</button></td>
                     </form>
                 </tr>

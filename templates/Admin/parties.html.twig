@@ -52,8 +52,8 @@
                     {% else %}
                         <td>Tour n° {{ partie.PartieTour }}</td>
                     {% endif %}
-                    <form action="">
-                        <td><button type="submit" name="joueur" value="{{ partie.Id }}">Supprimer</button></td>
+                    <form action="{{ path('supprimer_partie') }}" method="post">
+                        <td><button type="submit" name="partie" value="{{ partie.Id }}">Supprimer</button></td>
                     </form>
                 </tr>
             {% endfor %}
