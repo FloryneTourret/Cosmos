@@ -32,6 +32,8 @@ class RegistrationController extends Controller
             $user->setPartiesVictoires(0);
             // Par defaut défaites est à 0
             $user->setPartiesDefaites(0);
+            // Par defaut tutoriel est à 0
+            $user->setTutoriel(0);
             // On enregistre l'utilisateur dans la base
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);

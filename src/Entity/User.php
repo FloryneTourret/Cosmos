@@ -60,6 +60,11 @@ class User implements UserInterface, \Serializable
     private $PartiesDefaites;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $Tutoriel;
+
+    /**
      * @var array
      *
      * @ORM\Column(type="json")
@@ -150,6 +155,24 @@ class User implements UserInterface, \Serializable
     {
         $this->PartiesDefaites = $PartiesDefaites;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getTutoriel()
+    {
+        return $this->Tutoriel;
+    }
+
+    /**
+     * @param mixed $Tutoriel
+     */
+    public function setTutoriel($Tutoriel)
+    {
+        $this->Tutoriel = $Tutoriel;
+    }
+
+
 
 
 

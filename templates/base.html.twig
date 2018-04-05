@@ -43,7 +43,7 @@
                         </li>
                         <li class=" ">
                             <div class="nav-plateau">
-                                <a class="js-scroll-trigger" href="{{  path('profil') }}">Profil</a>
+                                <a class="js-scroll-trigger" href="{{  path('profil') }}">{{ app.user.username }}</a>
                             </div>
                         </li>
 
@@ -64,7 +64,12 @@
                     <ul>
                         <li >
                             <div class="nav-presentation a-text">
-                                <a class="js-scroll-trigger" href="{{   path('choix_partie') }}">Jouer</a>
+                                {% if app.user.Tutoriel == 1 %}
+                                    <a class="js-scroll-trigger" href="{{   path('choix_partie') }}">Jouer</a>
+                                {% else %}
+                                    <a class="js-scroll-trigger" href="{{   path('tutoriel') }}">Jouer</a>
+
+                                {% endif %}
                             </div>
                         </li>
                         <li >
@@ -137,7 +142,12 @@
                         </li>
                         <li >
                             <div class="nav-presentation a-text">
+                                {% if app.user.Tutoriel == 1 %}
                                 <a class="js-scroll-trigger" href="{{   path('choix_partie') }}">Jouer</a>
+                                {% else %}
+                                    <a class="js-scroll-trigger" href="{{   path('tutoriel') }}">Jouer</a>
+
+                                {% endif %}
                             </div>
                         </li>
                         <li >

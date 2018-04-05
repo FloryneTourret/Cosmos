@@ -15,6 +15,45 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class PartieController extends Controller
 {
+
+    /**
+     * @Route("/tutoriel", name="tutoriel")
+     */
+    public function tutoriel()
+    {
+        return $this->render('Partie/tutoriel.html.twig');
+    }
+
+
+    /**
+     * @Route("/tutoriel_fini", name="tutoriel_fini")
+     */
+    public function tutoriel_fini()
+    {
+
+        $user = $this->getUser();
+        if($user) {
+            $id = $user->getId();
+        } else {
+            $id = "Pas d'Id";
+        }
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $joueur = $entityManager->getRepository(User::class)->find($id);
+
+        if (!$joueur) {
+            throw $this->createNotFoundException(
+                'No username found for id '.$id
+            );
+        }
+
+        $joueur->setTutoriel(1);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('choix_partie');
+    }
+
+
     /**
      * @Route("/nouvelle", name="nouvelle_partie")
      */
