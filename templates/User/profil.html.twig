@@ -4,32 +4,69 @@
 
 {% block body %}
 
-    <h1>Utilisateur : {{ app.user.username }}</h1> <br><br>
+    <section class="accueil">
+        <div class="formulaire-profil">
+            <div class="container-fluid justify-content-center">
+                <div class="col-8">
+                    <div class="contenu-form" >
+                        <div class="haut-profil">
+                            <h1>Utilisateur : {{ app.user.username }}</h1>
+                        </div>
+                        <div class="bas-profil">
+                            <form method="post" action="{{ path('update_username') }}">
 
-    <form method="post" action="{{ path('update_username') }}">
-        <div>
-            <h2>Changer de pseudo :</h2>
-            <input type="text" value="{{ app.user.username }}" name="username" placeholder="Nouveau Pseudo">
-            <input type="submit" value="Changer">
-        </div>
-    </form>
+                                <div class="element-form">
+                                    <div class="col-3"> <label for="username">Changer de pseudo :</label></div>
+                                    <div class="col-4"><input type="text" value="{{ app.user.username }}" name="username" placeholder="Nouveau Pseudo"></div>
 
-    <form method="post" action="{{ path('update_email') }}">
-        <div>
-            <h2>Changer d'email :</h2>
-            <input type="email" value="{{ app.user.email }}" name="email" placeholder="Nouvel email">
-            <input type="submit" value="Changer">
-        </div>
-    </form>
 
-    <form method="post" action="{{ path('update_password') }}">
-        <div>
-            <h2>Changer de mot de passe :</h2>
-            <input type="password" name="premier" placeholder="Entrer nouveau mot de passe"><br>
-            <input type="password" name="deuxieme" placeholder="Répéter mot de passe">
-            <input type="submit" value="Changer">
+                                    <div class=" col-3 envoyer">
+                                        <input type="submit" value="Changer">                                    </div>
+                                </div>
+
+
+
+
+                            </form>
+                            <form method="post" action="{{ path('update_email') }}">
+
+                                <div class="element-form">
+                                    <div class="col-3"> <label for="email">Changer d'email :</label></div>
+                                    <div class="col-4"><input type="email" value="{{ app.user.email }}" name="email" placeholder="Nouvel email"></div>
+
+
+                                    <div class="col-3 envoyer">
+                                        <input type="submit" value="Changer">                                    </div>
+                                </div>
+
+
+
+
+                            </form>
+                            <form method="post" action="{{ path('update_password') }}">
+
+                                <div class="element-form">
+                                    <div class="col-3"> <label for="username">Changer de mot de passe :</label></div>
+                                    <div class="col-4"><input type="password" name="premier" placeholder="Entrer nouveau mot de passe"><input type="password" name="deuxieme" placeholder="Répéter mot de passe"></div>
+
+                                    <div class=" col-3 envoyer">
+                                        <input type="submit" value="Changer">                                    </div>
+                                </div>
+
+
+
+
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
-    </form>
+
+
+    </section>
 
 
 {% endblock %}

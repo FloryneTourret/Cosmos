@@ -2944,3 +2944,95 @@ form.formchat input::-webkit-input-placeholder {
   padding-left: 5px;
   text-align: center;
 }
+
+/*
+formaulaire
+ */
+/* line 5, ../sass/_profil_form.scss */
+.formulaire-profil {
+  width: 100%;
+  min-height: 75vh;
+  margin-top: 200px;
+}
+@media (max-width: 1300px) {
+  /* line 5, ../sass/_profil_form.scss */
+  .formulaire-profil {
+    width: 100%;
+  }
+}
+/* line 16, ../sass/_profil_form.scss */
+.formulaire-profil .contenu-form {
+  padding-bottom: 10px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 0px 40px #00fcff;
+  border-radius: 5px;
+}
+/* line 24, ../sass/_profil_form.scss */
+.formulaire-profil .contenu-form .haut-profil {
+  padding-top: 20px;
+  width: 100%;
+  border: none;
+  overflow: hidden;
+}
+/* line 29, ../sass/_profil_form.scss */
+.formulaire-profil .contenu-form .haut-profil::after {
+  clear: both;
+  content: '';
+  display: block;
+}
+/* line 35, ../sass/_profil_form.scss */
+.formulaire-profil .contenu-form .haut-profil h1 {
+  font-size: 2rem;
+  font-family: 'Robotaur2';
+  text-align: center;
+}
+@media (max-width: 800px) {
+  /* line 35, ../sass/_profil_form.scss */
+  .formulaire-profil .contenu-form .haut-profil h1 {
+    font-size: 2.5rem;
+  }
+}
+/* line 47, ../sass/_profil_form.scss */
+.formulaire-profil .contenu-form .bas-profil {
+  margin-top: 20px;
+}
+/* line 49, ../sass/_profil_form.scss */
+.formulaire-profil .contenu-form .bas-profil form {
+  padding: 20px;
+}
+/* line 52, ../sass/_profil_form.scss */
+.formulaire-profil .contenu-form .bas-profil .element-form {
+  height: 50px;
+  font-size: 1.5rem;
+}
+/* line 55, ../sass/_profil_form.scss */
+.formulaire-profil .contenu-form .bas-profil .element-form input {
+  width: 100%;
+  height: 30px;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+/* line 61, ../sass/_profil_form.scss */
+.formulaire-profil .contenu-form .bas-profil .element-form label {
+  font-family: 'Work Sans';
+}
+/* line 67, ../sass/_profil_form.scss */
+.formulaire-profil .contenu-form .bas-profil .envoyer input {
+  width: 100%;
+  font-size: 1.5rem;
+  margin-top: 10px;
+  text-align: right;
+  margin-right: 10px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: 'Robotaur2';
+}
+/* line 81, ../sass/_profil_form.scss */
+.formulaire-profil .contenu-form .bas-profil .envoyer input:hover {
+  text-shadow: 0 0 0 #fff, 0 0 0 #fff, 0 0 0px black, 0 0 0 #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff;
+}
