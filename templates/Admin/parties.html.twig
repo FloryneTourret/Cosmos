@@ -25,14 +25,22 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>Xxfloflodu10xX</td>
-                <td>teste@lol.fr</td>
-                <td>5</td>
-                <td>50</td>
-                <td>Finie</td>
-                <td><input type="submit" value="Supprimer"></td>
-            </tr>
+            {% for partie in parties %}
+                <tr>
+                    <td>{{ partie.Joueur1.username }}</td>
+                    <td>{{ partie.Joueur2.username }}</td>
+                    <td>{{ partie.PartieDate |date("d/m/Y à H:i:s") }}</td>
+                    <td>{{ partie.PartieManche }}</td>
+                    {%  if partie.PartieTour==9 %}
+                    <td>Finie</td>
+                    {% else %}
+                        <td>Tour n° {{ partie.PartieTour }}</td>
+                    {% endif %}
+                    <form action="">
+                        <td><button type="submit" name="joueur" value="{{ partie.Id }}">Supprimer</button></td>
+                    </form>
+                </tr>
+            {% endfor %}
             </tbody>
         </table>
     </div>

@@ -10,6 +10,7 @@
 {% endblock %}
 
 {% block menu %}{% endblock %}
+{% block nav_admin %}{% endblock %}
 
 {% block body %}
     {{ include('Partie/plateau_action.html.twig') }}
@@ -140,7 +141,7 @@
                         form = document.getElementById('formulaire'),
                         ordre=[];
 
-                    for(var i=0, len=4; i<len; i++){
+                    for(var i=0, len=7; i<len; i++){
                         checkbox[i].onclick=function(){
                             if(this.checked)
                                 ordre.push(this.value);

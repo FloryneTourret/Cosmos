@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 
+use App\Entity\Parties;
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
@@ -46,19 +47,9 @@ class AdminController extends Controller
      */
     public function admin_joueurs(){
 
-        $user = $this->getUser();
-        if($user) {
-            $id = $user->getId();
-        } else {
-            $id = "Pas d'Id";
-        }
+        $joueurs= $this->getDoctrine()->getRepository(User::class)->findAll();
 
-        //Récupère le joueur
-        $joueur= $this->getDoctrine()->getRepository(User::class)->find( $id);
-
-        $joueurs= $this->getDoctrine()->getRepository(User::class)->findBy(array(), array('PartiesVictoires' => 'DESC', 'PartiesDefaites'=>'ASC'));
-
-        return $this->render('Admin/joueurs.html.twig', ['moi' => $joueur, 'autres'=>$joueurs]);
+        return $this->render('Admin/joueurs.html.twig', ['joueurs'=>$joueurs]);
     }
 
     /**
@@ -66,19 +57,11 @@ class AdminController extends Controller
      */
     public function admin_parties(){
 
-        $user = $this->getUser();
-        if($user) {
-            $id = $user->getId();
-        } else {
-            $id = "Pas d'Id";
-        }
 
-        //Récupère le joueur
-        $joueur= $this->getDoctrine()->getRepository(User::class)->find( $id);
+        $parties= $this->getDoctrine()->getRepository(Parties::class)->findAll();
 
-        $joueurs= $this->getDoctrine()->getRepository(User::class)->findBy(array(), array('PartiesVictoires' => 'DESC', 'PartiesDefaites'=>'ASC'));
 
-        return $this->render('Admin/parties.html.twig', ['moi' => $joueur, 'autres'=>$joueurs]);
+        return $this->render('Admin/parties.html.twig', ['parties'=>$parties]);
     }
 
 

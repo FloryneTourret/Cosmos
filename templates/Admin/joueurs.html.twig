@@ -25,13 +25,17 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>Xxfloflodu10xX</td>
-                <td>teste@lol.fr</td>
-                <td>5</td>
-                <td>50</td>
-                <td><input type="submit" value="Supprimer"></td>
-            </tr>
+            {% for joueur in joueurs %}
+                <tr>
+                    <td>{{ joueur.username }}</td>
+                    <td>{{ joueur.email }}</td>
+                    <td>{{ joueur.PartiesVictoires }}</td>
+                    <td>{{ joueur.PartiesDefaites }}</td>
+                    <form action="">
+                        <td><button type="submit" name="joueur" value="{{ joueur.Id }}">Supprimer</button></td>
+                    </form>
+                </tr>
+            {% endfor %}
             </tbody>
         </table>
 
