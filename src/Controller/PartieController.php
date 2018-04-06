@@ -41,7 +41,7 @@ class PartieController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $joueur = $entityManager->getRepository(User::class)->find($id);
 
-        if (!$joueur) {
+        if (!joueur) {
             throw $this->createNotFoundException(
                 'No username found for id '.$id
             );
@@ -180,7 +180,7 @@ class PartieController extends Controller
             $id = "Pas d'Id";
         }
         //Récupère les parties avec le joueur dedans
-        $parties=  $this->getDoctrine()->getRepository(Parties::class)->findPartiesJoueur( $id);
+        $parties=  $this->getDoctrine()->getRepository(Parties::class)->findPartiesJoueur($id);
         return $this->render('Partie/continuer.html.twig', ['parties' => $parties]);
     }
 

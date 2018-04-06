@@ -511,6 +511,11 @@ body {
   font-family: 'Work Sans';
 }
 /* line 138, ../sass/_back_office.scss */
+.corps .tableau {
+  height: 80vh;
+  overflow-y: scroll;
+}
+/* line 142, ../sass/_back_office.scss */
 .corps table {
   width: 70vw;
   border: none;
@@ -518,23 +523,22 @@ body {
   color: #ffffff;
   max-height: 400px;
 }
-/* line 144, ../sass/_back_office.scss */
+/* line 148, ../sass/_back_office.scss */
 .corps table thead {
   height: 30px;
 }
-/* line 146, ../sass/_back_office.scss */
+/* line 150, ../sass/_back_office.scss */
 .corps table thead th {
   font-family: 'Work Sans';
   padding: 20px;
   text-align: center;
   font-size: 1.5rem;
 }
-/* line 153, ../sass/_back_office.scss */
+/* line 157, ../sass/_back_office.scss */
 .corps table tbody {
   background-color: #1883ba;
-  overflow-y: scroll;
 }
-/* line 157, ../sass/_back_office.scss */
+/* line 160, ../sass/_back_office.scss */
 .corps table tbody td {
   font-family: 'Work Sans';
   height: 30px;
@@ -543,7 +547,7 @@ body {
   text-align: center;
   font-size: 1.5rem;
 }
-/* line 164, ../sass/_back_office.scss */
+/* line 167, ../sass/_back_office.scss */
 .corps table tbody td input {
   padding: 10px 20px 10px 20px;
   background-color: gray;
@@ -551,11 +555,11 @@ body {
   border: none;
   cursor: pointer;
 }
-/* line 171, ../sass/_back_office.scss */
+/* line 174, ../sass/_back_office.scss */
 .corps table tbody td input:active {
   background-color: #666666;
 }
-/* line 175, ../sass/_back_office.scss */
+/* line 178, ../sass/_back_office.scss */
 .corps table tbody td button {
   padding: 10px 20px 10px 20px;
   background-color: gray;
@@ -563,7 +567,7 @@ body {
   border: none;
   cursor: pointer;
 }
-/* line 182, ../sass/_back_office.scss */
+/* line 185, ../sass/_back_office.scss */
 .corps table tbody td button:active {
   background-color: #666666;
 }

@@ -30,6 +30,7 @@
     </div>
     <div class="corps">
 
+        <div class="tableau">
         <table>
 
             <thead>
@@ -42,7 +43,7 @@
             </tr>
             </thead>
             <tbody>
-            {% for partie in parties %}
+            {% for partie in parties | reverse %}
                 <tr>
                     <td>{{ partie.Joueur1.username }} VS {{ partie.Joueur2.username }} </td>
                     <td>{{ partie.PartieDate |date("d/m/Y") }}</td>
@@ -60,6 +61,7 @@
 
             </tbody>
         </table>
+        </div>
 
 
 

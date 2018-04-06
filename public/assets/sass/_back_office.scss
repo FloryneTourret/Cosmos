@@ -135,6 +135,10 @@ body{
     color: black;
     font-family: 'Work Sans';
   }
+  & .tableau{
+    height: 80vh;
+    overflow-y: scroll;
+  }
   & table{
     width: 70vw;
     border: none;
@@ -152,7 +156,6 @@ body{
     }
     & tbody{
       background-color: #1883ba;
-      overflow-y: scroll;
 
       & td{
         font-family: 'Work Sans';
