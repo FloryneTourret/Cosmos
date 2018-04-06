@@ -56,5 +56,5 @@ $(document).ready(function() {
     $(".bouton_action4").mouseleave(function() {
         $(".action4").hide();
     });
-  
+
 });

@@ -204,4 +204,6 @@ class UpdateController extends Controller
         return $this->redirectToRoute('security_logout');
     }
 
+
+
 }

@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block menu%}{% endblock %}
+
+{% block nav_admin %}{% endblock %}
+
+{% block body %}
+
+
+    <div class="body">
+        <div class="nav">
+            <div class="img-logo">
+
+                <img class="logo" src="{{ asset('assets/img/accueil-1/logo.png') }}" alt="">
+            </div>
+            <ul>
+
+                <li>
+                    <a href="{{ path('index') }}" class="hover-underline-animation">Accueil</a>
+                </li>
+                <li>
+                    <a href="{{ path('user_registration') }}" class="hover-underline-animation">Inscription</a>
+                </li>
+                <li>
+                    <a href="{{ path('security_login') }}" class="hover-underline-animation">Connexion</a>
+                </li>
+            </ul>
+        </div>
+        <div class="formulaire">
+
+            <div class="container-fluid justify-content-center">
+                <div class="col-8">
+                    <div class=" contenu-form">
+                        <div class="haut">
+
+                            <h1>Un email vous a été envoyé.</h1>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+{% endblock %}

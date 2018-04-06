@@ -811,6 +811,17 @@ h1 {
 }
 
 /* line 19, ../sass/_action.scss */
+.actifb1 {
+  z-index: 100;
+  margin-top: 52.3vh !important;
+  margin-left: 12.1vw;
+  width: 90px !important;
+  height: 120.6px !important;
+  transition: all 1s;
+  transform: rotate(0deg) translateY(0px) !important;
+}
+
+/* line 29, ../sass/_action.scss */
 .action1 {
   position: absolute;
   width: 200px;
@@ -819,14 +830,14 @@ h1 {
   right: 4vw;
   bottom: 213px;
 }
-/* line 26, ../sass/_action.scss */
+/* line 36, ../sass/_action.scss */
 .action1 p {
   text-align: center;
   padding-top: 8px;
   font-size: 14px;
 }
 
-/* line 33, ../sass/_action.scss */
+/* line 43, ../sass/_action.scss */
 .action2 {
   position: absolute;
   width: 200px;
@@ -835,14 +846,14 @@ h1 {
   right: 4vw;
   bottom: 158px;
 }
-/* line 40, ../sass/_action.scss */
+/* line 50, ../sass/_action.scss */
 .action2 p {
   text-align: center;
   padding-top: 8px;
   font-size: 14px;
 }
 
-/* line 47, ../sass/_action.scss */
+/* line 57, ../sass/_action.scss */
 .action3 {
   position: absolute;
   width: 200px;
@@ -851,14 +862,14 @@ h1 {
   right: 4vw;
   bottom: 103px;
 }
-/* line 54, ../sass/_action.scss */
+/* line 64, ../sass/_action.scss */
 .action3 p {
   text-align: center;
   padding-top: 8px;
   font-size: 14px;
 }
 
-/* line 61, ../sass/_action.scss */
+/* line 71, ../sass/_action.scss */
 .action4 {
   z-index: 1;
   position: absolute;
@@ -868,19 +879,19 @@ h1 {
   right: 4vw;
   bottom: 48px;
 }
-/* line 69, ../sass/_action.scss */
+/* line 79, ../sass/_action.scss */
 .action4 p {
   text-align: center;
   padding-top: 8px;
   font-size: 14px;
 }
 
-/* line 77, ../sass/_action.scss */
+/* line 87, ../sass/_action.scss */
 .used {
   opacity: 0.3;
 }
 
-/* line 81, ../sass/_action.scss */
+/* line 91, ../sass/_action.scss */
 .b1 {
   z-index: 15;
   position: absolute;
@@ -892,7 +903,7 @@ h1 {
   top: 48vh;
   border-radius: 6px;
 }
-/* line 91, ../sass/_action.scss */
+/* line 101, ../sass/_action.scss */
 .b1 .b1carte {
   width: 6vw;
   height: 8vw;
@@ -901,12 +912,12 @@ h1 {
   margin-left: 14.5vw;
   margin-top: 5vh;
 }
-/* line 100, ../sass/_action.scss */
+/* line 110, ../sass/_action.scss */
 .b1 h1 {
   text-align: center;
   margin-top: 12px;
 }
-/* line 104, ../sass/_action.scss */
+/* line 114, ../sass/_action.scss */
 .b1 #annuler {
   margin-top: 19vh;
   margin-left: 1vw;
@@ -914,7 +925,7 @@ h1 {
   font-family: Robotaur;
   color: white;
 }
-/* line 112, ../sass/_action.scss */
+/* line 122, ../sass/_action.scss */
 .b1 #valider {
   margin-top: 19vh;
   margin-left: 18vw;
@@ -923,7 +934,7 @@ h1 {
   color: white;
 }
 
-/* line 121, ../sass/_action.scss */
+/* line 131, ../sass/_action.scss */
 .b2 {
   z-index: 15;
   position: absolute;
@@ -935,7 +946,7 @@ h1 {
   top: 48vh;
   border-radius: 6px;
 }
-/* line 131, ../sass/_action.scss */
+/* line 141, ../sass/_action.scss */
 .b2 .b2carte1 {
   width: 6vw;
   height: 8vw;
@@ -944,7 +955,7 @@ h1 {
   margin-left: 9.5vw;
   margin-top: 5vh;
 }
-/* line 139, ../sass/_action.scss */
+/* line 149, ../sass/_action.scss */
 .b2 .b2carte2 {
   width: 6vw;
   height: 8vw;
@@ -953,12 +964,12 @@ h1 {
   margin-left: 19.5vw;
   margin-top: 5vh;
 }
-/* line 147, ../sass/_action.scss */
+/* line 157, ../sass/_action.scss */
 .b2 h1 {
   text-align: center;
   margin-top: 12px;
 }
-/* line 151, ../sass/_action.scss */
+/* line 161, ../sass/_action.scss */
 .b2 #annuler {
   margin-top: 19vh;
   margin-left: 1vw;
@@ -966,7 +977,7 @@ h1 {
   font-family: Robotaur;
   color: white;
 }
-/* line 159, ../sass/_action.scss */
+/* line 169, ../sass/_action.scss */
 .b2 #valider {
   margin-top: 19vh;
   margin-left: 18vw;
@@ -975,7 +986,7 @@ h1 {
   color: white;
 }
 
-/* line 170, ../sass/_action.scss */
+/* line 180, ../sass/_action.scss */
 .b3 {
   z-index: 15;
   position: absolute;
@@ -987,7 +998,7 @@ h1 {
   top: 48vh;
   border-radius: 6px;
 }
-/* line 180, ../sass/_action.scss */
+/* line 190, ../sass/_action.scss */
 .b3 .b3carte1 {
   width: 6vw;
   height: 8vw;
@@ -996,7 +1007,7 @@ h1 {
   margin-left: 10vw;
   margin-top: 5vh;
 }
-/* line 188, ../sass/_action.scss */
+/* line 198, ../sass/_action.scss */
 .b3 .b3carte2 {
   width: 6vw;
   height: 8vw;
@@ -1005,7 +1016,7 @@ h1 {
   margin-left: 17vw;
   margin-top: 5vh;
 }
-/* line 197, ../sass/_action.scss */
+/* line 207, ../sass/_action.scss */
 .b3 .b3carte3 {
   width: 6vw;
   height: 8vw;
@@ -1014,12 +1025,12 @@ h1 {
   margin-left: 24vw;
   margin-top: 5vh;
 }
-/* line 205, ../sass/_action.scss */
+/* line 215, ../sass/_action.scss */
 .b3 h1 {
   text-align: center;
   margin-top: 12px;
 }
-/* line 209, ../sass/_action.scss */
+/* line 219, ../sass/_action.scss */
 .b3 #annuler {
   margin-top: 19vh;
   margin-left: 1vw;
@@ -1027,7 +1038,7 @@ h1 {
   font-family: Robotaur;
   color: white;
 }
-/* line 217, ../sass/_action.scss */
+/* line 227, ../sass/_action.scss */
 .b3 #valider {
   margin-top: 19vh;
   margin-left: 23vw;
@@ -1036,7 +1047,7 @@ h1 {
   color: white;
 }
 
-/* line 228, ../sass/_action.scss */
+/* line 238, ../sass/_action.scss */
 .b4 {
   z-index: 15;
   position: absolute;
@@ -1048,7 +1059,7 @@ h1 {
   top: 48vh;
   border-radius: 6px;
 }
-/* line 238, ../sass/_action.scss */
+/* line 248, ../sass/_action.scss */
 .b4 .b4carte1 {
   width: 6vw;
   height: 8vw;
@@ -1057,7 +1068,7 @@ h1 {
   margin-left: 11.5vw;
   margin-top: 5vh;
 }
-/* line 246, ../sass/_action.scss */
+/* line 256, ../sass/_action.scss */
 .b4 .b4carte2 {
   width: 6vw;
   height: 8vw;
@@ -1066,7 +1077,7 @@ h1 {
   margin-left: 18.5vw;
   margin-top: 5vh;
 }
-/* line 255, ../sass/_action.scss */
+/* line 265, ../sass/_action.scss */
 .b4 .b4carte3 {
   width: 6vw;
   height: 8vw;
@@ -1075,7 +1086,7 @@ h1 {
   margin-left: 25.5vw;
   margin-top: 5vh;
 }
-/* line 263, ../sass/_action.scss */
+/* line 273, ../sass/_action.scss */
 .b4 .b4carte4 {
   width: 6vw;
   height: 8vw;
@@ -1084,12 +1095,12 @@ h1 {
   margin-left: 32.5vw;
   margin-top: 5vh;
 }
-/* line 271, ../sass/_action.scss */
+/* line 281, ../sass/_action.scss */
 .b4 h1 {
   text-align: center;
   margin-top: 12px;
 }
-/* line 275, ../sass/_action.scss */
+/* line 285, ../sass/_action.scss */
 .b4 #annuler {
   margin-top: 19vh;
   margin-left: 1vw;
@@ -1097,7 +1108,7 @@ h1 {
   font-family: Robotaur;
   color: white;
 }
-/* line 283, ../sass/_action.scss */
+/* line 293, ../sass/_action.scss */
 .b4 #valider {
   margin-top: 19vh;
   margin-left: 33vw;
@@ -1106,7 +1117,7 @@ h1 {
   color: white;
 }
 
-/* line 293, ../sass/_action.scss */
+/* line 303, ../sass/_action.scss */
 .concurrence {
   z-index: 15;
   position: absolute;
@@ -1118,24 +1129,24 @@ h1 {
   top: 47vh;
   border-radius: 6px;
 }
-/* line 303, ../sass/_action.scss */
+/* line 313, ../sass/_action.scss */
 .concurrence h1 {
   text-align: center;
   margin-top: 12px;
 }
-/* line 307, ../sass/_action.scss */
+/* line 317, ../sass/_action.scss */
 .concurrence #paire1 {
   margin-top: 3vh;
   margin-left: 5vw;
   padding-top: 4px;
 }
-/* line 313, ../sass/_action.scss */
+/* line 323, ../sass/_action.scss */
 .concurrence #paire2 {
   margin-top: 3vh;
   margin-left: 8vw;
   padding-top: 4px;
 }
-/* line 319, ../sass/_action.scss */
+/* line 329, ../sass/_action.scss */
 .concurrence #valider {
   margin-top: 2vh;
   margin-left: 35vw;
@@ -1143,12 +1154,12 @@ h1 {
   color: white;
   font-family: Robotaur;
 }
-/* line 326, ../sass/_action.scss */
+/* line 336, ../sass/_action.scss */
 .concurrence span {
   font-family: Robotaur;
   color: white;
 }
-/* line 331, ../sass/_action.scss */
+/* line 341, ../sass/_action.scss */
 .concurrence .cartes {
   width: 6vw;
   background: #3e4750;
@@ -1157,7 +1168,7 @@ h1 {
   margin-top: 2vh;
 }
 
-/* line 341, ../sass/_action.scss */
+/* line 351, ../sass/_action.scss */
 .cadeau {
   z-index: 15;
   position: absolute;
@@ -1169,12 +1180,12 @@ h1 {
   top: 48vh;
   border-radius: 6px;
 }
-/* line 351, ../sass/_action.scss */
+/* line 361, ../sass/_action.scss */
 .cadeau h1 {
   text-align: center;
   margin-top: 12px;
 }
-/* line 355, ../sass/_action.scss */
+/* line 365, ../sass/_action.scss */
 .cadeau #valider {
   margin-top: 2vh;
   margin-left: 35vw;
@@ -1182,24 +1193,24 @@ h1 {
   color: white;
   font-family: Robotaur;
 }
-/* line 362, ../sass/_action.scss */
+/* line 372, ../sass/_action.scss */
 .cadeau span {
   font-family: Robotaur;
   color: white;
 }
-/* line 367, ../sass/_action.scss */
+/* line 377, ../sass/_action.scss */
 .cadeau .cartes {
   width: 6vw;
   background: #3e4750;
   position: relative;
   margin-top: 2vh;
 }
-/* line 374, ../sass/_action.scss */
+/* line 384, ../sass/_action.scss */
 .cadeau .selection {
   margin-left: 6vw;
 }
 
-/* line 380, ../sass/_action.scss */
+/* line 390, ../sass/_action.scss */
 .victoire {
   z-index: 15;
   position: absolute;
@@ -1211,12 +1222,12 @@ h1 {
   top: 48vh;
   border-radius: 6px;
 }
-/* line 390, ../sass/_action.scss */
+/* line 400, ../sass/_action.scss */
 .victoire h1 {
   text-align: center;
   margin-top: 4vh;
 }
-/* line 394, ../sass/_action.scss */
+/* line 404, ../sass/_action.scss */
 .victoire h2 {
   text-align: right;
   color: white;
@@ -1226,14 +1237,14 @@ h1 {
   margin-top: 1vh;
   margin-left: 28vw;
 }
-/* line 403, ../sass/_action.scss */
+/* line 413, ../sass/_action.scss */
 .victoire a {
   text-align: right;
   color: #53D0FF;
   font-family: Robotaur;
 }
 
-/* line 411, ../sass/_action.scss */
+/* line 421, ../sass/_action.scss */
 .tour {
   z-index: 15;
   position: absolute;
@@ -1245,12 +1256,12 @@ h1 {
   top: 48vh;
   border-radius: 6px;
 }
-/* line 421, ../sass/_action.scss */
+/* line 431, ../sass/_action.scss */
 .tour h1 {
   text-align: center;
   margin-top: 4vh;
 }
-/* line 425, ../sass/_action.scss */
+/* line 435, ../sass/_action.scss */
 .tour h2 {
   text-align: right;
   color: white;
@@ -1261,156 +1272,156 @@ h1 {
   margin-left: 28vw;
 }
 
-/* line 437, ../sass/_action.scss */
+/* line 447, ../sass/_action.scss */
 .terrain1 {
   position: absolute;
   margin-top: 18.5vh;
   margin-left: 18vw;
 }
-/* line 441, ../sass/_action.scss */
+/* line 451, ../sass/_action.scss */
 .terrain1 img {
   width: 1.5vw;
 }
 
-/* line 446, ../sass/_action.scss */
+/* line 456, ../sass/_action.scss */
 .terrain2 {
   position: absolute;
   margin-top: 18.5vh;
   margin-left: 27vw;
 }
-/* line 450, ../sass/_action.scss */
+/* line 460, ../sass/_action.scss */
 .terrain2 img {
   width: 1.5vw;
 }
 
-/* line 455, ../sass/_action.scss */
+/* line 465, ../sass/_action.scss */
 .terrain3 {
   position: absolute;
   margin-top: 18.5vh;
   margin-left: 36vw;
 }
-/* line 459, ../sass/_action.scss */
+/* line 469, ../sass/_action.scss */
 .terrain3 img {
   width: 1.5vw;
 }
 
-/* line 464, ../sass/_action.scss */
+/* line 474, ../sass/_action.scss */
 .terrain4 {
   position: absolute;
   margin-top: 18.5vh;
   margin-left: 45vw;
 }
-/* line 468, ../sass/_action.scss */
+/* line 478, ../sass/_action.scss */
 .terrain4 img {
   width: 1.5vw;
 }
 
-/* line 473, ../sass/_action.scss */
+/* line 483, ../sass/_action.scss */
 .terrain5 {
   position: absolute;
   margin-top: 18.5vh;
   margin-left: 54vw;
 }
-/* line 477, ../sass/_action.scss */
+/* line 487, ../sass/_action.scss */
 .terrain5 img {
   width: 1.5vw;
 }
 
-/* line 482, ../sass/_action.scss */
+/* line 492, ../sass/_action.scss */
 .terrain6 {
   position: absolute;
   margin-top: 18.5vh;
   margin-left: 63vw;
 }
-/* line 486, ../sass/_action.scss */
+/* line 496, ../sass/_action.scss */
 .terrain6 img {
   width: 1.5vw;
 }
 
-/* line 492, ../sass/_action.scss */
+/* line 502, ../sass/_action.scss */
 .terrain7 {
   position: absolute;
   margin-top: 18.5vh;
   margin-left: 72vw;
 }
-/* line 496, ../sass/_action.scss */
+/* line 506, ../sass/_action.scss */
 .terrain7 img {
   width: 1.5vw;
 }
 
-/* line 502, ../sass/_action.scss */
+/* line 512, ../sass/_action.scss */
 .terrainb1 {
   position: absolute;
   margin-top: 43vh;
   margin-left: 18vw;
 }
-/* line 506, ../sass/_action.scss */
+/* line 516, ../sass/_action.scss */
 .terrainb1 img {
   width: 1.5vw;
 }
 
-/* line 511, ../sass/_action.scss */
+/* line 521, ../sass/_action.scss */
 .terrainb2 {
   position: absolute;
   margin-top: 43vh;
   margin-left: 27vw;
 }
-/* line 515, ../sass/_action.scss */
+/* line 525, ../sass/_action.scss */
 .terrainb2 img {
   width: 1.5vw;
 }
 
-/* line 520, ../sass/_action.scss */
+/* line 530, ../sass/_action.scss */
 .terrainb3 {
   position: absolute;
   margin-top: 43vh;
   margin-left: 36vw;
 }
-/* line 524, ../sass/_action.scss */
+/* line 534, ../sass/_action.scss */
 .terrainb3 img {
   width: 1.5vw;
 }
 
-/* line 529, ../sass/_action.scss */
+/* line 539, ../sass/_action.scss */
 .terrainb4 {
   position: absolute;
   margin-top: 43vh;
   margin-left: 45vw;
 }
-/* line 533, ../sass/_action.scss */
+/* line 543, ../sass/_action.scss */
 .terrainb4 img {
   width: 1.5vw;
 }
 
-/* line 538, ../sass/_action.scss */
+/* line 548, ../sass/_action.scss */
 .terrainb5 {
   position: absolute;
   margin-top: 43vh;
   margin-left: 54vw;
 }
-/* line 542, ../sass/_action.scss */
+/* line 552, ../sass/_action.scss */
 .terrainb5 img {
   width: 1.5vw;
 }
 
-/* line 547, ../sass/_action.scss */
+/* line 557, ../sass/_action.scss */
 .terrainb6 {
   position: absolute;
   margin-top: 43vh;
   margin-left: 63vw;
 }
-/* line 551, ../sass/_action.scss */
+/* line 561, ../sass/_action.scss */
 .terrainb6 img {
   width: 1.5vw;
 }
 
-/* line 557, ../sass/_action.scss */
+/* line 567, ../sass/_action.scss */
 .terrainb7 {
   position: absolute;
   margin-top: 43vh;
   margin-left: 72vw;
 }
-/* line 561, ../sass/_action.scss */
+/* line 571, ../sass/_action.scss */
 .terrainb7 img {
   width: 1.5vw;
   z-index: 0;

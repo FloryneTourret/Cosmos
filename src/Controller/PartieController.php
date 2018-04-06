@@ -41,7 +41,7 @@ class PartieController extends Controller
         $entityManager = $this->getDoctrine()->getManager();
         $joueur = $entityManager->getRepository(User::class)->find($id);
 
-        if (!joueur) {
+        if (!$joueur) {
             throw $this->createNotFoundException(
                 'No username found for id '.$id
             );

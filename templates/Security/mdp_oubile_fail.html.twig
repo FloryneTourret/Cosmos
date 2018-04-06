@@ -21,6 +21,9 @@
                 <li>
                     <a href="{{ path('user_registration') }}" class="hover-underline-animation">Inscription</a>
                 </li>
+                <li>
+                    <a href="{{ path('security_login') }}" class="hover-underline-animation">Connexion</a>
+                </li>
             </ul>
         </div>
         <div class="formulaire">
@@ -29,34 +32,23 @@
                 <div class="col-8">
                     <div class=" contenu-form">
                         <div class="haut">
-                            {% if error %}
-                                <div class="alert alert-danger">
-                                    <p>Attention, mauvais identifiants</p>
-                                </div>
-                            {% endif %}
-                            <h1>Connexion</h1>
+
+                            <h1>Mail non existant</h1>
                         </div>
                         <div class="bas ">
-                            <form method="post" action="{{ path('security_login') }}">
+                            <form method="post" action="{{ path('reset_mdp') }}">
 
                                 <div class="element-form">
-                                    <div class="col-4"> <label for="pseudo">Pseudo :</label></div>
-                                    <div class="col-6"><input type="text" id="username" name="_username" value="{{ last_username }}"/></div>
-
+                                    <div class="col-4"> <label for="pseudo">Votre email :</label></div>
+                                    <div class="col-6"><input type="text" id="email" name="email"/></div>
                                 </div>
                                 <div class="element-form">
-                                    <div class="col-4"> <label for="mdp">Mot de passe :</label></div>
-                                    <div class="col-6">
-                                        <input type="password" id="password" name="_password"/>
 
-                                        <div class="envoyer">
-                                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}"/>
-                                            <input type="submit" value="Se connecter" /><br>
-                                            <input type="submit" formaction="{{ path('mdp_oublie') }}" value="Mot de passe oublié ?" />
-                                        </div>
+                                    <div class="envoyer">
+                                        <input type="submit" value="Envoyez moi un mail" /><br>
                                     </div>
-
                                 </div>
+
 
 
                             </form>

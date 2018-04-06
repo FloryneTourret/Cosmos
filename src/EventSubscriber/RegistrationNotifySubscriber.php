@@ -37,16 +37,14 @@ class RegistrationNotifySubscriber implements EventSubscriberInterface
         /** @var User $user */
         $user = $event->getSubject();
 
-        $subject = "Bienvenue";
-        $body = "Bienvenue sur le jeu Hanamikoji";
+        $subject = "Bienvenue dans le jeu Cosmos";
+        $body = "Bienvenue <b>".$user->getUsername()."</b><br> Amuse toi bien sur notre jeu <i>Cosmos</i> !";
 
-        $message = (new \Swift_Message())
-            ->setSubject($subject)
+        $message = (new \Swift_Message($subject))
             ->setTo($user->getEmail())
             ->setFrom($this->sender)
             ->setBody($body, 'text/html')
         ;
-
         $this->mailer->send($message);
     }
 }
