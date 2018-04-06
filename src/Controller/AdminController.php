@@ -91,9 +91,14 @@ class AdminController extends Controller
      */
     public function supprimer_joueur(Request $request){
 
-        $id_partie= $request->request->get('joueur');
+        $id_joueur= $request->request->get('joueur');
 
-        $joueur= $this->getDoctrine()->getRepository(User::class)->find($id_partie);
+        $joueur= $this->getDoctrine()->getRepository(User::class)->find($id_joueur);
+        $partiesjoueurs=$this->getDoctrine()->getRepository(Parties::class)->findPartiesJoueur($id_joueur);
+        foreach ($partiesjoueurs as $row){
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($row);
+        }
 
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($joueur);
