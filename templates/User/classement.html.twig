@@ -4,20 +4,63 @@
 
 {% block body %}
 
-    Classement selon le nombre de victoires
+    <section class="accueil">
+        <div class="formulaire-profil">
+            <div class="container-fluid justify-content-center">
+                <div class="col-8">
+                    <div class="contenu-form" >
+                        <div class="haut-profil">
+                            <h1> Classement selon le nombre de victoires</h1>
+                        </div>
+                        <div class="bas-profil">
 
-    <div>
-        Mon score :
-        {{ moi.PartiesVictoires}} victoires et {{ moi.PartiesDefaites}} défaites
-    </div>
+                            <div class="classement">
+                                <div class="element-form">
+                                    <div class="col-4"><p>Mon score :</p></div>
+                                    <div class="col-4"><p>{{ moi.PartiesVictoires}} victoires </p></div>
+                                    <div class="col-4"><p>{{ moi.PartiesDefaites}} défaites</p></div>
 
-    <div>
-        Classement :<br>
-        {% for joueur in autres %}
-            {% set counter = ( counter | default(0) ) + 1 %}
-            {{ counter }}. {{ joueur.username }} : {{ joueur.PartiesVictoires }} victoires et {{ joueur.PartiesDefaites }} défaites <br>
-        {% endfor %}
-    </div>
+                                </div>
+                            </div>
+                            <div class="classement">
+                                <div class="element-classement">
+                                    <div class="tableau">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Rang</th>
+                                                <th>Joueur:</th>
+                                                <th>Victoires</th>
+                                                <th>Défaites</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for joueur in autres %}
+                                            <tr>
+                                                {% set counter = ( counter | default(0) ) + 1 %}
+                                                <td> {{ counter }}. </td><td>{{ joueur.username }} </td><td> {{ joueur.PartiesVictoires }} </td><td> {{ joueur.PartiesDefaites }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
 
 
 {% endblock %}

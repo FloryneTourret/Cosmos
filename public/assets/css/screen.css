@@ -3014,26 +3014,26 @@ formaulaire
   padding: 20px;
 }
 /* line 52, ../sass/_profil_form.scss */
+.formulaire-profil .contenu-form .bas-profil .classement {
+  padding: 20px;
+}
+/* line 55, ../sass/_profil_form.scss */
 .formulaire-profil .contenu-form .bas-profil .element-form {
   height: 50px;
   font-size: 1.5rem;
 }
-/* line 55, ../sass/_profil_form.scss */
+/* line 58, ../sass/_profil_form.scss */
 .formulaire-profil .contenu-form .bas-profil .element-form input {
   width: 100%;
   height: 30px;
   font-size: 1.5rem;
   margin-bottom: 10px;
 }
-/* line 61, ../sass/_profil_form.scss */
-.formulaire-profil .contenu-form .bas-profil .element-form label {
-  font-family: 'Work Sans';
-}
 /* line 67, ../sass/_profil_form.scss */
 .formulaire-profil .contenu-form .bas-profil .envoyer input {
   width: 100%;
   font-size: 1.5rem;
-  margin-top: 10px;
+  margin-top: 20px;
   text-align: right;
   margin-right: 10px;
   background: none;
@@ -3046,4 +3046,58 @@ formaulaire
 /* line 81, ../sass/_profil_form.scss */
 .formulaire-profil .contenu-form .bas-profil .envoyer input:hover {
   text-shadow: 0 0 0 #fff, 0 0 0 #fff, 0 0 0px black, 0 0 0 #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff;
+}
+/* line 87, ../sass/_profil_form.scss */
+.formulaire-profil .contenu-form .bas-profil .element-classement {
+  font-size: 1.5rem;
+}
+/* line 90, ../sass/_profil_form.scss */
+.formulaire-profil .contenu-form .bas-profil .element-classement .tableau {
+  text-align: center;
+  height: 40vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+/* line 96, ../sass/_profil_form.scss */
+.formulaire-profil .contenu-form .bas-profil .element-classement table {
+  width: 63vw;
+  background-color: transparent;
+}
+/* line 99, ../sass/_profil_form.scss */
+.formulaire-profil .contenu-form .bas-profil .element-classement table thead {
+  height: 30px;
+}
+/* line 101, ../sass/_profil_form.scss */
+.formulaire-profil .contenu-form .bas-profil .element-classement table thead th {
+  font-family: 'Work Sans';
+  padding: 20px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+/* line 109, ../sass/_profil_form.scss */
+.formulaire-profil .contenu-form .bas-profil .element-classement table tbody {
+  border: solid 1px white;
+}
+/* line 111, ../sass/_profil_form.scss */
+.formulaire-profil .contenu-form .bas-profil .element-classement table tbody tr {
+  width: 100%;
+  border: solid 1px white;
+  margin: 5px;
+  height: 50px;
+}
+/* line 116, ../sass/_profil_form.scss */
+.formulaire-profil .contenu-form .bas-profil .element-classement table tbody tr td {
+  text-align: center;
+  font-family: 'Work Sans';
+}
+@media (max-width: 800px) {
+  /* line 116, ../sass/_profil_form.scss */
+  .formulaire-profil .contenu-form .bas-profil .element-classement table tbody tr td {
+    padding: 0;
+    font-size: 1rem;
+  }
+}
+/* line 125, ../sass/_profil_form.scss */
+.formulaire-profil .contenu-form .bas-profil .element-classement table tbody tr:nth-child(odd) {
+  background-color: rgba(24, 131, 186, 0.5);
 }

@@ -366,9 +366,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     width: 100%;
   }
 }
-/* line 1, ../sass/_back_office.scss */
+/* line 2, ../sass/_back_office.scss */
 html {
-  width: 100vh;
+  width: 100vw;
   min-height: 100vh;
   font-size: 100%;
 }
@@ -380,13 +380,83 @@ html {
   font-stretch: normal;
   src: url("../fonts/robotaurc.woff") format("woff");
 }
-/* line 15, ../sass/_back_office.scss */
+/* line 16, ../sass/_back_office.scss */
 body {
   width: 100vw;
   background: #ffffff;
 }
 
-/* line 20, ../sass/_back_office.scss */
+/* profil*/
+/* line 21, ../sass/_back_office.scss */
+.formulaire-profil {
+  width: 100%;
+  min-height: 50vh;
+  margin-top: 200px;
+}
+@media (max-width: 1300px) {
+  /* line 21, ../sass/_back_office.scss */
+  .formulaire-profil {
+    width: 100%;
+  }
+}
+/* line 31, ../sass/_back_office.scss */
+.formulaire-profil .contenu-form {
+  padding-bottom: 10px;
+  width: 100%;
+  height: 100%;
+  background-color: #000022;
+  box-shadow: 0px 0px 80px #1883BA;
+  border-radius: 5px;
+  color: white;
+}
+/* line 40, ../sass/_back_office.scss */
+.formulaire-profil .contenu-form .bas-profil {
+  margin-top: 20px;
+}
+/* line 42, ../sass/_back_office.scss */
+.formulaire-profil .contenu-form .bas-profil form {
+  padding: 20px;
+}
+/* line 45, ../sass/_back_office.scss */
+.formulaire-profil .contenu-form .bas-profil .classement {
+  padding: 20px;
+}
+/* line 48, ../sass/_back_office.scss */
+.formulaire-profil .contenu-form .bas-profil .element-form {
+  height: 50px;
+  font-size: 1.5rem;
+}
+/* line 51, ../sass/_back_office.scss */
+.formulaire-profil .contenu-form .bas-profil .element-form label {
+  font-family: 'Work Sans';
+}
+/* line 54, ../sass/_back_office.scss */
+.formulaire-profil .contenu-form .bas-profil .element-form input {
+  width: 100%;
+  height: 30px;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+/* line 63, ../sass/_back_office.scss */
+.formulaire-profil .contenu-form .bas-profil .envoyer input {
+  width: 100%;
+  font-size: 1.5rem;
+  margin-top: 20px;
+  text-align: right;
+  margin-right: 10px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.3s;
+  font-family: 'Robotaur2';
+}
+/* line 77, ../sass/_back_office.scss */
+.formulaire-profil .contenu-form .bas-profil .envoyer input:hover {
+  text-shadow: 0 0 0 #fff, 0 0 0 #fff, 0 0 0px black, 0 0 0 #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff;
+}
+
+/* line 88, ../sass/_back_office.scss */
 .nav_h {
   position: fixed;
   width: 100%;
@@ -398,20 +468,20 @@ body {
   justify-content: space-between;
   align-items: center;
 }
-/* line 30, ../sass/_back_office.scss */
+/* line 98, ../sass/_back_office.scss */
 .nav_h h1 {
   color: #ffffff;
   font-size: 2rem;
   margin-left: 20px;
 }
-/* line 36, ../sass/_back_office.scss */
+/* line 104, ../sass/_back_office.scss */
 .nav_h a {
   color: #ffffff;
   text-decoration: none;
   position: relative;
   margin-right: 20px;
 }
-/* line 42, ../sass/_back_office.scss */
+/* line 110, ../sass/_back_office.scss */
 .nav_h a::after {
   content: '';
   position: absolute;
@@ -425,13 +495,13 @@ body {
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
-/* line 56, ../sass/_back_office.scss */
+/* line 124, ../sass/_back_office.scss */
 .nav_h a:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
 
-/* line 63, ../sass/_back_office.scss */
+/* line 131, ../sass/_back_office.scss */
 .navbar {
   position: fixed;
   display: inline-block;
@@ -443,33 +513,33 @@ body {
   color: #ffffff;
 }
 @media (max-width: 1500px) {
-  /* line 63, ../sass/_back_office.scss */
+  /* line 131, ../sass/_back_office.scss */
   .navbar {
     min-height: 100vh;
   }
 }
-/* line 76, ../sass/_back_office.scss */
+/* line 144, ../sass/_back_office.scss */
 .navbar a {
   text-decoration: none;
 }
-/* line 79, ../sass/_back_office.scss */
+/* line 147, ../sass/_back_office.scss */
 .navbar p {
   padding: 20px 0 20px 0;
   font-size: 1.2rem;
 }
-/* line 86, ../sass/_back_office.scss */
+/* line 154, ../sass/_back_office.scss */
 .navbar ul {
   display: block;
   border-top: solid 3px #1883ba;
   border-bottom: solid 3px #1883ba;
 }
-/* line 90, ../sass/_back_office.scss */
+/* line 158, ../sass/_back_office.scss */
 .navbar ul li {
   border-top: solid 3px #1883ba;
   border-bottom: solid 3px #1883ba;
   padding: 10px;
 }
-/* line 95, ../sass/_back_office.scss */
+/* line 163, ../sass/_back_office.scss */
 .navbar ul li a {
   color: white;
   font-size: 1.45rem;
@@ -477,45 +547,46 @@ body {
   text-decoration: none;
   padding: 5px 50px 5px 50px;
 }
-/* line 103, ../sass/_back_office.scss */
+/* line 171, ../sass/_back_office.scss */
 .navbar ul li:hover {
   background-color: #ff0080;
 }
-/* line 111, ../sass/_back_office.scss */
+/* line 179, ../sass/_back_office.scss */
 .navbar .bas_nav {
   margin-top: 100px;
 }
 
-/* line 119, ../sass/_back_office.scss */
+/* line 187, ../sass/_back_office.scss */
 .corps {
   width: auto;
   margin-top: 100px;
-  padding-left: 25vw;
+  padding-left: 20vw;
 }
-/* line 123, ../sass/_back_office.scss */
+/* line 191, ../sass/_back_office.scss */
 .corps h2 {
   display: block;
   color: black;
   font-family: 'Robotaur2';
 }
-/* line 128, ../sass/_back_office.scss */
+/* line 196, ../sass/_back_office.scss */
 .corps h3 {
   display: block;
   color: black;
   font-family: 'Robotaur2';
 }
-/* line 133, ../sass/_back_office.scss */
+/* line 201, ../sass/_back_office.scss */
 .corps p {
   display: block;
   color: black;
   font-family: 'Work Sans';
 }
-/* line 138, ../sass/_back_office.scss */
+/* line 206, ../sass/_back_office.scss */
 .corps .tableau {
   height: 80vh;
   overflow-y: scroll;
+  margin-left: 5vw;
 }
-/* line 142, ../sass/_back_office.scss */
+/* line 211, ../sass/_back_office.scss */
 .corps table {
   width: 70vw;
   border: none;
@@ -523,22 +594,22 @@ body {
   color: #ffffff;
   max-height: 400px;
 }
-/* line 148, ../sass/_back_office.scss */
+/* line 217, ../sass/_back_office.scss */
 .corps table thead {
   height: 30px;
 }
-/* line 150, ../sass/_back_office.scss */
+/* line 219, ../sass/_back_office.scss */
 .corps table thead th {
   font-family: 'Work Sans';
   padding: 20px;
   text-align: center;
   font-size: 1.5rem;
 }
-/* line 157, ../sass/_back_office.scss */
+/* line 226, ../sass/_back_office.scss */
 .corps table tbody {
   background-color: #1883ba;
 }
-/* line 160, ../sass/_back_office.scss */
+/* line 229, ../sass/_back_office.scss */
 .corps table tbody td {
   font-family: 'Work Sans';
   height: 30px;
@@ -547,7 +618,7 @@ body {
   text-align: center;
   font-size: 1.5rem;
 }
-/* line 167, ../sass/_back_office.scss */
+/* line 236, ../sass/_back_office.scss */
 .corps table tbody td input {
   padding: 10px 20px 10px 20px;
   background-color: gray;
@@ -555,11 +626,11 @@ body {
   border: none;
   cursor: pointer;
 }
-/* line 174, ../sass/_back_office.scss */
+/* line 243, ../sass/_back_office.scss */
 .corps table tbody td input:active {
   background-color: #666666;
 }
-/* line 178, ../sass/_back_office.scss */
+/* line 247, ../sass/_back_office.scss */
 .corps table tbody td button {
   padding: 10px 20px 10px 20px;
   background-color: gray;
@@ -567,7 +638,7 @@ body {
   border: none;
   cursor: pointer;
 }
-/* line 185, ../sass/_back_office.scss */
+/* line 254, ../sass/_back_office.scss */
 .corps table tbody td button:active {
   background-color: #666666;
 }

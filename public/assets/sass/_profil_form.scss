@@ -49,6 +49,9 @@ formaulaire
       & form{
         padding: 20px;
       }
+      .classement{
+        padding: 20px;
+      }
       .element-form{
         height: 50px;
         font-size: 1.5rem;
@@ -58,9 +61,6 @@ formaulaire
           font-size: 1.5rem ;
           margin-bottom: 10px;
         }
-        & label{
-          font-family: 'Work Sans';
-        }
       }
 
 
@@ -68,7 +68,7 @@ formaulaire
 
         width: 100% ;
         font-size: 1.5rem;
-        margin-top: 10px;
+        margin-top: 20px;
         text-align: right;
         margin-right: 10px;
         background: none;
@@ -81,6 +81,54 @@ formaulaire
         &:hover{
           text-shadow: 0 0 0 #fff, 0 0 0 #fff, 0 0 0px black, 0 0 0 #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff;
 
+        }
+      }
+
+      .element-classement{
+        font-size: 1.5rem;
+
+        & .tableau {
+          text-align: center;
+          height: 40vh;
+          overflow-y: scroll;
+          overflow-x: hidden;
+        }
+        & table{
+          width: 63vw;
+          background-color: transparent;
+          & thead {
+            height: 30px;
+            & th {
+              font-family: 'Work Sans';
+              padding: 20px;
+              text-align: center;
+              font-size: 1.5rem;
+            }
+          }
+
+          & tbody{
+            border: solid 1px white;
+            & tr{
+              width: 100%;
+              border: solid 1px white;
+              margin: 5px;
+              height: 50px ;
+              & td{
+                text-align: center;
+                font-family: 'Work Sans';
+                @media (max-width: 800px) {
+                  padding: 0;
+                  font-size: 1rem;
+                }
+              }
+            }
+            & tr:nth-child(odd){
+              background-color: rgba(24,131,186,0.5);
+            }
+
+
+
+          }
         }
       }
 
