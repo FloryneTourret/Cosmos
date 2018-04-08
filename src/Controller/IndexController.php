@@ -149,7 +149,7 @@ class IndexController extends Controller
             $user->setPassword($new_password);
             $entityManager->flush();
 
-            $body="Bonjour, votre mot de passe réinitialisé. <br>Connectez vous avec le mot de passe : <b>".$mdp."</b><br>N'oublie pas de le changer et Amuse toi bien !";
+            $body="Bonjour, ton mot de passe a été réinitialisé. <br>Connecte toi avec le mot de passe : <b>".$mdp."</b><br>N'oublie pas de le changer et amuse toi bien !";
 
             $message = (new \Swift_Message('Cosmos - Mot de passe'))
                 ->setFrom('cosmos@floryne.net')
