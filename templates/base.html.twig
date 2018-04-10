@@ -38,6 +38,11 @@
                         <li class="button-nav-close"><p>fermer</p></li>
                         <li>
                             <div class="nav-presentation">
+                                <a class="js-scroll-trigger" href="{{ path('choix_partie') }}">Jouer</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nav-presentation">
                                 <a class="js-scroll-trigger" href="{{ path('classement') }}">Classement</a>
                             </div>
                         </li>
@@ -49,7 +54,7 @@
 
                         <li >
                             <div class="nav-jouer">
-                                <a href="{{  path('inactif') }}" class="nav-right"><img src="img/boutonoff.png" alt="déconnexion"></a>
+                                <a href="{{  path('inactif') }}" class="nav-right"><img src="{{ asset('assets/img/boutonoff.png') }}" alt="déconnexion"></a>
                             </div>
                         </li>
 
@@ -111,6 +116,11 @@
                         <li class="button-nav-close"><p>fermer</p></li>
                         <li>
                             <div class="nav-presentation">
+                                <a class="js-scroll-trigger" href="{{ path('choix_partie') }}">Jouer</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="nav-presentation">
                                 <a class="js-scroll-trigger" href="{{ path('admin_classement') }}">Classement</a>
                             </div>
                         </li>
@@ -122,7 +132,7 @@
 
                         <li >
                             <div class="nav-jouer">
-                                <a href="{{  path('inactif') }}" class="nav-right"><img src="img/boutonoff.png" alt="déconnexion"></a>
+                                <a href="{{  path('inactif') }}" class="nav-right"><img src="{{ asset('assets/img/boutonoff.png') }}" alt="déconnexion"></a>
                             </div>
                         </li>
 

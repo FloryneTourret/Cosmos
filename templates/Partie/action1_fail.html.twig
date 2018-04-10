@@ -19,7 +19,7 @@
     <form method="post" action="{{ path('action1') }}">
         <div class="b1">
             <div class="b1carte">
-
+                <img src="{{ asset('assets/img/carte_fond.png') }}">
             </div>
             <h1>Attention Selectionnez bien une carte</h1>
             <button class="bouton" id="annuler" name="id" value="{{ partie.Id }}" formaction="{{ path('retour') }}">Annuler</button>
@@ -124,6 +124,7 @@
             crossorigin="anonymous"></script>
 
     <script src="{{ asset('assets/js/action.js') }}"></script>
+    <script src="{{ asset('assets/js/action1.js') }}"></script>
 
     <script src="{{ asset('assets/js/menu.js') }}"></script>
 

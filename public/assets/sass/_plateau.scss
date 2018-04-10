@@ -3,7 +3,7 @@ body p {
   color: white;
 }
 
-button{
+button {
   background-color: transparent;
   border: none;
 }
@@ -21,7 +21,7 @@ button{
 .scorej2 {
   position: absolute;
   font-size: 16px;
-  left: 10vw ;
+  left: 10vw;
   margin-top: 80px;
   line-height: 30px;
 }
@@ -29,13 +29,13 @@ button{
 .scorej1 {
   position: absolute;
   font-size: 16px;
-  right: 10vw ;
+  right: 10vw;
   bottom: 80px;
   line-height: 30px;
   text-align: right;
 }
 
-.cartes_adversaire{
+.cartes_adversaire {
   text-align: center;
   img {
     position: absolute;
@@ -51,7 +51,6 @@ button{
   z-index: 11;
   margin-left: 50px;
   transform: rotate(15deg) translateY(12px);
-
 }
 .nb3 {
   z-index: 12;
@@ -77,24 +76,23 @@ button{
   z-index: 16;
   margin-left: 300px;
   transform: rotate(-20deg);
-
 }
 
-.joueur1{
+.joueur1 {
   position: absolute;
   right: 10vw;
   bottom: 50px;
-  p{
-    color: #53D0FF;
+  p {
+    color: #53d0ff;
     font-size: 22px;
   }
 }
-.joueur2{
+.joueur2 {
   position: absolute;
   left: 10vw;
   margin-top: 50px;
-  p{
-    color: #53D0FF;
+  p {
+    color: #53d0ff;
     font-size: 22px;
   }
 }
@@ -107,7 +105,6 @@ button{
 }
 
 .objet {
-  margin-left: 36vw;
   img {
     position: absolute;
     width: 6vw;
@@ -116,26 +113,18 @@ button{
 }
 
 .objets {
-  margin-left: 36vw;
   img {
     position: absolute;
     width: 6vw;
     bottom: 3vh;
-    transition: .5s;
+    transition: 0.5s;
   }
   input {
     z-index: -1;
     position: absolute;
   }
 
-  input:checked + label {
-   img{
-     filter: grayscale(1);
-     transition: .5s;
-   }
-  }
-
-  span.span1{
+  span.span1 {
     text-align: center;
     z-index: 16;
     position: absolute;
@@ -144,7 +133,7 @@ button{
     color: white;
     text-shadow: 1px 1px 2px black;
   }
-  span.span2{
+  span.span2 {
     text-align: center;
     z-index: 16;
     position: absolute;
@@ -155,61 +144,61 @@ button{
     text-shadow: 1px 1px 2px black;
   }
 
-  .carte1{
+  .carte1 {
     margin-left: 0;
   }
-  .carte2{
+  .carte2 {
     margin-left: 7vw;
   }
-  .carte3{
+  .carte3 {
     margin-left: 14vw;
   }
-  .carte4{
+  .carte4 {
     margin-left: 21vw;
   }
-  .carte5{
+  .carte5 {
     margin-left: 28vw;
   }
-  .carte6{
+  .carte6 {
     margin-left: 35vw;
   }
-  .carte7{
+  .carte7 {
     margin-left: 42vw;
   }
 
-  .carte1b{
+  .carte1b {
     margin-left: 0;
     bottom: 10vh;
   }
-  .carte2b{
+  .carte2b {
     margin-left: 7vw;
     bottom: 10vh;
   }
-  .carte3b{
+  .carte3b {
     margin-left: 14vw;
     bottom: 10vh;
   }
-  .carte4b{
+  .carte4b {
     margin-left: 21vw;
     bottom: 10vh;
   }
-  .carte5b{
+  .carte5b {
     margin-left: 28vw;
     bottom: 10vh;
   }
-  .carte6b{
+  .carte6b {
     margin-left: 35vw;
     bottom: 10vh;
   }
-  .carte7b{
+  .carte7b {
     margin-left: 42vw;
     bottom: 10vh;
   }
 }
 
-
 .n0 {
-  z-index: 9;
+  left: 36vw;
+  z-index: 16;
   transform: rotate(-20deg);
   transition: all 1s;
   &:hover {
@@ -218,20 +207,19 @@ button{
   }
 }
 .n1 {
-  z-index: 10;
+  left: 39vw;
+  z-index: 17;
   transform: rotate(-15deg) translateY(-12px);
-  margin-left: 50px;
   transition: all 1s;
   &:hover {
     transform: rotate(-15deg) translateY(-50px);
     box-shadow: 0px 0px 10px 5px #00fcff;
-
   }
 }
 .n2 {
-  z-index: 11;
+  left: 42vw;
+  z-index: 18;
   transform: rotate(-10deg) translateY(-19px);
-  margin-left: 100px;
   transition: all 1s;
   &:hover {
     transform: rotate(-10deg) translateY(-60px);
@@ -239,8 +227,8 @@ button{
   }
 }
 .n3 {
-  z-index: 12;
-  margin-left: 150px;
+  z-index: 19;
+  left: 45vw;
   transform: rotate(-3deg) translateY(-20px);
   transition: all 1s;
   &:hover {
@@ -249,8 +237,8 @@ button{
   }
 }
 .n4 {
-  z-index: 13;
-  margin-left: 200px;
+  z-index: 20;
+  left: 48vw;
   transform: rotate(5deg) translateY(-17px);
   transition: all 1s;
   &:hover {
@@ -259,8 +247,8 @@ button{
   }
 }
 .n5 {
-  z-index: 14;
-  margin-left: 250px;
+  z-index: 21;
+  left: 51vw;
   transform: rotate(15deg) translateY(-7px);
   transition: all 1s;
   &:hover {
@@ -269,8 +257,8 @@ button{
   }
 }
 .n6 {
-  z-index: 15;
-  margin-left: 300px;
+  z-index: 22;
+  left: 54vw;
   transform: rotate(25deg) translateY(8px);
   transition: all 1s;
   &:hover {
@@ -391,7 +379,7 @@ button{
       margin-left: 39vw;
       margin-top: 31vh;
     }
-    .pion3_haut{
+    .pion3_haut {
       z-index: 10;
       width: 2vw;
       position: absolute;
@@ -440,27 +428,27 @@ button{
       margin-left: 54vw;
       z-index: 1;
     }
-    .pion5{
+    .pion5 {
       z-index: 10;
       width: 2vw;
       position: absolute;
       margin-left: 57vw;
       margin-top: 31vh;
     }
-    .pion5_haut{
+    .pion5_haut {
       z-index: 10;
       width: 2vw;
       position: absolute;
       margin-left: 57vw;
       margin-top: 26vh;
     }
-    .pion5_bas{
-       z-index: 10;
-       width: 2vw;
-       position: absolute;
-       margin-left: 57vw;
-       margin-top: 37vh;
-     }
+    .pion5_bas {
+      z-index: 10;
+      width: 2vw;
+      position: absolute;
+      margin-left: 57vw;
+      margin-top: 37vh;
+    }
     .img15 {
       position: absolute;
       width: 8vw;
@@ -475,7 +463,7 @@ button{
       margin-left: 66vw;
       margin-top: 31vh;
     }
-    .pion6_haut{
+    .pion6_haut {
       z-index: 10;
       width: 2vw;
       position: absolute;
@@ -553,68 +541,67 @@ button{
       z-index: 1;
     }
 
-    .bouton_action1{
+    .bouton_action1 {
       position: absolute;
       width: 45px;
       height: 45px;
       right: 2.3vw;
       bottom: 205px;
       z-index: 1;
-      img{
+      img {
         width: 45px;
         height: 45px;
       }
     }
 
-    .bouton_action2{
+    .bouton_action2 {
       position: absolute;
       width: 45px;
       height: 45px;
       right: 2.3vw;
       bottom: 150px;
       z-index: 1;
-      img{
+      img {
         width: 45px;
         height: 45px;
       }
     }
 
-    .bouton_action3{
+    .bouton_action3 {
       position: absolute;
       width: 45px;
       height: 45px;
       right: 2.3vw;
       bottom: 95px;
       z-index: 1;
-      img{
+      img {
         width: 45px;
         height: 45px;
       }
     }
 
-    .bouton_action4{
+    .bouton_action4 {
       position: absolute;
       width: 45px;
       height: 45px;
       right: 2.3vw;
       bottom: 40px;
       z-index: 2;
-      img{
+      img {
         width: 45px;
         height: 45px;
       }
     }
 
-    button{
-      img{
+    button {
+      img {
         box-shadow: 0px 0px 10px 5px #00fcff;
       }
     }
 
-
     .img24 {
       position: absolute;
-      right:0;
+      right: 0;
       height: 18vh;
       margin-top: 305px;
       transition: 1s all;
@@ -622,6 +609,5 @@ button{
         transform: scale(1.1);
       }
     }
-
   }
 }

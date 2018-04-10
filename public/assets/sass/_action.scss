@@ -1,91 +1,91 @@
 h1 {
-    font-family: "Robotaur";
-    color: white;
+  font-family: "Robotaur";
+  color: white;
 }
 
 .bouton {
-    background: #3e4750;
-    width: auto;
-    padding: 10px;
+  background: #3e4750;
+  width: auto;
+  padding: 10px;
   padding-top: 0;
-    text-align: center;
-    float: left;
+  text-align: center;
+  float: left;
 
-    &:hover {
-        opacity: 0.8;
-    }
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 .actifb1 {
-  z-index: 100;
-  margin-top: 52.3vh !important;
-  margin-left: 12.1vw;
-  width: 90px !important;
-  height: 120.6px !important;
+  z-index: 100 !important;
+  bottom: 30.5vh !important;
+  left: 47vw !important;
   transition: all 1s;
   transform: rotate(0deg) translateY(0px) !important;
+  box-shadow: 0px 0px 10px 5px #00fcff;
+
 }
 
 .action1{
-    position: absolute;
-    width: 200px;
-    height: 30px;
-    background-color: #374450;
-    right: 4vw;
-    bottom: 213px;
-     p{
-         text-align: center;
-         padding-top: 8px;
-         font-size: 14px;
-     }
+  position: absolute;
+  width: 200px;
+  height: 30px;
+  background-color: #374450;
+  right: 4vw;
+  bottom: 213px;
+  p{
+    text-align: center;
+    padding-top: 8px;
+    font-size: 14px;
+  }
 
 }
 .action2{
-    position: absolute;
-    width: 200px;
-    height: 30px;
-    background-color: #374450;
-    right: 4vw;
-    bottom: 158px;
-     p{
-         text-align: center;
-         padding-top: 8px;
-         font-size: 14px;
-     }
+  position: absolute;
+  width: 200px;
+  height: 30px;
+  background-color: #374450;
+  right: 4vw;
+  bottom: 158px;
+  p{
+    text-align: center;
+    padding-top: 8px;
+    font-size: 14px;
+  }
 
 }
 .action3{
-    position: absolute;
-    width: 200px;
-    height: 30px;
-    background-color: #374450;
-    right: 4vw;
-    bottom: 103px;
-     p{
-         text-align: center;
-         padding-top: 8px;
-         font-size: 14px;
-     }
+  position: absolute;
+  width: 200px;
+  height: 30px;
+  background-color: #374450;
+  right: 4vw;
+  bottom: 103px;
+  p{
+    text-align: center;
+    padding-top: 8px;
+    font-size: 14px;
+  }
 
 }
 .action4{
-    z-index: 1;
-    position: absolute;
-    width: 200px;
-    height: 30px;
-    background-color: #374450;
-    right: 4vw;
-    bottom: 48px;
-     p{
-         text-align: center;
-         padding-top: 8px;
-         font-size: 14px;
-     }
+  z-index: 1;
+  position: absolute;
+  width: 200px;
+  height: 30px;
+  background-color: #374450;
+  right: 4vw;
+  bottom: 48px;
+  p{
+    text-align: center;
+    padding-top: 8px;
+    font-size: 14px;
+  }
 
 }
 
 .used {
-    opacity: 0.3;
+  opacity: 0.3;
 }
 
 .b1 {
@@ -98,34 +98,35 @@ h1 {
   left: 32.5vw;
   top: 48vh;
   border-radius: 6px;
-    .b1carte {
-        width: 6vw;
-        height: 8vw;
-        background: #3e4750;
-        position: absolute;
-        margin-left: 14.5vw;
-        margin-top: 5vh;
+  .b1carte {
+    position: absolute;
+    margin-left: 14.5vw;
+    margin-top: 5vh;
+    img{
+      width: 6vw;
+      transform: rotate(0deg) translateY(0);
     }
+  }
 
-    h1 {
-        text-align: center;
-        margin-top: 12px;
-    }
-    #annuler {
-        margin-top: 19vh;
-        margin-left: 1vw;
-        padding-top: 4px;
-        font-family: Robotaur;
-        color: white;
-    }
+  h1 {
+    text-align: center;
+    margin-top: 12px;
+  }
+  #annuler {
+    margin-top: 19vh;
+    margin-left: 1vw;
+    padding-top: 4px;
+    font-family: Robotaur;
+    color: white;
+  }
 
-    #valider {
-        margin-top: 19vh;
-        margin-left: 18vw;
-        padding-top: 4px;
-        font-family: Robotaur;
-        color: white;
-    }
+  #valider {
+    margin-top: 19vh;
+    margin-left: 18vw;
+    padding-top: 4px;
+    font-family: Robotaur;
+    color: white;
+  }
 }
 
 .b2 {
@@ -138,22 +139,24 @@ h1 {
   left: 32.5vw;
   top: 48vh;
   border-radius: 6px;
-    .b2carte1{
+  .b2carte1{
+    position: absolute;
+    margin-left: 9.5vw;
+    margin-top: 5vh;
+    img{
       width: 6vw;
-      height: 8vw;
-      background: #3e4750;
-      position: absolute;
-      margin-left: 9.5vw;
-      margin-top: 5vh;
+      transform: rotate(0deg) translateY(0);
     }
-    .b2carte2 {
-      width: 6vw;
-      height: 8vw;
-      background: #3e4750;
-      position: absolute;
-      margin-left: 19.5vw;
-      margin-top: 5vh;
+  }
+  .b2carte2 {
+    position: absolute;
+    margin-left: 19.5vw;
+    margin-top: 5vh;
+    img{
+    width: 6vw;
+    transform: rotate(0deg) translateY(0);
     }
+  }
   h1 {
     text-align: center;
     margin-top: 12px;
@@ -187,31 +190,34 @@ h1 {
   left: 30vw;
   top: 48vh;
   border-radius: 6px;
-    .b3carte1{
+  .b3carte1{
+    position: absolute;
+    margin-left: 10vw;
+    margin-top: 5vh;
+    img{
       width: 6vw;
-      height: 8vw;
-      background: #3e4750;
-      position: absolute;
-      margin-left: 10vw;
-      margin-top: 5vh;
+      transform: rotate(0deg) translateY(0);
     }
-    .b3carte2 {
+  }
+  .b3carte2 {
+    position: absolute;
+    margin-left: 17vw;
+    margin-top: 5vh;
+    img{
       width: 6vw;
-      height: 8vw;
-      background: #3e4750;
-      position: absolute;
-      margin-left: 17vw;
-      margin-top: 5vh;
+      transform: rotate(0deg) translateY(0);
     }
+  }
 
-    .b3carte3 {
+  .b3carte3 {
+    position: absolute;
+    margin-left: 24vw;
+    margin-top: 5vh;
+    img{
       width: 6vw;
-      height: 8vw;
-      background: #3e4750;
-      position: absolute;
-      margin-left: 24vw;
-      margin-top: 5vh;
+      transform: rotate(0deg) translateY(0);
     }
+  }
   h1 {
     text-align: center;
     margin-top: 12px;
@@ -245,39 +251,43 @@ h1 {
   left: 25vw;
   top: 48vh;
   border-radius: 6px;
-    .b4carte1{
+  .b4carte1{
+    position: absolute;
+    margin-left: 11.5vw;
+    margin-top: 5vh;
+    img{
       width: 6vw;
-      height: 8vw;
-      background: #3e4750;
-      position: absolute;
-      margin-left: 11.5vw;
-      margin-top: 5vh;
+      transform: rotate(0deg) translateY(0);
     }
-    .b4carte2 {
+  }
+  .b4carte2 {
+    position: absolute;
+    margin-left: 18.5vw;
+    margin-top: 5vh;
+    img{
       width: 6vw;
-      height: 8vw;
-      background: #3e4750;
-      position: absolute;
-      margin-left: 18.5vw;
-      margin-top: 5vh;
+      transform: rotate(0deg) translateY(0);
     }
+  }
 
-    .b4carte3 {
+  .b4carte3 {
+    position: absolute;
+    margin-left: 25.5vw;
+    margin-top: 5vh;
+    img{
       width: 6vw;
-      height: 8vw;
-      background: #3e4750;
-      position: absolute;
-      margin-left: 25.5vw;
-      margin-top: 5vh;
+      transform: rotate(0deg) translateY(0);
     }
-    .b4carte4 {
+  }
+  .b4carte4 {
+    position: absolute;
+    margin-left: 32.5vw;
+    margin-top: 5vh;
+    img{
       width: 6vw;
-      height: 8vw;
-      background: #3e4750;
-      position: absolute;
-      margin-left: 32.5vw;
-      margin-top: 5vh;
+      transform: rotate(0deg) translateY(0);
     }
+  }
   h1 {
     text-align: center;
     margin-top: 12px;
