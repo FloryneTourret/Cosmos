@@ -30,6 +30,8 @@ class ActionsController extends Controller
      */
     public function selectionAction1(Request $request)
     {
+        //On affiche la vue de selection de l'action 1
+
         $partieId = $request->request->get('id');
 
         $entityManager = $this->getDoctrine()->getManager();
@@ -55,15 +57,16 @@ class ActionsController extends Controller
     {
         //partie en cours
         $partieId = $request->request->get('id');
-
         //carte séléctionnée
         $carteId = $request->request->get('id_carte');
 
+
         $longeur = count($carteId);
+        //Si UNE carte est bien séléctionnée
         if ($longeur == 1) {
 
 
-            // utilisateur connecté
+            // Je récupère l'ID de l'utilisateur connecté
             $user = $this->getUser();
             if ($user) {
                 $id = $user->getId();
@@ -71,82 +74,8 @@ class ActionsController extends Controller
                 $id = "Pas d'Id";
             }
 
-
             $entityManager = $this->getDoctrine()->getManager();
             $partie = $entityManager->getRepository(Parties::class)->find($partieId);
-
-            $joueur1 = $partie->getJoueur1()->getId();
-            $joueur2 = $partie->getJoueur2()->getId();
-
-            $actionsj1 = $partie->getActionJ1();
-            $actionsj2 = $partie->getActionJ2();
-
-            $rang1 = 0;
-            foreach ($actionsj1 as $actions) {
-                if ($rang1 == 0) {
-                    $actionsj1[$rang1] = 1;
-                } else {
-                    $actionsj1[$rang1] = $actions;
-                }
-                $rang1++;
-            }
-
-            $rang2 = 0;
-            foreach ($actionsj2 as $actions) {
-                if ($rang2 == 0) {
-                    $actionsj2[$rang2] = 1;
-                } else {
-                    $actionsj2[$rang2] = $actions;
-                }
-                $rang2++;
-            }
-
-            $tour = $partie->getPartieTour();
-            $tour++;
-
-            $pioche = $partie->getPartiePioche();
-            $carte_pioche = array_pop($pioche);
-
-
-            $actionsj1 = json_encode($actionsj1);
-            $actionsj2 = json_encode($actionsj2);
-            $cartesecrete = json_encode($carteId);
-
-            $main_joueur1 = $partie->getMainJ1();
-            $tmain_joueur1 = array();
-
-            $main_joueur2 = $partie->getMainJ2();
-            $tmain_joueur2 = array();
-
-
-            if ($id == $joueur1) {
-                if ($carte_pioche != null) {
-                    $tmain_joueur2[] = $carte_pioche;
-                }
-            }
-
-            if ($id == $joueur2) {
-                if ($carte_pioche != null) {
-                    $tmain_joueur1[] = $carte_pioche;
-                }
-            }
-
-            foreach ($main_joueur1 as $carte) {
-                if ($carte != $carteId) {
-                    $tmain_joueur1[] = $carte;
-                }
-            }
-
-            foreach ($main_joueur2 as $carte) {
-                if ($carte != $carteId) {
-                    $tmain_joueur2[] = $carte;
-                }
-            }
-
-
-            $mainj1 = json_encode($tmain_joueur1);
-            $mainj2 = json_encode($tmain_joueur2);
-
 
             if (!$partie) {
                 throw $this->createNotFoundException(
@@ -154,43 +83,226 @@ class ActionsController extends Controller
                 );
             }
 
-            if ($id == $joueur1) {
-                $partie->setActionJ1($actionsj1);
-                $partie->setMainJ1($mainj1);
-                $partie->setMainJ2($mainj2);
-                $partie->setCarteSecreteJ1($cartesecrete);
-                $partie->setPartieTour($tour);
-                $partie->setPartiePioche($pioche);
-            } elseif ($id == $joueur2) {
-                $partie->setActionJ2($actionsj2);
-                $partie->setMainJ1($mainj1);
-                $partie->setMainJ2($mainj2);
-                $partie->setCarteSecreteJ2($cartesecrete);
-                $partie->setPartieTour($tour);
-                $partie->setPartiePioche($pioche);
-            }
+            // Je récupère l'ID des deux joueurs de la partie
+            $joueur1 = $partie->getJoueur1()->getId();
+            $joueur2 = $partie->getJoueur2()->getId();
 
-            $entityManager->flush();
+            // Je réupère les actions des deux joueurs
+            $actionsj1 = $partie->getActionJ1();
+            $actionsj2 = $partie->getActionJ2();
 
-            if($tour!=9){
-                return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
-            }
-            else{
+            //Je récupère la main du J1 et en fait un tableau
+            $main_joueur1 = $partie->getMainJ1();
+            $tmain_joueur1 = array();
 
-                $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
-                $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
-                $tObjets = array();
-                foreach ($Objets as $carte) {
-                    $tObjets[$carte->getId()] = $carte;
+            //Je récupère la main du J2 et en fait un tableau
+            $main_joueur2 = $partie->getMainJ2();
+            $tmain_joueur2 = array();
+
+            // Si le joueur connecté est J1
+            if ($id == $joueur1){
+                //Si la carte choisie appartient bien à la main du J1, afin d'éviter la triche
+                if ($carteId == $main_joueur1[0] || $carteId == $main_joueur1[1] || $carteId == $main_joueur1[2] || $carteId == $main_joueur1[3] || $carteId == $main_joueur1[4] || $carteId == $main_joueur1[5] || $carteId == $main_joueur1[6])
+                {
+                    $rang1 = 0;
+                    // Je met l'action 1 à la valeur 1, équivalent à action réalisée
+                    foreach ($actionsj1 as $actions) {
+                        if ($rang1 == 0) {
+                            $actionsj1[$rang1] = 1;
+                        } else {
+                            $actionsj1[$rang1] = $actions;
+                        }
+                        $rang1++;
+                    }
+
+                    //J'incrémente le tour de la partie
+                    $tour = $partie->getPartieTour();
+                    $tour++;
+
+                    //Je retire une carte de la pioche
+                    $pioche = $partie->getPartiePioche();
+                    $carte_pioche = array_pop($pioche);
+
+                    //J'encode en json les actions du J1 et sa carte secrète
+                    $actionsj1 = json_encode($actionsj1);
+                    $cartesecrete = json_encode($carteId);
+
+
+                    //Si il reste une carte à piocher, je la met dans la main du J2
+                    foreach ($main_joueur2 as $carte) {
+                        $tmain_joueur2[] = $carte;
+                    }
+                    if ($carte_pioche != null) {
+                        $tmain_joueur2[] = $carte_pioche;
+                    }
+
+                    //J'enlève la carte secrète de la main du J1
+                    foreach ($main_joueur1 as $carte) {
+                        if ($carte != $carteId) {
+                            $tmain_joueur1[] = $carte;
+                        }
+                    }
+
+                    // J'encode les mains des joueurs
+                    $mainj1 = json_encode($tmain_joueur1);
+                    $mainj2 = json_encode($tmain_joueur2);
+
+                    //J'envoie les modifications dans la base de données
+                    $partie->setActionJ1($actionsj1);
+                    $partie->setMainJ1($mainj1);
+                    $partie->setMainJ2($mainj2);
+                    $partie->setCarteSecreteJ1($cartesecrete);
+                    $partie->setPartieTour($tour);
+                    $partie->setPartiePioche($pioche);
+                    $entityManager->flush();
+
+                    // Si ce n'est pas le tour 9, la partie continue et l'adversaire prends la main
+                    if($tour!=9){
+                        return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
+                    }
+                    //Si le tour est à 9, la partie est finie et on procède aux calculs de scores
+                    else{
+
+                        $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+                        $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+                        $tObjets = array();
+                        foreach ($Objets as $carte) {
+                            $tObjets[$carte->getId()] = $carte;
+                        }
+                        $tObjectifs = array();
+                        foreach ($objectifs as $objectifs) {
+                            $tObjectifs[$objectifs->getId()] = $objectifs;
+                        }
+
+                        return $this->redirectToRoute('calcul', ['id' => $partieId]);
+                    }
                 }
-                $tObjectifs = array();
-                foreach ($objectifs as $objectifs) {
-                    $tObjectifs[$objectifs->getId()] = $objectifs;
+                //Si la carte choisie ne fait pas partie de sa main, on le fait choisir de nouveau une carte
+                else{
+                    $partieId = $request->request->get('id');
+
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $partie = $entityManager->getRepository(Parties::class)->find($partieId);
+
+                    $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+                    $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+                    $tObjets = array();
+                    foreach ($Objets as $carte) {
+                        $tObjets[$carte->getId()] = $carte;
+                    }
+                    $tObjectifs = array();
+                    foreach ($objectifs as $objectifs) {
+                        $tObjectifs[$objectifs->getId()] = $objectifs;
+                    }
+                    return $this->render('Partie/action1_fail.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
                 }
 
-                return $this->redirectToRoute('calcul', ['id' => $partieId]);
+
+
             }
-        }else{
+            elseif ($id == $joueur2){
+                //Si la carte choisie appartient bien à la main du J1, afin d'éviter la triche
+                if ($carteId == $main_joueur2[0] || $carteId == $main_joueur2[1] || $carteId == $main_joueur2[2] || $carteId == $main_joueur2[3] || $carteId == $main_joueur2[4] || $carteId == $main_joueur2[5] || $carteId == $main_joueur2[6])
+                {
+
+                    $rang2 = 0;
+                    // Je met l'action 1 à la valeur 1, équivalent à action réalisée
+                    foreach ($actionsj2 as $actions) {
+                        if ($rang2 == 0) {
+                            $actionsj2[$rang2] = 1;
+                        } else {
+                            $actionsj2[$rang2] = $actions;
+                        }
+                        $rang2++;
+                    }
+
+                    //J'incrémente le tour de la partie
+                    $tour = $partie->getPartieTour();
+                    $tour++;
+
+                    //Je retire une carte de la pioche
+                    $pioche = $partie->getPartiePioche();
+                    $carte_pioche = array_pop($pioche);
+
+                    //J'encode en json les actions du J2 et sa carte secrète
+                    $actionsj2 = json_encode($actionsj2);
+                    $cartesecrete = json_encode($carteId);
+
+
+                    //Si il reste une carte à piocher, je la met dans la main du J1
+                    foreach ($main_joueur1 as $carte) {
+                        $tmain_joueur1[] = $carte;
+                    }
+                    if ($carte_pioche != null) {
+                        $tmain_joueur1[] = $carte_pioche;
+                    }
+
+                    //J'enlève la carte secrète de la main du J1
+                    foreach ($main_joueur2 as $carte) {
+                        if ($carte != $carteId) {
+                            $tmain_joueur2[] = $carte;
+                        }
+                    }
+
+                    // J'encode les mains des joueurs
+                    $mainj1 = json_encode($tmain_joueur1);
+                    $mainj2 = json_encode($tmain_joueur2);
+
+                    //J'envoie les modifications dans la base de données
+                    $partie->setActionJ2($actionsj2);
+                    $partie->setMainJ1($mainj1);
+                    $partie->setMainJ2($mainj2);
+                    $partie->setCarteSecreteJ2($cartesecrete);
+                    $partie->setPartieTour($tour);
+                    $partie->setPartiePioche($pioche);
+                    $entityManager->flush();
+
+                    // Si ce n'est pas le tour 9, la partie continue et l'adversaire prends la main
+                    if($tour!=9){
+                        return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
+                    }
+                    //Si le tour est à 9, la partie est finie et on procède aux calculs de scores
+                    else{
+
+                        $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+                        $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+                        $tObjets = array();
+                        foreach ($Objets as $carte) {
+                            $tObjets[$carte->getId()] = $carte;
+                        }
+                        $tObjectifs = array();
+                        foreach ($objectifs as $objectifs) {
+                            $tObjectifs[$objectifs->getId()] = $objectifs;
+                        }
+
+                        return $this->redirectToRoute('calcul', ['id' => $partieId]);
+                    }
+                }
+                //Si la carte choisie ne fait pas partie de sa main, on le fait choisir de nouveau une carte
+                else{
+                    $partieId = $request->request->get('id');
+
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $partie = $entityManager->getRepository(Parties::class)->find($partieId);
+
+                    $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+                    $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+                    $tObjets = array();
+                    foreach ($Objets as $carte) {
+                        $tObjets[$carte->getId()] = $carte;
+                    }
+                    $tObjectifs = array();
+                    foreach ($objectifs as $objectifs) {
+                        $tObjectifs[$objectifs->getId()] = $objectifs;
+                    }
+                    return $this->render('Partie/action1_fail.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
+                }
+
+            }
+
+        }
+        // Si il n'y a pas UNE carte séléctionnée on renvoie de nouveau sur le choix de la carte secrète
+        else{
 
             $partieId = $request->request->get('id');
 
@@ -217,6 +329,7 @@ class ActionsController extends Controller
      */
     public function selectionAction2(Request $request)
     {
+        //On affiche la vue de selection de l'action 2
         $partieId = $request->request->get('id');
 
         $entityManager = $this->getDoctrine()->getManager();
@@ -235,8 +348,6 @@ class ActionsController extends Controller
         return $this->render('Partie/action2.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
     }
 
-
-
     /**
      * @Route("/action2", name="action2")
      */
@@ -249,6 +360,7 @@ class ActionsController extends Controller
         //carte séléctionnée
         $carteId = $request->request->get('id_carte');
 
+        //Si DEUX cartes sont bien séléctionnées
         $longeur=count($carteId);
         if($longeur==2){
 
@@ -260,9 +372,7 @@ class ActionsController extends Controller
                     $carte2 = $carte;
                 }
                 $id++;
-
             }
-
 
             // utilisateur connecté
             $user = $this->getUser();
@@ -272,81 +382,8 @@ class ActionsController extends Controller
                 $id = "Pas d'Id";
             }
 
-
             $entityManager = $this->getDoctrine()->getManager();
             $partie = $entityManager->getRepository(Parties::class)->find($partieId);
-
-            $joueur1 = $partie->getJoueur1()->getId();
-            $joueur2 = $partie->getJoueur2()->getId();
-
-            $actionsj1 = $partie->getActionJ1();
-            $actionsj2 = $partie->getActionJ2();
-
-            $rang1 = 0;
-            foreach ($actionsj1 as $actions) {
-                if ($rang1 == 1) {
-                    $actionsj1[$rang1] = 1;
-                } else {
-                    $actionsj1[$rang1] = $actions;
-                }
-                $rang1++;
-            }
-
-            $rang2 = 0;
-            foreach ($actionsj2 as $actions) {
-                if ($rang2 == 1) {
-                    $actionsj2[$rang2] = 1;
-                } else {
-                    $actionsj2[$rang2] = $actions;
-                }
-                $rang2++;
-            }
-
-            $tour = $partie->getPartieTour();
-            $tour++;
-
-            $pioche = $partie->getPartiePioche();
-            $carte_pioche = array_pop($pioche);
-
-
-            $actionsj1 = json_encode($actionsj1);
-            $actionsj2 = json_encode($actionsj2);
-
-            $main_joueur1 = $partie->getMainJ1();
-            $tmain_joueur1 = array();
-
-            $main_joueur2 = $partie->getMainJ2();
-            $tmain_joueur2 = array();
-
-
-            if ($id == $joueur1) {
-                if ($carte_pioche != null) {
-                    $tmain_joueur2[] = $carte_pioche;
-                }
-            }
-
-            if ($id == $joueur2) {
-                if ($carte_pioche != null) {
-                    $tmain_joueur1[] = $carte_pioche;
-                }
-            }
-
-            foreach ($main_joueur1 as $carte) {
-                if ($carte != $carte1 && $carte != $carte2) {
-                    $tmain_joueur1[] = $carte;
-                }
-            }
-
-            foreach ($main_joueur2 as $carte) {
-                if ($carte != $carte1 && $carte != $carte2) {
-                    $tmain_joueur2[] = $carte;
-                }
-            }
-
-
-            $mainj1 = json_encode($tmain_joueur1);
-            $mainj2 = json_encode($tmain_joueur2);
-
 
             if (!$partie) {
                 throw $this->createNotFoundException(
@@ -354,43 +391,293 @@ class ActionsController extends Controller
                 );
             }
 
+            $joueur1 = $partie->getJoueur1()->getId();
+            $joueur2 = $partie->getJoueur2()->getId();
+
+            $actionsj1 = $partie->getActionJ1();
+            $actionsj2 = $partie->getActionJ2();
+
+            $tour = $partie->getPartieTour();
+            $tour++;
+
+            $pioche = $partie->getPartiePioche();
+            $carte_pioche = array_pop($pioche);
+
+            $main_joueur1 = $partie->getMainJ1();
+            $tmain_joueur1 = array();
+
+            $main_joueur2 = $partie->getMainJ2();
+            $tmain_joueur2 = array();
+
             if ($id == $joueur1) {
-                $partie->setActionJ1($actionsj1);
-                $partie->setMainJ1($mainj1);
-                $partie->setMainJ2($mainj2);
-                $partie->setCarteDissimuleeJ1(json_encode($carteId));
-                $partie->setPartieTour($tour);
-                $partie->setPartiePioche($pioche);
-            } elseif ($id == $joueur2) {
-                $partie->setActionJ2($actionsj2);
-                $partie->setMainJ1($mainj1);
-                $partie->setMainJ2($mainj2);
-                $partie->setCarteDissimuleeJ2(json_encode($carteId));
-                $partie->setPartieTour($tour);
-                $partie->setPartiePioche($pioche);
-            }
+                //Si la première carte choisie appartient bien à la main du J1, afin d'éviter la triche
+                if ($carte1 == $main_joueur1[0] || $carte1 == $main_joueur1[1] || $carte1 == $main_joueur1[2] || $carte1 == $main_joueur1[3] || $carte1 == $main_joueur1[4] || $carte1 == $main_joueur1[5] || $carte1 == $main_joueur1[6])
+                {
+                    //Si la seconde carte choisie appartient bien à la main du J1, afin d'éviter la triche
+                    if ($carte2 == $main_joueur1[0] || $carte2 == $main_joueur1[1] || $carte2 == $main_joueur1[2] || $carte2 == $main_joueur1[3] || $carte2 == $main_joueur1[4] || $carte2 == $main_joueur1[5] || $carte2 == $main_joueur1[6])
+                    {
+                        //Si les deux cartes choisies sont différentes, afin d'éviter la triche
+                        if ($carte1 != $carte2){
 
-            $entityManager->flush();
-            if($tour!=9){
-                return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
-            }
-            else{
+                            $rang1 = 0;
+                            // Je met l'action 2 à la valeur 1, équivalent à action réalisée
+                            foreach ($actionsj1 as $actions) {
+                                if ($rang1 == 1) {
+                                    $actionsj1[$rang1] = 1;
+                                } else {
+                                    $actionsj1[$rang1] = $actions;
+                                }
+                                $rang1++;
+                            }
 
-                $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
-                $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
-                $tObjets = array();
-                foreach ($Objets as $carte) {
-                    $tObjets[$carte->getId()] = $carte;
+                            //Je met la carte piochée dans la main du J2
+                            foreach ($main_joueur2 as $carte) {
+                                $tmain_joueur2[] = $carte;
+                            }
+                            if ($carte_pioche != null) {
+                                $tmain_joueur2[] = $carte_pioche;
+                            }
+
+
+                            //J'enlève les cartes choisies de la main du J1
+                            foreach ($main_joueur1 as $carte) {
+                                if ($carte != $carte1 && $carte != $carte2) {
+                                    $tmain_joueur1[] = $carte;
+                                }
+                            }
+
+                            //J'encode les mains des joueurs
+                            $mainj1 = json_encode($tmain_joueur1);
+                            $mainj2 = json_encode($tmain_joueur2);
+
+                            //J'encode les actions du J1
+                            $actionsj1 = json_encode($actionsj1);
+
+                            //J'envoie les changements dans la base de données
+                            $partie->setActionJ1($actionsj1);
+                            $partie->setMainJ1($mainj1);
+                            $partie->setMainJ2($mainj2);
+                            $partie->setCarteDissimuleeJ1(json_encode($carteId));
+                            $partie->setPartieTour($tour);
+                            $partie->setPartiePioche($pioche);
+                            $entityManager->flush();
+
+                            // Si ce n'est pas le tour 9, la partie continue et l'adversaire prends la main
+                            if($tour!=9){
+                                return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
+                            }
+                            //Si le tour est à 9, la partie est finie et on procède aux calculs de scores
+                            else{
+
+                                $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+                                $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+                                $tObjets = array();
+                                foreach ($Objets as $carte) {
+                                    $tObjets[$carte->getId()] = $carte;
+                                }
+                                $tObjectifs = array();
+                                foreach ($objectifs as $objectifs) {
+                                    $tObjectifs[$objectifs->getId()] = $objectifs;
+                                }
+
+                                return $this->redirectToRoute('calcul', ['id' => $partieId]);
+                            }
+                        }
+                        // Si les deux cartes sont identiques on renvoie de nouveau sur le choix des cartes dissimulation
+                        else{
+                            $partieId = $request->request->get('id');
+
+                            $entityManager = $this->getDoctrine()->getManager();
+                            $partie = $entityManager->getRepository(Parties::class)->find($partieId);
+
+                            $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+                            $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+                            $tObjets = array();
+                            foreach ($Objets as $carte) {
+                                $tObjets[$carte->getId()] = $carte;
+                            }
+                            $tObjectifs = array();
+                            foreach ($objectifs as $objectifs) {
+                                $tObjectifs[$objectifs->getId()] = $objectifs;
+                            }
+                            return $this->render('Partie/action2_fail.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
+
+                        }
+                        // Si la première carte choisie n'est pas dans la main, on renvoie de nouveau sur le choix des cartes dissimulation
+                    }else{
+                        $partieId = $request->request->get('id');
+
+                        $entityManager = $this->getDoctrine()->getManager();
+                        $partie = $entityManager->getRepository(Parties::class)->find($partieId);
+
+                        $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+                        $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+                        $tObjets = array();
+                        foreach ($Objets as $carte) {
+                            $tObjets[$carte->getId()] = $carte;
+                        }
+                        $tObjectifs = array();
+                        foreach ($objectifs as $objectifs) {
+                            $tObjectifs[$objectifs->getId()] = $objectifs;
+                        }
+                        return $this->render('Partie/action2_fail.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
+                    }
+                    // Si la seconde carte choisie n'est pas dans la main on renvoie de nouveau sur le choix des cartes dissimulation
+                }else{
+                    $partieId = $request->request->get('id');
+
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $partie = $entityManager->getRepository(Parties::class)->find($partieId);
+
+                    $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+                    $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+                    $tObjets = array();
+                    foreach ($Objets as $carte) {
+                        $tObjets[$carte->getId()] = $carte;
+                    }
+                    $tObjectifs = array();
+                    foreach ($objectifs as $objectifs) {
+                        $tObjectifs[$objectifs->getId()] = $objectifs;
+                    }
+                    return $this->render('Partie/action2_fail.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
+
                 }
-                $tObjectifs = array();
-                foreach ($objectifs as $objectifs) {
-                    $tObjectifs[$objectifs->getId()] = $objectifs;
-                }
-
-                return $this->redirectToRoute('calcul', ['id' => $partieId]);
             }
+            elseif ($id == $joueur2) {
+                //Si la carte choisie appartient bien à la main du J1, afin d'éviter la triche
+                if ($carte1 == $main_joueur2[0] || $carte1 == $main_joueur2[1] || $carte1 == $main_joueur2[2] || $carte1 == $main_joueur2[3] || $carte1 == $main_joueur2[4] || $carte1 == $main_joueur2[5] || $carte1 == $main_joueur2[6])
+                {
+                    if ($carte2 == $main_joueur2[0] || $carte2 == $main_joueur2[1] || $carte2 == $main_joueur2[2] || $carte2 == $main_joueur2[3] || $carte2 == $main_joueur2[4] || $carte2 == $main_joueur2[5] || $carte2 == $main_joueur2[6])
+                    {
+                        if ($carte1 != $carte2){
+
+                            $rang2 = 0;
+                            // Je met l'action 2 à la valeur 1, équivalent à action réalisée
+                            foreach ($actionsj2 as $actions) {
+                                if ($rang2 == 1) {
+                                    $actionsj2[$rang2] = 1;
+                                } else {
+                                    $actionsj2[$rang2] = $actions;
+                                }
+                                $rang2++;
+                            }
+
+                            //Je met la carte piochée dans la main du J1
+                            foreach ($main_joueur1 as $carte) {
+                                $tmain_joueur1[] = $carte;
+                            }
+                            if ($carte_pioche != null) {
+                                $tmain_joueur1[] = $carte_pioche;
+                            }
+
+                            //J'enlève les cartes choisies de la main du J1
+                            foreach ($main_joueur2 as $carte) {
+                                if ($carte != $carte1 && $carte != $carte2) {
+                                    $tmain_joueur2[] = $carte;
+                                }
+                            }
+
+                            //J'encode la main des joueurs
+                            $mainj1 = json_encode($tmain_joueur1);
+                            $mainj2 = json_encode($tmain_joueur2);
+
+                            //J'encode les actions du j2
+                            $actionsj2 = json_encode($actionsj2);
+
+                            //J'envoie les changements dans la base de données
+                            $partie->setActionJ2($actionsj2);
+                            $partie->setMainJ1($mainj1);
+                            $partie->setMainJ2($mainj2);
+                            $partie->setCarteDissimuleeJ2(json_encode($carteId));
+                            $partie->setPartieTour($tour);
+                            $partie->setPartiePioche($pioche);
+                            $entityManager->flush();
+
+                            // Si ce n'est pas le tour 9, la partie continue et l'adversaire prends la main
+                            if($tour!=9){
+                                return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
+                            }
+                            //Si le tour est à 9, la partie est finie et on procède aux calculs de scores
+                            else{
+
+                                $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+                                $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+                                $tObjets = array();
+                                foreach ($Objets as $carte) {
+                                    $tObjets[$carte->getId()] = $carte;
+                                }
+                                $tObjectifs = array();
+                                foreach ($objectifs as $objectifs) {
+                                    $tObjectifs[$objectifs->getId()] = $objectifs;
+                                }
+
+                                return $this->redirectToRoute('calcul', ['id' => $partieId]);
+                            }
+
+                        }
+                        // Si les deux cartes sont identiques on renvoie de nouveau sur le choix des cartes dissimulation
+                        else{
+                            $partieId = $request->request->get('id');
+
+                            $entityManager = $this->getDoctrine()->getManager();
+                            $partie = $entityManager->getRepository(Parties::class)->find($partieId);
+
+                            $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+                            $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+                            $tObjets = array();
+                            foreach ($Objets as $carte) {
+                                $tObjets[$carte->getId()] = $carte;
+                            }
+                            $tObjectifs = array();
+                            foreach ($objectifs as $objectifs) {
+                                $tObjectifs[$objectifs->getId()] = $objectifs;
+                            }
+                            return $this->render('Partie/action2_fail.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
+
+                        }
+                        // Si la première carte choisie n'est pas dans la main on renvoie de nouveau sur le choix des cartes dissimulation
+                    }else{
+                        $partieId = $request->request->get('id');
+
+                        $entityManager = $this->getDoctrine()->getManager();
+                        $partie = $entityManager->getRepository(Parties::class)->find($partieId);
+
+                        $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+                        $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+                        $tObjets = array();
+                        foreach ($Objets as $carte) {
+                            $tObjets[$carte->getId()] = $carte;
+                        }
+                        $tObjectifs = array();
+                        foreach ($objectifs as $objectifs) {
+                            $tObjectifs[$objectifs->getId()] = $objectifs;
+                        }
+                        return $this->render('Partie/action2_fail.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
+
+                    }
+                    // Si la seconde carte choisie n'est pas dans la main on renvoie de nouveau sur le choix des cartes dissimulation
+                }else{
+                    $partieId = $request->request->get('id');
+
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $partie = $entityManager->getRepository(Parties::class)->find($partieId);
+
+                    $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+                    $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+                    $tObjets = array();
+                    foreach ($Objets as $carte) {
+                        $tObjets[$carte->getId()] = $carte;
+                    }
+                    $tObjectifs = array();
+                    foreach ($objectifs as $objectifs) {
+                        $tObjectifs[$objectifs->getId()] = $objectifs;
+                    }
+                    return $this->render('Partie/action2_fail.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
+                }
+            }
+
         }
-
+        // Si il n'y a pas DEUX cartes séléctionnée on renvoie de nouveau sur le choix des cartes dissimulation
         else{
 
             $partieId = $request->request->get('id');
@@ -413,12 +700,13 @@ class ActionsController extends Controller
     }
 
 
-
     /**
      * @Route("/selectionAction3", name="selection_action3")
      */
     public function selectionAction3(Request $request)
     {
+        //On affiche la vue de selection de l'action 3
+
         $partieId = $request->request->get('id');
 
         $entityManager = $this->getDoctrine()->getManager();
@@ -436,8 +724,6 @@ class ActionsController extends Controller
         }
         return $this->render('Partie/action3.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
     }
-
-
 
     /**
      * @Route("/action3", name="action3")
@@ -601,12 +887,13 @@ class ActionsController extends Controller
     }
 
 
-
     /**
      * @Route("/selectionAction4", name="selection_action4")
      */
     public function selectionAction4(Request $request)
     {
+        //On affiche la vue de selection de l'action 4
+
         $partieId = $request->request->get('id');
 
         $entityManager = $this->getDoctrine()->getManager();
@@ -624,8 +911,6 @@ class ActionsController extends Controller
         }
         return $this->render('Partie/action4.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
     }
-
-
 
     /**
      * @Route("/action4", name="action4")
@@ -793,11 +1078,14 @@ class ActionsController extends Controller
         }
     }
 
+
     /**
      * @Route("/choix_cadeau", name="choix_cadeau")
      */
     public function choix_cadeau(Request $request)
     {
+        //On affiche insère dans le terrains des joueurs les cartes définies
+
         //partie en cours
         $partieId = $request->request->get('id');
 
@@ -1394,6 +1682,8 @@ class ActionsController extends Controller
      */
     public function choix_concurrence(Request $request)
     {
+        //On insère dans les terrains respectifs les paires choisies
+
         //partie en cours
         $partieId = $request->request->get('id');
 
