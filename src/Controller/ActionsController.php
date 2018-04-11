@@ -30,8 +30,6 @@ class ActionsController extends Controller
      */
     public function selectionAction1(Request $request)
     {
-        //On affiche la vue de selection de l'action 1
-
         $partieId = $request->request->get('id');
 
         $entityManager = $this->getDoctrine()->getManager();
@@ -57,14 +55,13 @@ class ActionsController extends Controller
     {
         //partie en cours
         $partieId = $request->request->get('id');
+
         //carte séléctionnée
         $carteId = $request->request->get('id_carte');
-
+        $carte=$carteId[0];
 
         $longeur = count($carteId);
-        //Si UNE carte est bien séléctionnée
         if ($longeur == 1) {
-
 
             // Je récupère l'ID de l'utilisateur connecté
             $user = $this->getUser();
@@ -92,18 +89,17 @@ class ActionsController extends Controller
             $actionsj2 = $partie->getActionJ2();
 
             //Je récupère la main du J1 et en fait un tableau
-            $main_joueur1 = $partie->getMainJ1();
+            $cartes_main_joueur1 = $partie->getMainJ1();
             $tmain_joueur1 = array();
 
             //Je récupère la main du J2 et en fait un tableau
-            $main_joueur2 = $partie->getMainJ2();
+            $cartes_main_joueur2 = $partie->getMainJ2();
             $tmain_joueur2 = array();
 
-            // Si le joueur connecté est J1
-            if ($id == $joueur1){
-                //Si la carte choisie appartient bien à la main du J1, afin d'éviter la triche
-                if ($carteId == $main_joueur1[0] || $carteId == $main_joueur1[1] || $carteId == $main_joueur1[2] || $carteId == $main_joueur1[3] || $carteId == $main_joueur1[4] || $carteId == $main_joueur1[5] || $carteId == $main_joueur1[6])
-                {
+            if ($id==$joueur1){
+
+                if (in_array($carte, $cartes_main_joueur1)){
+
                     $rang1 = 0;
                     // Je met l'action 1 à la valeur 1, équivalent à action réalisée
                     foreach ($actionsj1 as $actions) {
@@ -129,7 +125,7 @@ class ActionsController extends Controller
 
 
                     //Si il reste une carte à piocher, je la met dans la main du J2
-                    foreach ($main_joueur2 as $carte) {
+                    foreach ($cartes_main_joueur2 as $carte) {
                         $tmain_joueur2[] = $carte;
                     }
                     if ($carte_pioche != null) {
@@ -137,7 +133,7 @@ class ActionsController extends Controller
                     }
 
                     //J'enlève la carte secrète de la main du J1
-                    foreach ($main_joueur1 as $carte) {
+                    foreach ($cartes_main_joueur1 as $carte) {
                         if ($carte != $carteId) {
                             $tmain_joueur1[] = $carte;
                         }
@@ -155,30 +151,9 @@ class ActionsController extends Controller
                     $partie->setPartieTour($tour);
                     $partie->setPartiePioche($pioche);
                     $entityManager->flush();
-
-                    // Si ce n'est pas le tour 9, la partie continue et l'adversaire prends la main
-                    if($tour!=9){
-                        return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
-                    }
-                    //Si le tour est à 9, la partie est finie et on procède aux calculs de scores
-                    else{
-
-                        $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
-                        $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
-                        $tObjets = array();
-                        foreach ($Objets as $carte) {
-                            $tObjets[$carte->getId()] = $carte;
-                        }
-                        $tObjectifs = array();
-                        foreach ($objectifs as $objectifs) {
-                            $tObjectifs[$objectifs->getId()] = $objectifs;
-                        }
-
-                        return $this->redirectToRoute('calcul', ['id' => $partieId]);
-                    }
                 }
-                //Si la carte choisie ne fait pas partie de sa main, on le fait choisir de nouveau une carte
                 else{
+
                     $partieId = $request->request->get('id');
 
                     $entityManager = $this->getDoctrine()->getManager();
@@ -196,15 +171,10 @@ class ActionsController extends Controller
                     }
                     return $this->render('Partie/action1_fail.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
                 }
-
-
-
             }
-            elseif ($id == $joueur2){
-                //Si la carte choisie appartient bien à la main du J1, afin d'éviter la triche
-                if ($carteId == $main_joueur2[0] || $carteId == $main_joueur2[1] || $carteId == $main_joueur2[2] || $carteId == $main_joueur2[3] || $carteId == $main_joueur2[4] || $carteId == $main_joueur2[5] || $carteId == $main_joueur2[6])
-                {
+            elseif ($id==$joueur2) {
 
+                if (in_array($carte, $cartes_main_joueur2)) {
                     $rang2 = 0;
                     // Je met l'action 1 à la valeur 1, équivalent à action réalisée
                     foreach ($actionsj2 as $actions) {
@@ -224,23 +194,23 @@ class ActionsController extends Controller
                     $pioche = $partie->getPartiePioche();
                     $carte_pioche = array_pop($pioche);
 
-                    //J'encode en json les actions du J2 et sa carte secrète
-                    $actionsj2 = json_encode($actionsj2);
+                    //J'encode en json les actions du J1 et sa carte secrète
+                    $actionsj1 = json_encode($actionsj1);
                     $cartesecrete = json_encode($carteId);
 
 
-                    //Si il reste une carte à piocher, je la met dans la main du J1
-                    foreach ($main_joueur1 as $carte) {
-                        $tmain_joueur1[] = $carte;
+                    //Si il reste une carte à piocher, je la met dans la main du J2
+                    foreach ($cartes_main_joueur2 as $carte) {
+                        $tmain_joueur2[] = $carte;
                     }
                     if ($carte_pioche != null) {
-                        $tmain_joueur1[] = $carte_pioche;
+                        $tmain_joueur2[] = $carte_pioche;
                     }
 
                     //J'enlève la carte secrète de la main du J1
-                    foreach ($main_joueur2 as $carte) {
+                    foreach ($cartes_main_joueur1 as $carte) {
                         if ($carte != $carteId) {
-                            $tmain_joueur2[] = $carte;
+                            $tmain_joueur1[] = $carte;
                         }
                     }
 
@@ -249,37 +219,16 @@ class ActionsController extends Controller
                     $mainj2 = json_encode($tmain_joueur2);
 
                     //J'envoie les modifications dans la base de données
-                    $partie->setActionJ2($actionsj2);
+                    $partie->setActionJ1($actionsj1);
                     $partie->setMainJ1($mainj1);
                     $partie->setMainJ2($mainj2);
-                    $partie->setCarteSecreteJ2($cartesecrete);
+                    $partie->setCarteSecreteJ1($cartesecrete);
                     $partie->setPartieTour($tour);
                     $partie->setPartiePioche($pioche);
                     $entityManager->flush();
-
-                    // Si ce n'est pas le tour 9, la partie continue et l'adversaire prends la main
-                    if($tour!=9){
-                        return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
-                    }
-                    //Si le tour est à 9, la partie est finie et on procède aux calculs de scores
-                    else{
-
-                        $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
-                        $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
-                        $tObjets = array();
-                        foreach ($Objets as $carte) {
-                            $tObjets[$carte->getId()] = $carte;
-                        }
-                        $tObjectifs = array();
-                        foreach ($objectifs as $objectifs) {
-                            $tObjectifs[$objectifs->getId()] = $objectifs;
-                        }
-
-                        return $this->redirectToRoute('calcul', ['id' => $partieId]);
-                    }
                 }
-                //Si la carte choisie ne fait pas partie de sa main, on le fait choisir de nouveau une carte
                 else{
+
                     $partieId = $request->request->get('id');
 
                     $entityManager = $this->getDoctrine()->getManager();
@@ -297,12 +246,28 @@ class ActionsController extends Controller
                     }
                     return $this->render('Partie/action1_fail.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
                 }
-
             }
 
-        }
-        // Si il n'y a pas UNE carte séléctionnée on renvoie de nouveau sur le choix de la carte secrète
-        else{
+
+            if($tour!=9){
+                return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
+            }
+            else{
+
+                $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+                $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+                $tObjets = array();
+                foreach ($Objets as $carte) {
+                    $tObjets[$carte->getId()] = $carte;
+                }
+                $tObjectifs = array();
+                foreach ($objectifs as $objectifs) {
+                    $tObjectifs[$objectifs->getId()] = $objectifs;
+                }
+
+                return $this->redirectToRoute('calcul', ['id' => $partieId]);
+            }
+        }else{
 
             $partieId = $request->request->get('id');
 
@@ -329,7 +294,6 @@ class ActionsController extends Controller
      */
     public function selectionAction2(Request $request)
     {
-        //On affiche la vue de selection de l'action 2
         $partieId = $request->request->get('id');
 
         $entityManager = $this->getDoctrine()->getManager();
@@ -348,6 +312,8 @@ class ActionsController extends Controller
         return $this->render('Partie/action2.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
     }
 
+
+
     /**
      * @Route("/action2", name="action2")
      */
@@ -362,7 +328,7 @@ class ActionsController extends Controller
 
         //Si DEUX cartes sont bien séléctionnées
         $longeur=count($carteId);
-        if($longeur==2){
+        if($longeur==2) {
 
             $id = 0;
             foreach ($carteId as $carte) {
@@ -403,112 +369,63 @@ class ActionsController extends Controller
             $pioche = $partie->getPartiePioche();
             $carte_pioche = array_pop($pioche);
 
-            $main_joueur1 = $partie->getMainJ1();
+
+            $cartes_main_joueur1 = $partie->getMainJ1();
             $tmain_joueur1 = array();
 
-            $main_joueur2 = $partie->getMainJ2();
+            $cartes_main_joueur2 = $partie->getMainJ1();
             $tmain_joueur2 = array();
-
-            if ($id == $joueur1) {
-                //Si la première carte choisie appartient bien à la main du J1, afin d'éviter la triche
-                if ($carte1 == $main_joueur1[0] || $carte1 == $main_joueur1[1] || $carte1 == $main_joueur1[2] || $carte1 == $main_joueur1[3] || $carte1 == $main_joueur1[4] || $carte1 == $main_joueur1[5] || $carte1 == $main_joueur1[6])
-                {
-                    //Si la seconde carte choisie appartient bien à la main du J1, afin d'éviter la triche
-                    if ($carte2 == $main_joueur1[0] || $carte2 == $main_joueur1[1] || $carte2 == $main_joueur1[2] || $carte2 == $main_joueur1[3] || $carte2 == $main_joueur1[4] || $carte2 == $main_joueur1[5] || $carte2 == $main_joueur1[6])
-                    {
-                        //Si les deux cartes choisies sont différentes, afin d'éviter la triche
-                        if ($carte1 != $carte2){
-
-                            $rang1 = 0;
-                            // Je met l'action 2 à la valeur 1, équivalent à action réalisée
-                            foreach ($actionsj1 as $actions) {
-                                if ($rang1 == 1) {
-                                    $actionsj1[$rang1] = 1;
-                                } else {
-                                    $actionsj1[$rang1] = $actions;
-                                }
-                                $rang1++;
-                            }
-
-                            //Je met la carte piochée dans la main du J2
-                            foreach ($main_joueur2 as $carte) {
-                                $tmain_joueur2[] = $carte;
-                            }
-                            if ($carte_pioche != null) {
-                                $tmain_joueur2[] = $carte_pioche;
-                            }
-
-
-                            //J'enlève les cartes choisies de la main du J1
-                            foreach ($main_joueur1 as $carte) {
-                                if ($carte != $carte1 && $carte != $carte2) {
-                                    $tmain_joueur1[] = $carte;
-                                }
-                            }
-
-                            //J'encode les mains des joueurs
-                            $mainj1 = json_encode($tmain_joueur1);
-                            $mainj2 = json_encode($tmain_joueur2);
-
-                            //J'encode les actions du J1
-                            $actionsj1 = json_encode($actionsj1);
-
-                            //J'envoie les changements dans la base de données
-                            $partie->setActionJ1($actionsj1);
-                            $partie->setMainJ1($mainj1);
-                            $partie->setMainJ2($mainj2);
-                            $partie->setCarteDissimuleeJ1(json_encode($carteId));
-                            $partie->setPartieTour($tour);
-                            $partie->setPartiePioche($pioche);
-                            $entityManager->flush();
-
-                            // Si ce n'est pas le tour 9, la partie continue et l'adversaire prends la main
-                            if($tour!=9){
-                                return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
-                            }
-                            //Si le tour est à 9, la partie est finie et on procède aux calculs de scores
-                            else{
-
-                                $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
-                                $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
-                                $tObjets = array();
-                                foreach ($Objets as $carte) {
-                                    $tObjets[$carte->getId()] = $carte;
-                                }
-                                $tObjectifs = array();
-                                foreach ($objectifs as $objectifs) {
-                                    $tObjectifs[$objectifs->getId()] = $objectifs;
-                                }
-
-                                return $this->redirectToRoute('calcul', ['id' => $partieId]);
-                            }
+            if ($id==$joueur1){
+                if (in_array($carte1, $cartes_main_joueur1) && in_array($carte2, $cartes_main_joueur1) && $carte1!=$carte2 ) {
+                    $rang1 = 0;
+                    // Je met l'action 2 à la valeur 1, équivalent à action réalisée
+                    foreach ($actionsj1 as $actions) {
+                        if ($rang1 == 1) {
+                            $actionsj1[$rang1] = 1;
+                        } else {
+                            $actionsj1[$rang1] = $actions;
                         }
-                        // Si les deux cartes sont identiques on renvoie de nouveau sur le choix des cartes dissimulation
-                        else{
-                            $partieId = $request->request->get('id');
+                        $rang1++;
+                    }
 
-                            $entityManager = $this->getDoctrine()->getManager();
-                            $partie = $entityManager->getRepository(Parties::class)->find($partieId);
+                    //Je met la carte piochée dans la main du J2
+                    foreach ($cartes_main_joueur2 as $carte) {
+                        $tmain_joueur2[] = $carte;
+                    }
+                    if ($carte_pioche != null) {
+                        $tmain_joueur2[] = $carte_pioche;
+                    }
 
-                            $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
-                            $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
-                            $tObjets = array();
-                            foreach ($Objets as $carte) {
-                                $tObjets[$carte->getId()] = $carte;
-                            }
-                            $tObjectifs = array();
-                            foreach ($objectifs as $objectifs) {
-                                $tObjectifs[$objectifs->getId()] = $objectifs;
-                            }
-                            return $this->render('Partie/action2_fail.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
 
+                    //J'enlève les cartes choisies de la main du J1
+                    foreach ($cartes_main_joueur1 as $carte) {
+                        if ($carte != $carte1 && $carte != $carte2) {
+                            $tmain_joueur1[] = $carte;
                         }
-                        // Si la première carte choisie n'est pas dans la main, on renvoie de nouveau sur le choix des cartes dissimulation
-                    }else{
-                        $partieId = $request->request->get('id');
+                    }
 
-                        $entityManager = $this->getDoctrine()->getManager();
-                        $partie = $entityManager->getRepository(Parties::class)->find($partieId);
+                    //J'encode les mains des joueurs
+                    $mainj1 = json_encode($tmain_joueur1);
+                    $mainj2 = json_encode($tmain_joueur2);
+
+                    //J'encode les actions du J1
+                    $actionsj1 = json_encode($actionsj1);
+
+                    //J'envoie les changements dans la base de données
+                    $partie->setActionJ1($actionsj1);
+                    $partie->setMainJ1($mainj1);
+                    $partie->setMainJ2($mainj2);
+                    $partie->setCarteDissimuleeJ1(json_encode($carteId));
+                    $partie->setPartieTour($tour);
+                    $partie->setPartiePioche($pioche);
+                    $entityManager->flush();
+
+                    // Si ce n'est pas le tour 9, la partie continue et l'adversaire prends la main
+                    if($tour!=9){
+                        return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
+                    }
+                    //Si le tour est à 9, la partie est finie et on procède aux calculs de scores
+                    else{
 
                         $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
                         $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
@@ -520,10 +437,12 @@ class ActionsController extends Controller
                         foreach ($objectifs as $objectifs) {
                             $tObjectifs[$objectifs->getId()] = $objectifs;
                         }
-                        return $this->render('Partie/action2_fail.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
+
+                        return $this->redirectToRoute('calcul', ['id' => $partieId]);
                     }
-                    // Si la seconde carte choisie n'est pas dans la main on renvoie de nouveau sur le choix des cartes dissimulation
-                }else{
+                }
+                else{
+
                     $partieId = $request->request->get('id');
 
                     $entityManager = $this->getDoctrine()->getManager();
@@ -540,107 +459,58 @@ class ActionsController extends Controller
                         $tObjectifs[$objectifs->getId()] = $objectifs;
                     }
                     return $this->render('Partie/action2_fail.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
-
                 }
             }
-            elseif ($id == $joueur2) {
-                //Si la carte choisie appartient bien à la main du J1, afin d'éviter la triche
-                if ($carte1 == $main_joueur2[0] || $carte1 == $main_joueur2[1] || $carte1 == $main_joueur2[2] || $carte1 == $main_joueur2[3] || $carte1 == $main_joueur2[4] || $carte1 == $main_joueur2[5] || $carte1 == $main_joueur2[6])
-                {
-                    if ($carte2 == $main_joueur2[0] || $carte2 == $main_joueur2[1] || $carte2 == $main_joueur2[2] || $carte2 == $main_joueur2[3] || $carte2 == $main_joueur2[4] || $carte2 == $main_joueur2[5] || $carte2 == $main_joueur2[6])
-                    {
-                        if ($carte1 != $carte2){
-
-                            $rang2 = 0;
-                            // Je met l'action 2 à la valeur 1, équivalent à action réalisée
-                            foreach ($actionsj2 as $actions) {
-                                if ($rang2 == 1) {
-                                    $actionsj2[$rang2] = 1;
-                                } else {
-                                    $actionsj2[$rang2] = $actions;
-                                }
-                                $rang2++;
-                            }
-
-                            //Je met la carte piochée dans la main du J1
-                            foreach ($main_joueur1 as $carte) {
-                                $tmain_joueur1[] = $carte;
-                            }
-                            if ($carte_pioche != null) {
-                                $tmain_joueur1[] = $carte_pioche;
-                            }
-
-                            //J'enlève les cartes choisies de la main du J1
-                            foreach ($main_joueur2 as $carte) {
-                                if ($carte != $carte1 && $carte != $carte2) {
-                                    $tmain_joueur2[] = $carte;
-                                }
-                            }
-
-                            //J'encode la main des joueurs
-                            $mainj1 = json_encode($tmain_joueur1);
-                            $mainj2 = json_encode($tmain_joueur2);
-
-                            //J'encode les actions du j2
-                            $actionsj2 = json_encode($actionsj2);
-
-                            //J'envoie les changements dans la base de données
-                            $partie->setActionJ2($actionsj2);
-                            $partie->setMainJ1($mainj1);
-                            $partie->setMainJ2($mainj2);
-                            $partie->setCarteDissimuleeJ2(json_encode($carteId));
-                            $partie->setPartieTour($tour);
-                            $partie->setPartiePioche($pioche);
-                            $entityManager->flush();
-
-                            // Si ce n'est pas le tour 9, la partie continue et l'adversaire prends la main
-                            if($tour!=9){
-                                return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
-                            }
-                            //Si le tour est à 9, la partie est finie et on procède aux calculs de scores
-                            else{
-
-                                $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
-                                $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
-                                $tObjets = array();
-                                foreach ($Objets as $carte) {
-                                    $tObjets[$carte->getId()] = $carte;
-                                }
-                                $tObjectifs = array();
-                                foreach ($objectifs as $objectifs) {
-                                    $tObjectifs[$objectifs->getId()] = $objectifs;
-                                }
-
-                                return $this->redirectToRoute('calcul', ['id' => $partieId]);
-                            }
-
+            if ($id==$joueur2){
+                if (in_array($carte1, $cartes_main_joueur2) && in_array($carte2, $cartes_main_joueur2) && $carte1!=$carte2 ) {
+                    $rang2 = 0;
+                    // Je met l'action 2 à la valeur 1, équivalent à action réalisée
+                    foreach ($actionsj2 as $actions) {
+                        if ($rang2 == 1) {
+                            $actionsj2[$rang2] = 1;
+                        } else {
+                            $actionsj2[$rang2] = $actions;
                         }
-                        // Si les deux cartes sont identiques on renvoie de nouveau sur le choix des cartes dissimulation
-                        else{
-                            $partieId = $request->request->get('id');
+                        $rang2++;
+                    }
 
-                            $entityManager = $this->getDoctrine()->getManager();
-                            $partie = $entityManager->getRepository(Parties::class)->find($partieId);
+                    //Je met la carte piochée dans la main du J1
+                    foreach ($cartes_main_joueur1 as $carte) {
+                        $tmain_joueur1[] = $carte;
+                    }
+                    if ($carte_pioche != null) {
+                        $tmain_joueur1[] = $carte_pioche;
+                    }
 
-                            $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
-                            $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
-                            $tObjets = array();
-                            foreach ($Objets as $carte) {
-                                $tObjets[$carte->getId()] = $carte;
-                            }
-                            $tObjectifs = array();
-                            foreach ($objectifs as $objectifs) {
-                                $tObjectifs[$objectifs->getId()] = $objectifs;
-                            }
-                            return $this->render('Partie/action2_fail.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
-
+                    //J'enlève les cartes choisies de la main du J1
+                    foreach ($cartes_main_joueur2 as $carte) {
+                        if ($carte != $carte1 && $carte != $carte2) {
+                            $tmain_joueur2[] = $carte;
                         }
-                        // Si la première carte choisie n'est pas dans la main on renvoie de nouveau sur le choix des cartes dissimulation
-                    }else{
-                        $partieId = $request->request->get('id');
+                    }
 
-                        $entityManager = $this->getDoctrine()->getManager();
-                        $partie = $entityManager->getRepository(Parties::class)->find($partieId);
+                    //J'encode la main des joueurs
+                    $mainj1 = json_encode($tmain_joueur1);
+                    $mainj2 = json_encode($tmain_joueur2);
+
+                    //J'encode les actions du j2
+                    $actionsj2 = json_encode($actionsj2);
+
+                    //J'envoie les changements dans la base de données
+                    $partie->setActionJ2($actionsj2);
+                    $partie->setMainJ1($mainj1);
+                    $partie->setMainJ2($mainj2);
+                    $partie->setCarteDissimuleeJ2(json_encode($carteId));
+                    $partie->setPartieTour($tour);
+                    $partie->setPartiePioche($pioche);
+                    $entityManager->flush();
+
+                    // Si ce n'est pas le tour 9, la partie continue et l'adversaire prends la main
+                    if($tour!=9){
+                        return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
+                    }
+                    //Si le tour est à 9, la partie est finie et on procède aux calculs de scores
+                    else{
 
                         $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
                         $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
@@ -652,11 +522,12 @@ class ActionsController extends Controller
                         foreach ($objectifs as $objectifs) {
                             $tObjectifs[$objectifs->getId()] = $objectifs;
                         }
-                        return $this->render('Partie/action2_fail.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
 
+                        return $this->redirectToRoute('calcul', ['id' => $partieId]);
                     }
-                    // Si la seconde carte choisie n'est pas dans la main on renvoie de nouveau sur le choix des cartes dissimulation
-                }else{
+                }
+                else{
+
                     $partieId = $request->request->get('id');
 
                     $entityManager = $this->getDoctrine()->getManager();
@@ -676,9 +547,10 @@ class ActionsController extends Controller
                 }
             }
 
-        }
-        // Si il n'y a pas DEUX cartes séléctionnée on renvoie de nouveau sur le choix des cartes dissimulation
-        else{
+
+
+
+        }else{
 
             $partieId = $request->request->get('id');
 
@@ -697,7 +569,9 @@ class ActionsController extends Controller
             }
             return $this->render('Partie/action2_fail.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
         }
+
     }
+
 
 
     /**
@@ -705,8 +579,6 @@ class ActionsController extends Controller
      */
     public function selectionAction3(Request $request)
     {
-        //On affiche la vue de selection de l'action 3
-
         $partieId = $request->request->get('id');
 
         $entityManager = $this->getDoctrine()->getManager();
@@ -724,6 +596,8 @@ class ActionsController extends Controller
         }
         return $this->render('Partie/action3.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
     }
+
+
 
     /**
      * @Route("/action3", name="action3")
@@ -750,9 +624,7 @@ class ActionsController extends Controller
                     $carte3 = $carte;
                 }
                 $id++;
-
             }
-
 
             // utilisateur connecté
             $user = $this->getUser();
@@ -762,81 +634,8 @@ class ActionsController extends Controller
                 $id = "Pas d'Id";
             }
 
-
             $entityManager = $this->getDoctrine()->getManager();
             $partie = $entityManager->getRepository(Parties::class)->find($partieId);
-
-            $joueur1 = $partie->getJoueur1()->getId();
-            $joueur2 = $partie->getJoueur2()->getId();
-
-            $actionsj1 = $partie->getActionJ1();
-            $actionsj2 = $partie->getActionJ2();
-
-            $rang1 = 0;
-            foreach ($actionsj1 as $actions) {
-                if ($rang1 == 2) {
-                    $actionsj1[$rang1] = 1;
-                } else {
-                    $actionsj1[$rang1] = $actions;
-                }
-                $rang1++;
-            }
-
-            $rang2 = 0;
-            foreach ($actionsj2 as $actions) {
-                if ($rang2 == 2) {
-                    $actionsj2[$rang2] = 1;
-                } else {
-                    $actionsj2[$rang2] = $actions;
-                }
-                $rang2++;
-            }
-
-            $tour = $partie->getPartieTour();
-            $tour++;
-
-            $pioche = $partie->getPartiePioche();
-            $carte_pioche = array_pop($pioche);
-
-
-            $actionsj1 = json_encode($actionsj1);
-            $actionsj2 = json_encode($actionsj2);
-
-            $main_joueur1 = $partie->getMainJ1();
-            $tmain_joueur1 = array();
-
-            $main_joueur2 = $partie->getMainJ2();
-            $tmain_joueur2 = array();
-
-
-            if ($id == $joueur1) {
-                if ($carte_pioche != null) {
-                    $tmain_joueur2[] = $carte_pioche;
-                }
-            }
-
-            if ($id == $joueur2) {
-                if ($carte_pioche != null) {
-                    $tmain_joueur1[] = $carte_pioche;
-                }
-            }
-
-            foreach ($main_joueur1 as $carte) {
-                if ($carte != $carte1 && $carte != $carte2 && $carte != $carte3) {
-                    $tmain_joueur1[] = $carte;
-                }
-            }
-
-            foreach ($main_joueur2 as $carte) {
-                if ($carte != $carte1 && $carte != $carte2 && $carte != $carte3) {
-                    $tmain_joueur2[] = $carte;
-                }
-            }
-
-
-            $mainj1 = json_encode($tmain_joueur1);
-            $mainj2 = json_encode($tmain_joueur2);
-
 
             if (!$partie) {
                 throw $this->createNotFoundException(
@@ -844,25 +643,193 @@ class ActionsController extends Controller
                 );
             }
 
-            if ($id == $joueur1) {
-                $partie->setActionJ1($actionsj1);
-                $partie->setMainJ1($mainj1);
-                $partie->setMainJ2($mainj2);
-                $partie->setCarteCadeauJ1(json_encode($carteId));
-                $partie->setPartieTour($tour);
-                $partie->setPartiePioche($pioche);
-            } elseif ($id == $joueur2) {
-                $partie->setActionJ2($actionsj2);
-                $partie->setMainJ1($mainj1);
-                $partie->setMainJ2($mainj2);
-                $partie->setCarteCadeauJ2(json_encode($carteId));
-                $partie->setPartieTour($tour);
-                $partie->setPartiePioche($pioche);
+            $joueur1 = $partie->getJoueur1()->getId();
+            $joueur2 = $partie->getJoueur2()->getId();
+
+            $actionsj1 = $partie->getActionJ1();
+            $actionsj2 = $partie->getActionJ2();
+            $tour = $partie->getPartieTour();
+            $tour++;
+
+            $pioche = $partie->getPartiePioche();
+            $carte_pioche = array_pop($pioche);
+
+            $cartes_main_joueur1 = $partie->getMainJ1();
+            $tmain_joueur1 = array();
+
+            $cartes_main_joueur2 = $partie->getMainJ2();
+            $tmain_joueur2 = array();
+
+            if ($id==$joueur1){
+                if (in_array($carte1, $cartes_main_joueur1) && in_array($carte2, $cartes_main_joueur1) && in_array($carte3, $cartes_main_joueur1) && $carte1!=$carte2 &&$carte1!=$carte3 &&$carte2!=$carte3 ) {
+                    $rang1 = 0;
+                    // Je met l'action 2 à la valeur 1, équivalent à action réalisée
+                    foreach ($actionsj1 as $actions) {
+                        if ($rang1 == 2) {
+                            $actionsj1[$rang1] = 1;
+                        } else {
+                            $actionsj1[$rang1] = $actions;
+                        }
+                        $rang1++;
+                    }
+
+                    //J'encode les actions
+                    $actionsj1 = json_encode($actionsj1);
+
+                    //Je met la carte piochée dans la main du J2
+                    foreach ($cartes_main_joueur2 as $carte) {
+                        $tmain_joueur2[] = $carte;
+                    }
+                    if ($carte_pioche != null) {
+                        $tmain_joueur2[] = $carte_pioche;
+                    }
+
+                    //J'enlève les cartes choisies de la main du J1
+                    foreach ($cartes_main_joueur1 as $carte) {
+                        if ($carte != $carte1 && $carte != $carte2 && $carte != $carte3) {
+                            $tmain_joueur1[] = $carte;
+                        }
+                    }
+
+                    //j'encode la main des joueurs
+                    $mainj1 = json_encode($tmain_joueur1);
+                    $mainj2 = json_encode($tmain_joueur2);
+
+                    //J'envoie les changements dans la base de données
+                    $partie->setActionJ1($actionsj1);
+                    $partie->setMainJ1($mainj1);
+                    $partie->setMainJ2($mainj2);
+                    $partie->setCarteCadeauJ1(json_encode($carteId));
+                    $partie->setPartieTour($tour);
+                    $partie->setPartiePioche($pioche);
+
+                    $entityManager->flush();
+
+                    if($tour!=9){
+                        return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
+                    }
+                    //Si le tour est à 9, la partie est finie et on procède aux calculs de scores
+                    else{
+
+                        $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+                        $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+                        $tObjets = array();
+                        foreach ($Objets as $carte) {
+                            $tObjets[$carte->getId()] = $carte;
+                        }
+                        $tObjectifs = array();
+                        foreach ($objectifs as $objectifs) {
+                            $tObjectifs[$objectifs->getId()] = $objectifs;
+                        }
+
+                        return $this->redirectToRoute('calcul', ['id' => $partieId]);
+                    }
+
+
+                }
+                else{
+
+                    $partieId = $request->request->get('id');
+
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $partie = $entityManager->getRepository(Parties::class)->find($partieId);
+
+                    $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+                    $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+                    $tObjets = array();
+                    foreach ($Objets as $carte) {
+                        $tObjets[$carte->getId()] = $carte;
+                    }
+                    $tObjectifs = array();
+                    foreach ($objectifs as $objectifs) {
+                        $tObjectifs[$objectifs->getId()] = $objectifs;
+                    }
+                    return $this->render('Partie/action3_fail.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
+                }
             }
+            if ($id==$joueur2){
+                if (in_array($carte1, $cartes_main_joueur2) && in_array($carte2, $cartes_main_joueur2) && in_array($carte3, $cartes_main_joueur2) && $carte1!=$carte2 &&$carte1!=$carte3 &&$carte2!=$carte3 ) {
+                    $rang2 = 0;
+                    // Je met l'action 2 à la valeur 1, équivalent à action réalisée
+                    foreach ($actionsj2 as $actions) {
+                        if ($rang2 == 2) {
+                            $actionsj2[$rang2] = 1;
+                        } else {
+                            $actionsj2[$rang2] = $actions;
+                        }
+                        $rang2++;
+                    }
+                    //J'encode les actions
+                    $actionsj2 = json_encode($actionsj2);
 
-            $entityManager->flush();
+                    //Je met la carte piochée dans la main du J1
+                    foreach ($cartes_main_joueur1 as $carte) {
+                        $tmain_joueur1[] = $carte;
+                    }
+                    if ($carte_pioche != null) {
+                        $tmain_joueur1[] = $carte_pioche;
+                    }
 
-            return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
+                    //J'enlève les cartes choisies de la main du J2
+                    foreach ($cartes_main_joueur2 as $carte) {
+                        if ($carte != $carte1 && $carte != $carte2 && $carte != $carte3) {
+                            $tmain_joueur2[] = $carte;
+                        }
+                    }
+
+                    //j'encode la main des joueurs
+                    $mainj1 = json_encode($tmain_joueur1);
+                    $mainj2 = json_encode($tmain_joueur2);
+
+
+                    $partie->setActionJ2($actionsj2);
+                    $partie->setMainJ1($mainj1);
+                    $partie->setMainJ2($mainj2);
+                    $partie->setCarteCadeauJ2(json_encode($carteId));
+                    $partie->setPartieTour($tour);
+                    $partie->setPartiePioche($pioche);
+
+                    $entityManager->flush();
+                    if($tour!=9){
+                        return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
+                    }
+                    //Si le tour est à 9, la partie est finie et on procède aux calculs de scores
+                    else{
+
+                        $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+                        $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+                        $tObjets = array();
+                        foreach ($Objets as $carte) {
+                            $tObjets[$carte->getId()] = $carte;
+                        }
+                        $tObjectifs = array();
+                        foreach ($objectifs as $objectifs) {
+                            $tObjectifs[$objectifs->getId()] = $objectifs;
+                        }
+
+                        return $this->redirectToRoute('calcul', ['id' => $partieId]);
+                    }
+                }
+                else{
+
+                    $partieId = $request->request->get('id');
+
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $partie = $entityManager->getRepository(Parties::class)->find($partieId);
+
+                    $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+                    $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+                    $tObjets = array();
+                    foreach ($Objets as $carte) {
+                        $tObjets[$carte->getId()] = $carte;
+                    }
+                    $tObjectifs = array();
+                    foreach ($objectifs as $objectifs) {
+                        $tObjectifs[$objectifs->getId()] = $objectifs;
+                    }
+                    return $this->render('Partie/action3_fail.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
+                }
+            }
         }
 
         else{
@@ -887,13 +854,12 @@ class ActionsController extends Controller
     }
 
 
+
     /**
      * @Route("/selectionAction4", name="selection_action4")
      */
     public function selectionAction4(Request $request)
     {
-        //On affiche la vue de selection de l'action 4
-
         $partieId = $request->request->get('id');
 
         $entityManager = $this->getDoctrine()->getManager();
@@ -912,6 +878,8 @@ class ActionsController extends Controller
         return $this->render('Partie/action4.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
     }
 
+
+
     /**
      * @Route("/action4", name="action4")
      */
@@ -926,135 +894,223 @@ class ActionsController extends Controller
         $longeur=count($paires);
 
         if($longeur==4){
-
-            $paire1[0] = $paires[0];
-            $paire1[1] = $paires[1];
-            $paire2[0] = $paires[2];
-            $paire2[1] = $paires[3];
-
-            $carte1=$paire1[0];
-            $carte2=$paire1[1];
-            $carte3=$paire2[0];
-            $carte4=$paire2[1];
+// utilisateur connecté
+            $user = $this->getUser();
+            if ($user) {
+                $id = $user->getId();
+            } else {
+                $id = "Pas d'Id";
+            }
 
 
-            if( $carte1!=$carte2 && $carte1!=$carte3 && $carte1!=$carte4 && $carte2!=$carte3 && $carte2!=$carte4 && $carte3!=$carte4){
+            $entityManager = $this->getDoctrine()->getManager();
+            $partie = $entityManager->getRepository(Parties::class)->find($partieId);
 
-                $carteId=array();
-                $carteId[0]=$carte1;
-                $carteId[1]=$carte2;
-                $carteId[2]=$carte3;
-                $carteId[3]=$carte4;
+            if (!$partie) {
+                throw $this->createNotFoundException(
+                    'No parties found for id ' . $id
+                );
+            }
 
-                // utilisateur connecté
-                $user = $this->getUser();
-                if ($user) {
-                    $id = $user->getId();
-                } else {
-                    $id = "Pas d'Id";
-                }
+            $joueur1 = $partie->getJoueur1()->getId();
+            $joueur2 = $partie->getJoueur2()->getId();
+
+            $actionsj1 = $partie->getActionJ1();
+            $actionsj2 = $partie->getActionJ2();
+
+            $tour = $partie->getPartieTour();
+            $tour++;
+
+            $pioche = $partie->getPartiePioche();
+            $carte_pioche = array_pop($pioche);
 
 
-                $entityManager = $this->getDoctrine()->getManager();
-                $partie = $entityManager->getRepository(Parties::class)->find($partieId);
+            $cartes_main_joueur1 = $partie->getMainJ1();
+            $tmain_joueur1 = array();
 
-                $joueur1 = $partie->getJoueur1()->getId();
-                $joueur2 = $partie->getJoueur2()->getId();
 
-                $actionsj1 = $partie->getActionJ1();
-                $actionsj2 = $partie->getActionJ2();
+            $cartes_main_joueur2 = $partie->getMainJ2();
+            $tmain_joueur2 = array();
 
-                $rang1 = 0;
-                foreach ($actionsj1 as $actions) {
-                    if ($rang1 == 3) {
-                        $actionsj1[$rang1] = 1;
-                    } else {
-                        $actionsj1[$rang1] = $actions;
+            $carte1 = $paires[0];
+            $carte2 = $paires[1];
+            $carte3 = $paires[2];
+            $carte4 = $paires[3];
+
+            if ($id==$joueur1){
+                if (in_array($carte1, $cartes_main_joueur1) && in_array($carte2, $cartes_main_joueur1) && in_array($carte3, $cartes_main_joueur1) && in_array($carte4, $cartes_main_joueur1) && $carte1!=$carte2 && $carte1!=$carte3 &&$carte1!=$carte4 &&$carte2!=$carte3 && $carte2!=$carte4 && $carte3 != $carte4 ) {
+
+                    $rang1 = 0;
+                    foreach ($actionsj1 as $actions) {
+                        if ($rang1 == 3) {
+                            $actionsj1[$rang1] = 1;
+                        } else {
+                            $actionsj1[$rang1] = $actions;
+                        }
+                        $rang1++;
                     }
-                    $rang1++;
-                }
 
-                $rang2 = 0;
-                foreach ($actionsj2 as $actions) {
-                    if ($rang2 == 3) {
-                        $actionsj2[$rang2] = 1;
-                    } else {
-                        $actionsj2[$rang2] = $actions;
+                    $actionsj1 = json_encode($actionsj1);
+
+
+                    foreach ($cartes_main_joueur2 as $carte) {
+                        $tmain_joueur2[] = $carte;
                     }
-                    $rang2++;
-                }
-
-                $tour = $partie->getPartieTour();
-                $tour++;
-
-                $pioche = $partie->getPartiePioche();
-                $carte_pioche = array_pop($pioche);
-
-
-                $actionsj1 = json_encode($actionsj1);
-                $actionsj2 = json_encode($actionsj2);
-
-                $main_joueur1 = $partie->getMainJ1();
-                $tmain_joueur1 = array();
-
-                $main_joueur2 = $partie->getMainJ2();
-                $tmain_joueur2 = array();
-
-
-                if ($id == $joueur1) {
                     if ($carte_pioche != null) {
                         $tmain_joueur2[] = $carte_pioche;
                     }
-                }
 
-                if ($id == $joueur2) {
-                    if ($carte_pioche != null) {
-                        $tmain_joueur1[] = $carte_pioche;
+
+                    foreach ($cartes_main_joueur1 as $carte) {
+                        if ($carte != $carte1 && $carte != $carte2 && $carte != $carte3 && $carte != $carte4) {
+                            $tmain_joueur1[] = $carte;
+                        }
                     }
-                }
-
-                foreach ($main_joueur1 as $carte) {
-                    if ($carte != $carte1 && $carte != $carte2 && $carte != $carte3 && $carte != $carte4) {
-                        $tmain_joueur1[] = $carte;
-                    }
-                }
-
-                foreach ($main_joueur2 as $carte) {
-                    if ($carte != $carte1 && $carte != $carte2 && $carte != $carte3 && $carte != $carte4) {
-                        $tmain_joueur2[] = $carte;
-                    }
-                }
 
 
-                $mainj1 = json_encode($tmain_joueur1);
-                $mainj2 = json_encode($tmain_joueur2);
+                    $mainj1 = json_encode($tmain_joueur1);
+                    $mainj2 = json_encode($tmain_joueur2);
+
+                    $carteId = array();
+                    $carteId[0] = $carte1;
+                    $carteId[1] = $carte2;
+                    $carteId[2] = $carte3;
+                    $carteId[3] = $carte4;
 
 
-                if (!$partie) {
-                    throw $this->createNotFoundException(
-                        'No parties found for id ' . $id
-                    );
-                }
-
-                if ($id == $joueur1) {
                     $partie->setActionJ1($actionsj1);
                     $partie->setMainJ1($mainj1);
                     $partie->setMainJ2($mainj2);
                     $partie->setCarteConcurrenceJ1(json_encode($carteId));
                     $partie->setPartieTour($tour);
                     $partie->setPartiePioche($pioche);
-                } elseif ($id == $joueur2) {
+                    $entityManager->flush();
+
+                    if($tour!=9){
+                        return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
+                    }
+                    //Si le tour est à 9, la partie est finie et on procède aux calculs de scores
+                    else {
+
+                        $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+                        $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+                        $tObjets = array();
+                        foreach ($Objets as $carte) {
+                            $tObjets[$carte->getId()] = $carte;
+                        }
+                        $tObjectifs = array();
+                        foreach ($objectifs as $objectifs) {
+                            $tObjectifs[$objectifs->getId()] = $objectifs;
+                        }
+
+                        return $this->redirectToRoute('calcul', ['id' => $partieId]);
+                    }
+
+                }
+                else{
+
+                    $partieId = $request->request->get('id');
+
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $partie = $entityManager->getRepository(Parties::class)->find($partieId);
+
+                    $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+                    $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+                    $tObjets = array();
+                    foreach ($Objets as $carte) {
+                        $tObjets[$carte->getId()] = $carte;
+                    }
+                    $tObjectifs = array();
+                    foreach ($objectifs as $objectifs) {
+                        $tObjectifs[$objectifs->getId()] = $objectifs;
+                    }
+                    return $this->render('Partie/action4_fail.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
+                }
+            }
+            if ($id==$joueur2){
+                if (in_array($carte1, $cartes_main_joueur2) && in_array($carte2, $cartes_main_joueur2)&& in_array($carte3, $cartes_main_joueur2) && in_array($carte4, $cartes_main_joueur2) && $carte1!=$carte2 && $carte1!=$carte3 &&$carte1!=$carte4 &&$carte2!=$carte3 && $carte2!=$carte4 && $carte3 != $carte4 ) {
+
+                    $rang2 = 0;
+                    foreach ($actionsj2 as $actions) {
+                        if ($rang2 == 3) {
+                            $actionsj2[$rang2] = 1;
+                        } else {
+                            $actionsj2[$rang2] = $actions;
+                        }
+                        $rang2++;
+                    }
+                    $actionsj2 = json_encode($actionsj2);
+
+                    foreach ($cartes_main_joueur1 as $carte) {
+
+                        $tmain_joueur1[] = $carte;
+
+                    }
+                    if ($carte_pioche != null) {
+                        $tmain_joueur1[] = $carte_pioche;
+                    }
+
+                    foreach ($cartes_main_joueur2 as $carte) {
+                        if ($carte != $carte1 && $carte != $carte2 && $carte != $carte3 && $carte != $carte4) {
+                            $tmain_joueur2[] = $carte;
+                        }
+                    }
+
+                    $mainj1 = json_encode($tmain_joueur1);
+                    $mainj2 = json_encode($tmain_joueur2);
+
+                    $carteId = array();
+                    $carteId[0] = $carte1;
+                    $carteId[1] = $carte2;
+                    $carteId[2] = $carte3;
+                    $carteId[3] = $carte4;
+
                     $partie->setActionJ2($actionsj2);
                     $partie->setMainJ1($mainj1);
                     $partie->setMainJ2($mainj2);
                     $partie->setCarteConcurrenceJ2(json_encode($carteId));
                     $partie->setPartieTour($tour);
                     $partie->setPartiePioche($pioche);
+                    $entityManager->flush();
+                    if($tour!=9){
+                        return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
+                    }
+                    //Si le tour est à 9, la partie est finie et on procède aux calculs de scores
+                    else {
+
+                        $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+                        $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+                        $tObjets = array();
+                        foreach ($Objets as $carte) {
+                            $tObjets[$carte->getId()] = $carte;
+                        }
+                        $tObjectifs = array();
+                        foreach ($objectifs as $objectifs) {
+                            $tObjectifs[$objectifs->getId()] = $objectifs;
+                        }
+
+                        return $this->redirectToRoute('calcul', ['id' => $partieId]);
+                    }
                 }
+                else{
 
-                $entityManager->flush();
+                    $partieId = $request->request->get('id');
 
-                return $this->redirectToRoute('afficher_partie', ['id' => $partieId]);
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $partie = $entityManager->getRepository(Parties::class)->find($partieId);
+
+                    $Objets = $this->getDoctrine()->getRepository("App:Objets")->findAll();
+                    $objectifs = $this->getDoctrine()->getRepository("App:Objectifs")->findAll();
+                    $tObjets = array();
+                    foreach ($Objets as $carte) {
+                        $tObjets[$carte->getId()] = $carte;
+                    }
+                    $tObjectifs = array();
+                    foreach ($objectifs as $objectifs) {
+                        $tObjectifs[$objectifs->getId()] = $objectifs;
+                    }
+                    return $this->render('Partie/action4_fail.html.twig', ['partie' => $partie, 'Objets' =>$tObjets, 'objectifs' =>$tObjectifs]);
+                }
             }
         }
         else{
@@ -1078,14 +1134,11 @@ class ActionsController extends Controller
         }
     }
 
-
     /**
      * @Route("/choix_cadeau", name="choix_cadeau")
      */
     public function choix_cadeau(Request $request)
     {
-        //On affiche insère dans le terrains des joueurs les cartes définies
-
         //partie en cours
         $partieId = $request->request->get('id');
 
@@ -1105,6 +1158,11 @@ class ActionsController extends Controller
 
             $entityManager = $this->getDoctrine()->getManager();
             $partie = $entityManager->getRepository(Parties::class)->find($partieId);
+            if (!$partie) {
+                throw $this->createNotFoundException(
+                    'No parties found for id ' . $id
+                );
+            }
 
             $joueur1 = $partie->getJoueur1()->getId();
             $joueur2 = $partie->getJoueur2()->getId();
@@ -1117,514 +1175,474 @@ class ActionsController extends Controller
 
                 $cadeaux=$partie->getCarteCadeauJ1();
 
-                if($cadeaux[0]!=$carteId){
-                    $cadeau1=$cadeaux[0];
-                    if($cadeaux[1]!=$carteId){
-                        $cadeau2=$cadeaux[1];
+                if (in_array($carteId, $cadeaux)) {
+
+                    if ($cadeaux[0] != $carteId) {
+                        $cadeau1 = $cadeaux[0];
+                        if ($cadeaux[1] != $carteId) {
+                            $cadeau2 = $cadeaux[1];
+                        } else {
+                            $cadeau2 = $cadeaux[2];
+                        }
+                    } else {
+                        $cadeau1 = $cadeaux[1];
+                        $cadeau2 = $cadeaux[1];
                     }
-                    else{
-                        $cadeau2=$cadeaux[2];
+
+
+                    //objectif 1
+                    if ($cadeau1 == 1) {
+                        $resultat = $terrainj1[0];
+                        $terrainj1[0] = $resultat + 1;
+                    } elseif ($cadeau1 == 2) {
+                        $resultat = $terrainj1[0];
+                        $terrainj1[0] = $resultat + 1;
+                    } //objectif2
+                    elseif ($cadeau1 == 3) {
+                        $resultat = $terrainj1[1];
+                        $terrainj1[1] = $resultat + 1;
+                    } elseif ($cadeau1 == 4) {
+                        $resultat = $terrainj1[1];
+                        $terrainj1[1] = $resultat + 1;
+                    } //objectif3
+                    elseif ($cadeau1 == 5) {
+                        $resultat = $terrainj1[2];
+                        $terrainj1[2] = $resultat + 1;
+                    } elseif ($cadeau1 == 6) {
+                        $resultat = $terrainj1[2];
+                        $terrainj1[2] = $resultat + 1;
+                    } //objectif4
+                    elseif ($cadeau1 == 7) {
+                        $resultat = $terrainj1[3];
+                        $terrainj1[3] = $resultat + 1;
+                    } elseif ($cadeau1 == 8) {
+                        $resultat = $terrainj1[3];
+                        $terrainj1[3] = $resultat + 1;
+                    } elseif ($cadeau1 == 9) {
+                        $resultat = $terrainj1[3];
+                        $terrainj1[3] = $resultat + 1;
+                    } //objectif5
+                    elseif ($cadeau1 == 10) {
+                        $resultat = $terrainj1[4];
+                        $terrainj1[4] = $resultat + 1;
+                    } elseif ($cadeau1 == 11) {
+                        $resultat = $terrainj1[4];
+                        $terrainj1[4] = $resultat + 1;
+                    } elseif ($cadeau1 == 12) {
+                        $resultat = $terrainj1[4];
+                        $terrainj1[4] = $resultat + 1;
+                    } //objectif6
+                    elseif ($cadeau1 == 13) {
+                        $resultat = $terrainj1[5];
+                        $terrainj1[5] = $resultat + 1;
+                    } elseif ($cadeau1 == 14) {
+                        $resultat = $terrainj1[5];
+                        $terrainj1[5] = $resultat + 1;
+                    } elseif ($cadeau1 == 15) {
+                        $resultat = $terrainj1[5];
+                        $terrainj1[5] = $resultat + 1;
+                    } elseif ($cadeau1 == 16) {
+                        $resultat = $terrainj1[5];
+                        $terrainj1[5] = $resultat + 1;
+                    } //objectif7
+                    elseif ($cadeau1 == 17) {
+                        $resultat = $terrainj1[6];
+                        $terrainj1[6] = $resultat + 1;
+                    } elseif ($cadeau1 == 18) {
+                        $resultat = $terrainj1[6];
+                        $terrainj1[6] = $resultat + 1;
+                    } elseif ($cadeau1 == 19) {
+                        $resultat = $terrainj1[6];
+                        $terrainj1[6] = $resultat + 1;
+                    } elseif ($cadeau1 == 20) {
+                        $resultat = $terrainj1[6];
+                        $terrainj1[6] = $resultat + 1;
+                    } elseif ($cadeau1 == 21) {
+                        $resultat = $terrainj1[6];
+                        $terrainj1[6] = $resultat + 1;
                     }
-                }else{
-                    $cadeau1=$cadeaux[1];
-                    $cadeau2=$cadeaux[1];
-                }
 
 
-                //objectif 1
-                if ($cadeau1 == 1) {
-                    $resultat=$terrainj1[0];
-                    $terrainj1[0] = $resultat+1;
-                }elseif ($cadeau1 == 2) {
-                    $resultat=$terrainj1[0];
-                    $terrainj1[0] = $resultat+1;
-                }
-                //objectif2
-                elseif ($cadeau1 == 3) {
-                    $resultat=$terrainj1[1];
-                    $terrainj1[1] = $resultat+1;
-                }elseif ($cadeau1 == 4) {
-                    $resultat=$terrainj1[1];
-                    $terrainj1[1] = $resultat+1;
-                }
-                //objectif3
-                elseif ($cadeau1 == 5) {
-                    $resultat=$terrainj1[2];
-                    $terrainj1[2] = $resultat+1;
-                }elseif ($cadeau1 == 6) {
-                    $resultat=$terrainj1[2];
-                    $terrainj1[2] = $resultat+1;
-                }
-                //objectif4
-                elseif ($cadeau1 == 7) {
-                    $resultat=$terrainj1[3];
-                    $terrainj1[3] = $resultat+1;
-                }elseif ($cadeau1 == 8) {
-                    $resultat=$terrainj1[3];
-                    $terrainj1[3] = $resultat+1;
-                }elseif ($cadeau1 == 9) {
-                    $resultat=$terrainj1[3];
-                    $terrainj1[3] = $resultat+1;
-                }
-                //objectif5
-                elseif ($cadeau1 == 10) {
-                    $resultat=$terrainj1[4];
-                    $terrainj1[4] = $resultat+1;
-                }elseif ($cadeau1 == 11) {
-                    $resultat=$terrainj1[4];
-                    $terrainj1[4] = $resultat+1;
-                }elseif ($cadeau1 == 12) {
-                    $resultat=$terrainj1[4];
-                    $terrainj1[4] = $resultat+1;
-                }
-                //objectif6
-                elseif ($cadeau1 == 13) {
-                    $resultat=$terrainj1[5];
-                    $terrainj1[5] = $resultat+1;
-                }elseif ($cadeau1 == 14 ) {
-                    $resultat=$terrainj1[5];
-                    $terrainj1[5] = $resultat+1;
-                }elseif ($cadeau1 == 15 ) {
-                    $resultat=$terrainj1[5];
-                    $terrainj1[5] = $resultat+1;
-                }elseif ($cadeau1 == 16 ) {
-                    $resultat=$terrainj1[5];
-                    $terrainj1[5] = $resultat+1;
-                }
-                //objectif7
-                elseif ($cadeau1 == 17) {
-                    $resultat=$terrainj1[6];
-                    $terrainj1[6] = $resultat+1;
-                }elseif ($cadeau1 == 18) {
-                    $resultat=$terrainj1[6];
-                    $terrainj1[6] = $resultat+1;
-                }elseif ($cadeau1 == 19) {
-                    $resultat=$terrainj1[6];
-                    $terrainj1[6] = $resultat+1;
-                }elseif ($cadeau1 == 20  ) {
-                    $resultat=$terrainj1[6];
-                    $terrainj1[6] = $resultat+1;
-                }elseif ($cadeau1 == 21 ) {
-                    $resultat=$terrainj1[6];
-                    $terrainj1[6] = $resultat+1;
-                }
+                    //objectif 1
+                    if ($cadeau2 == 1) {
+                        $resultat = $terrainj1[0];
+                        $terrainj1[0] = $resultat + 1;
+                    } elseif ($cadeau2 == 2) {
+                        $resultat = $terrainj1[0];
+                        $terrainj2[0] = $resultat + 1;
+                    } //objectif2
+                    elseif ($cadeau2 == 3) {
+                        $resultat = $terrainj1[1];
+                        $terrainj1[1] = $resultat + 1;
+                    } elseif ($cadeau2 == 4) {
+                        $resultat = $terrainj1[1];
+                        $terrainj1[1] = $resultat + 1;
+                    } //objectif3
+                    elseif ($cadeau2 == 5) {
+                        $resultat = $terrainj1[2];
+                        $terrainj1[2] = $resultat + 1;
+                    } elseif ($cadeau2 == 6) {
+                        $resultat = $terrainj1[2];
+                        $terrainj1[2] = $resultat + 1;
+                    } //objectif4
+                    elseif ($cadeau2 == 7) {
+                        $resultat = $terrainj1[3];
+                        $terrainj1[3] = $resultat + 1;
+                    } elseif ($cadeau2 == 8) {
+                        $resultat = $terrainj1[3];
+                        $terrainj1[3] = $resultat + 1;
+                    } elseif ($cadeau2 == 9) {
+                        $resultat = $terrainj1[3];
+                        $terrainj1[3] = $resultat + 1;
+                    } //objectif5
+                    elseif ($cadeau2 == 10) {
+                        $resultat = $terrainj1[4];
+                        $terrainj1[4] = $resultat + 1;
+                    } elseif ($cadeau2 == 11) {
+                        $resultat = $terrainj1[4];
+                        $terrainj1[4] = $resultat + 1;
+                    } elseif ($cadeau2 == 12) {
+                        $resultat = $terrainj1[4];
+                        $terrainj1[4] = $resultat + 1;
+                    } //objectif6
+                    elseif ($cadeau2 == 13) {
+                        $resultat = $terrainj1[5];
+                        $terrainj1[5] = $resultat + 1;
+                    } elseif ($cadeau2 == 14) {
+                        $resultat = $terrainj1[5];
+                        $terrainj1[5] = $resultat + 1;
+                    } elseif ($cadeau2 == 15) {
+                        $resultat = $terrainj1[5];
+                        $terrainj1[5] = $resultat + 1;
+                    } elseif ($cadeau2 == 16) {
+                        $resultat = $terrainj1[5];
+                        $terrainj1[5] = $resultat + 1;
+                    } //objectif7
+                    elseif ($cadeau2 == 17) {
+                        $resultat = $terrainj1[6];
+                        $terrainj1[6] = $resultat + 1;
+                    } elseif ($cadeau2 == 18) {
+                        $resultat = $terrainj1[6];
+                        $terrainj1[6] = $resultat + 1;
+                    } elseif ($cadeau2 == 19) {
+                        $resultat = $terrainj1[6];
+                        $terrainj1[6] = $resultat + 1;
+                    } elseif ($cadeau2 == 20) {
+                        $resultat = $terrainj1[6];
+                        $terrainj1[6] = $resultat + 1;
+                    } elseif ($cadeau2 == 21) {
+                        $resultat = $terrainj1[6];
+                        $terrainj1[6] = $resultat + 1;
+                    }
 
-
-                //objectif 1
-                if ($cadeau2 == 1) {
-                    $resultat=$terrainj1[0];
-                    $terrainj1[0] = $resultat+1;
-                }elseif ($cadeau2 == 2) {
-                    $resultat=$terrainj1[0];
-                    $terrainj2[0] = $resultat+1;
-                }
-                //objectif2
-                elseif ($cadeau2 == 3) {
-                    $resultat=$terrainj1[1];
-                    $terrainj1[1] = $resultat+1;
-                }elseif ($cadeau2 == 4) {
-                    $resultat=$terrainj1[1];
-                    $terrainj1[1] = $resultat+1;
-                }
-                //objectif3
-                elseif ($cadeau2 == 5) {
-                    $resultat=$terrainj1[2];
-                    $terrainj1[2] = $resultat+1;
-                }elseif ($cadeau2 == 6) {
-                    $resultat=$terrainj1[2];
-                    $terrainj1[2] = $resultat+1;
-                }
-                //objectif4
-                elseif ($cadeau2 == 7) {
-                    $resultat=$terrainj1[3];
-                    $terrainj1[3] = $resultat+1;
-                }elseif ($cadeau2 == 8) {
-                    $resultat=$terrainj1[3];
-                    $terrainj1[3] = $resultat+1;
-                }elseif ($cadeau2 == 9) {
-                    $resultat=$terrainj1[3];
-                    $terrainj1[3] = $resultat+1;
-                }
-                //objectif5
-                elseif ($cadeau2 == 10) {
-                    $resultat=$terrainj1[4];
-                    $terrainj1[4] = $resultat+1;
-                }elseif ($cadeau2 == 11) {
-                    $resultat=$terrainj1[4];
-                    $terrainj1[4] = $resultat+1;
-                }elseif ($cadeau2 == 12) {
-                    $resultat=$terrainj1[4];
-                    $terrainj1[4] = $resultat+1;
-                }
-                //objectif6
-                elseif ($cadeau2 == 13) {
-                    $resultat=$terrainj1[5];
-                    $terrainj1[5] = $resultat+1;
-                }elseif ($cadeau2 == 14 ) {
-                    $resultat=$terrainj1[5];
-                    $terrainj1[5] = $resultat+1;
-                }elseif ($cadeau2 == 15 ) {
-                    $resultat=$terrainj1[5];
-                    $terrainj1[5] = $resultat+1;
-                }elseif ($cadeau2 == 16 ) {
-                    $resultat=$terrainj1[5];
-                    $terrainj1[5] = $resultat+1;
-                }
-                //objectif7
-                elseif ($cadeau2 == 17) {
-                    $resultat=$terrainj1[6];
-                    $terrainj1[6] = $resultat+1;
-                }elseif ($cadeau2 == 18) {
-                    $resultat=$terrainj1[6];
-                    $terrainj1[6] = $resultat+1;
-                }elseif ($cadeau2 == 19) {
-                    $resultat=$terrainj1[6];
-                    $terrainj1[6] = $resultat+1;
-                }elseif ($cadeau2 == 20  ) {
-                    $resultat=$terrainj1[6];
-                    $terrainj1[6] = $resultat+1;
-                }elseif ($cadeau2 == 21 ) {
-                    $resultat=$terrainj1[6];
-                    $terrainj1[6] = $resultat+1;
-                }
-
-                //objectif 1
-                if ($carteId == 1) {
-                    $resultat=$terrainj2[0];
-                    $terrainj2[0] = $resultat+1;
-                }elseif ($carteId == 2) {
-                    $resultat=$terrainj2[0];
-                    $terrainj2[0] = $resultat+1;
-                }
-                //objectif2
-                elseif ($carteId == 3) {
-                    $resultat=$terrainj2[1];
-                    $terrainj2[1] = $resultat+1;
-                }elseif ($carteId == 4) {
-                    $resultat=$terrainj2[1];
-                    $terrainj2[1] = $resultat+1;
-                }
-                //objectif3
-                elseif ($carteId == 5) {
-                    $resultat=$terrainj2[2];
-                    $terrainj2[2] = $resultat+1;
-                }elseif ($carteId == 6) {
-                    $resultat=$terrainj2[2];
-                    $terrainj2[2] = $resultat+1;
-                }
-                //objectif4
-                elseif ($carteId == 7) {
-                    $resultat=$terrainj2[3];
-                    $terrainj2[3] = $resultat+1;
-                }elseif ($carteId == 8) {
-                    $resultat=$terrainj2[3];
-                    $terrainj2[3] = $resultat+1;
-                }elseif ($carteId == 9) {
-                    $resultat=$terrainj2[3];
-                    $terrainj2[3] = $resultat+1;
-                }
-                //objectif5
-                elseif ($carteId == 10) {
-                    $resultat=$terrainj2[4];
-                    $terrainj2[4] = $resultat+1;
-                }elseif ($carteId == 11) {
-                    $resultat=$terrainj2[4];
-                    $terrainj2[4] = $resultat+1;
-                }elseif ($carteId == 12) {
-                    $resultat=$terrainj2[4];
-                    $terrainj2[4] = $resultat+1;
-                }
-                //objectif6
-                elseif ($carteId == 13) {
-                    $resultat=$terrainj2[5];
-                    $terrainj2[5] = $resultat+1;
-                }elseif ($carteId == 14 ) {
-                    $resultat=$terrainj2[5];
-                    $terrainj2[5] = $resultat+1;
-                }elseif ($carteId == 15 ) {
-                    $resultat=$terrainj2[5];
-                    $terrainj2[5] = $resultat+1;
-                }elseif ($carteId == 16 ) {
-                    $resultat=$terrainj2[5];
-                    $terrainj2[5] = $resultat+1;
-                }
-                //objectif7
-                elseif ($carteId == 17) {
-                    $resultat=$terrainj2[6];
-                    $terrainj2[6] = $resultat+1;
-                }elseif ($carteId == 18) {
-                    $resultat=$terrainj2[6];
-                    $terrainj2[6] = $resultat+1;
-                }elseif ($carteId == 19) {
-                    $resultat=$terrainj2[6];
-                    $terrainj2[6] = $resultat+1;
-                }elseif ($carteId == 20  ) {
-                    $resultat=$terrainj2[6];
-                    $terrainj2[6] = $resultat+1;
-                }elseif ($carteId == 21 ) {
-                    $resultat=$terrainj2[6];
-                    $terrainj2[6] = $resultat+1;
+                    //objectif 1
+                    if ($carteId == 1) {
+                        $resultat = $terrainj2[0];
+                        $terrainj2[0] = $resultat + 1;
+                    } elseif ($carteId == 2) {
+                        $resultat = $terrainj2[0];
+                        $terrainj2[0] = $resultat + 1;
+                    } //objectif2
+                    elseif ($carteId == 3) {
+                        $resultat = $terrainj2[1];
+                        $terrainj2[1] = $resultat + 1;
+                    } elseif ($carteId == 4) {
+                        $resultat = $terrainj2[1];
+                        $terrainj2[1] = $resultat + 1;
+                    } //objectif3
+                    elseif ($carteId == 5) {
+                        $resultat = $terrainj2[2];
+                        $terrainj2[2] = $resultat + 1;
+                    } elseif ($carteId == 6) {
+                        $resultat = $terrainj2[2];
+                        $terrainj2[2] = $resultat + 1;
+                    } //objectif4
+                    elseif ($carteId == 7) {
+                        $resultat = $terrainj2[3];
+                        $terrainj2[3] = $resultat + 1;
+                    } elseif ($carteId == 8) {
+                        $resultat = $terrainj2[3];
+                        $terrainj2[3] = $resultat + 1;
+                    } elseif ($carteId == 9) {
+                        $resultat = $terrainj2[3];
+                        $terrainj2[3] = $resultat + 1;
+                    } //objectif5
+                    elseif ($carteId == 10) {
+                        $resultat = $terrainj2[4];
+                        $terrainj2[4] = $resultat + 1;
+                    } elseif ($carteId == 11) {
+                        $resultat = $terrainj2[4];
+                        $terrainj2[4] = $resultat + 1;
+                    } elseif ($carteId == 12) {
+                        $resultat = $terrainj2[4];
+                        $terrainj2[4] = $resultat + 1;
+                    } //objectif6
+                    elseif ($carteId == 13) {
+                        $resultat = $terrainj2[5];
+                        $terrainj2[5] = $resultat + 1;
+                    } elseif ($carteId == 14) {
+                        $resultat = $terrainj2[5];
+                        $terrainj2[5] = $resultat + 1;
+                    } elseif ($carteId == 15) {
+                        $resultat = $terrainj2[5];
+                        $terrainj2[5] = $resultat + 1;
+                    } elseif ($carteId == 16) {
+                        $resultat = $terrainj2[5];
+                        $terrainj2[5] = $resultat + 1;
+                    } //objectif7
+                    elseif ($carteId == 17) {
+                        $resultat = $terrainj2[6];
+                        $terrainj2[6] = $resultat + 1;
+                    } elseif ($carteId == 18) {
+                        $resultat = $terrainj2[6];
+                        $terrainj2[6] = $resultat + 1;
+                    } elseif ($carteId == 19) {
+                        $resultat = $terrainj2[6];
+                        $terrainj2[6] = $resultat + 1;
+                    } elseif ($carteId == 20) {
+                        $resultat = $terrainj2[6];
+                        $terrainj2[6] = $resultat + 1;
+                    } elseif ($carteId == 21) {
+                        $resultat = $terrainj2[6];
+                        $terrainj2[6] = $resultat + 1;
+                    }
                 }
 
             } elseif ($id == $joueur1) {
-                $cadeaux=$partie->getCarteCadeauJ2();
-
-                if($cadeaux[0]!=$carteId){
-                    $cadeau1=$cadeaux[0];
-                    if($cadeaux[1]!=$carteId){
-                        $cadeau2=$cadeaux[1];
+                $cadeaux = $partie->getCarteCadeauJ2();
+                if (in_array($carteId, $cadeaux)) {
+                    if ($cadeaux[0] != $carteId) {
+                        $cadeau1 = $cadeaux[0];
+                        if ($cadeaux[1] != $carteId) {
+                            $cadeau2 = $cadeaux[1];
+                        } else {
+                            $cadeau2 = $cadeaux[2];
+                        }
+                    } else {
+                        $cadeau1 = $cadeaux[1];
+                        $cadeau2 = $cadeaux[1];
                     }
-                    else{
-                        $cadeau2=$cadeaux[2];
+
+
+                    //objectif 1
+                    if ($cadeau1 == 1) {
+                        $resultat = $terrainj1[0];
+                        $terrainj2[0] = $resultat + 1;
+                    } elseif ($cadeau1 == 2) {
+                        $resultat = $terrainj2[0];
+                        $terrainj2[0] = $resultat + 1;
+                    } //objectif2
+                    elseif ($cadeau1 == 3) {
+                        $resultat = $terrainj2[1];
+                        $terrainj2[1] = $resultat + 1;
+                    } elseif ($cadeau1 == 4) {
+                        $resultat = $terrainj2[1];
+                        $terrainj2[1] = $resultat + 1;
+                    } //objectif3
+                    elseif ($cadeau1 == 5) {
+                        $resultat = $terrainj2[2];
+                        $terrainj2[2] = $resultat + 1;
+                    } elseif ($cadeau1 == 6) {
+                        $resultat = $terrainj2[2];
+                        $terrainj2[2] = $resultat + 1;
+                    } //objectif4
+                    elseif ($cadeau1 == 7) {
+                        $resultat = $terrainj2[3];
+                        $terrainj2[3] = $resultat + 1;
+                    } elseif ($cadeau1 == 8) {
+                        $resultat = $terrainj2[3];
+                        $terrainj2[3] = $resultat + 1;
+                    } elseif ($cadeau1 == 9) {
+                        $resultat = $terrainj2[3];
+                        $terrainj2[3] = $resultat + 1;
+                    } //objectif5
+                    elseif ($cadeau1 == 10) {
+                        $resultat = $terrainj2[4];
+                        $terrainj2[4] = $resultat + 1;
+                    } elseif ($cadeau1 == 11) {
+                        $resultat = $terrainj2[4];
+                        $terrainj2[4] = $resultat + 1;
+                    } elseif ($cadeau1 == 12) {
+                        $resultat = $terrainj2[4];
+                        $terrainj2[4] = $resultat + 1;
+                    } //objectif6
+                    elseif ($cadeau1 == 13) {
+                        $resultat = $terrainj2[5];
+                        $terrainj2[5] = $resultat + 1;
+                    } elseif ($cadeau1 == 14) {
+                        $resultat = $terrainj2[5];
+                        $terrainj2[5] = $resultat + 1;
+                    } elseif ($cadeau1 == 15) {
+                        $resultat = $terrainj2[5];
+                        $terrainj2[5] = $resultat + 1;
+                    } elseif ($cadeau1 == 16) {
+                        $resultat = $terrainj2[5];
+                        $terrainj2[5] = $resultat + 1;
+                    } //objectif7
+                    elseif ($cadeau1 == 17) {
+                        $resultat = $terrainj2[6];
+                        $terrainj2[6] = $resultat + 1;
+                    } elseif ($cadeau1 == 18) {
+                        $resultat = $terrainj2[6];
+                        $terrainj2[6] = $resultat + 1;
+                    } elseif ($cadeau1 == 19) {
+                        $resultat = $terrainj2[6];
+                        $terrainj2[6] = $resultat + 1;
+                    } elseif ($cadeau1 == 20) {
+                        $resultat = $terrainj2[6];
+                        $terrainj2[6] = $resultat + 1;
+                    } elseif ($cadeau1 == 21) {
+                        $resultat = $terrainj2[6];
+                        $terrainj2[6] = $resultat + 1;
                     }
-                }else{
-                    $cadeau1=$cadeaux[1];
-                    $cadeau2=$cadeaux[1];
-                }
 
 
-                //objectif 1
-                if ($cadeau1 == 1) {
-                    $resultat=$terrainj1[0];
-                    $terrainj2[0] = $resultat+1;
-                }elseif ($cadeau1 == 2) {
-                    $resultat=$terrainj2[0];
-                    $terrainj2[0] = $resultat+1;
-                }
-                //objectif2
-                elseif ($cadeau1 == 3) {
-                    $resultat=$terrainj2[1];
-                    $terrainj2[1] = $resultat+1;
-                }elseif ($cadeau1 == 4) {
-                    $resultat=$terrainj2[1];
-                    $terrainj2[1] = $resultat+1;
-                }
-                //objectif3
-                elseif ($cadeau1 == 5) {
-                    $resultat=$terrainj2[2];
-                    $terrainj2[2] = $resultat+1;
-                }elseif ($cadeau1 == 6) {
-                    $resultat=$terrainj2[2];
-                    $terrainj2[2] = $resultat+1;
-                }
-                //objectif4
-                elseif ($cadeau1 == 7) {
-                    $resultat=$terrainj2[3];
-                    $terrainj2[3] = $resultat+1;
-                }elseif ($cadeau1 == 8) {
-                    $resultat=$terrainj2[3];
-                    $terrainj2[3] = $resultat+1;
-                }elseif ($cadeau1 == 9) {
-                    $resultat=$terrainj2[3];
-                    $terrainj2[3] = $resultat+1;
-                }
-                //objectif5
-                elseif ($cadeau1 == 10) {
-                    $resultat=$terrainj2[4];
-                    $terrainj2[4] = $resultat+1;
-                }elseif ($cadeau1 == 11) {
-                    $resultat=$terrainj2[4];
-                    $terrainj2[4] = $resultat+1;
-                }elseif ($cadeau1 == 12) {
-                    $resultat=$terrainj2[4];
-                    $terrainj2[4] = $resultat+1;
-                }
-                //objectif6
-                elseif ($cadeau1 == 13) {
-                    $resultat=$terrainj2[5];
-                    $terrainj2[5] = $resultat+1;
-                }elseif ($cadeau1 == 14 ) {
-                    $resultat=$terrainj2[5];
-                    $terrainj2[5] = $resultat+1;
-                }elseif ($cadeau1 == 15 ) {
-                    $resultat=$terrainj2[5];
-                    $terrainj2[5] = $resultat+1;
-                }elseif ($cadeau1 == 16 ) {
-                    $resultat=$terrainj2[5];
-                    $terrainj2[5] = $resultat+1;
-                }
-                //objectif7
-                elseif ($cadeau1 == 17) {
-                    $resultat=$terrainj2[6];
-                    $terrainj2[6] = $resultat+1;
-                }elseif ($cadeau1 == 18) {
-                    $resultat=$terrainj2[6];
-                    $terrainj2[6] = $resultat+1;
-                }elseif ($cadeau1 == 19) {
-                    $resultat=$terrainj2[6];
-                    $terrainj2[6] = $resultat+1;
-                }elseif ($cadeau1 == 20  ) {
-                    $resultat=$terrainj2[6];
-                    $terrainj2[6] = $resultat+1;
-                }elseif ($cadeau1 == 21 ) {
-                    $resultat=$terrainj2[6];
-                    $terrainj2[6] = $resultat+1;
-                }
+                    //objectif 1
+                    if ($cadeau2 == 1) {
+                        $resultat = $terrainj2[0];
+                        $terrainj2[0] = $resultat + 1;
+                    } elseif ($cadeau2 == 2) {
+                        $resultat = $terrainj2[0];
+                        $terrainj2[0] = $resultat + 1;
+                    } //objectif2
+                    elseif ($cadeau2 == 3) {
+                        $resultat = $terrainj2[1];
+                        $terrainj2[1] = $resultat + 1;
+                    } elseif ($cadeau2 == 4) {
+                        $resultat = $terrainj2[1];
+                        $terrainj2[1] = $resultat + 1;
+                    } //objectif3
+                    elseif ($cadeau2 == 5) {
+                        $resultat = $terrainj2[2];
+                        $terrainj2[2] = $resultat + 1;
+                    } elseif ($cadeau2 == 6) {
+                        $resultat = $terrainj2[2];
+                        $terrainj2[2] = $resultat + 1;
+                    } //objectif4
+                    elseif ($cadeau2 == 7) {
+                        $resultat = $terrainj2[3];
+                        $terrainj2[3] = $resultat + 1;
+                    } elseif ($cadeau2 == 8) {
+                        $resultat = $terrainj2[3];
+                        $terrainj2[3] = $resultat + 1;
+                    } elseif ($cadeau2 == 9) {
+                        $resultat = $terrainj2[3];
+                        $terrainj2[3] = $resultat + 1;
+                    } //objectif5
+                    elseif ($cadeau2 == 10) {
+                        $resultat = $terrainj2[4];
+                        $terrainj2[4] = $resultat + 1;
+                    } elseif ($cadeau2 == 11) {
+                        $resultat = $terrainj2[4];
+                        $terrainj2[4] = $resultat + 1;
+                    } elseif ($cadeau2 == 12) {
+                        $resultat = $terrainj2[4];
+                        $terrainj2[4] = $resultat + 1;
+                    } //objectif6
+                    elseif ($cadeau2 == 13) {
+                        $resultat = $terrainj2[5];
+                        $terrainj2[5] = $resultat + 1;
+                    } elseif ($cadeau2 == 14) {
+                        $resultat = $terrainj2[5];
+                        $terrainj2[5] = $resultat + 1;
+                    } elseif ($cadeau2 == 15) {
+                        $resultat = $terrainj2[5];
+                        $terrainj2[5] = $resultat + 1;
+                    } elseif ($cadeau2 == 16) {
+                        $resultat = $terrainj2[5];
+                        $terrainj2[5] = $resultat + 1;
+                    } //objectif7
+                    elseif ($cadeau2 == 17) {
+                        $resultat = $terrainj2[6];
+                        $terrainj2[6] = $resultat + 1;
+                    } elseif ($cadeau2 == 18) {
+                        $resultat = $terrainj2[6];
+                        $terrainj2[6] = $resultat + 1;
+                    } elseif ($cadeau2 == 19) {
+                        $resultat = $terrainj2[6];
+                        $terrainj2[6] = $resultat + 1;
+                    } elseif ($cadeau2 == 20) {
+                        $resultat = $terrainj2[6];
+                        $terrainj2[6] = $resultat + 1;
+                    } elseif ($cadeau2 == 21) {
+                        $resultat = $terrainj2[6];
+                        $terrainj2[6] = $resultat + 1;
+                    }
 
-
-                //objectif 1
-                if ($cadeau2 == 1) {
-                    $resultat=$terrainj2[0];
-                    $terrainj2[0] = $resultat+1;
-                }elseif ($cadeau2 == 2) {
-                    $resultat=$terrainj2[0];
-                    $terrainj2[0] = $resultat+1;
-                }
-                //objectif2
-                elseif ($cadeau2 == 3) {
-                    $resultat=$terrainj2[1];
-                    $terrainj2[1] = $resultat+1;
-                }elseif ($cadeau2 == 4) {
-                    $resultat=$terrainj2[1];
-                    $terrainj2[1] = $resultat+1;
-                }
-                //objectif3
-                elseif ($cadeau2 == 5) {
-                    $resultat=$terrainj2[2];
-                    $terrainj2[2] = $resultat+1;
-                }elseif ($cadeau2 == 6) {
-                    $resultat=$terrainj2[2];
-                    $terrainj2[2] = $resultat+1;
-                }
-                //objectif4
-                elseif ($cadeau2 == 7) {
-                    $resultat=$terrainj2[3];
-                    $terrainj2[3] = $resultat+1;
-                }elseif ($cadeau2 == 8) {
-                    $resultat=$terrainj2[3];
-                    $terrainj2[3] = $resultat+1;
-                }elseif ($cadeau2 == 9) {
-                    $resultat=$terrainj2[3];
-                    $terrainj2[3] = $resultat+1;
-                }
-                //objectif5
-                elseif ($cadeau2 == 10) {
-                    $resultat=$terrainj2[4];
-                    $terrainj2[4] = $resultat+1;
-                }elseif ($cadeau2 == 11) {
-                    $resultat=$terrainj2[4];
-                    $terrainj2[4] = $resultat+1;
-                }elseif ($cadeau2 == 12) {
-                    $resultat=$terrainj2[4];
-                    $terrainj2[4] = $resultat+1;
-                }
-                //objectif6
-                elseif ($cadeau2 == 13) {
-                    $resultat=$terrainj2[5];
-                    $terrainj2[5] = $resultat+1;
-                }elseif ($cadeau2 == 14 ) {
-                    $resultat=$terrainj2[5];
-                    $terrainj2[5] = $resultat+1;
-                }elseif ($cadeau2 == 15 ) {
-                    $resultat=$terrainj2[5];
-                    $terrainj2[5] = $resultat+1;
-                }elseif ($cadeau2 == 16 ) {
-                    $resultat=$terrainj2[5];
-                    $terrainj2[5] = $resultat+1;
-                }
-                //objectif7
-                elseif ($cadeau2 == 17) {
-                    $resultat=$terrainj2[6];
-                    $terrainj2[6] = $resultat+1;
-                }elseif ($cadeau2 == 18) {
-                    $resultat=$terrainj2[6];
-                    $terrainj2[6] = $resultat+1;
-                }elseif ($cadeau2 == 19) {
-                    $resultat=$terrainj2[6];
-                    $terrainj2[6] = $resultat+1;
-                }elseif ($cadeau2 == 20  ) {
-                    $resultat=$terrainj2[6];
-                    $terrainj2[6] = $resultat+1;
-                }elseif ($cadeau2 == 21 ) {
-                    $resultat=$terrainj2[6];
-                    $terrainj2[6] = $resultat+1;
-                }
-
-                //objectif 1
-                if ($carteId == 1) {
-                    $resultat=$terrainj1[0];
-                    $terrainj1[0] = $resultat+1;
-                }elseif ($carteId == 2) {
-                    $resultat=$terrainj1[0];
-                    $terrainj1[0] = $resultat+1;
-                }
-                //objectif2
-                elseif ($carteId == 3) {
-                    $resultat=$terrainj1[1];
-                    $terrainj1[1] = $resultat+1;
-                }elseif ($carteId == 4) {
-                    $resultat=$terrainj1[1];
-                    $terrainj1[1] = $resultat+1;
-                }
-                //objectif3
-                elseif ($carteId == 5) {
-                    $resultat=$terrainj1[2];
-                    $terrainj1[2] = $resultat+1;
-                }elseif ($carteId == 6) {
-                    $resultat=$terrainj1[2];
-                    $terrainj1[2] = $resultat+1;
-                }
-                //objectif4
-                elseif ($carteId == 7) {
-                    $resultat=$terrainj1[3];
-                    $terrainj1[3] = $resultat+1;
-                }elseif ($carteId == 8) {
-                    $resultat=$terrainj1[3];
-                    $terrainj1[3] = $resultat+1;
-                }elseif ($carteId == 9) {
-                    $resultat=$terrainj1[3];
-                    $terrainj1[3] = $resultat+1;
-                }
-                //objectif5
-                elseif ($carteId == 10) {
-                    $resultat=$terrainj1[4];
-                    $terrainj1[4] = $resultat+1;
-                }elseif ($carteId == 11) {
-                    $resultat=$terrainj1[4];
-                    $terrainj1[4] = $resultat+1;
-                }elseif ($carteId == 12) {
-                    $resultat=$terrainj1[4];
-                    $terrainj1[4] = $resultat+1;
-                }
-                //objectif6
-                elseif ($carteId == 13) {
-                    $resultat=$terrainj1[5];
-                    $terrainj1[5] = $resultat+1;
-                }elseif ($carteId == 14 ) {
-                    $resultat=$terrainj1[5];
-                    $terrainj1[5] = $resultat+1;
-                }elseif ($carteId == 15 ) {
-                    $resultat=$terrainj1[5];
-                    $terrainj1[5] = $resultat+1;
-                }elseif ($carteId == 16 ) {
-                    $resultat=$terrainj1[5];
-                    $terrainj1[5] = $resultat+1;
-                }
-                //objectif7
-                elseif ($carteId == 17) {
-                    $resultat=$terrainj1[6];
-                    $terrainj1[6] = $resultat+1;
-                }elseif ($carteId == 18) {
-                    $resultat=$terrainj1[6];
-                    $terrainj1[6] = $resultat+1;
-                }elseif ($carteId == 19) {
-                    $resultat=$terrainj1[6];
-                    $terrainj1[6] = $resultat+1;
-                }elseif ($carteId == 20  ) {
-                    $resultat=$terrainj1[6];
-                    $terrainj1[6] = $resultat+1;
-                }elseif ($carteId == 21 ) {
-                    $resultat=$terrainj1[6];
-                    $terrainj1[6] = $resultat+1;
+                    //objectif 1
+                    if ($carteId == 1) {
+                        $resultat = $terrainj1[0];
+                        $terrainj1[0] = $resultat + 1;
+                    } elseif ($carteId == 2) {
+                        $resultat = $terrainj1[0];
+                        $terrainj1[0] = $resultat + 1;
+                    } //objectif2
+                    elseif ($carteId == 3) {
+                        $resultat = $terrainj1[1];
+                        $terrainj1[1] = $resultat + 1;
+                    } elseif ($carteId == 4) {
+                        $resultat = $terrainj1[1];
+                        $terrainj1[1] = $resultat + 1;
+                    } //objectif3
+                    elseif ($carteId == 5) {
+                        $resultat = $terrainj1[2];
+                        $terrainj1[2] = $resultat + 1;
+                    } elseif ($carteId == 6) {
+                        $resultat = $terrainj1[2];
+                        $terrainj1[2] = $resultat + 1;
+                    } //objectif4
+                    elseif ($carteId == 7) {
+                        $resultat = $terrainj1[3];
+                        $terrainj1[3] = $resultat + 1;
+                    } elseif ($carteId == 8) {
+                        $resultat = $terrainj1[3];
+                        $terrainj1[3] = $resultat + 1;
+                    } elseif ($carteId == 9) {
+                        $resultat = $terrainj1[3];
+                        $terrainj1[3] = $resultat + 1;
+                    } //objectif5
+                    elseif ($carteId == 10) {
+                        $resultat = $terrainj1[4];
+                        $terrainj1[4] = $resultat + 1;
+                    } elseif ($carteId == 11) {
+                        $resultat = $terrainj1[4];
+                        $terrainj1[4] = $resultat + 1;
+                    } elseif ($carteId == 12) {
+                        $resultat = $terrainj1[4];
+                        $terrainj1[4] = $resultat + 1;
+                    } //objectif6
+                    elseif ($carteId == 13) {
+                        $resultat = $terrainj1[5];
+                        $terrainj1[5] = $resultat + 1;
+                    } elseif ($carteId == 14) {
+                        $resultat = $terrainj1[5];
+                        $terrainj1[5] = $resultat + 1;
+                    } elseif ($carteId == 15) {
+                        $resultat = $terrainj1[5];
+                        $terrainj1[5] = $resultat + 1;
+                    } elseif ($carteId == 16) {
+                        $resultat = $terrainj1[5];
+                        $terrainj1[5] = $resultat + 1;
+                    } //objectif7
+                    elseif ($carteId == 17) {
+                        $resultat = $terrainj1[6];
+                        $terrainj1[6] = $resultat + 1;
+                    } elseif ($carteId == 18) {
+                        $resultat = $terrainj1[6];
+                        $terrainj1[6] = $resultat + 1;
+                    } elseif ($carteId == 19) {
+                        $resultat = $terrainj1[6];
+                        $terrainj1[6] = $resultat + 1;
+                    } elseif ($carteId == 20) {
+                        $resultat = $terrainj1[6];
+                        $terrainj1[6] = $resultat + 1;
+                    } elseif ($carteId == 21) {
+                        $resultat = $terrainj1[6];
+                        $terrainj1[6] = $resultat + 1;
+                    }
                 }
             }
-
-            if (!$partie) {
-                throw $this->createNotFoundException(
-                    'No parties found for id ' . $id
-                );
-            }
-
+            
             if ($id == $joueur1) {
                 $partie->setCarteCadeauJ2(json_encode(null));
                 $partie->setTerrainJ1(json_encode($terrainj1));
@@ -1682,8 +1700,6 @@ class ActionsController extends Controller
      */
     public function choix_concurrence(Request $request)
     {
-        //On insère dans les terrains respectifs les paires choisies
-
         //partie en cours
         $partieId = $request->request->get('id');
 
