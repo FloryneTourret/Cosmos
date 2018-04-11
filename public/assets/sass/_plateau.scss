@@ -43,6 +43,89 @@ button {
   }
 }
 
+@keyframes cartesadversaire {
+  0% {
+    position: absolute;
+    top: -40vh
+  }
+
+  100% {
+    position: absolute;
+    top:0vh;
+  }
+}
+
+.nb1anim{
+  -webkit-animation: cartesadversaire 1s; /* Safari, Opera, Chrome */
+  animation: cartesadversaire 1s; /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out; z-index: 10;
+  z-index: 10;
+  transform: rotate(20deg);
+}
+.nb2anim {
+  -webkit-animation: mescacartesadversairertes 1.35s; /* Safari, Opera, Chrome */
+  animation: cartesadversaire 1.35s; /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out; z-index: 10;
+  z-index: 11;
+  margin-left: 50px;
+  transform: rotate(15deg) translateY(12px);
+}
+.nb3anim {
+  -webkit-animation: cartesadversaire 1.65s; /* Safari, Opera, Chrome */
+  animation: cartesadversaire 1.65s; /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out; z-index: 10;
+  z-index: 12;
+  margin-left: 100px;
+  transform: rotate(10deg) translateY(20px);
+}
+.nb4anim {
+  -webkit-animation: cartesadversaire 2s; /* Safari, Opera, Chrome */
+  animation: cartesadversaire 2s; /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out; z-index: 10;
+  z-index: 13;
+  margin-left: 150px;
+  transform: rotate(5deg) translateY(27px);
+}
+.nb5anim {
+  -webkit-animation: cartesadversaire 2.35s; /* Safari, Opera, Chrome */
+  animation: cartesadversaire 2.35s; /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out; z-index: 10;
+  z-index: 14;
+  margin-left: 200px;
+  transform: rotate(-7deg) translateY(25px);
+}
+.nb6anim {
+  -webkit-animation: cartesadversaire 2.65s; /* Safari, Opera, Chrome */
+  animation: cartesadversaire 2.65s; /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out; z-index: 10;
+  z-index: 15;
+  margin-left: 250px;
+  transform: rotate(-10deg) translateY(16px);
+}
+.nb7anim {
+  -webkit-animation: cartesadversaire 3s; /* Safari, Opera, Chrome */
+  animation: cartesadversaire 3s; /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out; z-index: 10;
+  z-index: 16;
+  margin-left: 300px;
+  transform: rotate(-20deg);
+}
+
+
 .nb1 {
   z-index: 10;
   transform: rotate(20deg);
@@ -123,6 +206,89 @@ button {
     z-index: -1;
     position: absolute;
   }
+  input:checked +label{
+    .actifb1 {;
+      bottom: 30.5vh !important;
+      left: 47vw;
+      transition: all 1s;
+      transform: rotate(0deg) translateY(0px);
+      box-shadow: 0px 0px 10px 5px #00fcff;
+
+    }
+
+    .actifb2-1 {
+      bottom: 30.5vh !important;
+      left: 42vw;
+      transition: all 1s;
+      transform: rotate(0deg) translateY(0px);
+      box-shadow: 0px 0px 10px 5px #00fcff;
+    }
+
+    .actifb2-2 {
+      bottom: 30.5vh !important;
+      left: 52vw;
+      transition: all 1s;
+      transform: rotate(0deg) translateY(0px);
+      box-shadow: 0px 0px 10px 5px #00fcff;
+    }
+
+    .actifb3-1 {
+      bottom: 30.5vh !important;
+      left: 40vw;
+      transition: all 1s;
+      transform: rotate(0deg) translateY(0px);
+      box-shadow: 0px 0px 10px 5px #00fcff;
+    }
+
+    .actifb3-2 {
+      bottom: 30.5vh !important;
+      left: 47vw;
+      transition: all 1s;
+      transform: rotate(0deg) translateY(0px);
+      box-shadow: 0px 0px 10px 5px #00fcff;
+    }
+
+    .actifb3-3 {
+      bottom: 30.5vh !important;
+      left: 54vw;
+      transition: all 1s;
+      transform: rotate(0deg) translateY(0px);
+      box-shadow: 0px 0px 10px 5px #00fcff;
+    }
+
+
+    .actifb4-1 {
+      bottom: 30.5vh !important;
+      left: 36vw;
+      transition: all 1s;
+      transform: rotate(0deg) translateY(0px);
+      box-shadow: 0px 0px 10px 5px #00fcff;
+    }
+
+    .actifb4-2 {
+      bottom: 30.5vh !important;
+      left: 43vw;
+      transition: all 1s;
+      transform: rotate(0deg) translateY(0px);
+      box-shadow: 0px 0px 10px 5px #00fcff;
+    }
+
+    .actifb4-3 {
+      bottom: 30.5vh !important;
+      left: 50vw;
+      transition: all 1s;
+      transform: rotate(0deg) translateY(0px);
+      box-shadow: 0px 0px 10px 5px #00fcff;
+    }
+
+    .actifb4-4 {
+      bottom: 30.5vh !important;
+      left: 57vw;
+      transition: all 1s;
+      transform: rotate(0deg) translateY(0px);
+      box-shadow: 0px 0px 10px 5px #00fcff;
+    }
+  }
 
   span.span1 {
     text-align: center;
@@ -193,6 +359,124 @@ button {
   .carte7b {
     margin-left: 42vw;
     bottom: 10vh;
+  }
+}
+
+@keyframes mescartes {
+  0% {
+    position: absolute;
+    bottom: 100vh;
+  }
+
+  100% {
+    position: absolute;
+    bottom: 10vh;
+  }
+}
+
+.n0anim {
+  -webkit-animation: mescartes 1s; /* Safari, Opera, Chrome */
+  animation: mescartes 1s; /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out;
+  left: 36vw;
+  z-index: 16;
+  transform: rotate(-20deg);
+  transition: all 1s;
+  &:hover {
+    transform: rotate(-20deg) translateY(-35px);
+    box-shadow: 0px 0px 10px 5px #00fcff;
+  }
+}
+.n1anim {
+  -webkit-animation: mescartes 1.35s; /* Safari, Opera, Chrome */
+  animation: mescartes 1.35s; /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out;
+  left: 39vw;
+  z-index: 17;
+  transform: rotate(-15deg) translateY(-12px);
+  transition: all 1s;
+  &:hover {
+    transform: rotate(-15deg) translateY(-50px);
+    box-shadow: 0px 0px 10px 5px #00fcff;
+  }
+}
+.n2anim {
+  -webkit-animation: mescartes 1.65s; /* Safari, Opera, Chrome */
+  animation: mescartes 1.65s; /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out;
+  left: 42vw;
+  z-index: 18;
+  transform: rotate(-10deg) translateY(-19px);
+  transition: all 1s;
+  &:hover {
+    transform: rotate(-10deg) translateY(-60px);
+    box-shadow: 0px 0px 10px 5px #00fcff;
+  }
+}
+.n3anim {
+  -webkit-animation: mescartes 2s; /* Safari, Opera, Chrome */
+  animation: mescartes 2s; /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out;
+  z-index: 19;
+  left: 45vw;
+  transform: rotate(-3deg) translateY(-20px);
+  transition: all 1s;
+  &:hover {
+    transform: rotate(-3deg) translateY(-60px);
+    box-shadow: 0px 0px 10px 5px #00fcff;
+  }
+}
+.n4anim {
+  -webkit-animation: mescartes 2.35s; /* Safari, Opera, Chrome */
+  animation: mescartes 2.35s; /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out;
+  z-index: 20;
+  left: 48vw;
+  transform: rotate(5deg) translateY(-17px);
+  transition: all 1s;
+  &:hover {
+    transform: rotate(5deg) translateY(-60px);
+    box-shadow: 0px 0px 10px 5px #00fcff;
+  }
+}
+.n5anim {
+  -webkit-animation: mescartes 2.65s; /* Safari, Opera, Chrome */
+  animation: mescartes 2.65s; /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out;
+  z-index: 21;
+  left: 51vw;
+  transform: rotate(15deg) translateY(-7px);
+  transition: all 1s;
+  &:hover {
+    transform: rotate(15deg) translateY(-60px);
+    box-shadow: 0px 0px 10px 5px #00fcff;
+  }
+}
+.n6anim {
+  -webkit-animation: mescartes 3s; /* Safari, Opera, Chrome */
+  animation: mescartes 3s; /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out;
+  z-index: 22;
+  left: 54vw;
+  transform: rotate(25deg) translateY(8px);
+  transition: all 1s;
+  &:hover {
+    transform: rotate(25deg) translateY(-20px);
+    box-shadow: 0px 0px 10px 5px #00fcff;
   }
 }
 

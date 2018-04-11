@@ -16,15 +16,6 @@ h1 {
   }
 }
 
-.actifb1 {
-  z-index: 100 !important;
-  bottom: 30.5vh !important;
-  left: 47vw !important;
-  transition: all 1s;
-  transform: rotate(0deg) translateY(0px) !important;
-  box-shadow: 0px 0px 10px 5px #00fcff;
-
-}
 
 .action1{
   position: absolute;
@@ -326,13 +317,13 @@ h1 {
   }
   #paire1 {
     margin-top: 3vh;
-    margin-left: 5vw;
+    margin-left: 4vw;
     padding-top: 4px;
   }
 
   #paire2{
     margin-top: 3vh;
-    margin-left: 8vw;
+    margin-left: 6vw;
     padding-top: 4px;
   }
 
@@ -343,14 +334,23 @@ h1 {
     color: white;
     font-family: Robotaur;
   }
-  span{
+  input{
+    visibility: hidden;
+  }
+
+  input:checked + label{
+    color: #00fcff;
+    text-shadow: 0 0 0 #fff, 0 0 0 #fff, 0 0 0px black, 0 0 0 white, 0 0 20px white;
+
+  }
+
+  label{
     font-family: Robotaur;
     color: white;
   }
 
   .cartes{
     width: 6vw;
-    background: #3e4750;
     position: relative;
     margin-left: 4vw;
     margin-top: 2vh;
@@ -386,13 +386,18 @@ h1 {
 
   .cartes{
     width: 6vw;
-    background: #3e4750;
     position: relative;
     margin-top: 2vh;
+    margin-left: 6.5vw;
+  }
+  .selection:checked +label{
+    img{
+      box-shadow: 0px 0px 10px 5px #00fcff;
+    }
   }
 
   .selection{
-    margin-left: 6vw;
+    display: none;
   }
 
 }

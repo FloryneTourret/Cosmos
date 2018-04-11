@@ -124,79 +124,193 @@ button {
   width: 5vw;
 }
 
-/* line 46, ../sass/_plateau.scss */
+@keyframes cartesadversaire {
+  0% {
+    position: absolute;
+    top: -40vh;
+  }
+  100% {
+    position: absolute;
+    top: 0vh;
+  }
+}
+/* line 58, ../sass/_plateau.scss */
+.nb1anim {
+  -webkit-animation: cartesadversaire 1s;
+  /* Safari, Opera, Chrome */
+  animation: cartesadversaire 1s;
+  /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out;
+  z-index: 10;
+  z-index: 10;
+  transform: rotate(20deg);
+}
+
+/* line 67, ../sass/_plateau.scss */
+.nb2anim {
+  -webkit-animation: mescacartesadversairertes 1.35s;
+  /* Safari, Opera, Chrome */
+  animation: cartesadversaire 1.35s;
+  /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out;
+  z-index: 10;
+  z-index: 11;
+  margin-left: 50px;
+  transform: rotate(15deg) translateY(12px);
+}
+
+/* line 77, ../sass/_plateau.scss */
+.nb3anim {
+  -webkit-animation: cartesadversaire 1.65s;
+  /* Safari, Opera, Chrome */
+  animation: cartesadversaire 1.65s;
+  /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out;
+  z-index: 10;
+  z-index: 12;
+  margin-left: 100px;
+  transform: rotate(10deg) translateY(20px);
+}
+
+/* line 87, ../sass/_plateau.scss */
+.nb4anim {
+  -webkit-animation: cartesadversaire 2s;
+  /* Safari, Opera, Chrome */
+  animation: cartesadversaire 2s;
+  /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out;
+  z-index: 10;
+  z-index: 13;
+  margin-left: 150px;
+  transform: rotate(5deg) translateY(27px);
+}
+
+/* line 97, ../sass/_plateau.scss */
+.nb5anim {
+  -webkit-animation: cartesadversaire 2.35s;
+  /* Safari, Opera, Chrome */
+  animation: cartesadversaire 2.35s;
+  /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out;
+  z-index: 10;
+  z-index: 14;
+  margin-left: 200px;
+  transform: rotate(-7deg) translateY(25px);
+}
+
+/* line 107, ../sass/_plateau.scss */
+.nb6anim {
+  -webkit-animation: cartesadversaire 2.65s;
+  /* Safari, Opera, Chrome */
+  animation: cartesadversaire 2.65s;
+  /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out;
+  z-index: 10;
+  z-index: 15;
+  margin-left: 250px;
+  transform: rotate(-10deg) translateY(16px);
+}
+
+/* line 117, ../sass/_plateau.scss */
+.nb7anim {
+  -webkit-animation: cartesadversaire 3s;
+  /* Safari, Opera, Chrome */
+  animation: cartesadversaire 3s;
+  /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out;
+  z-index: 10;
+  z-index: 16;
+  margin-left: 300px;
+  transform: rotate(-20deg);
+}
+
+/* line 129, ../sass/_plateau.scss */
 .nb1 {
   z-index: 10;
   transform: rotate(20deg);
 }
 
-/* line 50, ../sass/_plateau.scss */
+/* line 133, ../sass/_plateau.scss */
 .nb2 {
   z-index: 11;
   margin-left: 50px;
   transform: rotate(15deg) translateY(12px);
 }
 
-/* line 55, ../sass/_plateau.scss */
+/* line 138, ../sass/_plateau.scss */
 .nb3 {
   z-index: 12;
   margin-left: 100px;
   transform: rotate(10deg) translateY(20px);
 }
 
-/* line 60, ../sass/_plateau.scss */
+/* line 143, ../sass/_plateau.scss */
 .nb4 {
   z-index: 13;
   margin-left: 150px;
   transform: rotate(5deg) translateY(27px);
 }
 
-/* line 65, ../sass/_plateau.scss */
+/* line 148, ../sass/_plateau.scss */
 .nb5 {
   z-index: 14;
   margin-left: 200px;
   transform: rotate(-7deg) translateY(25px);
 }
 
-/* line 70, ../sass/_plateau.scss */
+/* line 153, ../sass/_plateau.scss */
 .nb6 {
   z-index: 15;
   margin-left: 250px;
   transform: rotate(-10deg) translateY(16px);
 }
 
-/* line 75, ../sass/_plateau.scss */
+/* line 158, ../sass/_plateau.scss */
 .nb7 {
   z-index: 16;
   margin-left: 300px;
   transform: rotate(-20deg);
 }
 
-/* line 81, ../sass/_plateau.scss */
+/* line 164, ../sass/_plateau.scss */
 .joueur1 {
   position: absolute;
   right: 10vw;
   bottom: 50px;
 }
-/* line 85, ../sass/_plateau.scss */
+/* line 168, ../sass/_plateau.scss */
 .joueur1 p {
   color: #53d0ff;
   font-size: 22px;
 }
 
-/* line 90, ../sass/_plateau.scss */
+/* line 173, ../sass/_plateau.scss */
 .joueur2 {
   position: absolute;
   left: 10vw;
   margin-top: 50px;
 }
-/* line 94, ../sass/_plateau.scss */
+/* line 177, ../sass/_plateau.scss */
 .joueur2 p {
   color: #53d0ff;
   font-size: 22px;
 }
 
-/* line 100, ../sass/_plateau.scss */
+/* line 183, ../sass/_plateau.scss */
 .manche {
   float: right;
   font-size: 30px;
@@ -204,26 +318,106 @@ button {
   margin-top: 30px;
 }
 
-/* line 108, ../sass/_plateau.scss */
+/* line 191, ../sass/_plateau.scss */
 .objet img {
   position: absolute;
   width: 6vw;
   bottom: 3vh;
 }
 
-/* line 116, ../sass/_plateau.scss */
+/* line 199, ../sass/_plateau.scss */
 .objets img {
   position: absolute;
   width: 6vw;
   bottom: 3vh;
   transition: 0.5s;
 }
-/* line 122, ../sass/_plateau.scss */
+/* line 205, ../sass/_plateau.scss */
 .objets input {
   z-index: -1;
   position: absolute;
 }
-/* line 127, ../sass/_plateau.scss */
+/* line 210, ../sass/_plateau.scss */
+.objets input:checked + label .actifb1 {
+  bottom: 30.5vh !important;
+  left: 47vw;
+  transition: all 1s;
+  transform: rotate(0deg) translateY(0px);
+  box-shadow: 0px 0px 10px 5px #00fcff;
+}
+/* line 219, ../sass/_plateau.scss */
+.objets input:checked + label .actifb2-1 {
+  bottom: 30.5vh !important;
+  left: 42vw;
+  transition: all 1s;
+  transform: rotate(0deg) translateY(0px);
+  box-shadow: 0px 0px 10px 5px #00fcff;
+}
+/* line 227, ../sass/_plateau.scss */
+.objets input:checked + label .actifb2-2 {
+  bottom: 30.5vh !important;
+  left: 52vw;
+  transition: all 1s;
+  transform: rotate(0deg) translateY(0px);
+  box-shadow: 0px 0px 10px 5px #00fcff;
+}
+/* line 235, ../sass/_plateau.scss */
+.objets input:checked + label .actifb3-1 {
+  bottom: 30.5vh !important;
+  left: 40vw;
+  transition: all 1s;
+  transform: rotate(0deg) translateY(0px);
+  box-shadow: 0px 0px 10px 5px #00fcff;
+}
+/* line 243, ../sass/_plateau.scss */
+.objets input:checked + label .actifb3-2 {
+  bottom: 30.5vh !important;
+  left: 47vw;
+  transition: all 1s;
+  transform: rotate(0deg) translateY(0px);
+  box-shadow: 0px 0px 10px 5px #00fcff;
+}
+/* line 251, ../sass/_plateau.scss */
+.objets input:checked + label .actifb3-3 {
+  bottom: 30.5vh !important;
+  left: 54vw;
+  transition: all 1s;
+  transform: rotate(0deg) translateY(0px);
+  box-shadow: 0px 0px 10px 5px #00fcff;
+}
+/* line 260, ../sass/_plateau.scss */
+.objets input:checked + label .actifb4-1 {
+  bottom: 30.5vh !important;
+  left: 36vw;
+  transition: all 1s;
+  transform: rotate(0deg) translateY(0px);
+  box-shadow: 0px 0px 10px 5px #00fcff;
+}
+/* line 268, ../sass/_plateau.scss */
+.objets input:checked + label .actifb4-2 {
+  bottom: 30.5vh !important;
+  left: 43vw;
+  transition: all 1s;
+  transform: rotate(0deg) translateY(0px);
+  box-shadow: 0px 0px 10px 5px #00fcff;
+}
+/* line 276, ../sass/_plateau.scss */
+.objets input:checked + label .actifb4-3 {
+  bottom: 30.5vh !important;
+  left: 50vw;
+  transition: all 1s;
+  transform: rotate(0deg) translateY(0px);
+  box-shadow: 0px 0px 10px 5px #00fcff;
+}
+/* line 284, ../sass/_plateau.scss */
+.objets input:checked + label .actifb4-4 {
+  bottom: 30.5vh !important;
+  left: 57vw;
+  transition: all 1s;
+  transform: rotate(0deg) translateY(0px);
+  box-shadow: 0px 0px 10px 5px #00fcff;
+}
+/* line 293, ../sass/_plateau.scss */
 .objets span.span1 {
   text-align: center;
   z-index: 16;
@@ -233,7 +427,7 @@ button {
   color: white;
   text-shadow: 1px 1px 2px black;
 }
-/* line 136, ../sass/_plateau.scss */
+/* line 302, ../sass/_plateau.scss */
 .objets span.span2 {
   text-align: center;
   z-index: 16;
@@ -243,177 +437,327 @@ button {
   color: white;
   text-shadow: 1px 1px 2px black;
 }
-/* line 147, ../sass/_plateau.scss */
+/* line 313, ../sass/_plateau.scss */
 .objets .carte1 {
   margin-left: 0;
 }
-/* line 150, ../sass/_plateau.scss */
+/* line 316, ../sass/_plateau.scss */
 .objets .carte2 {
   margin-left: 7vw;
 }
-/* line 153, ../sass/_plateau.scss */
+/* line 319, ../sass/_plateau.scss */
 .objets .carte3 {
   margin-left: 14vw;
 }
-/* line 156, ../sass/_plateau.scss */
+/* line 322, ../sass/_plateau.scss */
 .objets .carte4 {
   margin-left: 21vw;
 }
-/* line 159, ../sass/_plateau.scss */
+/* line 325, ../sass/_plateau.scss */
 .objets .carte5 {
   margin-left: 28vw;
 }
-/* line 162, ../sass/_plateau.scss */
+/* line 328, ../sass/_plateau.scss */
 .objets .carte6 {
   margin-left: 35vw;
 }
-/* line 165, ../sass/_plateau.scss */
+/* line 331, ../sass/_plateau.scss */
 .objets .carte7 {
   margin-left: 42vw;
 }
-/* line 169, ../sass/_plateau.scss */
+/* line 335, ../sass/_plateau.scss */
 .objets .carte1b {
   margin-left: 0;
   bottom: 10vh;
 }
-/* line 173, ../sass/_plateau.scss */
+/* line 339, ../sass/_plateau.scss */
 .objets .carte2b {
   margin-left: 7vw;
   bottom: 10vh;
 }
-/* line 177, ../sass/_plateau.scss */
+/* line 343, ../sass/_plateau.scss */
 .objets .carte3b {
   margin-left: 14vw;
   bottom: 10vh;
 }
-/* line 181, ../sass/_plateau.scss */
+/* line 347, ../sass/_plateau.scss */
 .objets .carte4b {
   margin-left: 21vw;
   bottom: 10vh;
 }
-/* line 185, ../sass/_plateau.scss */
+/* line 351, ../sass/_plateau.scss */
 .objets .carte5b {
   margin-left: 28vw;
   bottom: 10vh;
 }
-/* line 189, ../sass/_plateau.scss */
+/* line 355, ../sass/_plateau.scss */
 .objets .carte6b {
   margin-left: 35vw;
   bottom: 10vh;
 }
-/* line 193, ../sass/_plateau.scss */
+/* line 359, ../sass/_plateau.scss */
 .objets .carte7b {
   margin-left: 42vw;
   bottom: 10vh;
 }
 
-/* line 199, ../sass/_plateau.scss */
+@keyframes mescartes {
+  0% {
+    position: absolute;
+    bottom: 100vh;
+  }
+  100% {
+    position: absolute;
+    bottom: 10vh;
+  }
+}
+/* line 377, ../sass/_plateau.scss */
+.n0anim {
+  -webkit-animation: mescartes 1s;
+  /* Safari, Opera, Chrome */
+  animation: mescartes 1s;
+  /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out;
+  left: 36vw;
+  z-index: 16;
+  transform: rotate(-20deg);
+  transition: all 1s;
+}
+/* line 387, ../sass/_plateau.scss */
+.n0anim:hover {
+  transform: rotate(-20deg) translateY(-35px);
+  box-shadow: 0px 0px 10px 5px #00fcff;
+}
+
+/* line 392, ../sass/_plateau.scss */
+.n1anim {
+  -webkit-animation: mescartes 1.35s;
+  /* Safari, Opera, Chrome */
+  animation: mescartes 1.35s;
+  /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out;
+  left: 39vw;
+  z-index: 17;
+  transform: rotate(-15deg) translateY(-12px);
+  transition: all 1s;
+}
+/* line 402, ../sass/_plateau.scss */
+.n1anim:hover {
+  transform: rotate(-15deg) translateY(-50px);
+  box-shadow: 0px 0px 10px 5px #00fcff;
+}
+
+/* line 407, ../sass/_plateau.scss */
+.n2anim {
+  -webkit-animation: mescartes 1.65s;
+  /* Safari, Opera, Chrome */
+  animation: mescartes 1.65s;
+  /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out;
+  left: 42vw;
+  z-index: 18;
+  transform: rotate(-10deg) translateY(-19px);
+  transition: all 1s;
+}
+/* line 417, ../sass/_plateau.scss */
+.n2anim:hover {
+  transform: rotate(-10deg) translateY(-60px);
+  box-shadow: 0px 0px 10px 5px #00fcff;
+}
+
+/* line 422, ../sass/_plateau.scss */
+.n3anim {
+  -webkit-animation: mescartes 2s;
+  /* Safari, Opera, Chrome */
+  animation: mescartes 2s;
+  /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out;
+  z-index: 19;
+  left: 45vw;
+  transform: rotate(-3deg) translateY(-20px);
+  transition: all 1s;
+}
+/* line 432, ../sass/_plateau.scss */
+.n3anim:hover {
+  transform: rotate(-3deg) translateY(-60px);
+  box-shadow: 0px 0px 10px 5px #00fcff;
+}
+
+/* line 437, ../sass/_plateau.scss */
+.n4anim {
+  -webkit-animation: mescartes 2.35s;
+  /* Safari, Opera, Chrome */
+  animation: mescartes 2.35s;
+  /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out;
+  z-index: 20;
+  left: 48vw;
+  transform: rotate(5deg) translateY(-17px);
+  transition: all 1s;
+}
+/* line 447, ../sass/_plateau.scss */
+.n4anim:hover {
+  transform: rotate(5deg) translateY(-60px);
+  box-shadow: 0px 0px 10px 5px #00fcff;
+}
+
+/* line 452, ../sass/_plateau.scss */
+.n5anim {
+  -webkit-animation: mescartes 2.65s;
+  /* Safari, Opera, Chrome */
+  animation: mescartes 2.65s;
+  /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out;
+  z-index: 21;
+  left: 51vw;
+  transform: rotate(15deg) translateY(-7px);
+  transition: all 1s;
+}
+/* line 462, ../sass/_plateau.scss */
+.n5anim:hover {
+  transform: rotate(15deg) translateY(-60px);
+  box-shadow: 0px 0px 10px 5px #00fcff;
+}
+
+/* line 467, ../sass/_plateau.scss */
+.n6anim {
+  -webkit-animation: mescartes 3s;
+  /* Safari, Opera, Chrome */
+  animation: mescartes 3s;
+  /* Tous les autres navigateurs */
+  animation-iteration-count: 1;
+  animation-delay: -0.2s;
+  animation-timing-function: ease-in-out;
+  z-index: 22;
+  left: 54vw;
+  transform: rotate(25deg) translateY(8px);
+  transition: all 1s;
+}
+/* line 477, ../sass/_plateau.scss */
+.n6anim:hover {
+  transform: rotate(25deg) translateY(-20px);
+  box-shadow: 0px 0px 10px 5px #00fcff;
+}
+
+/* line 483, ../sass/_plateau.scss */
 .n0 {
   left: 36vw;
   z-index: 16;
   transform: rotate(-20deg);
   transition: all 1s;
 }
-/* line 204, ../sass/_plateau.scss */
+/* line 488, ../sass/_plateau.scss */
 .n0:hover {
   transform: rotate(-20deg) translateY(-35px);
   box-shadow: 0px 0px 10px 5px #00fcff;
 }
 
-/* line 209, ../sass/_plateau.scss */
+/* line 493, ../sass/_plateau.scss */
 .n1 {
   left: 39vw;
   z-index: 17;
   transform: rotate(-15deg) translateY(-12px);
   transition: all 1s;
 }
-/* line 214, ../sass/_plateau.scss */
+/* line 498, ../sass/_plateau.scss */
 .n1:hover {
   transform: rotate(-15deg) translateY(-50px);
   box-shadow: 0px 0px 10px 5px #00fcff;
 }
 
-/* line 219, ../sass/_plateau.scss */
+/* line 503, ../sass/_plateau.scss */
 .n2 {
   left: 42vw;
   z-index: 18;
   transform: rotate(-10deg) translateY(-19px);
   transition: all 1s;
 }
-/* line 224, ../sass/_plateau.scss */
+/* line 508, ../sass/_plateau.scss */
 .n2:hover {
   transform: rotate(-10deg) translateY(-60px);
   box-shadow: 0px 0px 10px 5px #00fcff;
 }
 
-/* line 229, ../sass/_plateau.scss */
+/* line 513, ../sass/_plateau.scss */
 .n3 {
   z-index: 19;
   left: 45vw;
   transform: rotate(-3deg) translateY(-20px);
   transition: all 1s;
 }
-/* line 234, ../sass/_plateau.scss */
+/* line 518, ../sass/_plateau.scss */
 .n3:hover {
   transform: rotate(-3deg) translateY(-60px);
   box-shadow: 0px 0px 10px 5px #00fcff;
 }
 
-/* line 239, ../sass/_plateau.scss */
+/* line 523, ../sass/_plateau.scss */
 .n4 {
   z-index: 20;
   left: 48vw;
   transform: rotate(5deg) translateY(-17px);
   transition: all 1s;
 }
-/* line 244, ../sass/_plateau.scss */
+/* line 528, ../sass/_plateau.scss */
 .n4:hover {
   transform: rotate(5deg) translateY(-60px);
   box-shadow: 0px 0px 10px 5px #00fcff;
 }
 
-/* line 249, ../sass/_plateau.scss */
+/* line 533, ../sass/_plateau.scss */
 .n5 {
   z-index: 21;
   left: 51vw;
   transform: rotate(15deg) translateY(-7px);
   transition: all 1s;
 }
-/* line 254, ../sass/_plateau.scss */
+/* line 538, ../sass/_plateau.scss */
 .n5:hover {
   transform: rotate(15deg) translateY(-60px);
   box-shadow: 0px 0px 10px 5px #00fcff;
 }
 
-/* line 259, ../sass/_plateau.scss */
+/* line 543, ../sass/_plateau.scss */
 .n6 {
   z-index: 22;
   left: 54vw;
   transform: rotate(25deg) translateY(8px);
   transition: all 1s;
 }
-/* line 264, ../sass/_plateau.scss */
+/* line 548, ../sass/_plateau.scss */
 .n6:hover {
   transform: rotate(25deg) translateY(-20px);
   box-shadow: 0px 0px 10px 5px #00fcff;
 }
 
-/* line 270, ../sass/_plateau.scss */
+/* line 554, ../sass/_plateau.scss */
 .backgroud_plateau {
   min-height: 50vh;
 }
-/* line 273, ../sass/_plateau.scss */
+/* line 557, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond {
   background: url("../img/plateau/fond.png") no-repeat center;
   background-size: cover;
   height: 100vh;
 }
-/* line 278, ../sass/_plateau.scss */
+/* line 562, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img2 {
   width: 20vw;
   position: absolute;
 }
-/* line 282, ../sass/_plateau.scss */
+/* line 566, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img3 {
   position: absolute;
   width: 45px;
@@ -421,7 +765,7 @@ button {
   margin-left: 2vw;
   margin-top: 40px;
 }
-/* line 290, ../sass/_plateau.scss */
+/* line 574, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img4 {
   position: absolute;
   width: 45px;
@@ -429,7 +773,7 @@ button {
   margin-left: 2vw;
   margin-top: 95px;
 }
-/* line 297, ../sass/_plateau.scss */
+/* line 581, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img5 {
   position: absolute;
   width: 45px;
@@ -437,7 +781,7 @@ button {
   margin-left: 2vw;
   margin-top: 150px;
 }
-/* line 304, ../sass/_plateau.scss */
+/* line 588, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img6 {
   position: absolute;
   width: 45px;
@@ -445,7 +789,7 @@ button {
   margin-left: 2vw;
   margin-top: 205px;
 }
-/* line 312, ../sass/_plateau.scss */
+/* line 596, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img10 {
   position: absolute;
   width: 8vw;
@@ -453,7 +797,7 @@ button {
   margin-left: 18vw;
   z-index: 1;
 }
-/* line 319, ../sass/_plateau.scss */
+/* line 603, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion1 {
   z-index: 10;
   width: 2vw;
@@ -461,7 +805,7 @@ button {
   margin-left: 21vw;
   margin-top: 31vh;
 }
-/* line 326, ../sass/_plateau.scss */
+/* line 610, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion1_haut {
   z-index: 10;
   width: 2vw;
@@ -469,7 +813,7 @@ button {
   margin-left: 21vw;
   margin-top: 26vh;
 }
-/* line 333, ../sass/_plateau.scss */
+/* line 617, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion1_bas {
   z-index: 10;
   width: 2vw;
@@ -477,7 +821,7 @@ button {
   margin-left: 21vw;
   margin-top: 37vh;
 }
-/* line 340, ../sass/_plateau.scss */
+/* line 624, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img11 {
   position: absolute;
   width: 8vw;
@@ -485,7 +829,7 @@ button {
   margin-left: 27vw;
   z-index: 1;
 }
-/* line 347, ../sass/_plateau.scss */
+/* line 631, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion2 {
   z-index: 10;
   width: 2vw;
@@ -493,7 +837,7 @@ button {
   margin-left: 30vw;
   margin-top: 31vh;
 }
-/* line 354, ../sass/_plateau.scss */
+/* line 638, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion2_haut {
   z-index: 10;
   width: 2vw;
@@ -501,7 +845,7 @@ button {
   margin-left: 30vw;
   margin-top: 26vh;
 }
-/* line 361, ../sass/_plateau.scss */
+/* line 645, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion2_bas {
   z-index: 10;
   width: 2vw;
@@ -509,7 +853,7 @@ button {
   margin-left: 30vw;
   margin-top: 37vh;
 }
-/* line 368, ../sass/_plateau.scss */
+/* line 652, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img12 {
   position: absolute;
   width: 8vw;
@@ -517,7 +861,7 @@ button {
   margin-left: 36vw;
   z-index: 1;
 }
-/* line 375, ../sass/_plateau.scss */
+/* line 659, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion3 {
   z-index: 10;
   width: 2vw;
@@ -525,7 +869,7 @@ button {
   margin-left: 39vw;
   margin-top: 31vh;
 }
-/* line 382, ../sass/_plateau.scss */
+/* line 666, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion3_haut {
   z-index: 10;
   width: 2vw;
@@ -533,7 +877,7 @@ button {
   margin-left: 39vw;
   margin-top: 26vh;
 }
-/* line 389, ../sass/_plateau.scss */
+/* line 673, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion3_bas {
   z-index: 10;
   width: 2vw;
@@ -541,7 +885,7 @@ button {
   margin-left: 39vw;
   margin-top: 37vh;
 }
-/* line 396, ../sass/_plateau.scss */
+/* line 680, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img13 {
   position: absolute;
   width: 8vw;
@@ -549,7 +893,7 @@ button {
   margin-left: 45vw;
   z-index: 1;
 }
-/* line 403, ../sass/_plateau.scss */
+/* line 687, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion4 {
   z-index: 10;
   width: 2vw;
@@ -557,7 +901,7 @@ button {
   margin-left: 48vw;
   margin-top: 31vh;
 }
-/* line 410, ../sass/_plateau.scss */
+/* line 694, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion4_haut {
   z-index: 10;
   width: 2vw;
@@ -565,7 +909,7 @@ button {
   margin-left: 48vw;
   margin-top: 26vh;
 }
-/* line 417, ../sass/_plateau.scss */
+/* line 701, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion4_bas {
   z-index: 10;
   width: 2vw;
@@ -573,7 +917,7 @@ button {
   margin-left: 48vw;
   margin-top: 37vh;
 }
-/* line 424, ../sass/_plateau.scss */
+/* line 708, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img14 {
   position: absolute;
   width: 8vw;
@@ -581,7 +925,7 @@ button {
   margin-left: 54vw;
   z-index: 1;
 }
-/* line 431, ../sass/_plateau.scss */
+/* line 715, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion5 {
   z-index: 10;
   width: 2vw;
@@ -589,7 +933,7 @@ button {
   margin-left: 57vw;
   margin-top: 31vh;
 }
-/* line 438, ../sass/_plateau.scss */
+/* line 722, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion5_haut {
   z-index: 10;
   width: 2vw;
@@ -597,7 +941,7 @@ button {
   margin-left: 57vw;
   margin-top: 26vh;
 }
-/* line 445, ../sass/_plateau.scss */
+/* line 729, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion5_bas {
   z-index: 10;
   width: 2vw;
@@ -605,7 +949,7 @@ button {
   margin-left: 57vw;
   margin-top: 37vh;
 }
-/* line 452, ../sass/_plateau.scss */
+/* line 736, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img15 {
   position: absolute;
   width: 8vw;
@@ -613,7 +957,7 @@ button {
   margin-left: 63vw;
   z-index: 1;
 }
-/* line 459, ../sass/_plateau.scss */
+/* line 743, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion6 {
   z-index: 10;
   width: 2vw;
@@ -621,7 +965,7 @@ button {
   margin-left: 66vw;
   margin-top: 31vh;
 }
-/* line 466, ../sass/_plateau.scss */
+/* line 750, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion6_haut {
   z-index: 10;
   width: 2vw;
@@ -629,7 +973,7 @@ button {
   margin-left: 66vw;
   margin-top: 26vh;
 }
-/* line 473, ../sass/_plateau.scss */
+/* line 757, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion6_bas {
   z-index: 10;
   width: 2vw;
@@ -637,7 +981,7 @@ button {
   margin-left: 66vw;
   margin-top: 37vh;
 }
-/* line 480, ../sass/_plateau.scss */
+/* line 764, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img16 {
   position: absolute;
   width: 8vw;
@@ -645,7 +989,7 @@ button {
   margin-left: 72vw;
   z-index: 1;
 }
-/* line 487, ../sass/_plateau.scss */
+/* line 771, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion7 {
   z-index: 10;
   width: 2vw;
@@ -653,7 +997,7 @@ button {
   margin-left: 75vw;
   margin-top: 31vh;
 }
-/* line 494, ../sass/_plateau.scss */
+/* line 778, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion7_haut {
   z-index: 10;
   width: 2vw;
@@ -661,7 +1005,7 @@ button {
   margin-left: 75vw;
   margin-top: 26vh;
 }
-/* line 501, ../sass/_plateau.scss */
+/* line 785, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .pion7_bas {
   z-index: 10;
   width: 2vw;
@@ -669,7 +1013,7 @@ button {
   margin-left: 75vw;
   margin-top: 37vh;
 }
-/* line 509, ../sass/_plateau.scss */
+/* line 793, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img19 {
   position: absolute;
   width: 45px;
@@ -678,7 +1022,7 @@ button {
   bottom: 40px;
   z-index: 2;
 }
-/* line 518, ../sass/_plateau.scss */
+/* line 802, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img20 {
   position: absolute;
   width: 45px;
@@ -687,7 +1031,7 @@ button {
   bottom: 95px;
   z-index: 1;
 }
-/* line 526, ../sass/_plateau.scss */
+/* line 810, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img21 {
   position: absolute;
   width: 45px;
@@ -696,7 +1040,7 @@ button {
   bottom: 150px;
   z-index: 1;
 }
-/* line 535, ../sass/_plateau.scss */
+/* line 819, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img22 {
   position: absolute;
   width: 45px;
@@ -705,7 +1049,7 @@ button {
   bottom: 205px;
   z-index: 1;
 }
-/* line 544, ../sass/_plateau.scss */
+/* line 828, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .bouton_action1 {
   position: absolute;
   width: 45px;
@@ -714,12 +1058,12 @@ button {
   bottom: 205px;
   z-index: 1;
 }
-/* line 551, ../sass/_plateau.scss */
+/* line 835, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .bouton_action1 img {
   width: 45px;
   height: 45px;
 }
-/* line 557, ../sass/_plateau.scss */
+/* line 841, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .bouton_action2 {
   position: absolute;
   width: 45px;
@@ -728,12 +1072,12 @@ button {
   bottom: 150px;
   z-index: 1;
 }
-/* line 564, ../sass/_plateau.scss */
+/* line 848, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .bouton_action2 img {
   width: 45px;
   height: 45px;
 }
-/* line 570, ../sass/_plateau.scss */
+/* line 854, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .bouton_action3 {
   position: absolute;
   width: 45px;
@@ -742,12 +1086,12 @@ button {
   bottom: 95px;
   z-index: 1;
 }
-/* line 577, ../sass/_plateau.scss */
+/* line 861, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .bouton_action3 img {
   width: 45px;
   height: 45px;
 }
-/* line 583, ../sass/_plateau.scss */
+/* line 867, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .bouton_action4 {
   position: absolute;
   width: 45px;
@@ -756,16 +1100,16 @@ button {
   bottom: 40px;
   z-index: 2;
 }
-/* line 590, ../sass/_plateau.scss */
+/* line 874, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .bouton_action4 img {
   width: 45px;
   height: 45px;
 }
-/* line 597, ../sass/_plateau.scss */
+/* line 881, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond button img {
   box-shadow: 0px 0px 10px 5px #00fcff;
 }
-/* line 602, ../sass/_plateau.scss */
+/* line 886, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img24 {
   position: absolute;
   right: 0;
@@ -773,7 +1117,7 @@ button {
   margin-top: 305px;
   transition: 1s all;
 }
-/* line 608, ../sass/_plateau.scss */
+/* line 892, ../sass/_plateau.scss */
 .backgroud_plateau .backgroud_plateau_fond .img24 :hover {
   transform: scale(1.1);
 }
@@ -798,17 +1142,7 @@ h1 {
   opacity: 0.8;
 }
 
-/* line 19, ../sass/_action.scss */
-.actifb1 {
-  z-index: 100 !important;
-  bottom: 30.5vh !important;
-  left: 47vw !important;
-  transition: all 1s;
-  transform: rotate(0deg) translateY(0px) !important;
-  box-shadow: 0px 0px 10px 5px #00fcff;
-}
-
-/* line 29, ../sass/_action.scss */
+/* line 20, ../sass/_action.scss */
 .action1 {
   position: absolute;
   width: 200px;
@@ -817,14 +1151,14 @@ h1 {
   right: 4vw;
   bottom: 213px;
 }
-/* line 36, ../sass/_action.scss */
+/* line 27, ../sass/_action.scss */
 .action1 p {
   text-align: center;
   padding-top: 8px;
   font-size: 14px;
 }
 
-/* line 43, ../sass/_action.scss */
+/* line 34, ../sass/_action.scss */
 .action2 {
   position: absolute;
   width: 200px;
@@ -833,14 +1167,14 @@ h1 {
   right: 4vw;
   bottom: 158px;
 }
-/* line 50, ../sass/_action.scss */
+/* line 41, ../sass/_action.scss */
 .action2 p {
   text-align: center;
   padding-top: 8px;
   font-size: 14px;
 }
 
-/* line 57, ../sass/_action.scss */
+/* line 48, ../sass/_action.scss */
 .action3 {
   position: absolute;
   width: 200px;
@@ -849,14 +1183,14 @@ h1 {
   right: 4vw;
   bottom: 103px;
 }
-/* line 64, ../sass/_action.scss */
+/* line 55, ../sass/_action.scss */
 .action3 p {
   text-align: center;
   padding-top: 8px;
   font-size: 14px;
 }
 
-/* line 71, ../sass/_action.scss */
+/* line 62, ../sass/_action.scss */
 .action4 {
   z-index: 1;
   position: absolute;
@@ -866,19 +1200,19 @@ h1 {
   right: 4vw;
   bottom: 48px;
 }
-/* line 79, ../sass/_action.scss */
+/* line 70, ../sass/_action.scss */
 .action4 p {
   text-align: center;
   padding-top: 8px;
   font-size: 14px;
 }
 
-/* line 87, ../sass/_action.scss */
+/* line 78, ../sass/_action.scss */
 .used {
   opacity: 0.3;
 }
 
-/* line 91, ../sass/_action.scss */
+/* line 82, ../sass/_action.scss */
 .b1 {
   z-index: 15;
   position: absolute;
@@ -890,23 +1224,23 @@ h1 {
   top: 48vh;
   border-radius: 6px;
 }
-/* line 101, ../sass/_action.scss */
+/* line 92, ../sass/_action.scss */
 .b1 .b1carte {
   position: absolute;
   margin-left: 14.5vw;
   margin-top: 5vh;
 }
-/* line 105, ../sass/_action.scss */
+/* line 96, ../sass/_action.scss */
 .b1 .b1carte img {
   width: 6vw;
   transform: rotate(0deg) translateY(0);
 }
-/* line 111, ../sass/_action.scss */
+/* line 102, ../sass/_action.scss */
 .b1 h1 {
   text-align: center;
   margin-top: 12px;
 }
-/* line 115, ../sass/_action.scss */
+/* line 106, ../sass/_action.scss */
 .b1 #annuler {
   margin-top: 19vh;
   margin-left: 1vw;
@@ -914,7 +1248,7 @@ h1 {
   font-family: Robotaur;
   color: white;
 }
-/* line 123, ../sass/_action.scss */
+/* line 114, ../sass/_action.scss */
 .b1 #valider {
   margin-top: 19vh;
   margin-left: 18vw;
@@ -923,7 +1257,7 @@ h1 {
   color: white;
 }
 
-/* line 132, ../sass/_action.scss */
+/* line 123, ../sass/_action.scss */
 .b2 {
   z-index: 15;
   position: absolute;
@@ -935,34 +1269,34 @@ h1 {
   top: 48vh;
   border-radius: 6px;
 }
-/* line 142, ../sass/_action.scss */
+/* line 133, ../sass/_action.scss */
 .b2 .b2carte1 {
   position: absolute;
   margin-left: 9.5vw;
   margin-top: 5vh;
 }
-/* line 146, ../sass/_action.scss */
+/* line 137, ../sass/_action.scss */
 .b2 .b2carte1 img {
   width: 6vw;
   transform: rotate(0deg) translateY(0);
 }
-/* line 151, ../sass/_action.scss */
+/* line 142, ../sass/_action.scss */
 .b2 .b2carte2 {
   position: absolute;
   margin-left: 19.5vw;
   margin-top: 5vh;
 }
-/* line 155, ../sass/_action.scss */
+/* line 146, ../sass/_action.scss */
 .b2 .b2carte2 img {
   width: 6vw;
   transform: rotate(0deg) translateY(0);
 }
-/* line 160, ../sass/_action.scss */
+/* line 151, ../sass/_action.scss */
 .b2 h1 {
   text-align: center;
   margin-top: 12px;
 }
-/* line 164, ../sass/_action.scss */
+/* line 155, ../sass/_action.scss */
 .b2 #annuler {
   margin-top: 19vh;
   margin-left: 1vw;
@@ -970,7 +1304,7 @@ h1 {
   font-family: Robotaur;
   color: white;
 }
-/* line 172, ../sass/_action.scss */
+/* line 163, ../sass/_action.scss */
 .b2 #valider {
   margin-top: 19vh;
   margin-left: 18vw;
@@ -979,7 +1313,7 @@ h1 {
   color: white;
 }
 
-/* line 183, ../sass/_action.scss */
+/* line 174, ../sass/_action.scss */
 .b3 {
   z-index: 15;
   position: absolute;
@@ -991,45 +1325,45 @@ h1 {
   top: 48vh;
   border-radius: 6px;
 }
-/* line 193, ../sass/_action.scss */
+/* line 184, ../sass/_action.scss */
 .b3 .b3carte1 {
   position: absolute;
   margin-left: 10vw;
   margin-top: 5vh;
 }
-/* line 197, ../sass/_action.scss */
+/* line 188, ../sass/_action.scss */
 .b3 .b3carte1 img {
   width: 6vw;
   transform: rotate(0deg) translateY(0);
 }
-/* line 202, ../sass/_action.scss */
+/* line 193, ../sass/_action.scss */
 .b3 .b3carte2 {
   position: absolute;
   margin-left: 17vw;
   margin-top: 5vh;
 }
-/* line 206, ../sass/_action.scss */
+/* line 197, ../sass/_action.scss */
 .b3 .b3carte2 img {
   width: 6vw;
   transform: rotate(0deg) translateY(0);
 }
-/* line 212, ../sass/_action.scss */
+/* line 203, ../sass/_action.scss */
 .b3 .b3carte3 {
   position: absolute;
   margin-left: 24vw;
   margin-top: 5vh;
 }
-/* line 216, ../sass/_action.scss */
+/* line 207, ../sass/_action.scss */
 .b3 .b3carte3 img {
   width: 6vw;
   transform: rotate(0deg) translateY(0);
 }
-/* line 221, ../sass/_action.scss */
+/* line 212, ../sass/_action.scss */
 .b3 h1 {
   text-align: center;
   margin-top: 12px;
 }
-/* line 225, ../sass/_action.scss */
+/* line 216, ../sass/_action.scss */
 .b3 #annuler {
   margin-top: 19vh;
   margin-left: 1vw;
@@ -1037,7 +1371,7 @@ h1 {
   font-family: Robotaur;
   color: white;
 }
-/* line 233, ../sass/_action.scss */
+/* line 224, ../sass/_action.scss */
 .b3 #valider {
   margin-top: 19vh;
   margin-left: 23vw;
@@ -1046,7 +1380,7 @@ h1 {
   color: white;
 }
 
-/* line 244, ../sass/_action.scss */
+/* line 235, ../sass/_action.scss */
 .b4 {
   z-index: 15;
   position: absolute;
@@ -1058,56 +1392,56 @@ h1 {
   top: 48vh;
   border-radius: 6px;
 }
-/* line 254, ../sass/_action.scss */
+/* line 245, ../sass/_action.scss */
 .b4 .b4carte1 {
   position: absolute;
   margin-left: 11.5vw;
   margin-top: 5vh;
 }
-/* line 258, ../sass/_action.scss */
+/* line 249, ../sass/_action.scss */
 .b4 .b4carte1 img {
   width: 6vw;
   transform: rotate(0deg) translateY(0);
 }
-/* line 263, ../sass/_action.scss */
+/* line 254, ../sass/_action.scss */
 .b4 .b4carte2 {
   position: absolute;
   margin-left: 18.5vw;
   margin-top: 5vh;
 }
-/* line 267, ../sass/_action.scss */
+/* line 258, ../sass/_action.scss */
 .b4 .b4carte2 img {
   width: 6vw;
   transform: rotate(0deg) translateY(0);
 }
-/* line 273, ../sass/_action.scss */
+/* line 264, ../sass/_action.scss */
 .b4 .b4carte3 {
   position: absolute;
   margin-left: 25.5vw;
   margin-top: 5vh;
 }
-/* line 277, ../sass/_action.scss */
+/* line 268, ../sass/_action.scss */
 .b4 .b4carte3 img {
   width: 6vw;
   transform: rotate(0deg) translateY(0);
 }
-/* line 282, ../sass/_action.scss */
+/* line 273, ../sass/_action.scss */
 .b4 .b4carte4 {
   position: absolute;
   margin-left: 32.5vw;
   margin-top: 5vh;
 }
-/* line 286, ../sass/_action.scss */
+/* line 277, ../sass/_action.scss */
 .b4 .b4carte4 img {
   width: 6vw;
   transform: rotate(0deg) translateY(0);
 }
-/* line 291, ../sass/_action.scss */
+/* line 282, ../sass/_action.scss */
 .b4 h1 {
   text-align: center;
   margin-top: 12px;
 }
-/* line 295, ../sass/_action.scss */
+/* line 286, ../sass/_action.scss */
 .b4 #annuler {
   margin-top: 19vh;
   margin-left: 1vw;
@@ -1115,7 +1449,7 @@ h1 {
   font-family: Robotaur;
   color: white;
 }
-/* line 303, ../sass/_action.scss */
+/* line 294, ../sass/_action.scss */
 .b4 #valider {
   margin-top: 19vh;
   margin-left: 33vw;
@@ -1124,7 +1458,7 @@ h1 {
   color: white;
 }
 
-/* line 313, ../sass/_action.scss */
+/* line 304, ../sass/_action.scss */
 .concurrence {
   z-index: 15;
   position: absolute;
@@ -1136,24 +1470,24 @@ h1 {
   top: 47vh;
   border-radius: 6px;
 }
-/* line 323, ../sass/_action.scss */
+/* line 314, ../sass/_action.scss */
 .concurrence h1 {
   text-align: center;
   margin-top: 12px;
 }
-/* line 327, ../sass/_action.scss */
+/* line 318, ../sass/_action.scss */
 .concurrence #paire1 {
   margin-top: 3vh;
-  margin-left: 5vw;
+  margin-left: 4vw;
   padding-top: 4px;
 }
-/* line 333, ../sass/_action.scss */
+/* line 324, ../sass/_action.scss */
 .concurrence #paire2 {
   margin-top: 3vh;
-  margin-left: 8vw;
+  margin-left: 6vw;
   padding-top: 4px;
 }
-/* line 339, ../sass/_action.scss */
+/* line 330, ../sass/_action.scss */
 .concurrence #valider {
   margin-top: 2vh;
   margin-left: 35vw;
@@ -1161,15 +1495,23 @@ h1 {
   color: white;
   font-family: Robotaur;
 }
-/* line 346, ../sass/_action.scss */
-.concurrence span {
+/* line 337, ../sass/_action.scss */
+.concurrence input {
+  visibility: hidden;
+}
+/* line 341, ../sass/_action.scss */
+.concurrence input:checked + label {
+  color: #00fcff;
+  text-shadow: 0 0 0 #fff, 0 0 0 #fff, 0 0 0px black, 0 0 0 white, 0 0 20px white;
+}
+/* line 347, ../sass/_action.scss */
+.concurrence label {
   font-family: Robotaur;
   color: white;
 }
-/* line 351, ../sass/_action.scss */
+/* line 352, ../sass/_action.scss */
 .concurrence .cartes {
   width: 6vw;
-  background: #3e4750;
   position: relative;
   margin-left: 4vw;
   margin-top: 2vh;
@@ -1208,16 +1550,20 @@ h1 {
 /* line 387, ../sass/_action.scss */
 .cadeau .cartes {
   width: 6vw;
-  background: #3e4750;
   position: relative;
   margin-top: 2vh;
+  margin-left: 6.5vw;
 }
 /* line 394, ../sass/_action.scss */
+.cadeau .selection:checked + label img {
+  box-shadow: 0px 0px 10px 5px #00fcff;
+}
+/* line 399, ../sass/_action.scss */
 .cadeau .selection {
-  margin-left: 6vw;
+  display: none;
 }
 
-/* line 400, ../sass/_action.scss */
+/* line 405, ../sass/_action.scss */
 .victoire {
   z-index: 15;
   position: absolute;
@@ -1229,12 +1575,12 @@ h1 {
   top: 48vh;
   border-radius: 6px;
 }
-/* line 410, ../sass/_action.scss */
+/* line 415, ../sass/_action.scss */
 .victoire h1 {
   text-align: center;
   margin-top: 4vh;
 }
-/* line 414, ../sass/_action.scss */
+/* line 419, ../sass/_action.scss */
 .victoire h2 {
   text-align: right;
   color: white;
@@ -1244,14 +1590,14 @@ h1 {
   margin-top: 1vh;
   margin-left: 28vw;
 }
-/* line 423, ../sass/_action.scss */
+/* line 428, ../sass/_action.scss */
 .victoire a {
   text-align: right;
   color: #53D0FF;
   font-family: Robotaur;
 }
 
-/* line 431, ../sass/_action.scss */
+/* line 436, ../sass/_action.scss */
 .tour {
   z-index: 15;
   position: absolute;
@@ -1263,12 +1609,12 @@ h1 {
   top: 48vh;
   border-radius: 6px;
 }
-/* line 441, ../sass/_action.scss */
+/* line 446, ../sass/_action.scss */
 .tour h1 {
   text-align: center;
   margin-top: 4vh;
 }
-/* line 445, ../sass/_action.scss */
+/* line 450, ../sass/_action.scss */
 .tour h2 {
   text-align: right;
   color: white;
@@ -1279,156 +1625,156 @@ h1 {
   margin-left: 28vw;
 }
 
-/* line 457, ../sass/_action.scss */
+/* line 462, ../sass/_action.scss */
 .terrain1 {
   position: absolute;
   margin-top: 18.5vh;
   margin-left: 18vw;
 }
-/* line 461, ../sass/_action.scss */
+/* line 466, ../sass/_action.scss */
 .terrain1 img {
   width: 1.5vw;
 }
 
-/* line 466, ../sass/_action.scss */
+/* line 471, ../sass/_action.scss */
 .terrain2 {
   position: absolute;
   margin-top: 18.5vh;
   margin-left: 27vw;
 }
-/* line 470, ../sass/_action.scss */
+/* line 475, ../sass/_action.scss */
 .terrain2 img {
   width: 1.5vw;
 }
 
-/* line 475, ../sass/_action.scss */
+/* line 480, ../sass/_action.scss */
 .terrain3 {
   position: absolute;
   margin-top: 18.5vh;
   margin-left: 36vw;
 }
-/* line 479, ../sass/_action.scss */
+/* line 484, ../sass/_action.scss */
 .terrain3 img {
   width: 1.5vw;
 }
 
-/* line 484, ../sass/_action.scss */
+/* line 489, ../sass/_action.scss */
 .terrain4 {
   position: absolute;
   margin-top: 18.5vh;
   margin-left: 45vw;
 }
-/* line 488, ../sass/_action.scss */
+/* line 493, ../sass/_action.scss */
 .terrain4 img {
   width: 1.5vw;
 }
 
-/* line 493, ../sass/_action.scss */
+/* line 498, ../sass/_action.scss */
 .terrain5 {
   position: absolute;
   margin-top: 18.5vh;
   margin-left: 54vw;
 }
-/* line 497, ../sass/_action.scss */
+/* line 502, ../sass/_action.scss */
 .terrain5 img {
   width: 1.5vw;
 }
 
-/* line 502, ../sass/_action.scss */
+/* line 507, ../sass/_action.scss */
 .terrain6 {
   position: absolute;
   margin-top: 18.5vh;
   margin-left: 63vw;
 }
-/* line 506, ../sass/_action.scss */
+/* line 511, ../sass/_action.scss */
 .terrain6 img {
   width: 1.5vw;
 }
 
-/* line 512, ../sass/_action.scss */
+/* line 517, ../sass/_action.scss */
 .terrain7 {
   position: absolute;
   margin-top: 18.5vh;
   margin-left: 72vw;
 }
-/* line 516, ../sass/_action.scss */
+/* line 521, ../sass/_action.scss */
 .terrain7 img {
   width: 1.5vw;
 }
 
-/* line 522, ../sass/_action.scss */
+/* line 527, ../sass/_action.scss */
 .terrainb1 {
   position: absolute;
   margin-top: 43vh;
   margin-left: 18vw;
 }
-/* line 526, ../sass/_action.scss */
+/* line 531, ../sass/_action.scss */
 .terrainb1 img {
   width: 1.5vw;
 }
 
-/* line 531, ../sass/_action.scss */
+/* line 536, ../sass/_action.scss */
 .terrainb2 {
   position: absolute;
   margin-top: 43vh;
   margin-left: 27vw;
 }
-/* line 535, ../sass/_action.scss */
+/* line 540, ../sass/_action.scss */
 .terrainb2 img {
   width: 1.5vw;
 }
 
-/* line 540, ../sass/_action.scss */
+/* line 545, ../sass/_action.scss */
 .terrainb3 {
   position: absolute;
   margin-top: 43vh;
   margin-left: 36vw;
 }
-/* line 544, ../sass/_action.scss */
+/* line 549, ../sass/_action.scss */
 .terrainb3 img {
   width: 1.5vw;
 }
 
-/* line 549, ../sass/_action.scss */
+/* line 554, ../sass/_action.scss */
 .terrainb4 {
   position: absolute;
   margin-top: 43vh;
   margin-left: 45vw;
 }
-/* line 553, ../sass/_action.scss */
+/* line 558, ../sass/_action.scss */
 .terrainb4 img {
   width: 1.5vw;
 }
 
-/* line 558, ../sass/_action.scss */
+/* line 563, ../sass/_action.scss */
 .terrainb5 {
   position: absolute;
   margin-top: 43vh;
   margin-left: 54vw;
 }
-/* line 562, ../sass/_action.scss */
+/* line 567, ../sass/_action.scss */
 .terrainb5 img {
   width: 1.5vw;
 }
 
-/* line 567, ../sass/_action.scss */
+/* line 572, ../sass/_action.scss */
 .terrainb6 {
   position: absolute;
   margin-top: 43vh;
   margin-left: 63vw;
 }
-/* line 571, ../sass/_action.scss */
+/* line 576, ../sass/_action.scss */
 .terrainb6 img {
   width: 1.5vw;
 }
 
-/* line 577, ../sass/_action.scss */
+/* line 582, ../sass/_action.scss */
 .terrainb7 {
   position: absolute;
   margin-top: 43vh;
   margin-left: 72vw;
 }
-/* line 581, ../sass/_action.scss */
+/* line 586, ../sass/_action.scss */
 .terrainb7 img {
   width: 1.5vw;
   z-index: 0;

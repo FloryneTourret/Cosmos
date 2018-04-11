@@ -106,6 +106,49 @@
 {% endif %}
 
 {#CARTES ADVERSAIRE#}
+{% if partie.PartieTour==1 %}
+<div class="cartes_adversaire">
+    {% if app.user.id == partie.Joueur1.Id %}
+        {% for carte in partie.MainJ2 |sort %}
+            {% set counter = ( counter | default(0) ) + 1 %}
+            {% if counter == 1 %}
+                <img class="nb1anim" src="{{ asset('assets/img/carte_dos.png') }}">
+            {% elseif counter == 2 %}
+                <img class="nb2anim" src="{{ asset('assets/img/carte_dos.png') }}">
+            {% elseif counter == 3 %}
+                <img class="nb3anim" src="{{ asset('assets/img/carte_dos.png') }}">
+            {% elseif counter == 4 %}
+                <img class="nb4anim" src="{{ asset('assets/img/carte_dos.png') }}">
+            {% elseif counter == 5 %}
+                <img class="nb5anim" src="{{ asset('assets/img/carte_dos.png') }}">
+            {% elseif counter == 6 %}
+                <img class="nb6anim" src="{{ asset('assets/img/carte_dos.png') }}">
+            {% elseif counter == 7 %}
+                <img class="nb7anim" src="{{ asset('assets/img/carte_dos.png') }}">
+            {% endif %}
+        {% endfor %}
+    {% elseif app.user.id == partie.Joueur2.Id %}
+        {% for carte in partie.MainJ1 |sort %}
+            {% set counter = ( counter | default(0) ) + 1 %}
+            {% if counter == 1 %}
+                <img class="nb1anim" src="{{ asset('assets/img/carte_dos.png') }}">
+            {% elseif counter == 2 %}
+                <img class="nb2anim" src="{{ asset('assets/img/carte_dos.png') }}">
+            {% elseif counter == 3 %}
+                <img class="nb3anim" src="{{ asset('assets/img/carte_dos.png') }}">
+            {% elseif counter == 4 %}
+                <img class="nb4anim" src="{{ asset('assets/img/carte_dos.png') }}">
+            {% elseif counter == 5 %}
+                <img class="nb5anim" src="{{ asset('assets/img/carte_dos.png') }}">
+            {% elseif counter == 6 %}
+                <img class="nb6anim" src="{{ asset('assets/img/carte_dos.png') }}">
+            {% elseif counter == 7 %}
+                <img class="nb7anim" src="{{ asset('assets/img/carte_dos.png') }}">
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+</div>
+{% else %}
 <div class="cartes_adversaire">
     {% if app.user.id == partie.Joueur1.Id %}
         {% for carte in partie.MainJ2 |sort %}
@@ -147,7 +190,7 @@
         {% endfor %}
     {% endif %}
 </div>
-
+{% endif %}
 
 {#TERRAIN ADVERSAIRE#}
 {% if app.user.id == partie.Joueur1.Id %}
@@ -823,8 +866,8 @@
             <h1>Selectionnez une carte cadeau</h1>
             <form method="post" action="{{ path('choix_cadeau') }}">
                 {% for carte in partie.carteCadeauJ2 %}
-                    <input class="selection" type="radio" name="id_carte" value="{{ Objets[carte].Id }}">
-                    <img class="cartes" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                    <input class="selection" type="radio" name="id_carte" id="{{ Objets[carte].Id }}" value="{{ Objets[carte].Id }}">
+                    <label for="{{ Objets[carte].Id }}"><img class="cartes" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
                 {% endfor %}
                 <button class="bouton" id="valider" type="submit" name="id" value="{{ partie.Id }}">Choisir</button>
             </form>
@@ -836,8 +879,8 @@
             <h1>Selectionnez une carte cadeau</h1>
             <form method="post" action="{{ path('choix_cadeau') }}">
                 {% for carte in partie.carteCadeauJ1 %}
-                    <input class="selection" type="radio" name="id_carte" value="{{ Objets[carte].Id }}">
-                    <img class="cartes" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                    <input class="selection" type="radio" name="id_carte" id="{{ Objets[carte].Id }}" value="{{ Objets[carte].Id }}">
+                    <label for="{{ Objets[carte].Id }}"><img class="cartes" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
                 {% endfor %}
                 <button class="bouton" id="valider" type="submit" name="id" value="{{ partie.Id }}">Choisir</button>
             </form>
@@ -849,13 +892,22 @@
 {% if app.user.id == partie.Joueur1.Id  %}
     {% if partie.CarteConcurrenceJ2!=null %}
         <div class="concurrence">
+            <form method="post" action="{{ path('choix_concurrence') }}">
             <h1>Selectionnez une paire de cartes</h1>
             {% for carte in partie.carteConcurrenceJ2 %}
-                <img class="cartes" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                {% set counter = ( counter | default(0) ) + 1 %}
+                {% if counter == 1 %}
+                <label for="paire1"><img class="cartes paires1" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                {% elseif counter == 2 %}
+                <label for="paire1"><img class="cartes paires1" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                {% elseif counter == 3 %}
+                <label for="paire2"><img class="cartes paires2" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                {% elseif counter == 4 %}
+                <label for="paire2"><img class="cartes paires2" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                {% endif %}
             {% endfor %}
-            <form method="post" action="{{ path('choix_concurrence') }}">
-                <input id="paire1" type="radio" name="paire" value="1"><span> Première paire</span>
-                <input id="paire2" type="radio" name="paire" value="2"><span> Deuxième paire</span>
+                <input id="paire1" type="radio" name="paire" value="1"><label for="paire1"> Première paire</label>
+                <input id="paire2" type="radio" name="paire" value="2"><label for="paire2"> Deuxième paire</label>
                 <button class="bouton" id="valider" type="submit" name="id" value="{{ partie.Id }}">Choisir</button>
             </form>
         </div>
@@ -863,13 +915,23 @@
 {% elseif  app.user.id == partie.Joueur2.Id %}
     {% if partie.CarteConcurrenceJ1!=null %}
         <div class="concurrence">
+            <form method="post" action="{{ path('choix_concurrence') }}">
             <h1>Selectionnez une paire de cartes</h1>
             {% for carte in partie.carteConcurrenceJ1 %}
-                <img class="cartes" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                {% set counter = ( counter | default(0) ) + 1 %}
+                {% if counter == 1 %}
+                    <label for="paire1"><img class="cartes paires1" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                {% elseif counter == 2 %}
+                    <label for="paire1"><img class="cartes paires1" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                {% elseif counter == 3 %}
+                    <label for="paire2"><img class="cartes paires2" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                {% elseif counter == 4 %}
+                    <label for="paire2"><img class="cartes paires2" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}"></label>
+                {% endif %}
             {% endfor %}
-            <form method="post" action="{{ path('choix_concurrence') }}">
-                <input id="paire1" type="radio" name="paire" value="1"><span> Première paire</span>
-                <input id="paire2" type="radio" name="paire" value="2"><span> Deuxième paire</span>
+
+                <input id="paire1" type="radio" name="paire" value="1"><label for="paire1"> Première paire</label>
+                <input id="paire2" type="radio" name="paire" value="2"><label for="paire2"> Deuxième paire</label>
                 <button class="bouton" id="valider" type="submit" name="id" value="{{ partie.Id }}">Choisir</button>
             </form>
         </div>
@@ -1056,44 +1118,87 @@
 {% endif %}
 
  {#CARTES EN MAIN#}
-<div class="objet">
-    {% if app.user.id == partie.Joueur1.Id %}
-        {% for carte in partie.MainJ1 |sort %}
-            {% set counter = ( counter | default(0) ) + 1 %}
-            {% if counter == 1 %}
-                <img class="n0" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
-            {% elseif counter == 2 %}
-                <img class="n1" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
-            {% elseif counter == 3 %}
-                <img class="n2" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
-            {% elseif counter == 4 %}
-                <img class="n3" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
-            {% elseif counter == 5 %}
-                <img class="n4" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
-            {% elseif counter == 6 %}
-                <img class="n5" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
-            {% elseif counter == 7 %}
-                <img class="n6" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+{% if partie.PartieTour==1 %}
+    <div class="objet">
+        {% if app.user.id == partie.Joueur1.Id %}
+            {% for carte in partie.MainJ1 |sort %}
+                {% set counter = ( counter | default(0) ) + 1 %}
+                {% if counter == 1 %}
+                    <img class="n0anim" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                {% elseif counter == 2 %}
+                    <img class="n1anim" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                {% elseif counter == 3 %}
+                    <img class="n2anim" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                {% elseif counter == 4 %}
+                    <img class="n3anim" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                {% elseif counter == 5 %}
+                    <img class="n4anim" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                {% elseif counter == 6 %}
+                    <img class="n5anim" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                {% elseif counter == 7 %}
+                    <img class="n6anim" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                {% endif %}
+            {% endfor %}
+        {% elseif app.user.id == partie.Joueur2.Id %}
+            {% for carte in partie.MainJ2 |sort %}
+                {% set counter = ( counter | default(0) ) + 1 %}
+                {% if counter == 1 %}
+                    <img class="n0anim" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                {% elseif counter == 2 %}
+                    <img class="n1anim" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                {% elseif counter == 3 %}
+                    <img class="n2anim" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                {% elseif counter == 4 %}
+                    <img class="n3anim" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                {% elseif counter == 5 %}
+                    <img class="n4anim" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                {% elseif counter == 6 %}
+                    <img class="n5anim" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                {% elseif counter == 7 %}
+                    <img class="n6anim" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% else %}
+        <div class="objet">
+            {% if app.user.id == partie.Joueur1.Id %}
+                {% for carte in partie.MainJ1 |sort %}
+                    {% set counter = ( counter | default(0) ) + 1 %}
+                    {% if counter == 1 %}
+                        <img class="n0" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                    {% elseif counter == 2 %}
+                        <img class="n1" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                    {% elseif counter == 3 %}
+                        <img class="n2" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                    {% elseif counter == 4 %}
+                        <img class="n3" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                    {% elseif counter == 5 %}
+                        <img class="n4" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                    {% elseif counter == 6 %}
+                        <img class="n5" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                    {% elseif counter == 7 %}
+                        <img class="n6" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                    {% endif %}
+                {% endfor %}
+            {% elseif app.user.id == partie.Joueur2.Id %}
+                {% for carte in partie.MainJ2 |sort %}
+                    {% set counter = ( counter | default(0) ) + 1 %}
+                    {% if counter == 1 %}
+                        <img class="n0" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                    {% elseif counter == 2 %}
+                        <img class="n1" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                    {% elseif counter == 3 %}
+                        <img class="n2" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                    {% elseif counter == 4 %}
+                        <img class="n3" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                    {% elseif counter == 5 %}
+                        <img class="n4" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                    {% elseif counter == 6 %}
+                        <img class="n5" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                    {% elseif counter == 7 %}
+                        <img class="n6" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                    {% endif %}
+                {% endfor %}
             {% endif %}
-        {% endfor %}
-    {% elseif app.user.id == partie.Joueur2.Id %}
-        {% for carte in partie.MainJ2 |sort %}
-            {% set counter = ( counter | default(0) ) + 1 %}
-            {% if counter == 1 %}
-                <img class="n0" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
-            {% elseif counter == 2 %}
-                <img class="n1" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
-            {% elseif counter == 3 %}
-                <img class="n2" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
-            {% elseif counter == 4 %}
-                <img class="n3" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
-            {% elseif counter == 5 %}
-                <img class="n4" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
-            {% elseif counter == 6 %}
-                <img class="n5" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
-            {% elseif counter == 7 %}
-                <img class="n6" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
-            {% endif %}
-        {% endfor %}
     {% endif %}
 </div>

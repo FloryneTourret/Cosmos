@@ -134,23 +134,7 @@
 
                 <script src="{{ asset('assets/js/action.js') }}"></script>
                 <script src="{{ asset('assets/js/menu.js') }}"></script>
-
-                <script>
-                    console.clear();
-                    var checkbox = document.getElementsByClassName('checkbox'),
-                        form = document.getElementById('formulaire'),
-                        ordre=[];
-
-                    for(var i=0, len=7; i<len; i++){
-                        checkbox[i].onclick=function(){
-                            if(this.checked)
-                                ordre.push(this.value);
-                            else if((key = ordre.indexOf(this.value)) >-1 )
-                                ordre.splice(key,1);
-                            form.paires.value = '['+ordre.join(',')+']';
-                        };
-                    }
-                </script>
+                <script src="{{ asset('assets/js/action4.js') }}"></script>
 
 
                 <script src="{{ asset('assets/js/chat.js') }}"></script>
