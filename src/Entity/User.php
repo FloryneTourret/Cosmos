@@ -26,21 +26,21 @@ class User implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(type="string", unique=true)
+     * @ORM\Column(type="string", unique=true, length=20)
      */
     private $username;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string", unique=true)
+     * @ORM\Column(type="string", unique=true, length=100)
      */
     private $email;
 
     /**
      * @var string
      *
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", length=255)
      */
     private $password;
 
@@ -65,9 +65,9 @@ class User implements UserInterface, \Serializable
     private $Tutoriel;
 
     /**
-     * @var array
+     * @var
      *
-     * @ORM\Column(type="json")
+     * @ORM\Column(type="text")
      */
     private $roles = [];
 
@@ -174,14 +174,12 @@ class User implements UserInterface, \Serializable
 
 
 
-
-
     /**
      * Retourne les rôles de l'user
      */
     public function getRoles(): array
     {
-        $roles = $this->roles;
+        $roles = json_decode($this->roles, true);
 
         // Afin d'être sûr qu'un user a toujours au moins 1 rôle
         if (empty($roles)) {
@@ -193,7 +191,7 @@ class User implements UserInterface, \Serializable
 
     public function setRoles(array $roles): void
     {
-        $this->roles = $roles;
+        $this->roles = json_encode($roles);
     }
 
     /**

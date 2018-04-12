@@ -131,19 +131,19 @@
         {% for carte in partie.MainJ1 |sort %}
             {% set counter = ( counter | default(0) ) + 1 %}
             {% if counter == 1 %}
-                <img class="nb1anim" src="{{ asset('assets/img/carte_dos.png') }}">
+                <img class="nb1" src="{{ asset('assets/img/carte_dos.png') }}">
             {% elseif counter == 2 %}
-                <img class="nb2anim" src="{{ asset('assets/img/carte_dos.png') }}">
+                <img class="nb2" src="{{ asset('assets/img/carte_dos.png') }}">
             {% elseif counter == 3 %}
-                <img class="nb3anim" src="{{ asset('assets/img/carte_dos.png') }}">
+                <img class="nb3" src="{{ asset('assets/img/carte_dos.png') }}">
             {% elseif counter == 4 %}
-                <img class="nb4anim" src="{{ asset('assets/img/carte_dos.png') }}">
+                <img class="nb4" src="{{ asset('assets/img/carte_dos.png') }}">
             {% elseif counter == 5 %}
-                <img class="nb5anim" src="{{ asset('assets/img/carte_dos.png') }}">
+                <img class="nb5" src="{{ asset('assets/img/carte_dos.png') }}">
             {% elseif counter == 6 %}
-                <img class="nb6anim" src="{{ asset('assets/img/carte_dos.png') }}">
+                <img class="nb6" src="{{ asset('assets/img/carte_dos.png') }}">
             {% elseif counter == 7 %}
-                <img class="nb7anim" src="{{ asset('assets/img/carte_dos.png') }}">
+                <img class="nb7" src="{{ asset('assets/img/carte_dos.png') }}">
             {% endif %}
         {% endfor %}
     {% endif %}
@@ -1143,19 +1143,19 @@
             {% for carte in partie.MainJ2 |sort %}
                 {% set counter = ( counter | default(0) ) + 1 %}
                 {% if counter == 1 %}
-                    <img class="n0anim" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                    <img class="n0" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
                 {% elseif counter == 2 %}
-                    <img class="n1anim" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                    <img class="n1" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
                 {% elseif counter == 3 %}
-                    <img class="n2anim" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                    <img class="n2" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
                 {% elseif counter == 4 %}
-                    <img class="n3anim" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                    <img class="n3" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
                 {% elseif counter == 5 %}
-                    <img class="n4anim" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                    <img class="n4" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
                 {% elseif counter == 6 %}
-                    <img class="n5anim" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                    <img class="n5" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
                 {% elseif counter == 7 %}
-                    <img class="n6anim" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
+                    <img class="n6" src="{{ asset('assets/img/' ~ Objets[carte].CarteImg) }}">
                 {% endif %}
             {% endfor %}
         {% endif %}
