@@ -2091,19 +2091,19 @@ body {
   color: white;
   font-size: 100%;
   background-color: #000000;
+  font-family: 'Work Sans', sans-serif;
 }
 
-/* line 11, ../sass/_index.scss */
+/* line 12, ../sass/_index.scss */
 .body {
   position: absolute;
   background: #020011 url("../img/1x/fond.png") no-repeat;
   background-size: cover;
-  font-family: 'Work Sans', sans-serif;
   width: 100%;
   height: 100vh;
 }
 @media (max-width: 800px) {
-  /* line 11, ../sass/_index.scss */
+  /* line 12, ../sass/_index.scss */
   .body {
     height: 100vh;
   }
@@ -2212,13 +2212,19 @@ body {
   position: relative;
   color: #ffffff;
 }
+@media (max-width: 1400px) {
+  /* line 100, ../sass/_index.scss */
+  .nav ul li a {
+    font-size: 2.5rem;
+  }
+}
 @media (max-width: 800px) {
   /* line 100, ../sass/_index.scss */
   .nav ul li a {
     font-size: 1.5rem;
   }
 }
-/* line 114, ../sass/_index.scss */
+/* line 118, ../sass/_index.scss */
 .nav ul li a::after {
   content: '';
   position: absolute;
@@ -2232,23 +2238,23 @@ body {
   transform-origin: bottom right;
   transition: transform 0.25s ease-out;
 }
-/* line 129, ../sass/_index.scss */
+/* line 133, ../sass/_index.scss */
 .nav ul li a:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
 
-/* line 137, ../sass/_index.scss */
+/* line 141, ../sass/_index.scss */
 .img-logo {
   display: inline-block;
 }
 @media (max-width: 1200px) {
-  /* line 137, ../sass/_index.scss */
+  /* line 141, ../sass/_index.scss */
   .img-logo {
     display: flex;
   }
 }
-/* line 143, ../sass/_index.scss */
+/* line 147, ../sass/_index.scss */
 .img-logo .logo {
   position: relative;
   display: inline-flex;
@@ -2259,7 +2265,7 @@ body {
   z-index: 8;
 }
 @media (max-width: 1200px) {
-  /* line 143, ../sass/_index.scss */
+  /* line 147, ../sass/_index.scss */
   .img-logo .logo {
     display: flex;
     justify-content: center;
@@ -2269,7 +2275,7 @@ body {
   }
 }
 
-/* line 162, ../sass/_index.scss */
+/* line 166, ../sass/_index.scss */
 .logo-grande-nav {
   position: relative;
   display: inline-flex;
@@ -2280,13 +2286,13 @@ body {
   z-index: 8;
 }
 @media (max-width: 1214px) {
-  /* line 162, ../sass/_index.scss */
+  /* line 166, ../sass/_index.scss */
   .logo-grande-nav {
     display: none;
   }
 }
 
-/* line 175, ../sass/_index.scss */
+/* line 179, ../sass/_index.scss */
 .regle {
   display: flex;
   justify-content: center;
@@ -2294,12 +2300,12 @@ body {
   z-index: 50;
 }
 @media (max-width: 800px) {
-  /* line 175, ../sass/_index.scss */
+  /* line 179, ../sass/_index.scss */
   .regle {
     margin-top: 10px;
   }
 }
-/* line 185, ../sass/_index.scss */
+/* line 189, ../sass/_index.scss */
 .regle a {
   font-size: 10rem;
   text-decoration: none;
@@ -2311,23 +2317,23 @@ body {
   z-index: 50;
 }
 @media (max-width: 1560px) {
-  /* line 185, ../sass/_index.scss */
+  /* line 189, ../sass/_index.scss */
   .regle a {
     font-size: 8rem;
   }
 }
 @media (max-width: 800px) {
-  /* line 185, ../sass/_index.scss */
+  /* line 189, ../sass/_index.scss */
   .regle a {
     font-size: 4.5rem;
   }
 }
-/* line 207, ../sass/_index.scss */
+/* line 211, ../sass/_index.scss */
 .regle a:hover {
   text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff;
 }
 
-/* line 214, ../sass/_index.scss */
+/* line 218, ../sass/_index.scss */
 #moncercle {
   z-index: 1;
   margin-top: 250px;
@@ -2341,7 +2347,7 @@ body {
   box-shadow: 0px 0px 78px 10px rgba(255, 222, 85, 0.73);
 }
 @media (max-width: 800px) {
-  /* line 214, ../sass/_index.scss */
+  /* line 218, ../sass/_index.scss */
   #moncercle {
     width: 8rem;
     height: 8rem;
@@ -3200,7 +3206,7 @@ section .logs {
   position: absolute;
 }
 
-/* line 6, ../sass/_chat.scss */
+/* line 5, ../sass/_chat.scss */
 section#chat {
   z-index: 20;
   position: absolute;
@@ -3209,7 +3215,7 @@ section#chat {
   width: 20vw;
   height: 40vh;
   bottom: 6vh;
-  font: 11px 'Robotaur';
+  font: 11px "Robotaur";
   color: white;
   box-shadow: 1px 1px 20px 7px #00fcff;
   margin-left: 3vw;
@@ -3217,45 +3223,45 @@ section#chat {
   overflow-x: hidden;
 }
 
-/* line 22, ../sass/_chat.scss */
+/* line 21, ../sass/_chat.scss */
 form.formchat {
   bottom: 0;
   height: 50px;
   position: absolute;
 }
 
-/* line 28, ../sass/_chat.scss */
+/* line 27, ../sass/_chat.scss */
 form.formchat input {
   z-index: 25;
   position: fixed;
   bottom: 0;
   border: 0;
   height: 6vh;
-  width: 20vw;
+  width: 19.85vw;
   margin-right: 0.5%;
   margin-left: 3vw;
   font-size: 20px;
   outline: none;
   background-color: #585c60;
   color: white;
-  font: 1.2em 'Work Sans';
+  font: 1.2em "Work Sans";
   box-shadow: 1px 15px 20px 7px #00fcff;
 }
 
-/* line 45, ../sass/_chat.scss */
+/* line 44, ../sass/_chat.scss */
 section#chat #messages li span.username {
   display: inline-block;
   margin-right: 5px;
   color: white;
-  font-family: 'Robotaur';
+  font-family: "Robotaur";
 }
 
-/* line 53, ../sass/_chat.scss */
+/* line 51, ../sass/_chat.scss */
 section#chat form input:focus {
   transition: all 0.2s;
 }
 
-/* line 57, ../sass/_chat.scss */
+/* line 55, ../sass/_chat.scss */
 section#chat #messages {
   list-style-type: none;
   margin: 0;
@@ -3263,45 +3269,194 @@ section#chat #messages {
   font-size: 15px;
 }
 
-/* line 63, ../sass/_chat.scss */
+/* line 61, ../sass/_chat.scss */
 section#chat #messages li {
   padding: 5px 10px;
-  font-family: 'Work Sans';
+  font-family: "Work Sans";
   font-size: 1.2em;
 }
 
-/* line 69, ../sass/_chat.scss */
+/* line 67, ../sass/_chat.scss */
 form.formchat input::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
-  font-family: 'Work Sans';
+  font-family: "Work Sans";
   font-size: 1.2em;
   color: white;
   text-align: center;
 }
 
-/* line 76, ../sass/_chat.scss */
+/* line 74, ../sass/_chat.scss */
 ::-moz-placeholder {
   /* Firefox 19+ */
-  font-family: 'Work Sans';
+  font-family: "Work Sans";
   font-size: 1.2em;
   color: white;
   text-align: center;
 }
 
-/* line 83, ../sass/_chat.scss */
+/* line 81, ../sass/_chat.scss */
 :-ms-input-placeholder {
   /* IE 10+ */
-  font-family: 'Work Sans';
+  font-family: "Work Sans";
   font-size: 1.2em;
   color: white;
   padding-left: 5px;
   text-align: center;
 }
 
-/* line 91, ../sass/_chat.scss */
+/* line 89, ../sass/_chat.scss */
 :-moz-placeholder {
   /* Firefox 18- */
-  font-family: 'Work Sans';
+  font-family: "Work Sans";
+  font-size: 1.2em;
+  color: white;
+  padding-left: 5px;
+  text-align: center;
+}
+
+/** CHAT JEU **/
+/* line 100, ../sass/_chat.scss */
+.backchatactive {
+  position: fixed;
+  z-index: 100;
+  bottom: 0;
+  left: 71.5vw;
+  width: 15vw;
+  height: 0;
+  border-bottom: 50px solid black;
+  border-left: 58px solid transparent;
+  border-right: 58px solid transparent;
+}
+/* line 110, ../sass/_chat.scss */
+.backchatactive h1 {
+  padding-top: 2.3vh;
+  text-align: center;
+}
+
+/* line 116, ../sass/_chat.scss */
+.backchat {
+  position: fixed;
+  z-index: 100;
+  transform: translateY(-23.2vw);
+  bottom: 0;
+  left: 71.5vw;
+  width: 15vw;
+  height: 0;
+  border-bottom: 50px solid black;
+  border-left: 58px solid transparent;
+  border-right: 58px solid transparent;
+}
+/* line 128, ../sass/_chat.scss */
+.backchat h1 {
+  padding-top: 2.3vh;
+  text-align: center;
+}
+
+/* line 134, ../sass/_chat.scss */
+section#chatsite {
+  z-index: 20;
+  position: fixed;
+  background: #011529;
+  opacity: 0.8;
+  width: 20vw;
+  height: 40vh;
+  bottom: 6vh;
+  left: 70vw;
+  font: 11px "Robotaur";
+  color: white;
+  box-shadow: 1px 1px 20px 7px #00fcff;
+  margin-left: 3vw;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+/* line 151, ../sass/_chat.scss */
+form.formsite {
+  bottom: 0;
+  height: 50px;
+  position: fixed;
+}
+
+/* line 157, ../sass/_chat.scss */
+form.formsite input {
+  z-index: 25;
+  position: fixed;
+  bottom: 0;
+  left: 70vw;
+  border: 0;
+  height: 6vh;
+  width: 19.85vw;
+  margin-right: 0.5%;
+  margin-left: 3vw;
+  font-size: 20px;
+  outline: none;
+  background-color: #585c60;
+  color: white;
+  font: 1.2em "Work Sans";
+  box-shadow: 1px 15px 20px 7px #00fcff;
+}
+
+/* line 175, ../sass/_chat.scss */
+section#chatsite #messages li span.username {
+  display: inline-block;
+  margin-right: 5px;
+  color: white;
+  font-size: 14px;
+  font-family: "Robotaur";
+}
+
+/* line 183, ../sass/_chat.scss */
+section#chatsite form input:focus {
+  transition: all 0.2s;
+}
+
+/* line 187, ../sass/_chat.scss */
+section#chatsite #messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+}
+
+/* line 193, ../sass/_chat.scss */
+section#chatsite #messages li {
+  padding: 5px 10px;
+  font-family: "Work Sans";
+  font-size: 1.2em;
+}
+
+/* line 199, ../sass/_chat.scss */
+form.formsite input::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  font-family: "Work Sans";
+  font-size: 1.2em;
+  color: white;
+  text-align: center;
+}
+
+/* line 206, ../sass/_chat.scss */
+::-moz-placeholder {
+  /* Firefox 19+ */
+  font-family: "Work Sans";
+  font-size: 1.2em;
+  color: white;
+  text-align: center;
+}
+
+/* line 213, ../sass/_chat.scss */
+:-ms-input-placeholder {
+  /* IE 10+ */
+  font-family: "Work Sans";
+  font-size: 1.2em;
+  color: white;
+  padding-left: 5px;
+  text-align: center;
+}
+
+/* line 221, ../sass/_chat.scss */
+:-moz-placeholder {
+  /* Firefox 18- */
+  font-family: "Work Sans";
   font-size: 1.2em;
   color: white;
   padding-left: 5px;
@@ -3315,7 +3470,7 @@ formaulaire
 .formulaire-profil {
   width: 100%;
   min-height: 75vh;
-  margin-top: 200px;
+  margin-top: 170px;
 }
 @media (max-width: 1300px) {
   /* line 5, ../sass/_profil_form.scss */
@@ -3382,10 +3537,45 @@ formaulaire
   margin-bottom: 10px;
 }
 /* line 67, ../sass/_profil_form.scss */
+.formulaire-profil .contenu-form .bas-profil .embed-responsive {
+  position: relative;
+  display: block;
+  width: 80%;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0px 0px 40px  #00fcff;
+}
+/* line 77, ../sass/_profil_form.scss */
+.formulaire-profil .contenu-form .bas-profil .embed-responsive::before {
+  display: flex;
+  justify-content: center;
+  content: "";
+}
+/* line 85, ../sass/_profil_form.scss */
+.formulaire-profil .contenu-form .bas-profil .embed-responsive .embed-responsive-item,
+.formulaire-profil .contenu-form .bas-profil .embed-responsive iframe,
+.formulaire-profil .contenu-form .bas-profil .embed-responsive embed,
+.formulaire-profil .contenu-form .bas-profil .embed-responsive object,
+.formulaire-profil .contenu-form .bas-profil .embed-responsive video {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+/* line 103, ../sass/_profil_form.scss */
+.formulaire-profil .contenu-form .bas-profil .embed-responsive-16by9::before {
+  padding-top: 56.25%;
+  margin: 0 auto;
+}
+/* line 109, ../sass/_profil_form.scss */
 .formulaire-profil .contenu-form .bas-profil .envoyer input {
   width: 100%;
   font-size: 1.5rem;
-  margin-top: 20px;
   text-align: right;
   margin-right: 10px;
   background: none;
@@ -3395,61 +3585,61 @@ formaulaire
   transition: 0.3s;
   font-family: 'Robotaur2';
 }
-/* line 81, ../sass/_profil_form.scss */
+/* line 122, ../sass/_profil_form.scss */
 .formulaire-profil .contenu-form .bas-profil .envoyer input:hover {
   text-shadow: 0 0 0 #fff, 0 0 0 #fff, 0 0 0px black, 0 0 0 #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff, 0 0 10px #00fcff;
 }
-/* line 87, ../sass/_profil_form.scss */
+/* line 128, ../sass/_profil_form.scss */
 .formulaire-profil .contenu-form .bas-profil .element-classement {
   font-size: 1.5rem;
 }
-/* line 90, ../sass/_profil_form.scss */
+/* line 131, ../sass/_profil_form.scss */
 .formulaire-profil .contenu-form .bas-profil .element-classement .tableau {
   text-align: center;
   height: 40vh;
   overflow-y: scroll;
   overflow-x: hidden;
 }
-/* line 96, ../sass/_profil_form.scss */
+/* line 137, ../sass/_profil_form.scss */
 .formulaire-profil .contenu-form .bas-profil .element-classement table {
   width: 63vw;
   background-color: transparent;
 }
-/* line 99, ../sass/_profil_form.scss */
+/* line 140, ../sass/_profil_form.scss */
 .formulaire-profil .contenu-form .bas-profil .element-classement table thead {
   height: 30px;
 }
-/* line 101, ../sass/_profil_form.scss */
+/* line 142, ../sass/_profil_form.scss */
 .formulaire-profil .contenu-form .bas-profil .element-classement table thead th {
   font-family: 'Work Sans';
   padding: 20px;
   text-align: center;
   font-size: 1.5rem;
 }
-/* line 109, ../sass/_profil_form.scss */
+/* line 150, ../sass/_profil_form.scss */
 .formulaire-profil .contenu-form .bas-profil .element-classement table tbody {
   border: solid 1px white;
 }
-/* line 111, ../sass/_profil_form.scss */
+/* line 152, ../sass/_profil_form.scss */
 .formulaire-profil .contenu-form .bas-profil .element-classement table tbody tr {
   width: 100%;
   border: solid 1px white;
   margin: 5px;
   height: 50px;
 }
-/* line 116, ../sass/_profil_form.scss */
+/* line 157, ../sass/_profil_form.scss */
 .formulaire-profil .contenu-form .bas-profil .element-classement table tbody tr td {
   text-align: center;
   font-family: 'Work Sans';
 }
 @media (max-width: 800px) {
-  /* line 116, ../sass/_profil_form.scss */
+  /* line 157, ../sass/_profil_form.scss */
   .formulaire-profil .contenu-form .bas-profil .element-classement table tbody tr td {
     padding: 0;
     font-size: 1rem;
   }
 }
-/* line 125, ../sass/_profil_form.scss */
+/* line 166, ../sass/_profil_form.scss */
 .formulaire-profil .contenu-form .bas-profil .element-classement table tbody tr:nth-child(odd) {
   background-color: rgba(24, 131, 186, 0.5);
 }

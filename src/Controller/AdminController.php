@@ -62,8 +62,8 @@ class AdminController extends Controller
     public function admin_parties(){
 
         $joueursco=$this->getDoctrine()->getRepository(User::class)->findBy(['actif' => 1]);
-        $parties= $this->getDoctrine()->getRepository(Parties::class)->findAll();
 
+        $parties= $this->getDoctrine()->getRepository(Parties::class)->findAll();
 
         return $this->render('Admin/parties.html.twig', ['parties'=>$parties, 'joueursco'=>$joueursco]);
 

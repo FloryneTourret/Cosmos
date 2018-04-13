@@ -6,7 +6,7 @@ formaulaire
 
   width: 100%;
   min-height: 75vh;
-  margin-top: 200px;
+  margin-top: 170px;
   @media (max-width: 1300px) {
     width: 100%;
 
@@ -64,11 +64,52 @@ formaulaire
       }
 
 
+      .embed-responsive {
+        position: relative;
+        display: block;
+        width: 80%;
+        padding: 0;
+        overflow: hidden;
+        box-shadow: 0px 0px 40px  #00fcff;
+
+      }
+
+      .embed-responsive::before {
+        display: flex;
+        justify-content: center;
+        content: "";
+
+      }
+
+
+      .embed-responsive .embed-responsive-item,
+      .embed-responsive iframe,
+      .embed-responsive embed,
+      .embed-responsive object,
+      .embed-responsive video {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+
+
+      .embed-responsive-16by9::before {
+        padding-top: 56.25%;
+        margin: 0 auto;
+
+      }
+
       .envoyer input{
 
         width: 100% ;
         font-size: 1.5rem;
-        margin-top: 20px;
         text-align: right;
         margin-right: 10px;
         background: none;

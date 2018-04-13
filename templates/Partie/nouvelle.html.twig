@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-   Cosmos - Nouvelle partie
+    Cosmos - Nouvelle partie
 {% endblock %}
 
 {% block nav_admin %}{% endblock %}
@@ -52,7 +52,97 @@
                 </div>
             </div>
         </div>
+
+        <div class="backchatactive">
+            <h1>chat</h1>
+        </div>
+        <form class="formsite" action="" id="submitchat">
+
+            <section id="chatsite">
+                <ul id="messages"></ul>
+
+                <input style="display: none" type="text" id="monPseudo" value="{{ app.user.username }}">
+            </section>
+            <input id="monMessage" autocomplete="off"  placeholder="Entrez votre message"/>
+            <button style="display: none" onclick="envoyer()">Envoyer !</button>
+        </form>
     </section>
 
 
+
+    </section>
+
 {% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/chatsite.js') }}"></script>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script>
+        var socket = io.connect('http://149.91.83.88:8080');
+
+        var loggedUser;
+
+        /**
+         * Log de connexion d'un utilisateur (avant login)
+         */
+        console.log('a user connected');
+
+        /**
+         * Déconnexion d'un utilisateur : broadcast d'un 'service-message'
+         */
+        socket.on('disconnect', function () {
+            if (loggedUser !== undefined) {
+                console.log('user disconnected : ' + loggedUser.username);
+                var serviceMessage = {
+                    text: loggedUser.username + " s\'est déconnecté",
+                    type: 'logout'
+                };
+                socket.broadcast.emit("clientversserveur", serviceMessage);
+            }
+        });
+
+        /**
+         * Connexion d'un utilisateur via le formulaire :
+         *  - sauvegarde du user
+         *  - broadcast d'un 'service-message'
+         */
+        socket.on('user-login', function (user) {
+            loggedUser = user;
+            if (loggedUser !== undefined) {
+                var serviceMessage = {
+                    text: loggedUser.username + " s\'est connecté",
+                    type: 'login'
+                };
+                socket.broadcast.emit("clientversserveur", serviceMessage);
+            }
+        });
+
+
+        socket.on('serveurversclient', function (texte) {
+            document.getElementById("messages").innerHTML=texte;
+            element = document.getElementById('chatsite');
+            element.scrollTop = element.scrollHeight;
+        });
+
+
+
+        if (event.keyCode == 10 || event.keyCode == 13) {
+            var lePseudo=document.getElementById("monPseudo").value;
+            var leMessage=document.getElementById("monMessage").value;
+            var messageenvoye = '<i>'+lePseudo+'</i> : '+leMessage;
+
+            socket.emit("clientversserveur", messageenvoye);
+            document.getElementById("monMessage").value="";
+        }
+
+        function envoyer() {
+            var lePseudo=document.getElementById("monPseudo").value;
+            var leMessage=document.getElementById("monMessage").value;
+            var messageenvoye = '<li><span class="username">'+lePseudo+'</span> : '+leMessage+'</li>';
+
+            socket.emit("clientversserveur", messageenvoye);
+            document.getElementById("monMessage").value="";
+        }
+    </script>
+{% endblock %}
+

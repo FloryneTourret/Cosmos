@@ -120,7 +120,7 @@ class IndexController extends Controller
 
         if ($joueurs == null) {
 
-            return $this->redirectToRoute('mdp_oubile_fail');
+            return $this->redirectToRoute('mdp_oublie_fail');
 
         }
         else{

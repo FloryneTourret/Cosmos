@@ -4,33 +4,156 @@
 
 {% block body %}
 
-    <h1>Utilisateur : {{ app.user.username }}</h1> <br><br>
+    <section class="accueil">
+        <div class="formulaire-profil">
+            <div class="container-fluid justify-content-center">
+                <div class="col-8">
+                    <div class="contenu-form" >
+                        <div class="haut-profil">
+                            <h1>Utilisateur : {{ app.user.username }}</h1>
+                        </div>
+                        <div class="bas-profil">
+                            <form method="post" action="{{ path('update_username') }}">
 
-    <form method="post" action="{{ path('update_username') }}">
-        <div>
-            <h2>Changer de pseudo :</h2>
-            <input type="text" value="{{ app.user.username }}" name="username" placeholder="Nouveau Pseudo">
-            <input type="submit" value="Changer">
+                                <div class="element-form">
+                                    <div class="col-3"> <label for="username">Changer de pseudo :</label></div>
+                                    <div class="col-4"><input type="text" value="{{ app.user.username }}" name="username" placeholder="Nouveau Pseudo"></div>
+
+
+                                    <div class=" col-3 envoyer">
+                                        <input type="submit" value="Changer">                                    </div>
+                                </div>
+
+
+
+
+                            </form>
+                            <form method="post" action="{{ path('update_email') }}">
+
+                                <div class="element-form">
+                                    <div class="col-3"> <label for="email">Changer d'email :</label></div>
+                                    <div class="col-4"><input type="email" value="{{ app.user.email }}" name="email" placeholder="Nouvel email"></div>
+
+
+                                    <div class="col-3 envoyer">
+                                        <input type="submit" value="Changer">                                    </div>
+                                </div>
+
+
+
+
+                            </form>
+                            <form method="post" action="{{ path('update_password') }}">
+
+                                <div class="element-form">
+                                    <h2 style="text-align:center; color:#55AFC0; padding-bottom:3vh; font-family:'Robotaur2'">Attention, les mots de passe ne correspondent pas </h2>
+                                    <div class="col-3"> <label for="username">Changer de mot de passe :</label></div>
+                                    <div class="col-4"><input type="password" name="premier" placeholder="Entrer nouveau mot de passe"><input type="password" name="deuxieme" placeholder="Répéter mot de passe"></div>
+
+                                    <div class=" col-3 envoyer">
+                                        <input type="submit" value="Changer">                                    </div>
+                                </div>
+
+
+
+
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
-    </form>
-
-    <form method="post" action="{{ path('update_email') }}">
-        <div>
-            <h2>Changer d'email :</h2>
-            <input type="text" value="{{ app.user.email }}" name="email" placeholder="Nouvel email">
-            <input type="submit" value="Changer">
+        <div class="backchatactive">
+            <h1>chat</h1>
         </div>
-    </form>
+        <form class="formsite" action="" id="submitchat">
 
-    <form method="post" action="{{ path('update_password') }}">
-        <div>
-            <h3 style="color: #F00;">Attention les mots de passe  ne correspondent pas</h3>
-            <h2>Changer de mot de passe :</h2>
-            <input type="password" name="premier" placeholder="Entrer nouveau mot de passe" required><br>
-            <input type="password" name="deuxieme" placeholder="Répéter mot de passe" required>
-            <input type="submit" value="Changer">
-        </div>
-    </form>
+            <section id="chatsite">
+                <ul id="messages"></ul>
+
+                <input style="display: none" type="text" id="monPseudo" value="{{ app.user.username }}">
+            </section>
+            <input id="monMessage" autocomplete="off"  placeholder="Entrez votre message"/>
+            <button style="display: none" onclick="envoyer()">Envoyer !</button>
+        </form>
+    </section>
 
 
+
+    </section>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/chatsite.js') }}"></script>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+    <script>
+        var socket = io.connect('http://149.91.83.88:8080');
+
+        var loggedUser;
+
+        /**
+         * Log de connexion d'un utilisateur (avant login)
+         */
+        console.log('a user connected');
+
+        /**
+         * Déconnexion d'un utilisateur : broadcast d'un 'service-message'
+         */
+        socket.on('disconnect', function () {
+            if (loggedUser !== undefined) {
+                console.log('user disconnected : ' + loggedUser.username);
+                var serviceMessage = {
+                    text: loggedUser.username + " s\'est déconnecté",
+                    type: 'logout'
+                };
+                socket.broadcast.emit("clientversserveur", serviceMessage);
+            }
+        });
+
+        /**
+         * Connexion d'un utilisateur via le formulaire :
+         *  - sauvegarde du user
+         *  - broadcast d'un 'service-message'
+         */
+        socket.on('user-login', function (user) {
+            loggedUser = user;
+            if (loggedUser !== undefined) {
+                var serviceMessage = {
+                    text: loggedUser.username + " s\'est connecté",
+                    type: 'login'
+                };
+                socket.broadcast.emit("clientversserveur", serviceMessage);
+            }
+        });
+
+
+        socket.on('serveurversclient', function (texte) {
+            document.getElementById("messages").innerHTML=texte;
+            element = document.getElementById('chatsite');
+            element.scrollTop = element.scrollHeight;
+        });
+
+
+
+        if (event.keyCode == 10 || event.keyCode == 13) {
+            var lePseudo=document.getElementById("monPseudo").value;
+            var leMessage=document.getElementById("monMessage").value;
+            var messageenvoye = '<i>'+lePseudo+'</i> : '+leMessage;
+
+            socket.emit("clientversserveur", messageenvoye);
+            document.getElementById("monMessage").value="";
+        }
+
+        function envoyer() {
+            var lePseudo=document.getElementById("monPseudo").value;
+            var leMessage=document.getElementById("monMessage").value;
+            var messageenvoye = '<li><span class="username">'+lePseudo+'</span> : '+leMessage+'</li>';
+
+            socket.emit("clientversserveur", messageenvoye);
+            document.getElementById("monMessage").value="";
+        }
+    </script>
 {% endblock %}

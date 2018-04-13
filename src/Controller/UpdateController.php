@@ -47,7 +47,7 @@ class UpdateController extends Controller
         $entityManager->persist($username);
         $entityManager->flush();
 
-        return $this->redirectToRoute('user');
+        return $this->redirectToRoute('profil');
     }
 
     /**
@@ -77,7 +77,7 @@ class UpdateController extends Controller
         $entityManager->persist($email);
         $entityManager->flush();
 
-        return $this->redirectToRoute('user');
+        return $this->redirectToRoute('profil');
     }
 
     /**
@@ -116,7 +116,7 @@ class UpdateController extends Controller
             $entityManager->persist($password);
             $entityManager->flush();
 
-            return $this->redirectToRoute('user');
+            return $this->redirectToRoute('profil');
         }
     }
 

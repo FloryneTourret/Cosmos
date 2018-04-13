@@ -8,17 +8,18 @@
 
 {% block body %}
 
-
-    <section class="body_new">
-        <div class="new">
+    <section class="accueil">
+        <div class="formulaire-profil">
             <div class="container-fluid justify-content-center">
                 <div class="col-8">
                     <div class="contenu-form" >
-                        <div class="haut">
+                        <div class="haut-profil">
                             <h1>Tutoriel</h1>
                         </div>
-                        <div class="bas">
-                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/IWa9F0pddW0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <div class="bas-profil">
+                            <div class="embed-responsive embed-responsive-16by9 ">
+                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/kWtOtij6JC0?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            </div>
                             <form method="post" action="{{ path('tutoriel_fini') }}">
 
                                 <div class="envoyer">
@@ -35,6 +36,5 @@
             </div>
         </div>
     </section>
-
 
 {% endblock %}
